@@ -13,7 +13,7 @@
 #  Check ExId of a User in all Connections Applications
 
 import ConfigParser
-import ibmcnx.functions as functions
+import ibmcnx.functions
 
 configParser = ConfigParser.ConfigParser()
 configFilePath = r'ibmcnx/ibmcnx.properties'
@@ -54,7 +54,7 @@ if answer.lower() in allowed_answer:
     for db in perf.keys():    # Looping through databases
         print 'Change DataSource parameters for: %s' % db.upper()
         try:
-            t1 = functions.getDSId( db )
+            t1 = ibmcnx.functions.getDSId( db )
             print '\t\tstatementCacheSize: \t' + str( statementCacheSize )
             print '\t\tminConnections: \t' + str( perf[db]['minConnections'] )
             print '\t\tmaxConnections: \t' + str( perf[db]['maxConnections'] )

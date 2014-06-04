@@ -20,3 +20,11 @@ def getDSId( dbName ):
     except:
         print "Error when getting the DataSource ID!"
         pass
+
+# Function to check for a filepath and create it, when not present
+def checkBackupPath( path ) :
+    try :
+        os.makedirs( path )
+    except OSError :
+        if not os.path.isdir( path ) :
+            raise

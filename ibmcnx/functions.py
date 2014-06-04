@@ -30,3 +30,31 @@ def checkBackupPath( path ) :
     except OSError :
         if not os.path.isdir( path ) :
             raise
+
+# Function for Set Roles Script
+def getAdmin( adminvar ):
+    # function to ask for adminusers
+    # return a list with admins
+    # function is called for each admin type and each admin group type
+    admins = []
+    admin = ''
+    adminstring = ''
+    admindict = {
+                 'connwasadmin':'Local WebSphere AdminUser',
+                 'connadmin':'LDAP WebSphere and Connections AdminUser (searchAdmin)',
+                 'connmoderators':'Moderator User',
+                 'connmetrics':'Metrics Admin',
+                 'connmobile':'Mobile Administrators',
+                 'connadmingroup':'LDAP Admin Group',
+                 'connmoderatorgroup':'Moderators Admin Group',
+                 'connmetricsgroup':'Metrics Admin Group',
+                 'connmobilegroup':'Mobile Admin Group'
+    }
+    print 'Type 0 when finished, uid is case sensitiv!'
+    while admin != "0":
+        admin = raw_input( 'Type uid for ' + admindict[adminvar] + ': ' )
+        if admin != '0' and admin != '':
+            admins.append( admin )
+    adminstring = '|'.join( admins )
+    print adminstring
+    return adminstring

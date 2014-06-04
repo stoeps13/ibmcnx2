@@ -1,9 +1,15 @@
-# cfgVersionStamp.py
-# Author: Christoph Stoettner
-# E-Mail: christoph.stoettner@stoeps.de
+######
+#  Set the Version Stamp to actual time and date
 #
-# History: 
-# 20140415  Christoph Stoettner     Initial Version
+#  Author:        Christoph Stoettner
+#  Mail:          christoph.stoettner@stoeps.de
+#  Documentation: http://scripting101.stoeps.de
+#
+#  Version:       2.0
+#  Date:          2014-06-04
+#
+#  License:       Apache 2.0
+#
 
 print "\nSet Version Stamp in LotusConnections-config.xml to actual Date and Time\n"
 

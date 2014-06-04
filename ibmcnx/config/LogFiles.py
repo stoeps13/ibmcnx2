@@ -1,7 +1,19 @@
-# cfgLogFiles.py
-# Author: Christoph Stoettner
-# E-Mail: christoph.stoettner@stoeps.de
+######
+#  Configure JVM Log Files
 #
+#  Author:        Christoph Stoettner
+#  Mail:          christoph.stoettner@stoeps.de
+#  Documentation: http://scripting101.stoeps.de
+#
+#  Version:       2.0
+#  Date:          2014-06-04
+#
+#  License:       Apache 2.0
+#
+
+import ibmcnx.appServer
+
+WS1 = ibmcnx.appServer.WasServers()
 
 print "\nChanging the SystemOut & SystemErr log file rotation settings\n"
 
@@ -9,22 +21,10 @@ rollOverType = raw_input( '\tRolloverType (SIZE, BOTH): ' )
 maxLogSize = int( raw_input( '\tMax Logfile size in MB (1-50): ' ) )
 maxLogHistory = int( raw_input( '\tMax Number of Backup Files (1-200): ' ) )
 
-# Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer, webserver)
-servers = AdminTask.listServers().splitlines()
-# Get a list of all webservers
-webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
-
-# Remove webserver from servers list
-for webserver in webservers:
-    servers.remove( webserver )
-
-print ''
-
-for server in servers:
+for count in WS1.serverNum:
     try:
-
-        nodename = server.split( '(' )[1].split( '/' )[3]
-        servername = server.split( '(' )[1].split( '/' )[5].split( '|' )[0]
+        nodename = WS1.node[count]
+        servername = WS1.serverName[count]
 
         if len( nodename ) < 10:
             tab = '\t\t\t'
@@ -55,4 +55,3 @@ for server in servers:
 # Save Configuration
 AdminConfig.save()
 print '\n\n'
-

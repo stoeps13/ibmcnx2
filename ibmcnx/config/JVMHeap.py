@@ -1,23 +1,25 @@
-# getJVMHeap.py
-# Author: Christoph Stoettner
-# E-Mail: christoph.stoettner@stoeps.de
-# Usage: wsadmin -f getJvmHeap.py
+######
+#  Set the JVM Heap Sizes
+#
+#  Author:        Christoph Stoettner
+#  Mail:          christoph.stoettner@stoeps.de
+#  Documentation: http://scripting101.stoeps.de
+#
+#  Version:       2.0
+#  Date:          2014-06-04
+#
+#  License:       Apache 2.0
+#
 
-# Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer, webserver)
-servers = AdminTask.listServers().splitlines()
-# Get a list of all webservers
-webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
+import ibmcnx.appServer
 
-# Remove webserver from servers list
-for webserver in webservers:
-    servers.remove( webserver )
+WS1 = ibmcnx.appServer.WasServers()
 
-for server in servers:
-    jvm = AdminConfig.list( 'JavaVirtualMachine', server )
-    srv = server.split( '/' )
-    cell = srv[1]
-    node = srv[3]
-    servername = srv[5].split( '|' )[0]
+for count in WS1.serverNum:
+    jvm = WS1.jvm[count]
+    cell = WS1.cell[count]
+    node = WS1.node[count]
+    servername = WS1.serverName[count]
 
     print "%s - %s - %s" % ( cell, node, servername )
     print 'Actual setting: '

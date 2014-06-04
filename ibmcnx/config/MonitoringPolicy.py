@@ -1,8 +1,18 @@
-# Script to set nodeRestartState of all Application Servers
-# Author: Christoph Stoettner
-# Email: christoph.stoettner@stoeps.de
+######
+#  Configure Monitoring Policy
+#
+#  Author:        Christoph Stoettner
+#  Mail:          christoph.stoettner@stoeps.de
+#  Documentation: http://scripting101.stoeps.de
+#
+#  Version:       2.0
+#  Date:          2014-06-04
+#
+#  License:       Apache 2.0
+#
 
-import ibmcnxscript
+import ibmcnx.functions
+import ibmcnx.appServer
 
 state = ''
 while state != ( 'RUNNING' or 'STOPPED' or 'PREVIOUS' ):
@@ -19,10 +29,10 @@ while state != ( 'RUNNING' or 'STOPPED' or 'PREVIOUS' ):
     else:
         continue
 
-# Get a list of all servers in the cell
-servers = AdminTask.listServers( '[-serverType APPLICATION_SERVER]' ).splitlines()
+WS1 = ibmcnx.appServer.WasServers()
 
-for server in servers:
+for count in WS1.serverNum:
+    server = WS1.serverName[count]
     print 'Set nodeRestartState for %s to: %s' % ( server.split( '(' )[0], state.upper() )
     monitoringPolicy = AdminConfig.list( "MonitoringPolicy", server )
     AdminConfig.modify( monitoringPolicy, '[[nodeRestartState ' + state.upper() + ']]' )
@@ -30,4 +40,4 @@ for server in servers:
 AdminConfig.save()
 
 print "Synchronizing Nodes"
-# ibmcnxscript.synchAllNodes()
+ibmcnx.functions.synchAllNodes()

@@ -26,7 +26,7 @@ def getDSId( dbName ):
         print "Error when getting the DataSource ID!"
         pass
 
-configParser = ConfigParser.RawConfigParser()
+configParser = ConfigParser.ConfigParser()
 configFilePath = r'../ibmcnx/ibmcnx.properties'
 configParser.read(configFilePath)
 

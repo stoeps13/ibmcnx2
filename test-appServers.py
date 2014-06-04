@@ -16,7 +16,7 @@ for count in range(WS1.serverNum):
     print "Node %s: " % WS1.node[count]
     print "serverName %s: " % WS1.serverName[count]
 
-configParser = ConfigParser.RawConfigParser()
+configParser = ConfigParser.ConfigParser()
 configFilePath = r'ibmcnx/ibmcnx.properties'
 configParser.read(configFilePath)
 print "DBUser: %s" % configParser.get('Database','dbUser')

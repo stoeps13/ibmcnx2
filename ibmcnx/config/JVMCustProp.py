@@ -23,7 +23,11 @@ for count in range(WS1.serverNum):
     node = WS1.node[count]
     servername = WS1.serverName[count]
 
-    if servername != 'dmgr' | servername != 'nodeagent':
+    if servername == 'dmgr':
+        print "Value not set for %s" % servername
+    elif servername != 'nodeagent':
+        print "Value not set for %s" % servername
+    else:
         print "%s - %s - %s" % ( cell, node, servername )
         print 'Setting JVM Custom Property'
         AdminConfig.create('Property', jvm, '[[validationExpression ""] [name "com.ibm.ws.cache.CacheConfig.filteredStatusCodes"] [description "Added for js load issue 2014-3-17"] [value "304 404 500 502"] [required "false"]]')

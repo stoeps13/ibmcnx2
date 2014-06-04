@@ -13,6 +13,7 @@
 #
 
 import sys
+import os
 import ibmcnx.functions
 
 # Only load commands if not initialized directly (call from menu)

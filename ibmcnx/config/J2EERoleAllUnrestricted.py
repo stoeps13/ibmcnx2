@@ -24,19 +24,40 @@
 # 20131201  Christoph Stoettner    Add menu to ask for parameters
 
 import ibmcnx.functions
+import ConfigParser
 
-# Variables for Usermapping
-connwasadmin = ibmcnx.functions.getAdmin( 'connwasadmin' )
-connadmin = ibmcnx.functions.getAdmin( 'connadmin' )
-connmoderators = ibmcnx.functions.getAdmin( 'connmoderators' )
-connmetrics = ibmcnx.functions.getAdmin( 'connmetrics' )
-connmobile = ibmcnx.functions.getAdmin( 'connmobile' )
+configParser = ConfigParser.ConfigParser()
+configFilePath = r'ibmcnx/ibmcnx.properties'
+configParser.read( configFilePath )
 
-# Variables for Groupmapping
-connadmingroup = ibmcnx.functions.getAdmin( 'connadmingroup' )
-connmoderatorgroup = ibmcnx.functions.getAdmin( 'connmoderatorgroup' )
-connmetricsgroup = ibmcnx.functions.getAdmin( 'connmetricsgroup' )
-connmobilegroup = ibmcnx.functions.getAdmin( 'connmobilegroup' )
+answer = raw_input( 'Do you want to set the j2ee roles with Users and Groups from ibmcnx.properties? (Yes|No) ' )
+allowed_answer = ['yes', 'y', 'ja', 'j']
+
+if answer.lower() in allowed_answer:
+    # Get Admin Accounts and Groups for J2EE Roles
+    connwasadmin = configParser.get( 'Generic','j2ee.cnxwasadmin' )
+    connadmin = configParser.get( 'Generic','j2ee.cnxadmin' )
+    connmoderators = configParser.get( 'Generic','j2ee.cnxmoderators' )
+    connmetrics = configParser.get( 'Generic','j2ee.cnxmetrics' )
+    connmobile = configParser.get( 'Generic','j2eeconnmobile' )
+    # Variables for Groupmapping
+    connadmingroup = configParser.get( 'Generic','j2ee.cnxadmingroup' )
+    connmoderatorgroup = configParser.get( 'Generic','j2ee.cnxmoderatorgroup' )
+    connmetricsgroup = configParser.get( 'Generic','j2ee.cnxmetricsgroup' )
+    connmobilegroup = configParser.get( 'Generic','j2ee.cnxmobilegroup' )
+else:
+    # Variables for Usermapping
+    connwasadmin = str( ibmcnx.functions.getAdmin( 'connwasadmin' ) )
+    connadmin = str( ibmcnx.functions.getAdmin( 'connadmin' ) )
+    connmoderators = str( ibmcnx.functions.getAdmin( 'connmoderators' ) )
+    connmetrics = str( ibmcnx.functions.getAdmin( 'connmetrics' ) )
+    connmobile = str( ibmcnx.functions.getAdmin( 'connmobile' ) )
+
+    # Variables for Groupmapping
+    connadmingroup = str( ibmcnx.functions.getAdmin( 'connadmingroup' ) )
+    connmoderatorgroup = str( ibmcnx.functions.getAdmin( 'connmoderatorgroup' ) )
+    connmetricsgroup = str( ibmcnx.functions.getAdmin( 'connmetricsgroup' ) )
+    connmobilegroup = str( ibmcnx.functions.getAdmin( 'connmobilegroup' ) )
 
 def j2eeRolesCmdUnrestricted( appName, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup ):
     if( appName == 'Activities' ):

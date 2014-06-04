@@ -9,7 +9,7 @@ print "App Servers: %s" % WS1.AppServers
 
 print "Server Count: %s" % WS1.serverNum
 
-for count in WS1.serverNum:
+for count in range(WS1.serverNum):
     print "JVM: %s" % WS1.jvm[count]
 
     print "Cell %s: " % WS1.cell[count]

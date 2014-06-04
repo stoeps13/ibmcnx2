@@ -12,9 +12,9 @@ print "Server Count: %s" % WS1.serverNum
 for count in WS1.serverNum:
     print "JVM: %s" % WS1.jvm[count]
 
-    print "Cell %s: " % self.cell[count]
-    print "Node %s: " % self.node[count]
-    print "serverName %s: " % self.serverName[count]
+    print "Cell %s: " % WS1.cell[count]
+    print "Node %s: " % WS1.node[count]
+    print "serverName %s: " % WS1.serverName[count]
 
 configParser = ConfigParser.RawConfigParser()
 configFilePath = r'ibmcnx/ibmcnx.properties'

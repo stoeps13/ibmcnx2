@@ -59,16 +59,16 @@ def getAdmin( adminvar ):
     print adminstring
     return adminstring
 
- # Function to synchronize all Nodes
- def synchAllNodes():
-     nodelist = AdminTask.listManagedNodes().splitlines()
-     cell = AdminControl.getCell()
-     for nodename in nodelist :
-         print "Syncronizing node" + nodename
-         repo = AdminControl.completeObjectName( 'type=ConfigRepository,process=nodeagent,node=' + nodename + ',*' )
-         AdminControl.invoke( repo, 'refreshRepositoryEpoch' )
-         sync = AdminControl.completeObjectName( 'cell=' + cell + ',node=' + nodename + ',type=NodeSync,*' )
-         AdminControl.invoke( sync , 'sync' )
-         print "----------------------------------------------------------------------------------------- "
-         print "Full Resyncronization completed "
-         print ""
+# Function to synchronize all Nodes
+def synchAllNodes():
+    nodelist = AdminTask.listManagedNodes().splitlines()
+    cell = AdminControl.getCell()
+    for nodename in nodelist :
+        print "Syncronizing node" + nodename
+        repo = AdminControl.completeObjectName( 'type=ConfigRepository,process=nodeagent,node=' + nodename + ',*' )
+        AdminControl.invoke( repo, 'refreshRepositoryEpoch' )
+        sync = AdminControl.completeObjectName( 'cell=' + cell + ',node=' + nodename + ',type=NodeSync,*' )
+        AdminControl.invoke( sync , 'sync' )
+        print "----------------------------------------------------------------------------------------- "
+        print "Full Resyncronization completed "
+        print ""

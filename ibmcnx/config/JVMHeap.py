@@ -15,7 +15,7 @@ import ibmcnx.appServer
 
 WS1 = ibmcnx.appServer.WasServers()
 
-for count in WS1.serverNum:
+for count in range(WS1.serverNum):
     jvm = WS1.jvm[count]
     cell = WS1.cell[count]
     node = WS1.node[count]

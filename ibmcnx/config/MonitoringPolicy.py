@@ -31,7 +31,7 @@ while state != ( 'RUNNING' or 'STOPPED' or 'PREVIOUS' ):
 
 WS1 = ibmcnx.appServer.WasServers()
 
-for count in WS1.serverNum:
+for count in range(WS1.serverNum):
     server = WS1.serverName[count]
     print 'Set nodeRestartState for %s to: %s' % ( server.split( '(' )[0], state.upper() )
     monitoringPolicy = AdminConfig.list( "MonitoringPolicy", server )

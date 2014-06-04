@@ -21,7 +21,7 @@ rollOverType = raw_input( '\tRolloverType (SIZE, BOTH): ' )
 maxLogSize = int( raw_input( '\tMax Logfile size in MB (1-50): ' ) )
 maxLogHistory = int( raw_input( '\tMax Number of Backup Files (1-200): ' ) )
 
-for count in WS1.serverNum:
+for count in range(WS1.serverNum):
     try:
         nodename = WS1.node[count]
         servername = WS1.serverName[count]

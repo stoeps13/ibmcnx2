@@ -27,7 +27,7 @@ def getDSId( dbName ):
         pass
 
 configParser = ConfigParser.ConfigParser()
-configFilePath = r'../ibmcnx/ibmcnx.properties'
+configFilePath = r'ibmcnx/ibmcnx.properties'
 configParser.read(configFilePath)
 
 perf = {'activities':{'minConnections':configParser.get('Tuning','opnact.min'), 'maxConnections':configParser.get('Tuning','opnact.max')},

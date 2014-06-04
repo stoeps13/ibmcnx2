@@ -38,7 +38,7 @@ for count in range(WS1.serverNum):
     elif servername == 'nodeagent':
         print "Value not set for %s" % servername
     else:
-        print 'Set nodeRestartState for %s to: %s' % ( servername.split( '(' )[0], state.upper() )
+        print 'Set nodeRestartState for %s to: %s' % ( servername, state.upper() )
         monitoringPolicy = AdminConfig.list( "MonitoringPolicy", servername )
         AdminConfig.modify( monitoringPolicy, '[[nodeRestartState ' + state.upper() + ']]' )
 

@@ -8,6 +8,8 @@
 #  Version:       1.0
 #  Date:          2014-06-01
 #
+#  License:       Apache 2.0
+#
 #  Get application server names
 
 class WasServers:

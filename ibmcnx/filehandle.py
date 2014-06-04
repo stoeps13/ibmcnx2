@@ -8,6 +8,8 @@
 #  Version:       1.0
 #  Date:          2014-06-01
 #
+#  License:       Apache 2.0
+#
 #  Create Files for Backups, Log-Messages and so on
 
 import os.path

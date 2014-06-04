@@ -13,7 +13,7 @@ from java.util import Properties
 import ConfigParser
 
 # Only load commands if not initialized directly (call from menu)
-if __name__ != "__main__":
+if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
 import com.ibm.db2.jcc.DB2Driver as Driver

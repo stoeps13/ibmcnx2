@@ -31,22 +31,22 @@ configFilePath = r'ibmcnx/ibmcnx.properties'
 configParser.read(configFilePath)
 
 perf = {'activities':{'minConnections':configParser.get('Tuning','opnact.min'), 'maxConnections':configParser.get('Tuning','opnact.max')},
-         'blogs':{'minConnections':1, 'maxConnections':250},
-         'communities':{'minConnections':10, 'maxConnections':200},
-         'dogear':{'minConnections':1, 'maxConnections':150},
-         'files':{'minConnections':10, 'maxConnections':100},
-         'FNOSDS':{'minConnections':75, 'maxConnections':200},
-         'FNOSDSXA':{'minConnections':25, 'maxConnections':75},
-         'forum':{'minConnections':50, 'maxConnections':100},
-         'homepage':{'minConnections':20, 'maxConnections':100},
-         'metrics':{'minConnections':1, 'maxConnections':75},
-         'mobile':{'minConnections':1, 'maxConnections':100},
-         'news':{'minConnections':50, 'maxConnections':75},
-         'profiles':{'minConnections':1, 'maxConnections':100},
-         'search':{'minConnections':50, 'maxConnections':75},
-         'wikis':{'minConnections':1, 'maxConnections':100}}
+         'blogs':{'minConnections':configParser.get('Tuning','blogs.min'), 'maxConnections':configParser.get('Tuning','blogs.max')},
+         'communities':{'minConnections':configParser.get('Tuning','sncomm.min'), 'maxConnections':configParser.get('Tuning','sncomm.max')},
+         'dogear':{'minConnections':configParser.get('Tuning','dogear.min'), 'maxConnections':configParser.get('Tuning','dogear.max')},
+         'files':{'minConnections':configParser.get('Tuning','files.min'), 'maxConnections':configParser.get('Tuning','files.max')},
+         'FNOSDS':{'minConnections':configParser.get('Tuning','fnosds.min'), 'maxConnections':configParser.get('Tuning','fnosds.max')},
+         'FNOSDSXA':{'minConnections':configParser.get('Tuning','fnosdsxa.min'), 'maxConnections':configParser.get('Tuning','fnosdsxa.max')},
+         'forum':{'minConnections':configParser.get('Tuning','forum.min'), 'maxConnections':configParser.get('Tuning','forum.max')},
+         'homepage':{'minConnections':configParser.get('Tuning','homepage.min'), 'maxConnections':configParser.get('Tuning','homepage.max')},
+         'metrics':{'minConnections':configParser.get('Tuning','metrics.min'), 'maxConnections':configParser.get('Tuning','metrics.max')},
+         'mobile':{'minConnections':configParser.get('Tuning','mobile.min'), 'maxConnections':configParser.get('Tuning','mobile.max')},
+         'news':{'minConnections':configParser.get('Tuning','news.min'), 'maxConnections':configParser.get('Tuning','news.max')},
+         'profiles':{'minConnections':configParser.get('Tuning','profiles.min'), 'maxConnections':configParser.get('Tuning','profiles.max')},
+         'search':{'minConnections':configParser.get('Tuning','search.min'), 'maxConnections':configParser.get('Tuning','search.max')},
+         'wikis':{'minConnections':configParser.get('Tuning','wikis.min'), 'maxConnections':configParser.get('Tuning','wikis.max')}}
 
-statementCacheSize = 100    # change to 50 for oracle
+statementCacheSize = configParser.get('Tuning','statementCache')
 
 print 'DataSource Parameters are set to: '
 print 'Database \t statementCacheSize \t minConnections \t maxConnections'

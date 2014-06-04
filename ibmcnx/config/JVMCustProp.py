@@ -25,7 +25,7 @@ for count in range(WS1.serverNum):
 
     if servername == 'dmgr':
         print "Value not set for %s" % servername
-    elif servername != 'nodeagent':
+    elif servername == 'nodeagent':
         print "Value not set for %s" % servername
     else:
         print "%s - %s - %s" % ( cell, node, servername )

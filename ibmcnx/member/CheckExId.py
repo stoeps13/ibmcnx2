@@ -58,11 +58,12 @@ if answer.lower() in allowed_answer:
             print '\t\tstatementCacheSize: \t' + str( statementCacheSize )
             print '\t\tminConnections: \t' + str( perf[db]['minConnections'] )
             print '\t\tmaxConnections: \t' + str( perf[db]['maxConnections'] )
-            #AdminConfig.modify( t1, '[[statementCacheSize "' + str( statementCacheSize ) + '"]]' )
-            #AdminConfig.modify( t1, '[[connectionPool [[minConnections "' + str( perf[db]['minConnections'] ) + '"][maxConnections "' + str( perf[db]['maxConnections'] ) + '"]]]]'
-            #AdminConfig.save()
+            AdminConfig.modify( t1, '[[statementCacheSize "' + str( statementCacheSize ) + '"]]' )
+            AdminConfig.modify( t1, '[[connectionPool [[minConnections "' + str( perf[db]['minConnections'] ) + '"][maxConnections "' + str( perf[db]['maxConnections'] ) + '"]]]]'
             print 'Parameter for %s successfully set!' % db.upper()
         except:
             print '\tError can\'t set Performance parameter for' + db.upper() + '!'
+    AdminConfig.save()
+
 else:
     print '\t\tNothing changed! '

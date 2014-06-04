@@ -14,7 +14,7 @@ import ConfigParser
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    execfile("ibmcnx/loadCnxApps.py")
+    tmpOutput = execfile("ibmcnx/loadCnxApps.py")
 
 import com.ibm.db2.jcc.DB2Driver as Driver
 

@@ -30,7 +30,7 @@ configParser = ConfigParser.ConfigParser()
 configFilePath = r'ibmcnx/ibmcnx.properties'
 configParser.read(configFilePath)
 
-perf = {'activities':{'minConnections':configParser.get('Tuning','opnact.min'), 'maxConnections':configParser.get('Tuning','opnact.max')},
+perf = {'activities':{'minConnections':int(configParser.get('Tuning','opnact.min')), 'maxConnections':configParser.get('Tuning','opnact.max')},
          'blogs':{'minConnections':1, 'maxConnections':250},
          'communities':{'minConnections':10, 'maxConnections':200},
          'dogear':{'minConnections':1, 'maxConnections':150},

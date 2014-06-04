@@ -9,12 +9,13 @@
 
 import os
 import sys
+import subprocess
 from java.util import Properties
 import ConfigParser
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    tmpOutput = execfile("ibmcnx/loadCnxApps.py")
+    execfile("ibmcnx/loadCnxApps.py")
 
 import com.ibm.db2.jcc.DB2Driver as Driver
 

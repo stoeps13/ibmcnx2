@@ -13,7 +13,10 @@
 #
 
 import sys
-import ibmcnx.loadCnxApps
+
+# Only load commands if not initialized directly (call from menu)
+if __name__ == "__main__":
+    execfile("ibmcnx/loadCnxApps.py")
 
 path = raw_input( "Please provide a path for your backup files: " )
 ibmcnx.loadCnxApps.checkBackupPath( path )

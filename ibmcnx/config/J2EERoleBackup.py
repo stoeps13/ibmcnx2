@@ -28,7 +28,7 @@ appsList = apps.split( lineSeparator )
 for app in appsList:
     filename = path + "/" + app + ".txt"
     print "Backup of %(1)s security roles saved to %(2)s." % { "1" : app.upper(), "2": filename}
-        my_file = open( filename, 'w' )
+    my_file = open( filename, 'w' )
     my_file.write ( AdminApp.view( app, "-MapRolesToUsers" ) )
     my_file.flush
     my_file.close()

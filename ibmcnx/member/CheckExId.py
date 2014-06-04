@@ -13,18 +13,7 @@
 #  Check ExId of a User in all Connections Applications
 
 import ConfigParser
-
-#if __name__ == "__main__":
-#    echo "Script directly started"
-
-# Function to get the DataSource ID
-def getDSId( dbName ):
-    try:
-        DSId = AdminConfig.getid( '/DataSource:' + dbName + '/' )
-        return DSId
-    except:
-        print "Error when getting the DataSource ID!"
-        pass
+import ibmcnx.functions as functions
 
 configParser = ConfigParser.ConfigParser()
 configFilePath = r'ibmcnx/ibmcnx.properties'
@@ -57,3 +46,23 @@ for db in perf.keys():
     print '\t\t' + str( statementCacheSize ),
     print '\t\t\t' + str( perf[db]['minConnections'] ),
     print '\t\t\t' + str( perf[db]['maxConnections'] )
+
+answer = raw_input( 'Are you sure, that your parameters should be overwritten? (Yes|No) ' )
+allowed_answer = ['yes', 'y', 'ja', 'j']
+
+if answer.lower() in allowed_answer:
+    for db in perf.keys():    # Looping through databases
+        print 'Change DataSource parameters for: %s' % db.upper()
+        try:
+            t1 = functions.getDSId( db )
+            print '\t\tstatementCacheSize: \t' + str( statementCacheSize )
+            print '\t\tminConnections: \t' + str( perf[db]['minConnections'] )
+            print '\t\tmaxConnections: \t' + str( perf[db]['maxConnections'] )
+            AdminConfig.modify( t1, '[[statementCacheSize "' + str( statementCacheSize ) + '"]]' )
+            AdminConfig.modify( t1, '[[connectionPool [[minConnections "' + str( perf[db]['minConnections'] ) + '"][maxConnections "' + str( perf[db]['maxConnections'] ) + '"]]]]'
+            AdminConfig.save()
+            print 'Parameter for %s successfully set!' % db.upper()
+        except:
+            print '\tError can\'t set Performance parameter for' + db.upper() + '!'
+else:
+    print '\t\tNothing changed! '

@@ -24,7 +24,8 @@ maxLogHistory = int( raw_input( '\tMax Number of Backup Files (1-200): ' ) )
 for count in range(WS1.serverNum):
     try:
         nodename = WS1.node[count]
-        servername = WS1.serverName[count]
+        servername = WS1.serverName[count].split( '(' )[1].split( '/' )[5].split( '|' )[0]
+        server = WS1.serverName[count]
 
         if len( nodename ) < 10:
             tab = '\t\t\t'
@@ -37,8 +38,8 @@ for count in range(WS1.serverNum):
         print "\tChange log setting for: " + nodename + tab + servername
 
         # output and errorStream
-        systemOut = AdminConfig.showAttribute( serverName, 'outputStreamRedirect' )
-        systemErr = AdminConfig.showAttribute( serverName, 'errorStreamRedirect' )
+        systemOut = AdminConfig.showAttribute( server, 'outputStreamRedirect' )
+        systemErr = AdminConfig.showAttribute( server, 'errorStreamRedirect' )
 
         if rollOverType == 'BOTH' or rollOverType.upper() == 'B':
             logSetting = '[[rolloverSize ' + str( maxLogSize ) + '] [rolloverPeriod 24] [maxNumberOfBackupFiles ' + str( maxLogHistory ) + ']]'

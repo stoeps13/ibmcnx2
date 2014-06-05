@@ -41,107 +41,13 @@ class cnxMenu:
     def Do( self, n ):
         self.menuitems[n]["func"]()
 
-
-
-def cfgJ2EERoleBackup():
-    execfile( "cfgJ2EERoleBackup.py" )
-
-def cfgJ2EERoleRestore():
-    execfile( "cfgJ2EERoleRestore.py" )
-
-def cfgJ2EERolesRestricted():
-    execfile( "cfgJ2EERolesRestricted.py" )
-
-def cfgJ2EERolesUnrestricted():
-    execfile( "cfgJ2EERolesUnrestricted.py" )
-
-def cfgJ2EERoleGlobalModerator():
-    execfile( "cfgJ2EERoleGlobalModerator.py" )
-
-def cfgJ2EERoleMetricsReader():
-    execfile( "cfgJ2EERoleMetricsReader.py" )
-
-def cfgJ2EERoleMetricsReportRun():
-    execfile( "cfgJ2EERoleMetricsReportRun.py" )
-
-def cfgJ2EERoleSocialMail():
-    execfile( "cfgJ2EERoleSocialMail.py" )
-
-def cfgJVMHeap():
-    execfile( "cfgJVMHeap.py" )
-
-def cfgLogFiles():
-    execfile( "cfgLogFiles.py" )
-
-def cfgMonitoringPolicy():
-    execfile( 'cfgMonitoringPolicy.py' )
-
-def cfgJVMCustProp():
-    execfile( 'cfgJVMCustProp.py' )
-
-def checkAppStatus():
-    execfile( 'checkAppStatus.py' )
-
-def checkDataSource():
-    execfile( 'checkDataSource.py' )
-
-def checkJVMHeap():
-    execfile( 'checkJVMHeap.py' )
-
-def checkLogFiles():
-    execfile( 'checkLogFiles.py' )
-
-def checkPorts():
-    execfile( 'checkPorts.py' )
-
-def checkVariables():
-    execfile( 'checkVariables.py' )
-
-def cnxFilesPolicies():
-    execfile( 'cnxFilesPolicies.py' )
-
-def cnxLibraryPolicies():
-    execfile( 'cnxLibraryPolicies.py' )
-
-def cnxMemberCheckExIDByEmail():
-    execfile( 'cnxMemberCheckExIDByEmail.py' )
-
-def cnxMemberInactivateByEmail():
-    execfile( 'cnxMemberInactivateByEmail.py' )
-
-def cnxMemberDeactAndActByEmail():
-    execfile( 'cnxMemberDeactAndActByEmail.py' )
-
-def cnxMemberSyncAllByEXID():
-    execfile( 'cnxMemberSyncAllByEXID.py' )
-
-def cnxCommunitiesReparenting():
-    execfile( 'cnxCommunitiesReparenting.py' )
-
-def cnxmenu_cfgtasks():
-	execfile( 'ibmcnx/menu/cnxmenu_cfgtasks.py' )
-
-def cnxmenu_useradmin():
-	execfile( 'ibmcnx/menu/cnxmenu_useradmin.py' )
-
-def cnxmenu_comm():
-	execfile( 'ibmcnx/menu/cnxmenu_comm.py' )
-
-def cnxmenu_checks():
-	execfile( 'ibmcnx/menu/cnxmenu_checks.py' )
-
-def bye():
-    print "bye"
-    state = 'false'
-    sys.exit( 0 )
-
 if __name__ == "__main__":
     m = cnxMenu()
-    m.AddItem( 'Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks )
-    m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', cnxmenu_checks )
-    m.AddItem( 'Menu - IBM Connections User Admin Tasks', cnxmenu_useradmin )
-    m.AddItem( 'Menu - IBM Connections Community Admin Tasks', cnxmenu_comm )
-    m.AddItem( "Exit", bye )
+    m.AddItem( 'Menu - IBM Connections Configuration Tasks', ibmcnx.functions.cnxmenu_cfgtasks )
+    m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', ibmcnx.functions.cnxmenu_checks )
+    m.AddItem( 'Menu - IBM Connections User Admin Tasks', ibmcnx.functions.cnxmenu_useradmin )
+    m.AddItem( 'Menu - IBM Connections Community Admin Tasks', ibmcnx.functions.cnxmenu_comm )
+    m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':

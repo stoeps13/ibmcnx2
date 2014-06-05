@@ -79,3 +79,98 @@ def synchAllNodes():
 # Menu Functions
 def cfgDataSource():
     execfile( "ibmcnx/config/DataSources.py" )
+
+def cfgJ2EERoleBackup():
+    execfile( "ibmcnx/config/j2ee/RoleBackup.py" )
+
+def cfgJ2EERoleRestore():
+    execfile( "ibmcnx/config/j2ee/RoleRestore.py" )
+
+def cfgJ2EERolesRestricted():
+    execfile( "ibmcnx/config/j2ee/RoleAllRestricted.py" )
+
+def cfgJ2EERolesUnrestricted():
+    execfile( "ibmcnx/config/j2ee/RoleAllUnrestricted.py" )
+
+def cfgJ2EERoleGlobalModerator():
+    execfile( "ibmcnx/config/j2ee/RoleGlobalMod.py" )
+
+def cfgJ2EERoleMetricsReader():
+    execfile( "ibmcnx/config/j2ee/RoleMetricsReader.py" )
+
+def cfgJ2EERoleMetricsReportRun():
+    execfile( "ibmcnx/config/j2ee/RoleMetricsReportRun.py" )
+
+def cfgJ2EERoleSocialMail():
+    execfile( "ibmcnx/config/j2ee/RoleSocialMail.py" )
+
+def cfgJVMHeap():
+    execfile( "ibmcnx/config/JVMHeap.py" )
+
+def cfgLogFiles():
+    execfile( "ibmcnx/config/LogFiles.py" )
+
+def cfgMonitoringPolicy():
+    execfile( 'ibmcnx/config/MonitoringPolicy.py' )
+
+def cfgJVMCustProp():
+    execfile( 'ibmcnx/config/JVMCustProp.py' )
+
+def checkAppStatus():
+    execfile( 'ibmcnx/check/AppStatus.py' )
+
+def checkDataSource():
+    execfile( 'ibmcnx/check/DataSource.py' )
+
+def checkJVMHeap():
+    execfile( 'ibmcnx/doc/JVMHeap.py' )
+
+def checkLogFiles():
+    execfile( 'ibmcnx/doc/LogFiles.py' )
+
+def checkPorts():
+    execfile( 'ibmcnx/doc/Ports.py' )
+
+def checkVariables():
+    execfile( 'ibmcnx/doc/Variables.py' )
+
+def cnxFilesPolicies():
+    execfile( 'ibmcnx/cnx/FilesPolicies.py' )
+
+def cnxLibraryPolicies():
+    execfile( 'ibmcnx/cnx/LibraryPolicies.py' )
+
+def cnxMemberCheckExIDByEmail():
+    execfile( 'ibmcnx/config/CheckExID.py' )
+
+def cnxMemberInactivateByEmail():
+    execfile( 'ibmcnx/member/InactivateByEmail.py' )
+
+def cnxMemberDeactAndActByEmail():
+    execfile( 'ibmcnx/member/DeactAndActByEmail.py' )
+
+def cnxMemberSyncAllByEXID():
+    execfile( 'ibmcnx/member/SyncAllByEXID.py' )
+
+def cnxCommunitiesReparenting():
+    execfile( 'ibmcnx/cnx/CommunitiesReparenting.py' )
+
+def cnxmenu_cfgtasks():
+    execfile( 'ibmcnx/menu/cfgtasks.py' )
+
+def cnxmenu_useradmin():
+    execfile( 'ibmcnx/menu/useradmin.py' )
+
+def cnxmenu_comm():
+    execfile( 'ibmcnx/menu/comm.py' )
+
+def cnxmenu_checks():
+    execfile( 'ibmcnx/menu/checks.py' )
+
+def cnxBackToMainMenu():
+    execfile( 'ibmcnx/menu/cnxmenu.py')
+
+def bye():
+    print "bye"
+    state = 'false'
+    sys.exit( 0 )

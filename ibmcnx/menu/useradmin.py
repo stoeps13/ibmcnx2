@@ -12,6 +12,8 @@
 #
 #  History:       Changed by Jan Alderlieste
 
+import ibmcnx.functions
+
 # Load all jython commands, when they are not loaded
 try:
     NewsActivityStreamService.listApplicationRegistrations()
@@ -19,7 +21,7 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-class cnxMenu_checks:
+class cnxMenu_useradmin:
     menuitems = []
 
     # Function to add menuitems
@@ -29,7 +31,7 @@ class cnxMenu_checks:
     # Function for printing
     def Show( self ):
         c = 1
-        print '\n\tWebSphere and Connections Administration - Checks Tasks'
+        print '\n\tWebSphere and Connections Administration - User Admin Tasks'
         print '\t----------------------------------------', '\n'
         for l in self.menuitems:
             print '\t',
@@ -40,42 +42,14 @@ class cnxMenu_checks:
     def Do( self, n ):
         self.menuitems[n]["func"]()
 
-
-def checkAppStatus():
-    execfile( 'checkAppStatus.py' )
-
-def checkDataSource():
-    execfile( 'checkDataSource.py' )
-
-def checkJVMHeap():
-    execfile( 'checkJVMHeap.py' )
-
-def checkLogFiles():
-    execfile( 'checkLogFiles.py' )
-
-def checkPorts():
-    execfile( 'checkPorts.py' )
-
-def checkVariables():
-    execfile( 'checkVariables.py' )
-
-def cnxBackToMainMenu():
-    execfile( 'cnxmenu.py')
-
-def bye():
-    print "bye"
-    state = 'false'
-    sys.exit( 0 )
-
 if __name__ == "__main__":
-    m = cnxMenu_checks()
-    m.AddItem( 'Check if all Apps are running (checkAppStatus.py)', checkAppStatus )
-    m.AddItem( 'Check Database connections (checkDataSource.py)', checkDataSource )
-    m.AddItem( 'Check JVM Heap Sizes (checkJVMHeap.py)', checkJVMHeap )
-    m.AddItem( 'Check SystemOut/Err Log Sizes (checkLogFiles.py)', checkLogFiles )
-    m.AddItem( 'Check / Show all used ports (checkPorts.py)', checkPorts )
-    m.AddItem( 'Back to Main Menu (cnxmenu.py)', cnxBackToMainMenu )
-    m.AddItem( "Exit", bye )
+    m = cnxMenu_useradmin()
+    m.AddItem( 'Check External ID (all Apps & Profiles) (cnxMemberCheckExIDByEmail.py)', ibmcnx.functions.cnxMemberCheckExIDByEmail )
+    m.AddItem( 'Deactivate and Activate a User in one step (cnxMemberDeactAndActByEmail.py)', ibmcnx.functions.cnxMemberDeactAndActByEmail )
+    m.AddItem( 'Deactivate a User by email address (cnxMemberInactivateByEmail.py)', ibmcnx.functions.cnxMemberInactivateByEmail )
+    m.AddItem( 'Synchronize ExtID for all Users in all Apps (cnxMemberSyncAllByEXID.py)', ibmcnx.functions.cnxMemberSyncAllByEXID )
+    m.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
+    m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':
@@ -89,9 +63,9 @@ while state == 'True':
     is_valid=0
     while not is_valid :
         try :
-                n = int ( raw_input('Enter your choice [1-7] : ') )
+                n = int ( raw_input('Enter your choice [1-6] : ') )
 
-                if n < 8 and n > 0:
+                if n < 7 and n > 0:
 				    is_valid = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n

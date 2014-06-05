@@ -12,6 +12,8 @@
 #
 #  History:       Changed by Jan Alderlieste
 
+import ibmcnx.functions
+
 # Load all jython commands, when they are not loaded
 try:
     NewsActivityStreamService.listApplicationRegistrations()
@@ -40,23 +42,11 @@ class cnxMenu_comm:
     def Do( self, n ):
         self.menuitems[n]["func"]()
 
-
-def cnxCommunitiesReparenting():
-    execfile( 'cnxCommunitiesReparenting.py' )
-
-def cnxBackToMainMenu():
-    execfile( 'cnxmenu.py')
-
-def bye():
-    print "bye"
-    state = 'false'
-    sys.exit( 0 )
-
 if __name__ == "__main__":
     m = cnxMenu_comm()
-    m.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', cnxCommunitiesReparenting )
-    m.AddItem( 'Back to Main Menu (cnxmenu_comm.py)', cnxBackToMainMenu )
-    m.AddItem( "Exit", bye )
+    m.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx.functions.cnxCommunitiesReparenting )
+    m.AddItem( 'Back to Main Menu (cnxmenu_comm.py)', ibmcnx.functions.cnxBackToMainMenu )
+    m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':

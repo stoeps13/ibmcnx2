@@ -31,8 +31,10 @@ checks.AddItem( 'Check / Show all used ports (checkPorts.py)', ibmcnx.functions.
 checks.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 checks.AddItem( "Exit", ibmcnx.functions.bye )
 
-state = 'True'
-while state == 'True':
+state_checks = 'True'
+
+while state_checks == 'True':
+    count = len(checks.menuitems)
     checks.Show()
 
     ###########################
@@ -40,13 +42,14 @@ while state == 'True':
     ## only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
-    is_valid_check=0
-    while not is_valid_check :
+    is_valid_checks = 0
+    while not is_valid_checks :
         try :
-                n = int ( raw_input('Enter your choice [1-7] : ') )
+                inputstring = 'Enter your choice [1-' + str(count) +']: '
+                n = int ( raw_input( inputstring ) )
 
-                if n < 8 and n > 0:
-				    is_valid_check = 1 ## set it to 1 to validate input and to terminate the while..not loop
+                if n <= count and n > 0:
+                    is_valid_checks = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n
         except ValueError, e :

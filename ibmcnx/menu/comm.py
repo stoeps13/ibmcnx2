@@ -27,8 +27,10 @@ comm.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx
 comm.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBackToMainMenu )
 comm.AddItem( "Exit", ibmcnx.functions.bye )
 
-state = 'True'
-while state == 'True':
+state_comm = 'True'
+
+while state_comm == 'True':
+    count = len(comm.menuitems)
     comm.Show()
 
     ###########################
@@ -36,13 +38,14 @@ while state == 'True':
     ## only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
-    is_valid_comm=0
+    is_valid_comm = 0
     while not is_valid_comm :
         try :
-                n = int ( raw_input('Enter your choice [1-3] : ') )
+                inputstring = 'Enter your choice [1-' + str(count) +']: '
+                n = int ( raw_input( inputstring ) )
 
-                if n < 4 and n > 0:
-				    is_valid_comm = 1 ## set it to 1 to validate input and to terminate the while..not loop
+                if n <= count and n > 0:
+                    is_valid_comm = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n
         except ValueError, e :

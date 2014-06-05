@@ -30,8 +30,10 @@ user.AddItem( 'Synchronize ExtID for all Users in all Apps (cnxMemberSyncAllByEX
 user.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 user.AddItem( "Exit", ibmcnx.functions.bye )
 
-state = 'True'
-while state == 'True':
+state_user = 'True'
+
+while state_user == 'True':
+    count = len(user.menuitems)
     user.Show()
 
     ###########################
@@ -39,13 +41,14 @@ while state == 'True':
     ## only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
-    is_valid_user=0
+    is_valid_user = 0
     while not is_valid_user :
         try :
-                n = int ( raw_input('Enter your choice [1-6] : ') )
+                inputstring = 'Enter your choice [1-' + str(count) +']: '
+                n = int ( raw_input( inputstring ) )
 
-                if n < 7 and n > 0:
-				    is_valid_user = 1 ## set it to 1 to validate input and to terminate the while..not loop
+                if n <= count and n > 0:
+                    is_valid_user = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n
         except ValueError, e :

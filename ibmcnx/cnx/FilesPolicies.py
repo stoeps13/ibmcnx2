@@ -15,11 +15,10 @@ from java.lang import String
 from java.util import HashSet
 from java.util import HashMap
 import java
+import filesAdmin
 
 #if __name__ == "__main__":
 #    execfile("filesAdmin.py")
-
-reload("filesAdmin")
 
 def printPolicies( policies ):
     state = ''
@@ -35,7 +34,7 @@ def printPolicies( policies ):
             state = 'ADD'
             title = raw_input( 'Title of Policy: ' )
             maxSize = float( raw_input( 'max Library Size in GB: ' ) )
-            FilesPolicyService.add( title, maxSize * 1073741824.0 )
+            filesAdmin.FilesPolicyService.add( title, maxSize * 1073741824.0 )
         elif state == 'E':
             state = 'EDIT'
             policy = int( raw_input( 'Policy ID to edit: ' ) )
@@ -47,11 +46,11 @@ def printPolicies( policies ):
                 maxSize = float( maxSize ) * 1073741824.0
             elif maxSize == '':
                 maxSize = float( policies[policy]['maximumSize'] )
-            FilesPolicyService.edit( policies[policy]['id'], title, maxSize )
+            filesAdmin.FilesPolicyService.edit( policies[policy]['id'], title, maxSize )
         elif state == 'D':
             state = 'DELETE'
             policy = int( raw_input( 'Delete policy ID (#)? ' ) )
-            FilesPolicyService.delete( policies[policy]['id'] )
+            filesAdmin.FilesPolicyService.delete( policies[policy]['id'] )
         elif state == 'M':
             state = 'MENU'
             execfile( 'cnxmenu.py' )
@@ -63,5 +62,5 @@ def printPolicies( policies ):
             continue
 
 #loadFilesAdmin()
-policies = FilesPolicyService.browse( "title", "true", 1, 25 )
+policies = filesAdmin.FilesPolicyService.browse( "title", "true", 1, 25 )
 printPolicies( policies )

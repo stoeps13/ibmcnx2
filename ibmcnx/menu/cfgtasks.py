@@ -58,7 +58,7 @@ while state_cfg == 'True':
                 inputstring = 'Enter your choice [1-' + str(count) +']: '
                 n = int ( raw_input( inputstring ) )
 
-                if n < count and n > 0:
+                if n <= count and n > 0:
 				    is_valid_cfg = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n

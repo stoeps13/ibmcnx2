@@ -28,7 +28,6 @@ class cnxMenu:
             print self.c, self.l['text']
             self.c += 1
         print
-        return len( self.menuitems )
 
     def Do( self, n ):
         self.menuitems[n]["func"]()

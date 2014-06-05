@@ -44,9 +44,8 @@ cfg.AddItem( "Exit", ibmcnx.functions.bye )
 state_cfg = 'True'
 
 while state_cfg == 'True':
-    count = cfg.Show() + 1
+    count = len(cfg.menuitems)
     cfg.Show()
-    print len(cfg.menuitems)
 
     ###########################
     ## Robust error handling ##

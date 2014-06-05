@@ -21,17 +21,13 @@ rollOverType = raw_input( '\tRolloverType (SIZE, BOTH): ' )
 maxLogSize = int( raw_input( '\tMax Logfile size in MB (1-50): ' ) )
 maxLogHistory = int( raw_input( '\tMax Number of Backup Files (1-200): ' ) )
 
-for count in range(WS1.serverNum):
-    nodename = WS1.node[count]
-    servername = WS1.serverName[count]
-    server = WS1.serverName[count]
-    print nodename
-    print servername
-    print server
+servers = WS1.AllServers
+
+for server in servers:
     try:
-        nodename = WS1.node[count]
-        servername = WS1.serverName[count].split( '(' )[1].split( '/' )[5].split( '|' )[0]
-        server = WS1.serverName[count]
+
+        nodename = server.split( '(' )[1].split( '/' )[3]
+        servername = server.split( '(' )[1].split( '/' )[5].split( '|' )[0]
 
         if len( nodename ) < 10:
             tab = '\t\t\t'

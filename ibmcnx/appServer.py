@@ -33,7 +33,7 @@ class WasServers:
 
     def getServersWithoutWeb(self):
         self.AppServers = self.AllServers
-        for webserver in self.webservers:
+        for webserver in self.WebServers:
             self.AppServers.remove( webserver )
         return self.AppServers
 

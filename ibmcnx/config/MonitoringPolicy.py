@@ -31,7 +31,8 @@ while state != ( 'RUNNING' or 'STOPPED' or 'PREVIOUS' ):
 
 WS1 = ibmcnx.appServer.WasServers()
 
-servers = WS1.AppServers
+servers = WS1.getAppServers()
+
 print servers
 for server in servers:
     print server

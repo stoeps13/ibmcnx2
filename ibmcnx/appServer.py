@@ -17,13 +17,19 @@ class WasServers:
         # Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer, webserver)
         self.AllServers = self.getAllServers()
         self.WebServers = self.getWebServers()
-        self.AppServers = self.getServersWithoutWeb()
+        self.AppServers = self.getAllServersWithoutWeb()
         # self.serverNum, self.jvm, self.cell, self.node, self.serverName = self.getAttrServers()
         self.serverNum, self.jvm, self.cell, self.node, self.serverName = self.getAttrServers()
 
     def getAllServers(self):
-        # get a list of all application servers
+        # get a list of all servers
         self.servers = AdminTask.listServers().splitlines()
+        return self.servers
+
+    def getAppServers(self):
+        # get a list of all application servers
+        # includes webserver, but no dmgr and nodeagents
+        self.servers = AdminTask.listServers( '[-serverType APPLICATION_SERVER]' ).splitlines()
         return self.servers
 
     def getWebServers(self):
@@ -31,7 +37,8 @@ class WasServers:
         self.webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
         return self.webservers
 
-    def getServersWithoutWeb(self):
+    def getAllServersWithoutWeb(self):
+        # inclusive dmgr and nodeagents
         self.AppServers = self.AllServers
         for webserver in self.WebServers:
             self.AppServers.remove( webserver )

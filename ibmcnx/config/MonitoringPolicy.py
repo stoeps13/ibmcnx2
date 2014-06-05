@@ -31,15 +31,11 @@ while state != ( 'RUNNING' or 'STOPPED' or 'PREVIOUS' ):
 
 WS1 = ibmcnx.appServer.WasServers()
 
-for servername in WS1.getServersWithoutWeb():
-    servername = WS1.serverName[count]
-    if servername.split( '(' )[0] == 'dmgr':
-        print "Value not set for %s" % servername
-    elif servername.split( '(' )[0] == 'nodeagent':
-        print "Value not set for %s" % servername
-    else:
-        print 'Set nodeRestartState for %s to: %s' % ( servername.split( '(' )[0], state.upper() )
-        monitoringPolicy = AdminConfig.list( "MonitoringPolicy", servername )
+servers = WS1.getServersWithoutWeb()
+
+for server in servers:
+        print 'Set nodeRestartState for %s to: %s' % ( server.split( '(' )[0], state.upper() )
+        monitoringPolicy = AdminConfig.list( "MonitoringPolicy", server )
         AdminConfig.modify( monitoringPolicy, '[[nodeRestartState ' + state.upper() + ']]' )
 
 AdminConfig.save()

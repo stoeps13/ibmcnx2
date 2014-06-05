@@ -13,6 +13,7 @@
 #  Collection of functions
 
 import os
+import sys
 
 # Function to get the DataSource ID
 def getDSId( dbName ):

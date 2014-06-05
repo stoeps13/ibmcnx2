@@ -33,9 +33,7 @@ WS1 = ibmcnx.appServer.WasServers()
 
 servers = WS1.getAppServers()
 
-print servers
 for server in servers:
-    print server
     print 'Set nodeRestartState for %s to: %s' % ( server.split( '(' )[0], state.upper() )
     monitoringPolicy = AdminConfig.list( "MonitoringPolicy", server )
     AdminConfig.modify( monitoringPolicy, '[[nodeRestartState ' + state.upper() + ']]' )

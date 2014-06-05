@@ -64,13 +64,12 @@ def synchAllNodes():
     nodelist = AdminTask.listManagedNodes().splitlines()
     cell = AdminControl.getCell()
     for nodename in nodelist :
-        print "Syncronizing node" + nodename,
+        print "Syncronizing node " + nodename + " -",
         try:
             repo = AdminControl.completeObjectName( 'type=ConfigRepository,process=nodeagent,node=' + nodename + ',*' )
             AdminControl.invoke( repo, 'refreshRepositoryEpoch' )
             sync = AdminControl.completeObjectName( 'cell=' + cell + ',node=' + nodename + ',type=NodeSync,*' )
             AdminControl.invoke( sync , 'sync' )
-            print "----------------------------------------------------------------------------------------- "
             print "\tcompleted "
             print ""
         except:

@@ -22,6 +22,12 @@ maxLogSize = int( raw_input( '\tMax Logfile size in MB (1-50): ' ) )
 maxLogHistory = int( raw_input( '\tMax Number of Backup Files (1-200): ' ) )
 
 for count in range(WS1.serverNum):
+    nodename = WS1.node[count]
+    servername = WS1.serverName[count].split( '(' )[1].split( '/' )[5].split( '|' )[0]
+    server = WS1.serverName[count]
+    print nodename
+    print servername
+    print server
     try:
         nodename = WS1.node[count]
         servername = WS1.serverName[count].split( '(' )[1].split( '/' )[5].split( '|' )[0]

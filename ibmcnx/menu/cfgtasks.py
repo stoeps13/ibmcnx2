@@ -41,8 +41,8 @@ cfg.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', ibmcnx.functions.cnx
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 
-state = 'True'
-while state == 'True':
+state_cfg = 'True'
+while state_cfg == 'True':
     cfg.Show()
 
     ###########################

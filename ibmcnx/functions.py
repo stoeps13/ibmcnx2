@@ -70,8 +70,8 @@ def synchAllNodes():
             AdminControl.invoke( repo, 'refreshRepositoryEpoch' )
             sync = AdminControl.completeObjectName( 'cell=' + cell + ',node=' + nodename + ',type=NodeSync,*' )
             AdminControl.invoke( sync , 'sync' )
-            print "\tcompleted "
+            print " completed "
         except:
-            print "\terror"
+            print " error"
 
-print ""
+    print ""

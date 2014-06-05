@@ -25,7 +25,7 @@ class cnxMenu:
         for l in self.menuitems:
             print '\t',
             print self.c, l['text']
-            self.c =+ 1
+            self.c += 1
         print
 
     def Do( self, n ):

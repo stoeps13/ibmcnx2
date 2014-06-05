@@ -24,7 +24,7 @@ path = raw_input( "Please provide a path for your backup files: " )
 ibmcnx.functions.checkBackupPath( path )
 
 apps = AdminApp.list()
-appsList = apps.split( lineSeparator )
+appsList = apps.splitlines()
 for app in appsList:
     filename = path + "/" + app + ".txt"
     print "Backup of %(1)s security roles saved to %(2)s." % { "1" : app.upper(), "2": filename}

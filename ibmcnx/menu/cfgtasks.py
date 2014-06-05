@@ -16,6 +16,7 @@ import sys
 import os
 import ibmcnx.functions
 import ibmcnx.menu.MenuClass
+import java
 from java.lang import String
 from java.util import HashSet
 from java.util import HashMap

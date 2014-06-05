@@ -60,7 +60,7 @@ def setSecurityRoles( dictionary, appName ):
     AdminConfig.save()
 
 apps = AdminApp.list()
-appsList = apps.split( lineSeparator )
+appsList = apps.splitlines()
 # Test with some Apps:
 # appsList = ['Blogs','Activities','Wikis']
 # or Single App:

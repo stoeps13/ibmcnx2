@@ -12,6 +12,8 @@
 #
 #  History:       Changed by Jan Alderlieste
 
+import sys
+import os
 import ibmcnx.functions
 import ibmcnx.menu.MenuClass
 

@@ -17,12 +17,9 @@ import os
 import ibmcnx.functions
 import ibmcnx.menu.MenuClass
 
-# Load all jython commands, when they are not loaded
-#try:
-#    NewsActivityStreamService.listApplicationRegistrations()
-#except NameError:
-#    print "Connections Commands not loaded! Load now: "
-#    execfile("ibmcnx/loadCnxApps.py")
+# Only load commands if not initialized directly (call from menu)
+if __name__ == "__main__":
+    execfile("ibmcnx/loadCnxApps.py")
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )

@@ -30,6 +30,7 @@ m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':
+    count = len(m.menuitems)
     m.Show()
 
     ###########################
@@ -37,13 +38,14 @@ while state == 'True':
     ## only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
-    is_valid_m=0
+    is_valid_m = 0
     while not is_valid_m :
         try :
-                n = int ( raw_input('Enter your choice [1-5] : ') )
+                inputstring = 'Enter your choice [1-' + str(count) +']: '
+                n = int ( raw_input( inputstring ) )
 
-                if n < 6 and n > 0:
-				    is_valid_m  = 1 ## set it to 1 to validate input and to terminate the while..not loop
+                if n <= count and n > 0:
+                    is_valid_m = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n
         except ValueError, e :

@@ -11,7 +11,7 @@
 #  License:       Apache 2.0
 #
 class cnxMenu:
-    def __init__():
+    def __init__( self ):
         self.menuitems = []
 
     # Function to add menuitems

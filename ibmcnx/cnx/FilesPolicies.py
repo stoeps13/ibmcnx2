@@ -12,24 +12,9 @@
 #
 import sys
 
-execfile("filesAdmin.py")
+if __name__ == "__main__":
+    execfile("filesAdmin.py")
 
-#def loadFilesAdmin():
-#    execfile( 'filesAdmin.py' )
-
-# def deletePolicy( uuid ):
-#     FilesPolicyService.delete( uuid )
-#
-# def addPolicy( title, maxSize ):
-#     FilesPolicyService.add( title, maxSize * 1073741824.0 )
-#
-# def editPolicy( uuid, title, maxSize ):
-#     FilesPolicyService.edit( uuid, title, maxSize )
-#
-# def getPolicies():
-#     policies = FilesPolicyService.browse( "title", "true", 1, 25 )
-#     return policies
-#
 def printPolicies( policies ):
     state = ''
     print '# \tmax Size \t\t uuid \t\t\t\t\t title'

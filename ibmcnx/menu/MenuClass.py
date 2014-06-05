@@ -19,13 +19,13 @@ class cnxMenu:
 
     # Function for printing
     def Show( self ):
-        c = 1
+        self.c = 1
         print '\n\tWebSphere and Connections Administration'
         print '\t----------------------------------------', '\n'
         for l in self.menuitems:
             print '\t',
-            print c, l['text']
-            c = c + 1
+            print self.c, l['text']
+            self.c =+ 1
         print
 
     def Do( self, n ):

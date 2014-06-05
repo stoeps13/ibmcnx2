@@ -22,14 +22,14 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-m = ibmcnx.menu.MenuClass.cnxMenu()
-m.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx.functions.cnxCommunitiesReparenting )
-m.AddItem( 'Back to Main Menu (cnxmenu_comm.py)', ibmcnx.functions.cnxBackToMainMenu )
-m.AddItem( "Exit", ibmcnx.functions.bye )
+comm = ibmcnx.menu.MenuClass.cnxMenu()
+comm.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx.functions.cnxCommunitiesReparenting )
+comm.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBackToMainMenu )
+comm.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':
-    m.Show()
+    comm.Show()
 
     ###########################
     ## Robust error handling ##
@@ -48,4 +48,4 @@ while state == 'True':
         except ValueError, e :
                 print ("'%s' is not a valid integer." % e.args[0].split(": ")[1])
    # n = input( "your choice> " )
-    m.Do( n - 1 )
+    comm.Do( n - 1 )

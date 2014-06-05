@@ -22,17 +22,17 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-m = ibmcnx.menu.MenuClass.cnxMenu()
-m.AddItem( 'Check External ID (all Apps & Profiles) (cnxMemberCheckExIDByEmail.py)', ibmcnx.functions.cnxMemberCheckExIDByEmail )
-m.AddItem( 'Deactivate and Activate a User in one step (cnxMemberDeactAndActByEmail.py)', ibmcnx.functions.cnxMemberDeactAndActByEmail )
-m.AddItem( 'Deactivate a User by email address (cnxMemberInactivateByEmail.py)', ibmcnx.functions.cnxMemberInactivateByEmail )
-m.AddItem( 'Synchronize ExtID for all Users in all Apps (cnxMemberSyncAllByEXID.py)', ibmcnx.functions.cnxMemberSyncAllByEXID )
-m.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
-m.AddItem( "Exit", ibmcnx.functions.bye )
+user = ibmcnx.menu.MenuClass.cnxMenu()
+user.AddItem( 'Check External ID (all Apps & Profiles) (cnxMemberCheckExIDByEmail.py)', ibmcnx.functions.cnxMemberCheckExIDByEmail )
+user.AddItem( 'Deactivate and Activate a User in one step (cnxMemberDeactAndActByEmail.py)', ibmcnx.functions.cnxMemberDeactAndActByEmail )
+user.AddItem( 'Deactivate a User by email address (cnxMemberInactivateByEmail.py)', ibmcnx.functions.cnxMemberInactivateByEmail )
+user.AddItem( 'Synchronize ExtID for all Users in all Apps (cnxMemberSyncAllByEXID.py)', ibmcnx.functions.cnxMemberSyncAllByEXID )
+user.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
+user.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':
-    m.Show()
+    user.Show()
 
     ###########################
     ## Robust error handling ##
@@ -51,4 +51,4 @@ while state == 'True':
         except ValueError, e :
                 print ("'%s' is not a valid integer." % e.args[0].split(": ")[1])
    # n = input( "your choice> " )
-    m.Do( n - 1 )
+    user.Do( n - 1 )

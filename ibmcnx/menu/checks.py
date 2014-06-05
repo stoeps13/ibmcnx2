@@ -22,18 +22,18 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-m = ibmcnx.menu.MenuClass.cnxMenu()
-m.AddItem( 'Check if all Apps are running (checkAppStatus.py)', ibmcnx.functions.checkAppStatus )
-m.AddItem( 'Check Database connections (checkDataSource.py)', ibmcnx.functions.checkDataSource )
-m.AddItem( 'Check JVM Heap Sizes (checkJVMHeap.py)', ibmcnx.functions.checkJVMHeap )
-m.AddItem( 'Check SystemOut/Err Log Sizes (checkLogFiles.py)', ibmcnx.functions.checkLogFiles )
-m.AddItem( 'Check / Show all used ports (checkPorts.py)', ibmcnx.functions.checkPorts )
-m.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
-m.AddItem( "Exit", ibmcnx.functions.bye )
+checks = ibmcnx.menu.MenuClass.cnxMenu()
+checks.AddItem( 'Check if all Apps are running (checkAppStatus.py)', ibmcnx.functions.checkAppStatus )
+checks.AddItem( 'Check Database connections (checkDataSource.py)', ibmcnx.functions.checkDataSource )
+checks.AddItem( 'Check JVM Heap Sizes (checkJVMHeap.py)', ibmcnx.functions.checkJVMHeap )
+checks.AddItem( 'Check SystemOut/Err Log Sizes (checkLogFiles.py)', ibmcnx.functions.checkLogFiles )
+checks.AddItem( 'Check / Show all used ports (checkPorts.py)', ibmcnx.functions.checkPorts )
+checks.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
+checks.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':
-    m.Show()
+    checks.Show()
 
     ###########################
     ## Robust error handling ##
@@ -52,4 +52,4 @@ while state == 'True':
         except ValueError, e :
                 print ("'%s' is not a valid integer." % e.args[0].split(": ")[1])
    # n = input( "your choice> " )
-    m.Do( n - 1 )
+    checks.Do( n - 1 )

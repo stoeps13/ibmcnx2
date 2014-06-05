@@ -22,28 +22,28 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-m = ibmcnx.menu.MenuClass.cnxMenu()
-m.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )
-m.AddItem( 'Backup J2EE Roles of all Applications (cfgJ2EERoleBackup.py)', ibmcnx.functions.cfgJ2EERoleBackup )
-m.AddItem( 'Restore J2EE Roles of all Applications (cfgJ2EERoleRestore.py)', ibmcnx.functions.cfgJ2EERoleRestore )
-m.AddItem( 'Set J2EE Roles initially (restricted) (cfgJ2EERolesRestricted.py)', ibmcnx.functions.cfgJ2EERolesRestricted )
-m.AddItem( 'Set J2EE Roles initially (unrestricted) (cfgJ2EERolesUnrestricted.py)', ibmcnx.functions.cfgJ2EERolesUnrestricted )
-m.AddItem( 'Set J2EE Roles for Moderator Roles (cfgJ2EERoleGlobalModerator.py)', ibmcnx.functions.cfgJ2EERoleGlobalModerator )
-m.AddItem( 'Set J2EE Role for Metrics Reader (cfgJ2EERoleMetricsReader.py)', ibmcnx.functions.cfgJ2EERoleMetricsReader )
-m.AddItem( 'Set J2EE Role for Metrics Report Run (cfgJ2EERoleMetricsReportRun)', ibmcnx.functions.cfgJ2EERoleMetricsReportRun )
-m.AddItem( 'Set J2EE Role for SocialMail (cfgJ2EERoleSocialMail)', ibmcnx.functions.cfgJ2EERoleSocialMail )
-m.AddItem( 'Configure JVM Heap Sizes (cfgJVMHeap.py)', ibmcnx.functions.cfgJVMHeap )
-m.AddItem( 'Set Custom Parameter for Cache Issues in JVM (cfgJVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
-m.AddItem( 'Configure SystemOut/Err Log Size (cfgLogFiles.py)', ibmcnx.functions.cfgLogFiles )
-m.AddItem( 'Configure Monitoring Policy (cfgMonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
-m.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', ibmcnx.functions.cnxFilesPolicies )
-m.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', ibmcnx.functions.cnxLibraryPolicies )
-m.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
-m.AddItem( "Exit", ibmcnx.functions.bye )
+cfg = ibmcnx.menu.MenuClass.cnxMenu()
+cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )
+cfg.AddItem( 'Backup J2EE Roles of all Applications (cfgJ2EERoleBackup.py)', ibmcnx.functions.cfgJ2EERoleBackup )
+cfg.AddItem( 'Restore J2EE Roles of all Applications (cfgJ2EERoleRestore.py)', ibmcnx.functions.cfgJ2EERoleRestore )
+cfg.AddItem( 'Set J2EE Roles initially (restricted) (cfgJ2EERolesRestricted.py)', ibmcnx.functions.cfgJ2EERolesRestricted )
+cfg.AddItem( 'Set J2EE Roles initially (unrestricted) (cfgJ2EERolesUnrestricted.py)', ibmcnx.functions.cfgJ2EERolesUnrestricted )
+cfg.AddItem( 'Set J2EE Roles for Moderator Roles (cfgJ2EERoleGlobalModerator.py)', ibmcnx.functions.cfgJ2EERoleGlobalModerator )
+cfg.AddItem( 'Set J2EE Role for Metrics Reader (cfgJ2EERoleMetricsReader.py)', ibmcnx.functions.cfgJ2EERoleMetricsReader )
+cfg.AddItem( 'Set J2EE Role for Metrics Report Run (cfgJ2EERoleMetricsReportRun)', ibmcnx.functions.cfgJ2EERoleMetricsReportRun )
+cfg.AddItem( 'Set J2EE Role for SocialMail (cfgJ2EERoleSocialMail)', ibmcnx.functions.cfgJ2EERoleSocialMail )
+cfg.AddItem( 'Configure JVM Heap Sizes (cfgJVMHeap.py)', ibmcnx.functions.cfgJVMHeap )
+cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (cfgJVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
+cfg.AddItem( 'Configure SystemOut/Err Log Size (cfgLogFiles.py)', ibmcnx.functions.cfgLogFiles )
+cfg.AddItem( 'Configure Monitoring Policy (cfgMonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
+cfg.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', ibmcnx.functions.cnxFilesPolicies )
+cfg.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', ibmcnx.functions.cnxLibraryPolicies )
+cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
+cfg.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':
-    m.Show()
+    cfg.Show()
 
     ###########################
     ## Robust error handling ##
@@ -62,4 +62,4 @@ while state == 'True':
         except ValueError, e :
                 print ("'%s' is not a valid integer." % e.args[0].split(": ")[1])
    # n = input( "your choice> " )
-    m.Do( n - 1 )
+    cfg.Do( n - 1 )

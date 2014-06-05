@@ -42,8 +42,9 @@ cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMen
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_cfg = 'True'
+
 while state_cfg == 'True':
-    cfg.Show()
+    count = cfg.Show()
 
     ###########################
     ## Robust error handling ##

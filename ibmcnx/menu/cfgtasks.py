@@ -46,6 +46,7 @@ state_cfg = 'True'
 while state_cfg == 'True':
     count = cfg.Show() + 1
     cfg.Show()
+    print "Count = " + count
 
     ###########################
     ## Robust error handling ##

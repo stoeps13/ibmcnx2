@@ -31,7 +31,7 @@ while state != ( 'RUNNING' or 'STOPPED' or 'PREVIOUS' ):
 
 WS1 = ibmcnx.appServer.WasServers()
 
-servers = WS1.getServersWithoutWeb()
+servers = WS1.AppServers
 
 for server in servers:
         print 'Set nodeRestartState for %s to: %s' % ( server.split( '(' )[0], state.upper() )

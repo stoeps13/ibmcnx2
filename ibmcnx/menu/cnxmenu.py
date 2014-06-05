@@ -14,40 +14,19 @@
 
 import sys
 import os
+import ibmcnx.menu.MenuClass
 import ibmcnx.functions
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
-class cnxMenu:
-    menuitems = []
-
-    # Function to add menuitems
-    def AddItem( self, text, function ):
-        self.menuitems.append( {'text': text, 'func':function} )
-
-    # Function for printing
-    def Show( self ):
-        c = 1
-        print '\n\tWebSphere and Connections Administration'
-        print '\t----------------------------------------', '\n'
-        for l in self.menuitems:
-            print '\t',
-            print c, l['text']
-            c = c + 1
-        print
-
-    def Do( self, n ):
-        self.menuitems[n]["func"]()
-
-if __name__ == "__main__":
-    m = cnxMenu()
-    m.AddItem( 'Menu - IBM Connections Configuration Tasks', ibmcnx.functions.cnxmenu_cfgtasks )
-    m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', ibmcnx.functions.cnxmenu_checks )
-    m.AddItem( 'Menu - IBM Connections User Admin Tasks', ibmcnx.functions.cnxmenu_useradmin )
-    m.AddItem( 'Menu - IBM Connections Community Admin Tasks', ibmcnx.functions.cnxmenu_comm )
-    m.AddItem( "Exit", ibmcnx.functions.bye )
+m = ibmcnx.menu.MenuClass.cnxMenu()
+m.AddItem( 'Menu - IBM Connections Configuration Tasks', ibmcnx.functions.cnxmenu_cfgtasks )
+m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', ibmcnx.functions.cnxmenu_checks )
+m.AddItem( 'Menu - IBM Connections User Admin Tasks', ibmcnx.functions.cnxmenu_useradmin )
+m.AddItem( 'Menu - IBM Connections Community Admin Tasks', ibmcnx.functions.cnxmenu_comm )
+m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':

@@ -13,6 +13,7 @@
 #  History:       Changed by Jan Alderlieste
 
 import ibmcnx.functions
+import ibmcnx.menu.MenuClass
 
 # Load all jython commands, when they are not loaded
 try:
@@ -21,32 +22,10 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-class cnxMenu_comm:
-    menuitems = []
-
-    # Function to add menuitems
-    def AddItem( self, text, function ):
-        self.menuitems.append( {'text': text, 'func':function} )
-
-    # Function for printing
-    def Show( self ):
-        c = 1
-        print '\n\tWebSphere and Connections Administration - Community Admin Tasks'
-        print '\t----------------------------------------', '\n'
-        for l in self.menuitems:
-            print '\t',
-            print c, l['text']
-            c = c + 1
-        print
-
-    def Do( self, n ):
-        self.menuitems[n]["func"]()
-
-if __name__ == "__main__":
-    m = cnxMenu_comm()
-    m.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx.functions.cnxCommunitiesReparenting )
-    m.AddItem( 'Back to Main Menu (cnxmenu_comm.py)', ibmcnx.functions.cnxBackToMainMenu )
-    m.AddItem( "Exit", ibmcnx.functions.bye )
+m = ibmcnx.menu.MenuClass.cnxMenu()
+m.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx.functions.cnxCommunitiesReparenting )
+m.AddItem( 'Back to Main Menu (cnxmenu_comm.py)', ibmcnx.functions.cnxBackToMainMenu )
+m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':

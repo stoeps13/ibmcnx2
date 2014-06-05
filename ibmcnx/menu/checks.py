@@ -13,6 +13,7 @@
 #  History:       Changed by Jan Alderlieste
 
 import ibmcnx.functions
+import ibmcnx.menu.MenuClass
 
 # Load all jython commands, when they are not loaded
 try:
@@ -21,36 +22,14 @@ except NameError:
     print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
-class cnxMenu_checks:
-    menuitems = []
-
-    # Function to add menuitems
-    def AddItem( self, text, function ):
-        self.menuitems.append( {'text': text, 'func':function} )
-
-    # Function for printing
-    def Show( self ):
-        c = 1
-        print '\n\tWebSphere and Connections Administration - Checks Tasks'
-        print '\t----------------------------------------', '\n'
-        for l in self.menuitems:
-            print '\t',
-            print c, l['text']
-            c = c + 1
-        print
-
-    def Do( self, n ):
-        self.menuitems[n]["func"]()
-
-if __name__ == "__main__":
-    m = cnxMenu_checks()
-    m.AddItem( 'Check if all Apps are running (checkAppStatus.py)', ibmcnx.functions.checkAppStatus )
-    m.AddItem( 'Check Database connections (checkDataSource.py)', ibmcnx.functions.checkDataSource )
-    m.AddItem( 'Check JVM Heap Sizes (checkJVMHeap.py)', ibmcnx.functions.checkJVMHeap )
-    m.AddItem( 'Check SystemOut/Err Log Sizes (checkLogFiles.py)', ibmcnx.functions.checkLogFiles )
-    m.AddItem( 'Check / Show all used ports (checkPorts.py)', ibmcnx.functions.checkPorts )
-    m.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
-    m.AddItem( "Exit", ibmcnx.functions.bye )
+m = ibmcnx.menu.MenuClass.cnxMenu()
+m.AddItem( 'Check if all Apps are running (checkAppStatus.py)', ibmcnx.functions.checkAppStatus )
+m.AddItem( 'Check Database connections (checkDataSource.py)', ibmcnx.functions.checkDataSource )
+m.AddItem( 'Check JVM Heap Sizes (checkJVMHeap.py)', ibmcnx.functions.checkJVMHeap )
+m.AddItem( 'Check SystemOut/Err Log Sizes (checkLogFiles.py)', ibmcnx.functions.checkLogFiles )
+m.AddItem( 'Check / Show all used ports (checkPorts.py)', ibmcnx.functions.checkPorts )
+m.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
+m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'
 while state == 'True':

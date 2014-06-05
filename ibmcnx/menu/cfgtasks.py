@@ -18,6 +18,7 @@ import ibmcnx.functions
 import ibmcnx.menu.MenuClass
 import java
 import lotusConnectionsCommonAdmin
+import filesAdmin
 from java.lang import String
 from java.util import HashSet
 from java.util import HashMap

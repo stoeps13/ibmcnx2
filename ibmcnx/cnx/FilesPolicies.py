@@ -19,7 +19,7 @@ import java
 #if __name__ == "__main__":
 #    execfile("filesAdmin.py")
 
-execfile("filesAdmin.py", global_vars, local_vars)
+execfile("filesAdmin.py", bAskForNodeFiles)
 
 def printPolicies( policies ):
     state = ''

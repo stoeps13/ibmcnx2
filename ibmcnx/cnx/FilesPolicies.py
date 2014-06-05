@@ -12,8 +12,10 @@
 #
 import sys
 
-if __name__ == "__main__":
-    execfile("filesAdmin.py")
+#if __name__ == "__main__":
+#    execfile("filesAdmin.py")
+
+execfile("filesAdmin.py")
 
 def printPolicies( policies ):
     state = ''

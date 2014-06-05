@@ -19,7 +19,8 @@ import ibmcnx.functions
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    execfile("ibmcnx/loadCnxApps.py")
+    d = dict(locals(), **globals())
+    execfile("ibmcnx/loadCnxApps.py",d ,d)
 
 m = ibmcnx.menu.MenuClass.cnxMenu()
 m.AddItem( 'Menu - IBM Connections Configuration Tasks', ibmcnx.functions.cnxmenu_cfgtasks )

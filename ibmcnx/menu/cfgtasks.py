@@ -23,7 +23,8 @@ from java.util import HashMap
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    execfile("ibmcnx/loadCnxApps.py")
+    d = dict(locals(), **globals())
+    execfile("ibmcnx/loadCnxApps.py",d ,d)
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )

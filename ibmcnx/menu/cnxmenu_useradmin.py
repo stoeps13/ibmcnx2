@@ -12,8 +12,11 @@
 #
 #  History:       Changed by Jan Alderlieste
 
-# Only load commands if not initialized directly (call from menu)
-if __name__ == "__main__":
+# Load all jython commands, when they are not loaded
+try:
+    NewsActivityStreamService.listApplicationRegistrations()
+except NameError:
+    print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
 
 class cnxMenu_useradmin:

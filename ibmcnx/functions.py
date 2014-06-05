@@ -75,3 +75,7 @@ def synchAllNodes():
             print " error"
 
     print ""
+
+# Menu Functions
+def cfgDataSource():
+    execfile( "ibmcnx/config/DataSources.py" )

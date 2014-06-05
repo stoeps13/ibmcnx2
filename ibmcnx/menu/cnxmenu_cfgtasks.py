@@ -12,10 +12,12 @@
 #
 #  History:       Changed by Jan Alderlieste
 
-# Only load commands if not initialized directly (call from menu)
-if __name__ == "__main__":
+# Load all jython commands, when they are not loaded
+try:
+    NewsActivityStreamService.listApplicationRegistrations()
+except NameError:
+    print "Connections Commands not loaded! Load now: "
     execfile("ibmcnx/loadCnxApps.py")
-
 
 class cnxMenu_cfgtasks:
     menuitems = []
@@ -38,9 +40,6 @@ class cnxMenu_cfgtasks:
     def Do( self, n ):
         self.menuitems[n]["func"]()
 
-
-def cfgDataSource():
-    execfile( "cfgDataSource.py" )
 
 def cfgJ2EERoleBackup():
     execfile( "cfgJ2EERoleBackup.py" )
@@ -89,7 +88,7 @@ def bye():
 
 if __name__ == "__main__":
     m = cnxMenu_cfgtasks()
-    m.AddItem( "Configure DataSources (cfgDataSource.py)", cfgDataSource )
+    m.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )
     m.AddItem( 'Backup J2EE Roles of all Applications (cfgJ2EERoleBackup.py)', cfgJ2EERoleBackup )
     m.AddItem( 'Restore J2EE Roles of all Applications (cfgJ2EERoleRestore.py)', cfgJ2EERoleRestore )
     m.AddItem( 'Set J2EE Roles initially (restricted) (cfgJ2EERolesRestricted.py)', cfgJ2EERolesRestricted )

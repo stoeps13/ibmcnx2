@@ -40,13 +40,13 @@ while state == 'True':
     ## only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
-    is_valid=0
-    while not is_valid :
+    is_valid_check=0
+    while not is_valid_check :
         try :
                 n = int ( raw_input('Enter your choice [1-7] : ') )
 
                 if n < 8 and n > 0:
-				    is_valid = 1 ## set it to 1 to validate input and to terminate the while..not loop
+				    is_valid_check = 1 ## set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option.") % n
         except ValueError, e :

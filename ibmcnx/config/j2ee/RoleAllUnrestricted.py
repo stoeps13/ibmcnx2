@@ -105,7 +105,7 @@ def j2eeRolesCmdUnrestricted( appName, connwasadmin, connadmin, connmoderators, 
 
 
 apps = AdminApp.list()
-appsList = apps.split( lineSeparator )
+appsList = apps.splitlines()
 for app in appsList:
     print "Setting Security Roles for %s" % app.upper()
     try:

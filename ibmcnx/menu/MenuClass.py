@@ -11,7 +11,7 @@
 #  License:       Apache 2.0
 #
 class cnxMenu:
-    menuitems = []
+    self.menuitems = []
 
     # Function to add menuitems
     def AddItem( self, text, function ):
@@ -22,9 +22,9 @@ class cnxMenu:
         self.c = 1
         print '\n\tWebSphere and Connections Administration'
         print '\t----------------------------------------', '\n'
-        for l in self.menuitems:
+        for self.l in self.menuitems:
             print '\t',
-            print self.c, l['text']
+            print self.c, self.l['text']
             self.c += 1
         print
 

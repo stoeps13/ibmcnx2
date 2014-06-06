@@ -76,7 +76,8 @@ def synchAllNodes():
             print " error"
 
     print ""
-
+globaldict = globals()
+global globaldict
 # Menu Functions
 def cfgDataSource():
     execfile( "ibmcnx/config/DataSources.py" )

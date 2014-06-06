@@ -21,9 +21,10 @@ from java.lang import String
 from java.util import HashSet
 from java.util import HashMap
 
-global globdict = globals()
+globdict = globals()
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
+    global globdict
     execfile("ibmcnx/loadCnxApps.py", globdict)
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()

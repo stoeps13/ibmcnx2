@@ -135,6 +135,8 @@ def checkPorts():
 def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
+def backToMainMenu():
+    execfile( 'ibmcnx/menu/cnxmenu.py' )
 
 
 

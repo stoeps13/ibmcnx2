@@ -41,13 +41,13 @@ def cnxmenu_checks():
 
 def cnxBackToMainMenu():
     global globdict
-    execfile( 'ibmcnx/menu/cnxmenu.py',globdict ) 
+    execfile( 'ibmcnx/menu/cnxmenu.py',globdict )
 
 m = ibmcnx.menu.MenuClass.cnxMenu()
-m.AddItem( 'Menu - IBM Connections Configuration Tasks', ibmcnx.functions.cnxmenu_cfgtasks )
-m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', ibmcnx.functions.cnxmenu_checks )
-m.AddItem( 'Menu - IBM Connections User Admin Tasks', ibmcnx.functions.cnxmenu_useradmin )
-m.AddItem( 'Menu - IBM Connections Community Admin Tasks', ibmcnx.functions.cnxmenu_comm )
+m.AddItem( 'Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks )
+m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', cnxmenu_checks )
+m.AddItem( 'Menu - IBM Connections User Admin Tasks', cnxmenu_useradmin )
+m.AddItem( 'Menu - IBM Connections Community Admin Tasks', cnxmenu_comm )
 m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'

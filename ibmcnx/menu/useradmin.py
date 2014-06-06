@@ -22,6 +22,24 @@ import ibmcnx.menu.MenuClass
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+globdict = globals()
+
+def cnxMemberCheckExIDByEmail():
+    global globdict
+    execfile( 'ibmcnx/member/CheckExID.py', globdict )
+
+def cnxMemberInactivateByEmail():
+    global globdict
+    execfile( 'ibmcnx/member/InactivateByEmail.py', globdict )
+
+def cnxMemberDeactAndActByEmail():
+    global globdict
+    execfile( 'ibmcnx/member/DeactAndActByEmail.py', globdict )
+
+def cnxMemberSyncAllByEXID():
+    global globdict
+    execfile( 'ibmcnx/member/SyncAllByEXID.py', globdict )
+
 user = ibmcnx.menu.MenuClass.cnxMenu()
 user.AddItem( 'Check External ID (all Apps & Profiles) (cnxMemberCheckExIDByEmail.py)', ibmcnx.functions.cnxMemberCheckExIDByEmail )
 user.AddItem( 'Deactivate and Activate a User in one step (cnxMemberDeactAndActByEmail.py)', ibmcnx.functions.cnxMemberDeactAndActByEmail )

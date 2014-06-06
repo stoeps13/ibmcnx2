@@ -135,32 +135,8 @@ def checkPorts():
 def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
-def cnxMemberCheckExIDByEmail():
-    execfile( 'ibmcnx/member/CheckExID.py' )
 
-def cnxMemberInactivateByEmail():
-    execfile( 'ibmcnx/member/InactivateByEmail.py' )
 
-def cnxMemberDeactAndActByEmail():
-    execfile( 'ibmcnx/member/DeactAndActByEmail.py' )
-
-def cnxMemberSyncAllByEXID():
-    execfile( 'ibmcnx/member/SyncAllByEXID.py' )
-
-def cnxmenu_cfgtasks():
-    execfile( 'ibmcnx/menu/cfgtasks.py',{})
-
-def cnxmenu_useradmin():
-    execfile( 'ibmcnx/menu/useradmin.py' )
-
-def cnxmenu_comm():
-    execfile( 'ibmcnx/menu/comm.py' )
-
-def cnxmenu_checks():
-    execfile( 'ibmcnx/menu/checks.py' )
-
-def cnxBackToMainMenu():
-    execfile( 'ibmcnx/menu/cnxmenu.py')
 
 def bye():
     print "bye"

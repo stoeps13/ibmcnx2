@@ -138,7 +138,6 @@ def checkVariables():
 
 def cnxFilesPolicies():
     global globdict
-    print globdict
     execfile( 'ibmcnx/cnx/FilesPolicies.py',globdict)
 
 def cnxLibraryPolicies():

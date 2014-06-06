@@ -12,4 +12,5 @@ locdict = locals()
 def loadFilesService():
     global globdict
     global locdict
+    ldict(globals(),locals())
     execfile("filesAdmin.py",globdict,locdict)

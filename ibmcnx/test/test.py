@@ -1,4 +1,4 @@
-import loadFunction.py
+import ibmcnx.test.loadFunction
 
 loadFilesService()
 

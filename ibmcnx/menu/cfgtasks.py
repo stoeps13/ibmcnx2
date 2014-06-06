@@ -26,6 +26,7 @@ globdict = globals()
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+print globdict
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )
 cfg.AddItem( 'Backup J2EE Roles of all Applications (cfgJ2EERoleBackup.py)', ibmcnx.functions.cfgJ2EERoleBackup )

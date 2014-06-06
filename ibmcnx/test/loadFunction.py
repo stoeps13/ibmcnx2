@@ -7,7 +7,9 @@ import java
 import lotusConnectionsCommonAdmin
 
 globdict = globals()
+locdict = locals()
 
 def loadFilesService():
     global globdict
-    exec open("filesAdmin.py").read()
+    global locdict
+    execfile("filesAdmin.py",globdict,locdict)

@@ -49,7 +49,6 @@ props.put( 'password', configParser.get('Database','dbPassword') )
 
 jdbcPath = 'jdbc:db2://' + configParser.get('Database','dbHost') + ':' + configParser.get('Database','dbPort') + '/' + configParser.get('Database','dbName')
 
-# Change Hostname, Port and maybe DB Name
 conn = Driver().connect( jdbcPath, props )
 
 stmt = conn.createStatement()

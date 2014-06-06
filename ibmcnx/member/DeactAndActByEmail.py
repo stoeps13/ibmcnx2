@@ -1,5 +1,5 @@
 ######
-#  Deactivate and Activate a User by Email
+#  Deactivate and activate a user
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
@@ -10,29 +10,33 @@
 #
 #  License:       Apache 2.0
 #
+#  on login problems you often need to deactivate and reactivate a user
+#  with this script you can do this with one step
+
 import os
 import sys
 from java.util import Properties
+import ConfigParser
 
-# Load all jython commands, when they are not loaded
-try:
-    NewsActivityStreamService.listApplicationRegistrations()
-except NameError:
-    print "Connections Commands not loaded! Load now: "
-    execfile("loadAll.py")
-
-# add the jar to your classpath, then import it
-# better to read WebSphere variable PROFILES_JDBC_DRIVER_HOME
+# Only load commands if not initialized directly (call from menu)
+if __name__ == "__main__":
+    execfile("ibmcnx/loadCnxApps.py")
 
 import com.ibm.db2.jcc.DB2Driver as Driver
 
+# Get configuration from properties file
+configParser = ConfigParser.ConfigParser()
+configFilePath = r'ibmcnx/ibmcnx.properties'
+configParser.read(configFilePath)
+
 # Change User and Password
 props = Properties()
-props.put( 'user', 'lcuser' )
-props.put( 'password', 'password' )
+props.put( 'user', configParser.get('Database','dbUser') )
+props.put( 'password', configParser.get('Database','dbPassword') )
 
-# Change Hostname, Port and maybe DB Name
-conn = Driver().connect( 'jdbc:db2://cnxwin.stoeps.local:50000/PEOPLEDB', props )
+jdbcPath = 'jdbc:db2://' + configParser.get('Database','dbHost') + ':' + configParser.get('Database','dbPort') + '/' + configParser.get('Database','dbName')
+
+conn = Driver().connect( jdbcPath, props )
 
 stmt = conn.createStatement()
 

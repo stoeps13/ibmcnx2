@@ -11,12 +11,9 @@
 #  License:       Apache 2.0
 #
 
-# Load all jython commands, when they are not loaded
-try:
-    NewsActivityStreamService.listApplicationRegistrations()
-except NameError:
-    print "Connections Commands not loaded! Load now: "
-    execfile("loadAll.py")
+# Only load commands if not initialized directly (call from menu)
+if __name__ == "__main__":
+    execfile("ibmcnx/loadCnxApps.py")
 
 MAILADDRESS = raw_input( 'Mailaddress to deactivate User: ' )
 

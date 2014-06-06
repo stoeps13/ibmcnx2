@@ -1,5 +1,5 @@
 import ibmcnx.test.loadFunction
 
-loadFilesService()
+ibmcnx.test.loadFunction.loadFilesService()
 
 FilesPolicyService.browse( "title", "true", 1, 25 )

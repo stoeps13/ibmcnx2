@@ -21,6 +21,16 @@ import ibmcnx.functions
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+globdict = globals()
+
+def cnxFilesPolicies():
+    global globdict
+    execfile( 'ibmcnx/cnx/FilesPolicies.py', globdict )
+
+def cnxLibraryPolicies():
+    global globdict
+    execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )    
+
 m = ibmcnx.menu.MenuClass.cnxMenu()
 m.AddItem( 'Menu - IBM Connections Configuration Tasks', ibmcnx.functions.cnxmenu_cfgtasks )
 m.AddItem( 'Menu - IBM Connections/WebSphere Check Tasks', ibmcnx.functions.cnxmenu_checks )

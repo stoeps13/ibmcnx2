@@ -39,7 +39,7 @@ cfg.AddItem( 'Configure JVM Heap Sizes (cfgJVMHeap.py)', ibmcnx.functions.cfgJVM
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (cfgJVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
 cfg.AddItem( 'Configure SystemOut/Err Log Size (cfgLogFiles.py)', ibmcnx.functions.cfgLogFiles )
 cfg.AddItem( 'Configure Monitoring Policy (cfgMonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
-cfg.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', ibmcnx.functions.cnxFilesPolicies )
+cfg.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', execfile( 'ibmcnx/cnx/FilesPolicies.py') )
 cfg.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', ibmcnx.functions.cnxLibraryPolicies )
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )

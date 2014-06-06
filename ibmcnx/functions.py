@@ -136,7 +136,7 @@ def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
 def cnxMemberCheckExIDByEmail():
-    execfile( 'ibmcnx/config/CheckExID.py' )
+    execfile( 'ibmcnx/member/CheckExID.py' )
 
 def cnxMemberInactivateByEmail():
     execfile( 'ibmcnx/member/InactivateByEmail.py' )

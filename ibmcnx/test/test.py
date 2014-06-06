@@ -12,6 +12,6 @@ def loadFilesService():
     global globdict
     execfile( "filesAdmin.py", globdict )
 
-ibmcnx.test.loadFunction.loadFilesService()
+loadFilesService()
 
 FilesPolicyService.browse( "title", "true", 1, 25 )

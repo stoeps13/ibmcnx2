@@ -7,4 +7,4 @@ import java
 import lotusConnectionsCommonAdmin
 
 def loadFilesService():
-    execfile("filesAdmin.py",globals(),locals())
+    execfile( "filesAdmin.py", globals(), locals() )

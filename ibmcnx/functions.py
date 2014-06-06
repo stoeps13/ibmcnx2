@@ -160,6 +160,9 @@ def cnxCommunitiesReparenting():
     execfile( 'ibmcnx/cnx/CommunitiesReparenting.py' )
 
 def cnxmenu_cfgtasks():
+    d = locals()
+    dg = globals()
+    d.update(dg)
     execfile( 'ibmcnx/menu/cfgtasks.py' )
 
 def cnxmenu_useradmin():

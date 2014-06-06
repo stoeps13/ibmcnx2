@@ -19,7 +19,9 @@ import ibmcnx.functions
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    d = dict(locals(), **globals())
+    #d = dict(locals(), **globals())
+    print locals()
+    print globals()
     execfile("ibmcnx/loadCnxApps.py",d ,d)
 
 m = ibmcnx.menu.MenuClass.cnxMenu()

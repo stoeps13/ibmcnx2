@@ -139,7 +139,7 @@ def cnxFilesPolicies():
     #d = dict(locals(), **globals())
     #execfile( 'ibmcnx/cnx/FilesPolicies.py',d,d )
     print locals()
-    print **globals()
+    print globals()
     execfile( 'ibmcnx/cnx/FilesPolicies.py',d,d )
 
 def cnxLibraryPolicies():

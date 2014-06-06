@@ -13,7 +13,6 @@
 
 globdict = globals()
 global globdict
-print globdict
 execfile( "activitiesAdmin.py", globdict )
 execfile( "blogsAdmin.py", globdict )
 execfile( "communitiesAdmin.py", globdict )

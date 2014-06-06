@@ -77,6 +77,7 @@ def synchAllNodes():
 
     print ""
 
+globdict = globals()
 # Menu Functions
 def cfgDataSource():
     execfile( "ibmcnx/config/DataSources.py" )
@@ -136,7 +137,8 @@ def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
 def cnxFilesPolicies():
-    execfile( 'ibmcnx/cnx/FilesPolicies.py',globals(),locals())
+    global globdict
+    execfile( 'ibmcnx/cnx/FilesPolicies.py',globdict)
 
 def cnxLibraryPolicies():
     execfile( 'ibmcnx/cnx/LibraryPolicies.py' )

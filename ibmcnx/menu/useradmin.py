@@ -22,7 +22,7 @@ import ibmcnx.menu.MenuClass
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
-global globdict{}
+global globdict
 globdict = globals()
 
 def cnxMemberCheckExIDByEmail():

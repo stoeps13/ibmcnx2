@@ -16,8 +16,8 @@ from java.util import HashSet
 from java.util import HashMap
 import java
 
-#if __name__ == "__main__":
-#    execfile("filesAdmin.py")
+if __name__ == "__main__":
+    execfile("filesAdmin.py")
 
 def printPolicies( policies ):
     state = ''

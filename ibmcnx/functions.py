@@ -136,7 +136,7 @@ def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
 def cnxFilesPolicies():
-    execfile( 'ibmcnx/cnx/FilesPolicies.py',{})
+    execfile( 'ibmcnx/cnx/FilesPolicies.py',{},{})
 
 def cnxLibraryPolicies():
     execfile( 'ibmcnx/cnx/LibraryPolicies.py' )

@@ -25,6 +25,16 @@ from java.util import HashMap
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+globdict = globals()
+
+def cnxFilesPolicies():
+    global globdict
+    execfile( 'ibmcnx/cnx/FilesPolicies.py', globdict )
+
+def cnxLibraryPolicies():
+    global globdict
+    execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )
+
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )
 cfg.AddItem( 'Backup J2EE Roles of all Applications (cfgJ2EERoleBackup.py)', ibmcnx.functions.cfgJ2EERoleBackup )
@@ -39,8 +49,8 @@ cfg.AddItem( 'Configure JVM Heap Sizes (cfgJVMHeap.py)', ibmcnx.functions.cfgJVM
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (cfgJVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
 cfg.AddItem( 'Configure SystemOut/Err Log Size (cfgLogFiles.py)', ibmcnx.functions.cfgLogFiles )
 cfg.AddItem( 'Configure Monitoring Policy (cfgMonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
-cfg.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', ibmcnx.functions.cnxFilesPolicies )
-cfg.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', ibmcnx.functions.cnxLibraryPolicies )
+cfg.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', cnxFilesPolicies )
+cfg.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', cnxLibraryPolicies )
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 

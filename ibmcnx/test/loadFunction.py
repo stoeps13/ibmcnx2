@@ -1,2 +1,4 @@
+globdict = globals()
 def loadFilesService():
-    execfile("filesAdmin.py")
+    global globdict
+    execfile("filesAdmin.py", globdict)

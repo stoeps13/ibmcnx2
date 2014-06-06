@@ -26,7 +26,7 @@ global globdict
 globdict = globals()
 
 def cnxMemberCheckExIDByEmail():
-    execfile( 'ibmcnx/member/CheckExID.py', globdict )
+    execfile( 'ibmcnx/member/CheckExId.py', globdict )
 
 def cnxMemberInactivateByEmail():
     execfile( 'ibmcnx/member/InactivateByEmail.py', globdict )

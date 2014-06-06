@@ -23,9 +23,9 @@ from java.util import HashMap
 
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    dl = locals()
+    d = locals()
     dg = globals()
-    d = dl.update(dg)
+    d.update(dg)
     execfile("ibmcnx/loadCnxApps.py",d ,d)
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()

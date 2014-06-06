@@ -136,9 +136,9 @@ def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
 def cnxFilesPolicies():
-    dl = locals()
+    d = locals()
     dg = globals()
-    d = dl.update(dg)
+    d.update(dg)
     execfile( 'ibmcnx/cnx/FilesPolicies.py',d,d )
 
 def cnxLibraryPolicies():

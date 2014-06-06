@@ -147,9 +147,6 @@ def cnxMemberDeactAndActByEmail():
 def cnxMemberSyncAllByEXID():
     execfile( 'ibmcnx/member/SyncAllByEXID.py' )
 
-def cnxCommunitiesReparenting():
-    execfile( 'ibmcnx/cnx/CommunitiesReparenting.py' )
-
 def cnxmenu_cfgtasks():
     execfile( 'ibmcnx/menu/cfgtasks.py',{})
 

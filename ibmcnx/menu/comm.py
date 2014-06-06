@@ -17,12 +17,18 @@ import os
 import ibmcnx.functions
 import ibmcnx.menu.MenuClass
 
+globdict = globals()
+
+def cnxCommunitiesReparenting():
+    global globdict
+    execfile( 'ibmcnx/cnx/CommunitiesReparenting.py', globdict )
+
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
 comm = ibmcnx.menu.MenuClass.cnxMenu()
-comm.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', ibmcnx.functions.cnxCommunitiesReparenting )
+comm.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', cnxCommunitiesReparenting )
 comm.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBackToMainMenu )
 comm.AddItem( "Exit", ibmcnx.functions.bye )
 

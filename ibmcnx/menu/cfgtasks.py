@@ -24,8 +24,7 @@ from java.util import HashMap
 globdict = globals()
 # Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    global globdict
-    execfile("ibmcnx/loadCnxApps.py", globdict)
+    execfile("ibmcnx/loadCnxApps.py")
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )

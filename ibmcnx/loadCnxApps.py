@@ -10,13 +10,16 @@
 #
 #  License:       Apache 2.0
 #
-execfile( "activitiesAdmin.py" )
-execfile( "blogsAdmin.py" )
-execfile( "communitiesAdmin.py" )
-execfile( "dogearAdmin.py" )
-execfile( "filesAdmin.py" )
-execfile( "forumsAdmin.py" )
-execfile( "homepageAdmin.py" )
-execfile( "newsAdmin.py" )
-execfile( "profilesAdmin.py" )
-execfile( "wikisAdmin.py" )
+
+globdict = globals()
+global globdict
+execfile( "activitiesAdmin.py", globdict )
+execfile( "blogsAdmin.py", globdict )
+execfile( "communitiesAdmin.py", globdict )
+execfile( "dogearAdmin.py", globdict )
+execfile( "filesAdmin.py", globdict )
+execfile( "forumsAdmin.py", globdict )
+execfile( "homepageAdmin.py", globdict )
+execfile( "newsAdmin.py", globdict )
+execfile( "profilesAdmin.py", globdict )
+execfile( "wikisAdmin.py", globdict )

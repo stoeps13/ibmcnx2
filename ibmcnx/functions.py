@@ -163,7 +163,7 @@ def cnxmenu_cfgtasks():
     d = locals()
     dg = globals()
     d.update(dg)
-    execfile( 'ibmcnx/menu/cfgtasks.py' )
+    execfile( 'ibmcnx/menu/cfgtasks.py',d ,d)
 
 def cnxmenu_useradmin():
     execfile( 'ibmcnx/menu/useradmin.py' )

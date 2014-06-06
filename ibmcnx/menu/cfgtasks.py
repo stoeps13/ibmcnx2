@@ -25,14 +25,13 @@ from java.util import HashMap
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+global globdict
 globdict = globals()
 
 def cnxFilesPolicies():
-    global globdict
     execfile( 'ibmcnx/cnx/FilesPolicies.py', globdict )
 
 def cnxLibraryPolicies():
-    global globdict
     execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()

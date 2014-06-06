@@ -21,26 +21,22 @@ import ibmcnx.functions
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+global globdict
 globdict = globals()
 
 def cnxmenu_cfgtasks():
-    global globdict
     execfile( 'ibmcnx/menu/cfgtasks.py',globdict )
 
 def cnxmenu_useradmin():
-    global globdict
     execfile( 'ibmcnx/menu/useradmin.py',globdict )
 
 def cnxmenu_comm():
-    global globdict
     execfile( 'ibmcnx/menu/comm.py',globdict )
 
 def cnxmenu_checks():
-    global globdict
     execfile( 'ibmcnx/menu/checks.py',globdict )
 
 def cnxBackToMainMenu():
-    global globdict
     execfile( 'ibmcnx/menu/cnxmenu.py',globdict )
 
 m = ibmcnx.menu.MenuClass.cnxMenu()

@@ -25,12 +25,12 @@ from java.util import HashMap
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
+global globdict
 globdict = globals()
 
 def cnxCommunitiesReparenting():
-    global globdict
     execfile( 'ibmcnx/cnx/CommunitiesReparenting.py', globdict )
-    
+
 comm = ibmcnx.menu.MenuClass.cnxMenu()
 comm.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', cnxCommunitiesReparenting )
 comm.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBackToMainMenu )

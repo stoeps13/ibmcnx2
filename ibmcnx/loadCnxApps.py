@@ -10,9 +10,9 @@
 #
 #  License:       Apache 2.0
 #
-
-globdict = globals()
 global globdict
+globdict = globals()
+
 execfile( "activitiesAdmin.py", globdict )
 execfile( "blogsAdmin.py", globdict )
 execfile( "communitiesAdmin.py", globdict )

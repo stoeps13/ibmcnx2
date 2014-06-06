@@ -136,10 +136,8 @@ def checkVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
 def cnxFilesPolicies():
-    d = locals()
     dg = globals()
-    d.update(dg)
-    execfile( 'ibmcnx/cnx/FilesPolicies.py',d,d )
+    execfile( 'ibmcnx/cnx/FilesPolicies.py',dg )
 
 def cnxLibraryPolicies():
     execfile( 'ibmcnx/cnx/LibraryPolicies.py' )
@@ -160,10 +158,8 @@ def cnxCommunitiesReparenting():
     execfile( 'ibmcnx/cnx/CommunitiesReparenting.py' )
 
 def cnxmenu_cfgtasks():
-    d = locals()
     dg = globals()
-    d.update(dg)
-    execfile( 'ibmcnx/menu/cfgtasks.py',d ,d)
+    execfile( 'ibmcnx/menu/cfgtasks.py',dg)
 
 def cnxmenu_useradmin():
     execfile( 'ibmcnx/menu/useradmin.py' )

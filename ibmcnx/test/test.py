@@ -14,4 +14,5 @@ def loadFilesService():
 
 loadFilesService()
 
-FilesPolicyService.browse( "title", "true", 1, 25 )
+test = FilesPolicyService.browse( "title", "true", 1, 25 )
+print test

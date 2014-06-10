@@ -110,8 +110,8 @@ def getLibraryDetails( librarieslist ):
         while index < len( result ):
             index = result.find( '{', index )
             end = result.find( '{', index + 1 )
-            lib_id = result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39]
-            lib_name = result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2]
+            lib_id.append( result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39] )
+            lib_name.append( result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2] )
             numberlist.append( count )
             if index == -1:
                 break

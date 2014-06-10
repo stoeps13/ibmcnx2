@@ -120,15 +120,16 @@ def getLibraryDetails( librarieslist ):
         print '----------------------------------------------'
         go_on = ''
         while go_on != 'TRUE':
-           lib_number = raw_input( 'Please type the number of the library? ' )
-           try:
-              lib_number = int( lib_number )
-           except ( TypeError, ValueError ):
-              continue
-           if count - 1 >= lib_number >= 0:
-              break
-           else:
-              continue
+            lib_number = raw_input( 'Please type the number of the library? ' )
+            try:
+                lib_number = int( lib_number )
+            except ( TypeError, ValueError ):
+                continue
+            if count - 1 >= lib_number >= 0:
+               break
+            else:
+                continue
+          
         return ( result[lib_number]['id'], result[lib_number]['title'], 1 )
 
 lib_id, lib_title = getLibraryDetails( searchLibrary( askLibraryType() ) )

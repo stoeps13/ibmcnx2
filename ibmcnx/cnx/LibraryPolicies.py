@@ -30,7 +30,7 @@ def printPolicies( policies ):
 
 def getAssignedPolicy( policyId ):
     policy = FilesPolicyService.getById( policyId )
-    policy_name = policy[0]['title']
+    policy_name = policy['title']
     return policy_name
 
 def askLibraryType():

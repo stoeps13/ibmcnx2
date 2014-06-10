@@ -97,8 +97,8 @@ def getLibraryDetails( librarieslist ):
         print '------------------------------------------------------------------\n'
         return (0,0,0,0,0)
     elif (counter<2):
-        lib_id = result[result.find('id=')+5:result.find('id=')+41]
-        lib_name = result[result.find('name=')+5:result.find('id=')-2]
+        lib_id = result[result.find('id=')+3:result.find('id=')+39]
+        lib_name = result[result.find('title=')+6:result.find('ownerUserId=')-2]
         return (lib_id, lib_name, 1)   
     else:
         lib_id = []
@@ -136,7 +136,8 @@ def getLibraryDetails( librarieslist ):
 # personalList = FilesLibraryService.browsePersonal( "title", "true", 1, 100 )
 # communityList = FilesLibraryService.browseCommunity( "title", "true", 1, 100 )
 
-getLibraryDetails( searchLibrary(askLibraryType()) )
+LibDetails = getLibraryDetails( searchLibrary(askLibraryType()) )
+print LibDetails
 #pLen, cLen = combineMaps( personalList, communityList )
 
 

@@ -31,7 +31,7 @@ for server in servers:
     print "%s - %s - %s" % ( cell, node, servername )
     for item in jvmSettingsList:
         length = 30 - len( item )
-        space = ' ' * length
+        space = str( ' ' * length )
         try:
             print "\t" + item + length + ': \t' + AdminConfig.showAttribute( jvm, item )
         except:

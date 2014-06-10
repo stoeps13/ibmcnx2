@@ -30,5 +30,8 @@ for server in servers:
     servername = srv[5].split( '|' )[0]
     print "%s - %s - %s" % ( cell, node, servername )
     for item in jvmSettingsList:
-        print "\t" + item + ': \t' + AdminConfig.showAttribute( jvm, item )
-        print ' '
+        try:
+            print "\t" + item + ': \t' + AdminConfig.showAttribute( jvm, item )
+        except:
+            print '\t' + item + ': \t read error'
+    print ' '

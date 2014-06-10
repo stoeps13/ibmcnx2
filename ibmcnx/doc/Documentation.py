@@ -22,7 +22,7 @@ import sys
 
 emp1 = ibmcnx.filehandle.Ibmcnxfile()
 
-sys.stdout = emp1
+sys.stdout = emp1.askFileParams()
 
 print '# JVM Settings of all AppServers:'
 execfile( 'ibmcnx/doc/JVMSettings.py' )

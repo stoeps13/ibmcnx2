@@ -89,7 +89,7 @@ def getLibraryDetails( librarieslist ):
     # result = str( librarieslist )
     result = librarieslist
     counter = len ( result )
-    print "Result: " + result
+    print "Result: " + str ( counter )
     #counter = result.count( 'id=' )
     #print counter
     index = 0

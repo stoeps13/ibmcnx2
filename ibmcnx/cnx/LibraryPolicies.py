@@ -38,7 +38,7 @@ def askLibraryType():
     is_valid_lib = 0
     while not is_valid_lib :
         try :
-                libask = 'Personal or Community Library? (P|C)'
+                libask = 'Personal, Community Library or Exit? (P|C|X)'
                 libType = raw_input( libask ).lower()
 
                 if libType == 'p':
@@ -47,6 +47,9 @@ def askLibraryType():
                 elif libType == 'c':
                     is_valid_lib = 1    #  # set it to 1 to validate input and to terminate the while..not loop
                     return libType
+                elif libType == 'x':
+                    is_valid_lib = 0
+                    execfile( 'ibmcnx/menu/cnxmenu.py' )
                 else:
                     print ( "'%s' is not a valid menu option." ) % libType
         except ValueError, e :
@@ -118,13 +121,13 @@ def getLibraryDetails( librarieslist ):
 while noresult != 1:
     lib_id, lib_title, lib_policy, noresult = getLibraryDetails( searchLibrary( askLibraryType() ) )
 
-print 'Policy will be assigned to: ' + lib_title
 libraryUUID = lib_id
 
 print 'Available Policies: '
 policies = printPolicies( FilesPolicyService.browse( "title", "true", 1, 250 ) )
 print '\n'
-print lib_title + ' assigned policy is: ' + getAssignedPolicy( lib_policy )
+print 'Policy will be assigned to: ' + lib_title
+print 'Actual assigned policy is: ' + getAssignedPolicy( lib_policy )
 print '\n'
 
 policyID = int( raw_input( 'Which policy do you want to assign? ' ) )

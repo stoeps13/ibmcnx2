@@ -15,8 +15,7 @@
 import ibmcnx.functions
 
 cell = "'/Cell:" + AdminControl.getCell() + "/'"
-print cell
-cellid = AdminConfig.getid(  )
+cellid = AdminConfig.getid( cell )
 dbs = AdminConfig.list( 'DataSource', cellid )
 
 for db in dbs:

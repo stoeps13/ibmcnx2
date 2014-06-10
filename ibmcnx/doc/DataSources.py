@@ -18,7 +18,7 @@ print AdminControl.getCell()
 cell = "/Cell:" + AdminControl.getCell() + "/"
 cellid = AdminConfig.getid( cell )
 dbs = AdminConfig.list( 'DataSource', str(cellid) )
-dbs = dbs.splitlines()
+dbs = dbs.split('(')
 print dbs
 for db in dbs.splitlines():
     t1 = ibmcnx.functions.getDSId( db )

@@ -20,7 +20,7 @@ webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
 for webserver in webservers:
     servers.remove( webserver )
 
-jvmSettingsList = ['classpath', 'bootClasspath', 'verboseModeClass', 'verboseModeGarbageCollection', 'verboseModeJNI', 'initialHeapSize', 'maximumHeapSize', 'runHProf', 'hprofArguments', 'debugMode', 'debugArgs', 'genericJvmArguments', 'executableJarFileName', 'disableJIT', 'osName', 'internalClassAccessMode' ]
+jvmSettingsList = ['classpath', 'bootClasspath', 'verboseModeClass', 'verboseModeGarbageCollection', 'verboseModeJNI', 'initialHeapSize', 'maximumHeapSize', 'runHProf', 'hprofArguments', 'debugMode', 'debugArgs', 'genericJvmArguments', 'executableJarFileName', 'disableJIT', 'internalClassAccessMode' ]
 
 for server in servers:
     jvm = AdminConfig.list( 'JavaVirtualMachine', server )
@@ -30,8 +30,10 @@ for server in servers:
     servername = srv[5].split( '|' )[0]
     print "%s - %s - %s" % ( cell, node, servername )
     for item in jvmSettingsList:
+        length = 30 - len( item )
+        space = ' ' * length
         try:
-            print "\t" + item + ': \t' + AdminConfig.showAttribute( jvm, item )
+            print "\t" + item + length + ': \t' + AdminConfig.showAttribute( jvm, item )
         except:
-            print '\t' + item + ': \t read error'
+            print '\t' + item + length + ': \t read error or empty'
     print ' '

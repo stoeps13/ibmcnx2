@@ -1,5 +1,5 @@
 ######
-#  Check ExId (GUID) by Email through JDBC
+#  Change DataSource connectionPools
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de

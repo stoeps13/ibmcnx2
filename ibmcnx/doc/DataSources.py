@@ -14,12 +14,8 @@
 
 import ibmcnx.functions
 
-print AdminControl.getCell()
-cell = "/Cell:" + AdminControl.getCell() + "/"
-cellid = AdminConfig.getid( cell )
-dbs = AdminConfig.list( 'DataSource', str(cellid) )
-dbs = dbs.split('(')
-print dbs
+dbs = ['FNOSDS', 'FNGCDDS', 'IBM_FORMS_DATA_SOURCE', 'activities', 'blogs', 'communities', 'dogear', 'files', 'forum', 'homepage', 'metrics', 'mobile', 'news', 'oauth provider', 'profiles', 'search', 'wikis']    # List of all databases to check
+
 for db in dbs.splitlines():
     t1 = ibmcnx.functions.getDSId( db )
     AdminConfig.list( t1 )

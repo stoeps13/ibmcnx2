@@ -17,4 +17,8 @@ import ibmcnx.functions
 ds = AdminConfig.list('DataSource')
 
 dsArray = ds.splitlines()
-AdminControl.getPropertiesForDataSource(dsArray[0])
+test = AdminControl.getPropertiesForDataSource(dsArray[0])
+
+print dsArray
+print '\n'
+print test

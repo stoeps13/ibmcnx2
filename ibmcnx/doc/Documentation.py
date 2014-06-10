@@ -20,7 +20,9 @@
 import ibmcnx.filehandle
 import sys
 
-sys.stdout = open("/tmp/documentation.txt", "w")
+emp1 = ibmcnx.filehandle.Ibmcnxfile()
+
+sys.stdout = emp1
 
 print '# JVM Settings of all AppServers:'
 execfile( 'ibmcnx/doc/JVMSettings.py' )

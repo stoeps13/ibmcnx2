@@ -132,7 +132,7 @@ def getLibraryDetails( librarieslist ):
           
         return ( result[lib_number]['id'], result[lib_number]['title'], 1 )
 
-lib_id, lib_title = getLibraryDetails( searchLibrary( askLibraryType() ) )
+lib_id, lib_title, noresult = getLibraryDetails( searchLibrary( askLibraryType() ) )
 print 'lib_id= ' + lib_id
 print 'lib_title= ' + lib_title
 

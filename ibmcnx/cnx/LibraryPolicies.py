@@ -106,6 +106,7 @@ def getLibraryDetails( librarieslist ):
         numberlist = []
         lib_number = -1
         i = 0
+        print 'Result: ' + str( len( result ) )
         print '\nThere are multiple libraries with this name:'
         print '----------------------------------------------'
         for i in range( len( result ) ):

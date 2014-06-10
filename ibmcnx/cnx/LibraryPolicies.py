@@ -105,33 +105,36 @@ def getLibraryDetails( librarieslist ):
         lib_name = []
         numberlist = []
         lib_number = -1
+        i = 0
         print '\nThere are multiple libraries with this name:'
         print '----------------------------------------------'
-        while index < len( result ):
-            index = result.find( '{', index )
-            end = result.find( '{', index + 1 )
-            lib_id.append( result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39] )
-            lib_name.append( result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2] )
-            numberlist.append( count )
-            if index == -1:
-                break
-            print lib_name
-            print ( str( count ) + ': ' + lib_name[count] )
-            index += 1
-            count += 1
-        print '----------------------------------------------'
-        go_on = ''
-        while go_on != 'TRUE':
-           lib_number = raw_input( 'Please type the number of the library? ' )
-           try:
-              lib_number = float( lib_number )
-           except ( TypeError, ValueError ):
-              continue
-           if count - 1 >= lib_number >= 0:
-              break
-           else:
-              continue
-        return ( lib_id[int( lib_number )], lib_name[int( lib_number )], 1 )
+        for i in range( len( result ) ):
+            print str( i ) + '\t' + str( round( result[i]['title'] ) ) + ' '  + str( result[i]['id'] ) + '\t\t' + str( result[i]['name'] )
+#          while index < len( result ):
+#              index = result.find( '{', index )
+#              end = result.find( '{', index + 1 )
+#              lib_id.append( result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39] )
+#              lib_name.append( result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2] )
+#              numberlist.append( count )
+#              if index == -1:
+#                  break
+#              print lib_name
+#              print ( str( count ) + ': ' + lib_name[count] )
+#              index += 1
+#              count += 1
+#          print '----------------------------------------------'
+#          go_on = ''
+#          while go_on != 'TRUE':
+#             lib_number = raw_input( 'Please type the number of the library? ' )
+#             try:
+#                lib_number = float( lib_number )
+#             except ( TypeError, ValueError ):
+#                continue
+#             if count - 1 >= lib_number >= 0:
+#                break
+#             else:
+#                continue
+#          return ( lib_id[int( lib_number )], lib_name[int( lib_number )], 1 )
 
 #  Combine personal and community FilesLibrary List
 #  TODO: Change this to a function for searching

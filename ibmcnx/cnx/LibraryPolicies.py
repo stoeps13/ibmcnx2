@@ -107,27 +107,27 @@ def getLibraryDetails( librarieslist ):
         return ( lib_id, lib_name, 1 )
     else:
         lib_id = []
-    lib_name = []
-    numberlist = []
-    lib_number = -1
-    i = 0
-    print '\nThere are multiple libraries with this name:'
-    print '----------------------------------------------'
-    for i in range( len( result ) ):
-        print str( i ) + '\t' + result[i]['title'] # + ' '  + str( result[i]['id'] )
+        lib_name = []
+        numberlist = []
+        lib_number = -1
+        i = 0
+        print '\nThere are multiple libraries with this name:'
         print '----------------------------------------------'
-        go_on = ''
-        while go_on != 'TRUE':
-           lib_number = raw_input( 'Please type the number of the library? ' )
-           try:
-              lib_number = int( lib_number )
-           except ( TypeError, ValueError ):
-              continue
-           if count - 1 >= lib_number >= 0:
-              break
-           else:
-              continue
-        return ( result[i]['id'], result[i]['title'], 1 )
+        for i in range( len( result ) ):
+            print str( i ) + '\t' + result[i]['title'] # + ' '  + str( result[i]['id'] )
+            print '----------------------------------------------'
+            go_on = ''
+            while go_on != 'TRUE':
+               lib_number = raw_input( 'Please type the number of the library? ' )
+               try:
+                  lib_number = float( lib_number )
+               except ( TypeError, ValueError ):
+                  continue
+               if count - 1 >= lib_number >= 0:
+                  break
+               else:
+                  continue
+            return ( result[i]['id'], result[i]['title'], 1 )
 
 lib_id, lib_title = getLibraryDetails( searchLibrary( askLibraryType() ) )
 print 'lib_id= ' + lib_id

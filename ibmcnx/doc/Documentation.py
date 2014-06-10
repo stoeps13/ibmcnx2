@@ -17,12 +17,12 @@
 
 # TODO: Create a menu for file selection
 
-import ibmcnx.filehandle
 import sys
+import os.path
 
-emp1 = ibmcnx.filehandle.Ibmcnxfile()
+filename = raw_input( 'Path and Filename to Documentation file: ' )
 
-sys.stdout = emp1.askFileParams()
+sys.stdout = open( filename, "w")
 
 print '# JVM Settings of all AppServers:'
 execfile( 'ibmcnx/doc/JVMSettings.py' )

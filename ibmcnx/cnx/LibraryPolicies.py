@@ -38,7 +38,7 @@ def askLibraryType():
     is_valid_lib = 0
     while not is_valid_lib :
         try :
-                libask = 'Personal, Community Library or Exit? (P|C|X)'
+                libask = 'Personal, Community Library, Menu or Exit? (P|C|M|X)'
                 libType = raw_input( libask ).lower()
 
                 if libType == 'p':
@@ -47,9 +47,12 @@ def askLibraryType():
                 elif libType == 'c':
                     is_valid_lib = 1    #  # set it to 1 to validate input and to terminate the while..not loop
                     return libType
-                elif libType == 'x':
+                elif libType == 'm':
                     is_valid_lib = 0
                     execfile( 'ibmcnx/menu/cnxmenu.py' )
+                elif libType == 'x':
+                    is_valid_lib = 0
+                    sys.exit()
                 else:
                     print ( "'%s' is not a valid menu option." ) % libType
         except ValueError, e :

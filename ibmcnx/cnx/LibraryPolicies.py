@@ -128,7 +128,7 @@ def getLibraryDetails( librarieslist ):
               break
            else:
               continue
-        return ( result[i]['id'], result[i]['title'], 1 )
+        return ( result[lib_number]['id'], result[lib_number]['title'], 1 )
 
 lib_id, lib_title = getLibraryDetails( searchLibrary( askLibraryType() ) )
 print 'lib_id= ' + lib_id

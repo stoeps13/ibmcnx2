@@ -17,6 +17,8 @@ execfile( "filesAdmin.py" )
 
 import sys
 
+noresult = 0
+
 def printPolicies( policies ):
     state = ''
     print '# \tmax Size \t\t uuid \t\t\t\t\t title'

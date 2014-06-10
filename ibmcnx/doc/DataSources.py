@@ -21,4 +21,5 @@ for db in dbs:
     AdminConfig.show( t1 )
     print '\n\n'
     AdminConfig.showall( t1 )
-    AdminConfig.showAttribute(t1,'[[statementCacheSize]]' )
+    AdminConfig.showAttribute(t1,'statementCacheSize' )
+    AdminConfig.showAttribute(t1,'[statementCacheSize]' )

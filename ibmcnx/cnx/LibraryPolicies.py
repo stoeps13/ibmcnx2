@@ -111,7 +111,7 @@ libraryUUID = lib_id
 
 print 'Available Policies: '
 policies = printPolicies( FilesPolicyService.browse( "title", "true", 1, 25 ) )
-
+policyID = int( raw_input( 'Which policy do you want to assign? ' ) )
 policyUUID = policies[policyID]['id']
 
 FilesLibraryService.assignPolicy( libraryUUID, policyUUID )

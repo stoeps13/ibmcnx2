@@ -115,6 +115,7 @@ def getLibraryDetails( librarieslist ):
             numberlist.append( count )
             if index == -1:
                 break
+            print lib_name
             print ( str( count ) + ': ' + lib_name[count] )
             index += 1
             count += 1

@@ -22,7 +22,15 @@ import os.path
 
 filename = raw_input( 'Path and Filename to Documentation file: ' )
 
-sys.stdout = open( filename, "w")
+if (os.path.isfile( fileopen )):
+            answer = raw_input( "File exists, Overwrite, Append or Abort? (O|A|X)" ).lower()
+            if answer == "o":
+                sys.stdout = open( filename, "w")
+            elif answer == "a":
+                sys.stdout = open( filename, "a")
+            else:
+                print "Exit"
+                sys.exit()
 
 print '# JVM Settings of all AppServers:'
 execfile( 'ibmcnx/doc/JVMSettings.py' )

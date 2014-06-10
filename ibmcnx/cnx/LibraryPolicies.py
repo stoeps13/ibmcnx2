@@ -101,7 +101,7 @@ def getLibraryDetails( librarieslist ):
     print '\nThere are multiple libraries with this name:'
     print '----------------------------------------------'
     for i in range( len( result ) ):
-        print str( i ) + '\t' + str( round( result[i]['title'] ) ) + ' '  + str( result[i]['id'] ) + '\t\t' + str( result[i]['name'] )
+        print str( i ) + '\t' + result[i]['title'] + ' '  + str( result[i]['id'] ) + '\t\t' + str( result[i]['name'] )
 #      if ( counter < 1 ):
 #          print '\n------------------------------------------------------------------'
 #          print 'There is NO Library with this name\nPlease try again ----------->'

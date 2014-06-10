@@ -88,6 +88,8 @@ def searchLibrary( libType ):
 def getLibraryDetails( librarieslist ):
     # result = str( librarieslist )
     result = librarieslist
+    counter = len ( result )
+    print "Result: " + result
     #counter = result.count( 'id=' )
     #print counter
     index = 0

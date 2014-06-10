@@ -33,7 +33,7 @@ for server in servers:
         length = 30 - len( item )
         space = str( ' ' * length )
         try:
-            print "\t" + item + length + ': \t' + AdminConfig.showAttribute( jvm, item )
+            print "\t" + item + space + ': \t' + AdminConfig.showAttribute( jvm, item )
         except:
-            print '\t' + item + length + ': \t read error or empty'
+            print '\t' + item + space + ': \t read error or empty'
     print ' '

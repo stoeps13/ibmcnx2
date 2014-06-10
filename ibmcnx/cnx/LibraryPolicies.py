@@ -75,13 +75,17 @@ def askLibraryType():
 
 def searchLibrary( libType ):
     if libType == 'p':
-        libNameAsk = 'Which User you want to search? (min 1 character)'
+        libNameAsk = 'Which User you want to search? (min 1 character): '
         libNameAnswer = raw_input( libNameAsk )
         result = FilesUtilService.filterListByString( FilesLibraryService.browsePersonal( "title", "true", 1, 250 ), "title", ".*" + libNameAnswer + ".*" )
         return result
 
     elif libType == 'c':
-        print libType
+        libNameAsk = 'Which Community Library you want to search? (min 1 character): '
+        libNameAnswer = raw_input( libNameAsk )
+        result = FilesUtilService.filterListByString( FilesLibraryService.browseCommunity( "title", "true", 1, 250 ), "title", ".*" + libNameAnswer + ".*" )
+        return result
+    
     else:
         print ( 'Not a valid library Type!' )
 
@@ -89,76 +93,45 @@ def getLibraryDetails( librarieslist ):
     # result = str( librarieslist )
     result = librarieslist
     counter = len ( result )
-    print "Result: " + str ( counter )
-    #counter = result.count( 'id=' )
-    #print counter
     index = 0
     count = 0
-    lib_id = []
+    
+    if ( counter < 1 ):
+        print '\n------------------------------------------------------------------'
+        print 'There is NO Library with this name\nPlease try again ----------->'
+        print '------------------------------------------------------------------\n'
+        return ( 0, 0, 0, 0, 0 )
+    elif ( counter < 2 ):
+        lib_id = result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39]
+        lib_name = result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2]
+        return ( lib_id, lib_name, 1 )
+    else:
+        lib_id = []
     lib_name = []
     numberlist = []
     lib_number = -1
     i = 0
-    print 'Result: ' + str( len( result ) )
     print '\nThere are multiple libraries with this name:'
     print '----------------------------------------------'
     for i in range( len( result ) ):
-        print str( i ) + '\t' + result[i]['title'] + ' '  + str( result[i]['id'] ) + '\t\t' + str( result[i]['name'] )
-#      if ( counter < 1 ):
-#          print '\n------------------------------------------------------------------'
-#          print 'There is NO Library with this name\nPlease try again ----------->'
-#          print '------------------------------------------------------------------\n'
-#          return ( 0, 0, 0, 0, 0 )
-#      elif ( counter < 2 ):
-#          lib_id = result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39]
-#          lib_name = result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2]
-#          return ( lib_id, lib_name, 1 )
-#      else:
-#          lib_id = []
-#          lib_name = []
-#          numberlist = []
-#          lib_number = -1
-#          i = 0
-#          print 'Result: ' + str( len( result ) )
-#          print '\nThere are multiple libraries with this name:'
-#          print '----------------------------------------------'
-#          for i in range( len( result ) ):
-#              print str( i ) + '\t' + str( round( result[i]['title'] ) ) + ' '  + str( result[i]['id'] ) + '\t\t' + str( result[i]['name'] )
-#          while index < len( result ):
-#              index = result.find( '{', index )
-#              end = result.find( '{', index + 1 )
-#              lib_id.append( result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39] )
-#              lib_name.append( result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2] )
-#              numberlist.append( count )
-#              if index == -1:
-#                  break
-#              print lib_name
-#              print ( str( count ) + ': ' + lib_name[count] )
-#              index += 1
-#              count += 1
-#          print '----------------------------------------------'
-#          go_on = ''
-#          while go_on != 'TRUE':
-#             lib_number = raw_input( 'Please type the number of the library? ' )
-#             try:
-#                lib_number = float( lib_number )
-#             except ( TypeError, ValueError ):
-#                continue
-#             if count - 1 >= lib_number >= 0:
-#                break
-#             else:
-#                continue
-#          return ( lib_id[int( lib_number )], lib_name[int( lib_number )], 1 )
+        print str( i ) + '\t' + result[i]['title'] # + ' '  + str( result[i]['id'] )
+        print '----------------------------------------------'
+        go_on = ''
+        while go_on != 'TRUE':
+           lib_number = raw_input( 'Please type the number of the library? ' )
+           try:
+              lib_number = int( lib_number )
+           except ( TypeError, ValueError ):
+              continue
+           if count - 1 >= lib_number >= 0:
+              break
+           else:
+              continue
+        return ( result[i]['id'], result[i]['title'], 1 )
 
-#  Combine personal and community FilesLibrary List
-#  TODO: Change this to a function for searching
-#  personalList = FilesLibraryService.browsePersonal( "title", "true", 1, 100 )
-#  communityList = FilesLibraryService.browseCommunity( "title", "true", 1, 100 )
-
-LibDetails = getLibraryDetails( searchLibrary( askLibraryType() ) )
-print LibDetails
-#  pLen, cLen = combineMaps( personalList, communityList )
-
+lib_id, lib_title = getLibraryDetails( searchLibrary( askLibraryType() ) )
+print 'lib_id= ' + lib_id
+print 'lib_title= ' + lib_title
 
 #  print 'Available Policies: '
 #  policies = printPolicies( FilesPolicyService.browse( "title", "true", 1, 25 ) )

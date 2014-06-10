@@ -18,4 +18,6 @@ dbs = ['FNOSDS', 'FNGCDDS', 'IBM_FORMS_DATA_SOURCE', 'activities', 'blogs', 'com
 
 for db in dbs:
     t1 = ibmcnx.functions.getDSId( db )
-    AdminConfig.list( t1 )
+    AdminConfig.show( t1 )
+    print '\n\n'
+    AdminConfig.showall( t1 )

@@ -11,7 +11,7 @@
 #  License:       Apache 2.0
 #
 
-#  TODO: Create a Search Filter to get a list of libraries or Users.
+#  TODO: Check Errorhandling and print assigned policy of the libraries
 
 execfile( "filesAdmin.py" )
 

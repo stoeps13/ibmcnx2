@@ -11,12 +11,12 @@
 #  License:       Apache 2.0
 #
 
-# Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer, webserver)
+#  Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer, webserver)
 servers = AdminTask.listServers().splitlines()
-# Get a list of all webservers
+#  Get a list of all webservers
 webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
 
-# Remove webserver from servers list
+#  Remove webserver from servers list
 for webserver in webservers:
     servers.remove( webserver )
 

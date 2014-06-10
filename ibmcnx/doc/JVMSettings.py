@@ -20,7 +20,7 @@ webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
 for webserver in webservers:
     servers.remove( webserver )
 
-jvmSettingsList = [classpath, bootClasspath, verboseModeClass, verboseModeGarbageCollection, verboseModeJNI, initialHeapSize, maximumHeapSize, runHProf, hprofArguments, debugMode, debugArgs, genericJvmArguments, executableJarFileName, disableJIT, osName, internalClassAccessMode ]
+jvmSettingsList = ['classpath', 'bootClasspath', 'verboseModeClass', 'verboseModeGarbageCollection', 'verboseModeJNI', 'initialHeapSize', 'maximumHeapSize', 'runHProf', 'hprofArguments', 'debugMode', 'debugArgs', 'genericJvmArguments', 'executableJarFileName', 'disableJIT', 'osName', 'internalClassAccessMode' ]
 
 for server in servers:
     jvm = AdminConfig.list( 'JavaVirtualMachine', server )

@@ -86,7 +86,8 @@ def searchLibrary( libType ):
         print ( 'Not a valid library Type!' )
 
 def getLibraryDetails( librarieslist ):
-    result = str( librarieslist )
+    # result = str( librarieslist )
+    result = librarieslist
     counter = result.count( 'id=' )
     print counter
     index = 0

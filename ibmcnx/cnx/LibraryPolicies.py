@@ -115,8 +115,9 @@ def getLibraryDetails( librarieslist ):
         print '----------------------------------------------'
         for i in range( len( result ) ):
             print str( i ) + '\t' + result[i]['title'] # + ' '  + str( result[i]['id'] )
-            print '----------------------------------------------'
             i += 1
+            count += 1
+        print '----------------------------------------------'
         go_on = ''
         while go_on != 'TRUE':
            lib_number = raw_input( 'Please type the number of the library? ' )

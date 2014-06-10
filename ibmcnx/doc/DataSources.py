@@ -14,7 +14,8 @@
 
 import ibmcnx.functions
 
-dbs = AdminConfig.list( 'DataSource', AdminControl.getCell())
+cell = '/' + AdminControl.getCell() + '/'
+dbs = AdminConfig.list( 'DataSource', cell )
 
 for db in dbs:
     t1 = ibmcnx.functions.getDSId( db )

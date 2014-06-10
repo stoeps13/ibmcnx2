@@ -122,7 +122,7 @@ def getLibraryDetails( librarieslist ):
         while go_on != 'TRUE':
            lib_number = raw_input( 'Please type the number of the library? ' )
            try:
-              lib_number = float( lib_number )
+              lib_number = int( lib_number )
            except ( TypeError, ValueError ):
               continue
            if count - 1 >= lib_number >= 0:

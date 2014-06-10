@@ -14,11 +14,5 @@
 
 import ibmcnx.functions
 
-ds = AdminConfig.list('DataSource')
-
-dsArray = ds.splitlines()
-test = AdminControl.getPropertiesForDataSource(dsArray[0])
-
-print dsArray
-print '\n'
-print test
+t1 = ibmcnx.functions.getDSId( db )
+AdminConfig.list( t1 )

@@ -28,6 +28,11 @@ def printPolicies( policies ):
     print
     return policies
 
+def getAssignedPolicy( policyId ):
+    policy = FilesPolicyService.getById( policyId )
+    policy_name = policy[0]['title']
+    return policy_name
+
 def askLibraryType():
     #  Check if Community or Personal Libraries should be searched
     is_valid_lib = 0
@@ -79,7 +84,8 @@ def getLibraryDetails( librarieslist ):
         lib_number = 0
         lib_id = result[lib_number]['id']
         lib_name = result[lib_number]['title']
-        return ( lib_id, lib_name, 1 )
+        lib_policy = result[lib_number]['policyId']
+        return ( lib_id, lib_name, lib_policy, 1 )
     else:
         lib_id = []
         lib_name = []
@@ -104,17 +110,23 @@ def getLibraryDetails( librarieslist ):
                break
             else:
                 continue
-          
-        return ( result[lib_number]['id'], result[lib_number]['title'], 1 )
+        lib_id = result[lib_number]['id']
+        lib_name = result[lib_number]['title']
+        lib_policy = result[lib_number]['policyId']
+        return ( lib_id, lib_name, lib_policy, 1 )
 
 while noresult != 1:
-    lib_id, lib_title, noresult = getLibraryDetails( searchLibrary( askLibraryType() ) )
+    lib_id, lib_title, lib_policy, noresult = getLibraryDetails( searchLibrary( askLibraryType() ) )
 
+print 'Policy will be assigned to: ' + lib_title
 libraryUUID = lib_id
-# print 'lib_title= ' + lib_title
 
 print 'Available Policies: '
-policies = printPolicies( FilesPolicyService.browse( "title", "true", 1, 25 ) )
+policies = printPolicies( FilesPolicyService.browse( "title", "true", 1, 250 ) )
+print '\n'
+print lib_title + ' assigned policy is: ' + getAssignedPolicy( lib_policy )
+print '\n'
+
 policyID = int( raw_input( 'Which policy do you want to assign? ' ) )
 policyUUID = policies[policyID]['id']
 

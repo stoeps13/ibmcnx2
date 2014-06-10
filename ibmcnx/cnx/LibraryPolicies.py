@@ -100,10 +100,11 @@ def getLibraryDetails( librarieslist ):
         print '\n------------------------------------------------------------------'
         print 'There is NO Library with this name\nPlease try again ----------->'
         print '------------------------------------------------------------------\n'
-        return ( 0, 0, 0, 0, 0 )
+        return ( 0, 0, 0 )
     elif ( counter < 2 ):
-        lib_id = result[result.find( 'id=' ) + 3:result.find( 'id=' ) + 39]
-        lib_name = result[result.find( 'title=' ) + 6:result.find( 'ownerUserId=' ) - 2]
+        lib_number = 0
+        lib_id = result[lib_number]['id']
+        lib_name = result[lib_number]['title']
         return ( lib_id, lib_name, 1 )
     else:
         lib_id = []
@@ -114,7 +115,7 @@ def getLibraryDetails( librarieslist ):
         print '\nThere are multiple libraries with this name:'
         print '----------------------------------------------'
         for i in range( len( result ) ):
-            print str( i ) + '\t' + result[i]['title'] # + ' '  + str( result[i]['id'] )
+            print str( i ) + '\t' + result[i]['title']
             i += 1
             count += 1
         print '----------------------------------------------'

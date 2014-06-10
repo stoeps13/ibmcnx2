@@ -35,5 +35,5 @@ for server in servers:
         try:
             print "\t" + item + ':' + space + AdminConfig.showAttribute( jvm, item )
         except:
-            print '\t' + item + space + ': \t read error or empty'
+            print '\t' + item + ':' + space + 'read error or empty'
     print ' '

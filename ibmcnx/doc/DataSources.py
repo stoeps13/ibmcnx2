@@ -21,18 +21,18 @@ cellname = "/Cell:" + cell + "/"
 dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()
 dblist = []
 for db in dbs:
-    db = db.split('(')
+    dbname = db.split('(')
     n = 0
-    for i in db:
+    for i in dbname:
         if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
-            dblist.append(str(i).replace('"',''))
+            dblist.append(str(db).replace('"',''))
         n += 1
 
 dblist.sort()
 
 for db in dblist:
-      t1 = ibmcnx.functions.getDSId( db )
-      print t1
+      #t1 = ibmcnx.functions.getDSId( db )
+      print db
 #      AdminConfig.show( t1 )
 #      print '\n\n'
 #      AdminConfig.showall( t1 )

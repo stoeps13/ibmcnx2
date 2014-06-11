@@ -17,7 +17,11 @@ import ibmcnx.functions
 dbs = AdminConfig.list('DataSource',AdminConfig.getid('/Cell:cnxwas1Cell01/')).splitlines()
 
 for db in dbs:
-    print db
+    db = db.split('(')
+    n = 0
+    for i in db:
+        n += 1
+        print n + ": " + i
     
 # dbs = dbs.split('(')[0]
 # print dbs

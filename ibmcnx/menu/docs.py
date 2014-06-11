@@ -28,6 +28,12 @@ if __name__ == "__main__":
 global globdict
 globdict = globals()
 
+def docDocumentation():
+    execfile( 'ibmcnx/doc/Documentation.py', globdict )
+    
+global globdict
+globdict = globals()
+
 doc = ibmcnx.menu.MenuClass.cnxMenu()
 doc.AddItem( 'Show JVM Heap Sizes (ibmcnx/doc/JVMHeap.py)', ibmcnx.functions.docJVMHeap )
 doc.AddItem( 'Show JVM Settings (ibmcnx/doc/JVMSettings.py)', ibmcnx.functions.docJVMSettings )

@@ -128,9 +128,6 @@ def docJVMHeap():
     
 def docJVMSettings():
     execfile( 'ibmcnx/doc/JVMSettings.py' )
-
-def docDocumentation():
-    execfile( 'ibmcnx/doc/Documentation.py' )
     
 def docLogFiles():
     execfile( 'ibmcnx/doc/LogFiles.py' )

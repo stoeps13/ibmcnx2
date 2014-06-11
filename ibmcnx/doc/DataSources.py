@@ -16,6 +16,7 @@ import ibmcnx.functions
 
 dbs = AdminConfig.list('DataSource', AdminConfig.getid('/Cell:cnxwas1Cell01/'))
 # print dbs
+type(dbs)
 dblist = []
 for db in dbs:
     dblist.append(db)

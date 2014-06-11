@@ -22,8 +22,8 @@ if __name__ == "__main__":
     execfile( "ibmcnx/loadCnxApps.py" )
 
 checks = ibmcnx.menu.MenuClass.cnxMenu()
-checks.AddItem( 'Check if all Apps are running (checkAppStatus.py)', ibmcnx.functions.checkAppStatus )
-checks.AddItem( 'Check Database connections (checkDataSource.py)', ibmcnx.functions.checkDataSource )
+checks.AddItem( 'Check if all Apps are running (ibmcnx/check/AppStatus.py)', ibmcnx.functions.checkAppStatus )
+checks.AddItem( 'Check Database connections (ibmcnx/check/DataSource.py)', ibmcnx.functions.checkDataSource )
 checks.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 checks.AddItem( "Exit", ibmcnx.functions.bye )
 

@@ -14,7 +14,10 @@
 
 import ibmcnx.functions
 
-dbs = AdminConfig.list('DataSource',AdminConfig.getid('/Cell:cnxwas1Cell01/')).splitlines()
+cell = AdminControl.getCell()
+cellname = "'/Cell:" + cell + "/'"
+
+dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()
 dblist = []
 for db in dbs:
     db = db.split('(')

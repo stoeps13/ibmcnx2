@@ -36,7 +36,7 @@ def cnxmenu_comm():
 def cnxmenu_checks():
     execfile( 'ibmcnx/menu/checks.py', globdict )
 
-def cnxmenu_checks():
+def cnxmenu_docs():
     execfile( 'ibmcnx/menu/docs.py', globdict )
 
 def cnxBackToMainMenu():
@@ -47,7 +47,7 @@ m.AddItem( 'Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks )
 m.AddItem( 'Menu - IBM Connections Check Tasks', cnxmenu_checks )
 m.AddItem( 'Menu - IBM Connections User Admin Tasks', cnxmenu_useradmin )
 m.AddItem( 'Menu - IBM Connections Admin Tasks', cnxmenu_comm )
-m.AddItem( 'Menu - IBM Connections Documentation', cnxmenu_doc )
+m.AddItem( 'Menu - IBM Connections Documentation', cnxmenu_docs )
 m.AddItem( "Exit", ibmcnx.functions.bye )
 
 state = 'True'

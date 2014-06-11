@@ -84,7 +84,7 @@ while state != ( 'EXIT' ):
             break
         elif state == 'M':
             state = 'MENU'
-            execfile( 'cnxmenu.py' )
+            execfile( 'ibmcnx/menu/cnxmenu.py' )
             break
         elif state =='C':
             comm_name = raw_input('\nWildcard ist automatically added, just enter part of the name but the search is CASE sensitive!\nWhat is the name of the community which you want to move? ')

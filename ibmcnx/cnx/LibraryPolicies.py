@@ -76,7 +76,7 @@ def searchLibrary( libType ):
 def getLibraryDetails( librarieslist ):
     # result = str( librarieslist )
     result = librarieslist
-    counter = len ( result )
+    counter = len( result )
     index = 0
     count = 0
     
@@ -84,7 +84,7 @@ def getLibraryDetails( librarieslist ):
         print '\n------------------------------------------------------------------'
         print 'There is NO Library with this name\nPlease try again ----------->'
         print '------------------------------------------------------------------\n'
-        return ( 0, 0, 0 )
+        return ( 0, 0, 0, 0 )
     elif ( counter < 2 ):
         lib_number = 0
         lib_id = result[lib_number]['id']

@@ -20,8 +20,8 @@ for db in dbs:
     db = db.split('(')
     n = 0
     for i in db:
-        if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTisDataSource':
-            print str(n) + ": " + str(i).strip()
+        if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
+            print str(n) + ": " + str(i).lstrip('"')
         n += 1
 # dbs = dbs.split('(')[0]
 # print dbs

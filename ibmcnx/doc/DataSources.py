@@ -16,6 +16,8 @@ import ibmcnx.functions
 
 dbs = AdminConfig.list('DataSource', AdminConfig.getid('/Cell:cnxwas1Cell01/'))
 print dbs
+dbs = dbs.split('(')[0]
+print dbs
 #  dbs = ['FNOSDS', 'FNGCDDS', 'IBM_FORMS_DATA_SOURCE', 'activities', 'blogs', 'communities', 'dogear', 'files', 'forum', 'homepage', 'metrics', 'mobile', 'news', 'oauth provider', 'profiles', 'search', 'wikis']    # List of all databases to check
 #  
 #  for db in dbs:

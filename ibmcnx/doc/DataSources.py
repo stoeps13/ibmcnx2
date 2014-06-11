@@ -21,7 +21,7 @@ for db in dbs:
     n = 0
     for i in db:
         n += 1
-        print n + ": " + i
+        print str(n) + ": " + str(i)
     
 # dbs = dbs.split('(')[0]
 # print dbs

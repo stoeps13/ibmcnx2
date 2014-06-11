@@ -16,8 +16,8 @@ import ibmcnx.functions
 
 cell = AdminControl.getCell()
 cellname = "/Cell:" + cell + "/"
-print cellname
 
+# Get a list of all databases except DefaultEJBTimerDataSource and OTiSDataSource
 dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()
 dblist = []
 for db in dbs:
@@ -28,10 +28,9 @@ for db in dbs:
             dblist.append(str(i).replace('"',''))
         n += 1
 print dblist
-# dbs = dbs.split('(')[0]
-# print dbs
-#  dbs = ['FNOSDS', 'FNGCDDS', 'IBM_FORMS_DATA_SOURCE', 'activities', 'blogs', 'communities', 'dogear', 'files', 'forum', 'homepage', 'metrics', 'mobile', 'news', 'oauth provider', 'profiles', 'search', 'wikis']    # List of all databases to check
-#  
+
+for db in dblist:
+    print 'db'
 #  for db in dbs:
 #      t1 = ibmcnx.functions.getDSId( db )
 #      AdminConfig.show( t1 )

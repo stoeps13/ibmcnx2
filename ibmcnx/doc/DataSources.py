@@ -20,7 +20,7 @@ for db in dbs:
     db = db.split('(')
     n = 0
     for i in db:
-        if n == 0:
+        if n == 0 and i != "DefaultEJBTimerDataSource":
             print str(n) + ": " + str(i)
         n += 1
 # dbs = dbs.split('(')[0]

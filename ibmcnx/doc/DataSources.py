@@ -20,10 +20,12 @@ cellname = "/Cell:" + cell + "/"
 # Get a list of all databases except DefaultEJBTimerDataSource and OTiSDataSource
 dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()
 dblist = []
+# remove unwanted databases
 for db in dbs:
     dbname = db.split('(')
     n = 0
     for i in dbname:
+        # i is only the name of the DataSource, db is DataSource ID!
         if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
             dblist.append(str(db).replace('"',''))
         n += 1
@@ -31,10 +33,10 @@ for db in dbs:
 dblist.sort()
 
 for db in dblist:
-      #t1 = ibmcnx.functions.getDSId( db )
-      print db
-#      AdminConfig.show( t1 )
-#      print '\n\n'
-#      AdminConfig.showall( t1 )
+      # print db
+      print "AdminConfig.show( db ): "
+      AdminConfig.show( db )
+      print "AdminConfig.showall( db ): "
+      AdminConfig.showall( db )
 #      AdminConfig.showAttribute(t1,'statementCacheSize' )
 #      AdminConfig.showAttribute(t1,'[statementCacheSize]' )

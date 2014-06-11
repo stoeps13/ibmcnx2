@@ -30,7 +30,7 @@ for db in dbs:
 print dblist
 
 for db in dblist:
-    print 'db'
+    print db
 #  for db in dbs:
 #      t1 = ibmcnx.functions.getDSId( db )
 #      AdminConfig.show( t1 )

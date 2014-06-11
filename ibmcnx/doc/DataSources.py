@@ -15,7 +15,7 @@
 import ibmcnx.functions
 
 cell = AdminControl.getCell()
-cellname = "'/Cell:" + cell + "/'"
+cellname = "\'/Cell:" + cell + "/\'"
 print cellname
 
 dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()

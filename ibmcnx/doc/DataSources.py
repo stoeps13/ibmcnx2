@@ -33,5 +33,5 @@ for db in dbs:
 dsidlist.sort()
 
 for dsid in dsidlist:
-    print "AdminConfig.list( dsid ): "
-    AdminConfig.showAttribute(dsid,"propertySet")
+    propertySet = AdminConfig.showAttribute(dsid,"propertySet")
+    propertyList = AdminConfig.list("J2EEResourceProperty", propertySet).splitlines()

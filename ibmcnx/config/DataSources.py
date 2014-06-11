@@ -37,7 +37,7 @@ perf = {'activities':{'minConnections':configParser.get('Tuning','opnact.min'), 
 
 statementCacheSize = configParser.get('Tuning','statementCache')
 
-print 'DataSource Parameters are set to: '
+print 'DataSource Parameters will be set to: '
 print 'Database \t statementCacheSize \t minConnections \t maxConnections'
 for db in perf.keys():
     print db.upper(),

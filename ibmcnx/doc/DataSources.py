@@ -21,7 +21,7 @@ for db in dbs:
     n = 0
     for i in db:
         if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
-            print str(n) + ": " + str(i).lstrip()
+            print str(n) + ": " + str(i).lstrip('"',1)
         n += 1
 # dbs = dbs.split('(')[0]
 # print dbs

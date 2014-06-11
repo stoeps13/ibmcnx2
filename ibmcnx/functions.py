@@ -123,16 +123,22 @@ def checkAppStatus():
 def checkDataSource():
     execfile( 'ibmcnx/check/DataSource.py' )
 
-def checkJVMHeap():
+def docJVMHeap():
     execfile( 'ibmcnx/doc/JVMHeap.py' )
+    
+def docJVMSettings():
+    execfile( 'ibmcnx/doc/JVMSettings.py' )
 
-def checkLogFiles():
+def docDocumentation():
+    execfile( 'ibmcnx/doc/Documentation.py' )
+    
+def docLogFiles():
     execfile( 'ibmcnx/doc/LogFiles.py' )
 
-def checkPorts():
+def docPorts():
     execfile( 'ibmcnx/doc/Ports.py' )
 
-def checkVariables():
+def docVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
 def cnxBackToMainMenu():

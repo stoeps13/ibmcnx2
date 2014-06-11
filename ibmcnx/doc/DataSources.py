@@ -12,6 +12,8 @@
 #
 #  Check ExId of a User in all Connections Applications
 
+# TODO: Script is not functional in the moment, need a function to get the properties of all datasources
+
 import ibmcnx.functions
 
 cell = AdminControl.getCell()

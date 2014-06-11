@@ -21,18 +21,12 @@ from java.lang import String
 from java.util import HashSet
 from java.util import HashMap
 
-# Only load commands if not initialized directly (call from menu)
+#  Only load commands if not initialized directly (call from menu)
 if __name__ == "__main__":
-    execfile("ibmcnx/loadCnxApps.py")
+    execfile( "ibmcnx/loadCnxApps.py" )
 
 global globdict
 globdict = globals()
-
-def cnxFilesPolicies():
-    execfile( 'ibmcnx/cnx/FilesPolicies.py', globdict )
-
-def cnxLibraryPolicies():
-    execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem( "Configure DataSources (cfgDataSource.py)", ibmcnx.functions.cfgDataSource )
@@ -48,33 +42,31 @@ cfg.AddItem( 'Configure JVM Heap Sizes (cfgJVMHeap.py)', ibmcnx.functions.cfgJVM
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (cfgJVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
 cfg.AddItem( 'Configure SystemOut/Err Log Size (cfgLogFiles.py)', ibmcnx.functions.cfgLogFiles )
 cfg.AddItem( 'Configure Monitoring Policy (cfgMonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
-cfg.AddItem( 'Work with Files Policies (cnxFilesPolicies.py)', cnxFilesPolicies )
-cfg.AddItem( 'Work with Libraries (cnxLibraryPolicies.py)', cnxLibraryPolicies )
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_cfg = 'True'
 
 while state_cfg == 'True':
-    count = len(cfg.menuitems)
+    count = len( cfg.menuitems )
     cfg.Show()
 
     ###########################
-    ## Robust error handling ##
-    ## only accept int       ##
+    #  # Robust error handling ##
+    #  # only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
     is_valid_cfg = 0
     while not is_valid_cfg :
         try :
-                inputstring = 'Enter your choice [1-' + str(count) +']: '
+                inputstring = 'Enter your choice [1-' + str( count ) + ']: '
                 n = int ( raw_input( inputstring ) )
 
                 if n <= ( count ) and n > 0:
-				    is_valid_cfg = 1 ## set it to 1 to validate input and to terminate the while..not loop
+				    is_valid_cfg = 1    #  # set it to 1 to validate input and to terminate the while..not loop
                 else:
-                    print ( "'%s' is not a valid menu option.") % n
+                    print ( "'%s' is not a valid menu option." ) % n
         except ValueError, e :
-                print ("'%s' is not a valid integer." % e.args[0].split(": ")[1])
-   # n = input( "your choice> " )
+                print ( "'%s' is not a valid integer." % e.args[0].split( ": " )[1] )
+   #  n = input( "your choice> " )
     cfg.Do( n - 1 )

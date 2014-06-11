@@ -30,9 +30,17 @@ globdict = globals()
 
 def cnxCommunitiesReparenting():
     execfile( 'ibmcnx/cnx/CommunitiesReparenting.py', globdict )
+    
+def cnxFilesPolicies():
+    execfile( 'ibmcnx/cnx/FilesPolicies.py', globdict )
+
+def cnxLibraryPolicies():
+    execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )
 
 comm = ibmcnx.menu.MenuClass.cnxMenu()
-comm.AddItem( 'Reparent/Move Communities (cnxCommunitiesReparenting.py)', cnxCommunitiesReparenting )
+comm.AddItem( 'Work with Files Policies (ibmcnx/cnx/FilesPolicies.py)', cnxFilesPolicies )
+comm.AddItem( 'Work with Libraries (ibmcnx/cnx/LibraryPolicies.py)', cnxLibraryPolicies )
+comm.AddItem( 'Reparent/Move Communities (ibmcnx/cnx/CommunitiesReparenting.py)', cnxCommunitiesReparenting )
 comm.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBackToMainMenu )
 comm.AddItem( "Exit", ibmcnx.functions.bye )
 

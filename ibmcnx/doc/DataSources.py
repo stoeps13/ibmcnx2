@@ -34,6 +34,12 @@ dblist.sort()
 
 for db in dblist:
     print "AdminConfig.list( db ): "
-    AdminConfig.list ( db )
+    try:
+        AdminConfig.list ( db )
+    except:
+        print "error on: " + db
     print "AdminConfig.showAttribute( db, 'name' ): "
-    AdminConfig.showAttribute( db, 'name' )
+    try:
+        AdminConfig.showAttribute( db, 'name' )
+    except:
+        print "error on: " + db

@@ -10,7 +10,6 @@
 #
 #  License:       Apache 2.0
 #
-
 #  TODO: Check Errorhandling and print assigned policy of the libraries
 
 execfile( "filesAdmin.py" )

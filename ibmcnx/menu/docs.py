@@ -22,8 +22,8 @@ from java.util import HashSet
 from java.util import HashMap
 
 #  Only load commands if not initialized directly (call from menu)
-if __name__ == "__main__":
-    execfile( "ibmcnx/loadCnxApps.py" )
+#if __name__ == "__main__":
+#    execfile( "ibmcnx/loadCnxApps.py" )
 
 global globdict
 globdict = globals()

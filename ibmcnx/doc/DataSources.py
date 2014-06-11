@@ -19,7 +19,7 @@ cellname = "/Cell:" + cell + "/"
 
 # Get a list of all databases except DefaultEJBTimerDataSource and OTiSDataSource
 dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()
-dblist = []
+dsidlist = []
 # remove unwanted databases
 for db in dbs:
     dbname = db.split('(')
@@ -27,19 +27,11 @@ for db in dbs:
     for i in dbname:
         # i is only the name of the DataSource, db is DataSource ID!
         if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
-            dblist.append(str(db).replace('"',''))
+            dsidlist.append(str(db).replace('"',''))
         n += 1
 
-dblist.sort()
+dsidlist.sort()
 
-for db in dblist:
-    print "AdminConfig.list( db ): "
-    try:
-        AdminConfig.list ( db )
-    except:
-        print "error on: " + db
-    print "AdminConfig.showAttribute( db, 'name' ): "
-    try:
-        AdminConfig.showAttribute( db, 'name' )
-    except:
-        print "error on: " + db
+for dsid in dsidlist:
+    print "AdminConfig.list( dsid ): "
+    AdminConfig.showAttribute(dsid,"propertySet")

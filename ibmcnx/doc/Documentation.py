@@ -19,18 +19,19 @@
 
 import sys
 import os.path
+if __name__ == "__main__":
+    execfile( "ibmcnx/loadCnxApps.py" ) 
+    filename = raw_input( 'Path and Filename to Documentation file: ' )
 
-filename = raw_input( 'Path and Filename to Documentation file: ' )
-
-if (os.path.isfile( filename )):
-            answer = raw_input( "File exists, Overwrite, Append or Abort? (O|A|X)" ).lower()
-            if answer == "o":
-                sys.stdout = open( filename, "w")
-            elif answer == "a":
-                sys.stdout = open( filename, "a")
-            else:
-                print "Exit"
-                sys.exit()
+    if (os.path.isfile( filename )):
+        answer = raw_input( "File exists, Overwrite, Append or Abort? (O|A|X)" ).lower()
+        if answer == "o":
+            sys.stdout = open( filename, "w")
+        elif answer == "a":
+            sys.stdout = open( filename, "a")
+        else:
+            print "Exit"
+            sys.exit()
 
 print '# JVM Settings of all AppServers:'
 execfile( 'ibmcnx/doc/JVMSettings.py' )

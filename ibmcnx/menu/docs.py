@@ -29,6 +29,17 @@ global globdict
 globdict = globals()
 
 def docDocumentation():
+    filename = raw_input( 'Path and Filename to Documentation file: ' )
+
+    if (os.path.isfile( filename )):
+        answer = raw_input( "File exists, Overwrite, Append or Abort? (O|A|X)" ).lower()
+        if answer == "o":
+            sys.stdout = open( filename, "w")
+        elif answer == "a":
+            sys.stdout = open( filename, "a")
+        else:
+            print "Exit"
+            sys.exit()
     execfile( 'ibmcnx/doc/Documentation.py', globdict )
     
 global globdict

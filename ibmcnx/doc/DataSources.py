@@ -27,7 +27,8 @@ for db in dbs:
         if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
             dblist.append(str(i).replace('"',''))
         n += 1
-print dblist
+
+dblist.sort()
 
 for db in dblist:
     print db

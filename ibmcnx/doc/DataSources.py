@@ -33,10 +33,7 @@ for db in dbs:
 dblist.sort()
 
 for db in dblist:
-      # print db
-      print "AdminConfig.show( db ): "
-      AdminConfig.show( db )
-      print "AdminConfig.showall( db ): "
-      AdminConfig.showall( db )
-#      AdminConfig.showAttribute(t1,'statementCacheSize' )
-#      AdminConfig.showAttribute(t1,'[statementCacheSize]' )
+    print "AdminConfig.list( db ): "
+    AdminConfig.list ( db )
+    print "AdminConfig.showAttribute( db, 'name' ): "
+    AdminConfig.showAttribute( db, 'name' )

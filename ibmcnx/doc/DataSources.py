@@ -35,3 +35,4 @@ dsidlist.sort()
 for dsid in dsidlist:
     propertySet = AdminConfig.showAttribute(dsid,"propertySet")
     propertyList = AdminConfig.list("J2EEResourceProperty", propertySet).splitlines()
+    print propertyList

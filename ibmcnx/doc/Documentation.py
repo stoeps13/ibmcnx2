@@ -22,7 +22,7 @@ import os.path
 
 filename = raw_input( 'Path and Filename to Documentation file: ' )
 
-if (os.path.isfile( fileopen )):
+if (os.path.isfile( filename )):
             answer = raw_input( "File exists, Overwrite, Append or Abort? (O|A|X)" ).lower()
             if answer == "o":
                 sys.stdout = open( filename, "w")

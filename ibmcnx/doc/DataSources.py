@@ -31,9 +31,8 @@ for db in dbs:
 dblist.sort()
 
 for db in dblist:
-    print db
-#  for db in dbs:
-#      t1 = ibmcnx.functions.getDSId( db )
+      t1 = ibmcnx.functions.getDSId( db )
+      print t1
 #      AdminConfig.show( t1 )
 #      print '\n\n'
 #      AdminConfig.showall( t1 )

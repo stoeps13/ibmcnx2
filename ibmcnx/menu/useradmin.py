@@ -46,10 +46,10 @@ user.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMe
 user.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_user = 'True'
-
+menutitle = "Connections User Administration"
 while state_user == 'True':
     count = len(user.menuitems)
-    user.Show()
+    user.Show( menutitle )
 
     ###########################
     ## Robust error handling ##

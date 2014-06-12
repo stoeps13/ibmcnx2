@@ -28,10 +28,10 @@ checks.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMain
 checks.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_checks = 'True'
-
+menutitle = "Check Connectivity"
 while state_checks == 'True':
     count = len( checks.menuitems )
-    checks.Show()
+    checks.Show( menutitle )
 
     ###########################
     #  # Robust error handling ##

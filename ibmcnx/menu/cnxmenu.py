@@ -50,10 +50,11 @@ m.AddItem( 'Menu - IBM Connections Admin Tasks', cnxmenu_comm )
 m.AddItem( 'Menu - IBM Connections Documentation', cnxmenu_docs )
 m.AddItem( "Exit", ibmcnx.functions.bye )
 
+menutitle = "WebSphere and Connections Administration"
 state = 'True'
 while state == 'True':
     count = len( m.menuitems )
-    m.Show()
+    m.Show( menutitle )
 
     ###########################
     #  # Robust error handling ##

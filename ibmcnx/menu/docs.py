@@ -53,10 +53,11 @@ doc.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBackT
 doc.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_doc = 'True'
+menutitle = "IBM Connections / WebSphere Documentation"
 
 while state_doc == 'True':
     count = len( doc.menuitems )
-    doc.Show()
+    doc.Show( menutitle )
 
     ###########################
     #  # Robust error handling ##

@@ -46,10 +46,11 @@ cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMen
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_cfg = 'True'
+menutitle = "IBM Connections / WebSphere Configuration tasks"
 
 while state_cfg == 'True':
     count = len( cfg.menuitems )
-    cfg.Show()
+    cfg.Show( menutitle )
 
     ###########################
     #  # Robust error handling ##

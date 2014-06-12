@@ -19,9 +19,9 @@ class cnxMenu:
         self.menuitems.append( {'text': text, 'func':function} )
 
     # Function for printing
-    def Show( self ):
+    def Show( menutitle, self ):
         self.c = 1
-        print '\n\tWebSphere and Connections Administration'
+        print '\n\t' + menutitle
         print '\t----------------------------------------', '\n'
         for self.l in self.menuitems:
             print '\t',

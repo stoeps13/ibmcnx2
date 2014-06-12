@@ -28,6 +28,9 @@ from java.util import HashMap
 global globdict
 globdict = globals()
 
+def cnxFilesVersionStamp():
+    execfile( 'ibmcnx/cnx/VersionStamp.py', globdict )
+    
 def cnxCommunitiesReparenting():
     execfile( 'ibmcnx/cnx/CommunitiesReparenting.py', globdict )
     
@@ -38,6 +41,7 @@ def cnxLibraryPolicies():
     execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )
 
 comm = ibmcnx.menu.MenuClass.cnxMenu()
+comm.AddItem( 'Update VersionStamp (ibmcnx/cnx/VersionStamp.py)', cnxFilesVersionStamp )
 comm.AddItem( 'Work with Files Policies (ibmcnx/cnx/FilesPolicies.py)', cnxFilesPolicies )
 comm.AddItem( 'Work with Libraries (ibmcnx/cnx/LibraryPolicies.py)', cnxLibraryPolicies )
 comm.AddItem( 'Reparent/Move Communities (ibmcnx/cnx/CommunitiesReparenting.py)', cnxCommunitiesReparenting )

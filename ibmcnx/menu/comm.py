@@ -49,7 +49,7 @@ comm.AddItem( 'Back to Main Menu (cnxmenu_comcomm.py)', ibmcnx.functions.cnxBack
 comm.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_comm = 'True'
-menutitle = "IBM Connections Administration Tasks"
+menutitle = "IBM Connections Admin Tasks"
 
 while state_comm == 'True':
     count = len(comm.menuitems)

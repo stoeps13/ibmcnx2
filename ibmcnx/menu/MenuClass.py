@@ -19,7 +19,7 @@ class cnxMenu:
         self.menuitems.append( {'text': text, 'func':function} )
 
     # Function for printing
-    def Show( menutitle, self ):
+    def Show( self, menutitle ):
         self.c = 1
         print '\n\t' + menutitle
         print '\t----------------------------------------', '\n'

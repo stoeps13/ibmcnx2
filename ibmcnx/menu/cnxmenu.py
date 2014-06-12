@@ -64,7 +64,7 @@ while state == 'True':
     is_valid_m = 0
     while not is_valid_m :
         try :
-                inputstring = 'Enter your choice [1-' + str( count ) + ']: '
+                inputstring = '\tEnter your choice [1-' + str( count ) + ']: '
                 n = int ( raw_input( inputstring ) )
 
                 if n <= count and n > 0:

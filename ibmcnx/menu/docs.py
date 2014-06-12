@@ -67,7 +67,7 @@ while state_doc == 'True':
     is_valid_doc = 0
     while not is_valid_doc :
         try :
-                inputstring = 'Enter your choice [1-' + str( count ) + ']: '
+                inputstring = '\tEnter your choice [1-' + str( count ) + ']: '
                 n = int ( raw_input( inputstring ) )
 
                 if n <= count and n > 0:

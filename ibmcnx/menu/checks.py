@@ -28,7 +28,7 @@ checks.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMain
 checks.AddItem( "Exit", ibmcnx.functions.bye )
 
 state_checks = 'True'
-menutitle = "Check Connectivity"
+menutitle = "Check Applications and DBs"
 while state_checks == 'True':
     count = len( checks.menuitems )
     checks.Show( menutitle )

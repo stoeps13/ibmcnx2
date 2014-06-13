@@ -67,15 +67,10 @@ def selectCluster( clusterlist ):
                 clusterselected.append( result[cluster_number].split('(')[0] )
             except ( TypeError, ValueError ):
                 continue
-            if count - 1 >= cluster_number >= 0:
-                break
-            else:
-                continue
         elif cluster_number == 'x':
             go_on = 'TRUE'
             
-    clustername = result[cluster_number]
-    return ( clustername, 1 )
+    return ( clusterselected, 1 )
 
 cell = AdminControl.getCell()
 cellname = "/Cell:" + cell + "/"

@@ -86,6 +86,8 @@ servercount = raw_input( '\n\tServername will be Clustername_server#, please typ
 clusterlist = selectCluster( clusterlist )
 
 for cluster in clusterlist:
+    print 'Cluster: ' + cluster
+    print 'Servernumber: ' + str( servercount )
     servername = cluster + '_server' + str( servercount )
     print '\tServer ' + servername + ' will be created: '
     AdminTask.createClusterMember( '[-clusterName ' + cluster + ' -memberConfig [-memberNode ' + nodename + ' -memberName ' + servername + ' -memberWeight 2 -genUniquePorts true -replicatorEntry false]]' )

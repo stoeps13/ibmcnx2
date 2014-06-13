@@ -37,8 +37,45 @@ def selectNode( nodelist ):
         else:
             continue
     nodename = result[node_number]
-    print nodename
     return ( nodename, 1 )
+
+def selectCluster( clusterlist ):
+    result = clusterlist
+    counter = len( result )
+    index = 0
+    count = 0
+    clustername = ''
+    cluster_number = 0
+    clusterselected = []
+    i = 0
+    print '\n\tAvailable Clusters: '
+    for i in range( len( result ) ):
+        print '\t' + str( i ) + '\t' + result[i]
+        i += 1
+        count += 1
+    print '\n'
+    go_on = 'FALSE'
+    while go_on == 'FALSE':
+        if len( clusterselected ) >= 0:
+            print '\n\t',
+            print clusterselected
+            print '\n'
+        cluster_number = raw_input( '\tPlease select the Cluster where Servers should be added, End with x: ' )
+        if cluster_number != 'x':
+            try:
+                cluster_number = int( cluster_number )
+                clusterselected.append( result[cluster_number] )
+            except ( TypeError, ValueError ):
+                continue
+            if count - 1 >= cluster_number >= 0:
+                break
+            else:
+                continue
+        elif cluster_number == 'x':
+            go_on = 'TRUE'
+            
+    clustername = result[cluster_number]
+    return ( clustername, 1 )
 
 cell = AdminControl.getCell()
 cellname = "/Cell:" + cell + "/"
@@ -47,6 +84,15 @@ clusterlist = AdminConfig.list( 'ServerCluster', AdminConfig.getid( cellname ) )
 
 nodelist = AdminTask.listNodes().splitlines()
 nodename, nodevalid = selectNode( nodelist )
-print nodename
-# for cluster in clusterlist:
-#     AdminTask.createClusterMember( '[-clusterName Cluster1 -memberConfig [-memberNode cnxwas2Node01 -memberName Cluster1_server2 -memberWeight 2 -genUniquePorts true -replicatorEntry false]]' )
+
+servercount = rawinput( 'Servername will be Clustername_server#, please type # (e.g. 2, 3 or 4)' )
+
+#  selection of clusterlist
+clusterlist = selectCluster( clusterlist )
+
+for cluster in clusterlist:
+    servername = cluster + '_server' + str( servercount )
+    print '\tServer ' + servername + ' will be created: '
+    AdminTask.createClusterMember( '[-clusterName ' + cluster + ' -memberConfig [-memberNode ' + nodename + ' -memberName ' + servername + ' -memberWeight 2 -genUniquePorts true -replicatorEntry false]]' )
+
+AdminConfig.save()

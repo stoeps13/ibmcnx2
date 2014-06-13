@@ -85,7 +85,7 @@ clusterlist = AdminConfig.list( 'ServerCluster', AdminConfig.getid( cellname ) )
 nodelist = AdminTask.listNodes().splitlines()
 nodename, nodevalid = selectNode( nodelist )
 
-servercount = rawinput( 'Servername will be Clustername_server#, please type # (e.g. 2, 3 or 4)' )
+servercount = raw_input( 'Servername will be Clustername_server#, please type # (e.g. 2, 3 or 4)' )
 
 #  selection of clusterlist
 clusterlist = selectCluster( clusterlist )

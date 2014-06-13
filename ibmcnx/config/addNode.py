@@ -41,7 +41,7 @@ def selectNode( nodelist ):
         else:
             continue
         nodename = result[i]
-        return ( nodename, 1 )
+    return ( nodename, 1 )
 
 cell = AdminControl.getCell()
 cellname = "/Cell:" + cell + "/"

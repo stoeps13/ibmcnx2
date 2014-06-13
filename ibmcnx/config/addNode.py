@@ -19,10 +19,10 @@ def selectNode( nodelist ):
     nodename = ''
     node_number = 0
     i = 0
-    print '\nAvailable Nodes:'
+    print '\n\tAvailable Nodes:'
     print '\n'
     for i in range( len( result ) ):
-        print str( i ) + '\t' + result[i]
+        print '\t' + str( i ) + '\t' + result[i]
         i += 1
         count += 1
     print '\n'
@@ -37,8 +37,8 @@ def selectNode( nodelist ):
             break
         else:
             continue
-        nodename = result[i]
-        print nodename
+    nodename = result[i]
+    print nodename
     return ( nodename, 1 )
 
 cell = AdminControl.getCell()

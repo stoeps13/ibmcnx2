@@ -117,6 +117,9 @@ def cfgMonitoringPolicy():
 def cfgJVMCustProp():
     execfile( 'ibmcnx/config/JVMCustProp.py' )
 
+def cfgClusterMembers():
+    execfile( 'ibmcnx/config/addNode.py' )
+    
 def checkAppStatus():
     execfile( 'ibmcnx/check/AppStatus.py' )
 

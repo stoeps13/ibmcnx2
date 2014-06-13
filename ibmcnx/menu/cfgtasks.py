@@ -42,6 +42,7 @@ cfg.AddItem( 'Configure JVM Heap Sizes (ibmcnx/config/JVMHeap.py)', ibmcnx.funct
 cfg.AddItem( 'Configure SystemOut/Err Log Size (ibmcnx/config/LogFiles.py)', ibmcnx.functions.cfgLogFiles )
 cfg.AddItem( 'Configure Monitoring Policy (ibmcnx/config/MonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
+cfg.AddItem( 'Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)', ibmcnx.functions.cfgClusterMembers )
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 

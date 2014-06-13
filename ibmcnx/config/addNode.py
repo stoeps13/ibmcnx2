@@ -70,7 +70,7 @@ def selectCluster( clusterlist ):
         elif cluster_number == 'x':
             go_on = 'TRUE'
             
-    return ( clusterselected, 1 )
+    return ( clusterselected )
 
 cell = AdminControl.getCell()
 cellname = "/Cell:" + cell + "/"

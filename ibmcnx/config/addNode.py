@@ -41,6 +41,7 @@ def selectNode( nodelist ):
         else:
             continue
         nodename = result[i]
+        print nodename
     return ( nodename, 1 )
 
 cell = AdminControl.getCell()

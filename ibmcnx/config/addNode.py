@@ -21,8 +21,10 @@ def selectNode( nodelist ):
     i = 0
     print '\n\tAvailable Nodes:'
     for i in range( len( result ) ):
-        if "CellManager" not in result[i]: 
-            print '\t' + str( i ) + '\t' + result[i]
+        # Remove DMGR Node from List, not working jython has problems here
+        # if "CellManager" not in result[i]: 
+        #    print '\t' + str( i ) + '\t' + result[i]
+        print '\t' + str( i ) + '\t' + result[i]
         i += 1
         count += 1
     print '\n'

@@ -20,7 +20,6 @@ def selectNode( nodelist ):
     node_number = 0
     i = 0
     print '\n\tAvailable Nodes:'
-    print '\n'
     for i in range( len( result ) ):
         print '\t' + str( i ) + '\t' + result[i]
         i += 1
@@ -28,7 +27,7 @@ def selectNode( nodelist ):
     print '\n'
     go_on = ''
     while go_on != 'TRUE':
-        node_number = raw_input( 'Please select the number of the node, \nwhere new cluster servers should be created: ' )
+        node_number = raw_input( '\tPlease select the number of the node, \n\twhere new cluster servers should be created: ' )
         try:
             node_number = int( node_number )
         except ( TypeError, ValueError ):
@@ -37,7 +36,7 @@ def selectNode( nodelist ):
             break
         else:
             continue
-    nodename = result[i]
+    nodename = result[node_number]
     print nodename
     return ( nodename, 1 )
 

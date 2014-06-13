@@ -21,7 +21,8 @@ def selectNode( nodelist ):
     i = 0
     print '\n\tAvailable Nodes:'
     for i in range( len( result ) ):
-        print '\t' + str( i ) + '\t' + result[i]
+        if "CellManager" not in result[i]: 
+            print '\t' + str( i ) + '\t' + result[i]
         i += 1
         count += 1
     print '\n'

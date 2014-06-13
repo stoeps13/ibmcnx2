@@ -16,11 +16,8 @@ def selectNode( nodelist ):
     counter = len( result )
     index = 0
     count = 0
-    
-    node_id = []
-    node_name = []
-    numberlist = []
-    node_number = -1
+    nodename = ''
+    node_number = 0
     i = 0
     print '\nAvailable Nodes:'
     print '\n'
@@ -31,7 +28,7 @@ def selectNode( nodelist ):
     print '\n'
     go_on = ''
     while go_on != 'TRUE':
-        node_number = raw_input( 'Please select the number of the node? ' )
+        node_number = raw_input( 'Please select the number of the node, \nwhere new cluster servers should be created: ' )
         try:
             node_number = int( node_number )
         except ( TypeError, ValueError ):

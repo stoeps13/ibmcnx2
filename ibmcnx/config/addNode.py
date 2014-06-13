@@ -50,7 +50,7 @@ def selectCluster( clusterlist ):
     i = 0
     print '\n\tAvailable Clusters: '
     for i in range( len( result ) ):
-        print '\t' + str( i ) + '\t' + result[i]
+        print '\t' + str( i ) + '\t' + result[i].split('(')[0]
         i += 1
         count += 1
     print '\n'
@@ -64,7 +64,7 @@ def selectCluster( clusterlist ):
         if cluster_number != 'x':
             try:
                 cluster_number = int( cluster_number )
-                clusterselected.append( result[cluster_number] )
+                clusterselected.append( result[cluster_number].split('(')[0] )
             except ( TypeError, ValueError ):
                 continue
             if count - 1 >= cluster_number >= 0:
@@ -85,7 +85,7 @@ clusterlist = AdminConfig.list( 'ServerCluster', AdminConfig.getid( cellname ) )
 nodelist = AdminTask.listNodes().splitlines()
 nodename, nodevalid = selectNode( nodelist )
 
-servercount = raw_input( 'Servername will be Clustername_server#, please type # (e.g. 2, 3 or 4)' )
+servercount = raw_input( '\n\tServername will be Clustername_server#, please type # (e.g. 2, 3 or 4)' )
 
 #  selection of clusterlist
 clusterlist = selectCluster( clusterlist )

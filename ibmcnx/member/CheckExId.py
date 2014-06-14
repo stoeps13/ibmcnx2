@@ -77,51 +77,58 @@ for e in employeeList:
     # print e['PROF_MAIL']
     print "Profiles:\t\t\t " + e['PROF_GUID']
 
-LOGIN = e['PROF_MAIL']
 try:
-   print "Activities:\t\t\t",
-   ActivitiesMemberService.getMemberExtIdByLogin( LOGIN )
+    LOGIN = e['PROF_MAIL']
+    go_on = 'true'
 except:
-   print 'No user with Login ' + LOGIN + ' found'
+    print 'No User with mail address ' + email
+    go_on = 'false'
 
-try:
-   print "Blogs:\t\t\t\t",
-   BlogsMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
-
-try:
-   print "Communities:\t\t\t",
-   CommunitiesMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
-
-try:
-   print "Dogear:\t\t\t\t",
-   DogearMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
-
-try:
-   print "Files:\t\t\t\t",
-   FilesMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
-
-try:
-   print "Forums:\t\t\t\t",
-   ForumsMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
-
-try:
-   print "News, Search, Homepage:\t\t",
-   NewsMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
-
-try:
-   print "Wikis:\t\t\t\t",
-   WikisMemberService.getMemberExtIdByLogin( LOGIN )
-except:
-   print 'No user with Login ' + LOGIN + ' found'
+if go_on == 'true':
+    try:
+       print "Activities:\t\t\t",
+       ActivitiesMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "Blogs:\t\t\t\t",
+       BlogsMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "Communities:\t\t\t",
+       CommunitiesMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "Dogear:\t\t\t\t",
+       DogearMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "Files:\t\t\t\t",
+       FilesMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "Forums:\t\t\t\t",
+       ForumsMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "News, Search, Homepage:\t\t",
+       NewsMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'
+    
+    try:
+       print "Wikis:\t\t\t\t",
+       WikisMemberService.getMemberExtIdByLogin( LOGIN )
+    except:
+       print 'No user with Login ' + LOGIN + ' found'

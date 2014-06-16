@@ -48,6 +48,7 @@ doc.AddItem( 'Show JVM Settings (ibmcnx/doc/JVMSettings.py)', ibmcnx.functions.d
 doc.AddItem( 'Show SystemOut/Err Log Sizes (ibmcnx/doc/LogFiles.py)', ibmcnx.functions.docLogFiles )
 doc.AddItem( 'Show all used ports (ibmcnx/doc/Ports.py)', ibmcnx.functions.docPorts )
 doc.AddItem( 'Show all used variables (ibmcnx/doc/Variables.py)', ibmcnx.functions.docVariables )
+doc.AddItem( 'Show all j2ee roles of inst. applications (ibmcnx/doc/j2eeroles.py)', ibmcnx.functions.docj2eeroles )
 doc.AddItem( 'Create a file with all documentation (ibmcnx/doc/Documentation.py)', docDocumentation )
 doc.AddItem( 'Back to Main Menu (ibmcnx/menu/cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 doc.AddItem( "Exit", ibmcnx.functions.bye )

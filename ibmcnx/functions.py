@@ -140,7 +140,10 @@ def docPorts():
 
 def docVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
-
+    
+def docj2eeroles():
+    execfile( 'ibmcnx/doc/j2eeroles.py' )
+    
 def cnxBackToMainMenu():
     execfile( 'ibmcnx/menu/cnxmenu.py' )
 

@@ -33,6 +33,9 @@ if (os.path.isfile( filename )):
         print "Exit"
         sys.exit()
 
+print '# J2EE Roles set for all Applications:'
+execfile( 'ibmcnx/doc/j2eeroles.py')
+
 print '# JVM Settings of all AppServers:'
 execfile( 'ibmcnx/doc/JVMSettings.py' )
 
@@ -44,3 +47,4 @@ execfile( 'ibmcnx/doc/LogFiles.py' )
 
 print '# WebSphere Variables'
 execfile( 'ibmcnx/doc/Variables.py' )
+

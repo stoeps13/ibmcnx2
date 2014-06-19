@@ -15,9 +15,12 @@
 import ConfigParser
 import ibmcnx.functions
 
-configParser = ConfigParser.ConfigParser()
-configFilePath = r'ibmcnx/ibmcnx.properties'
-configParser.read(configFilePath)
+try: 
+    configParser = ConfigParser.ConfigParser()
+    configFilePath = r'ibmcnx/ibmcnx.properties'
+    configParser.read(configFilePath)
+except:
+    print 'Error on reading ibmcnx.properties, maybe you forgot to create the file?'
 
 perf = {'activities':{'minConnections':configParser.get('Tuning','opnact.min'), 'maxConnections':configParser.get('Tuning','opnact.max')},
          'blogs':{'minConnections':configParser.get('Tuning','blogs.min'), 'maxConnections':configParser.get('Tuning','blogs.max')},

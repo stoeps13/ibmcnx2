@@ -20,7 +20,7 @@
 import sys
 import os.path
 
-execfile( "ibmcnx/loadCnxApps.py" ) 
+# execfile( "ibmcnx/loadCnxApps.py" ) 
 filename = raw_input( 'Path and Filename to Documentation file: ' )
 
 if (os.path.isfile( filename )):

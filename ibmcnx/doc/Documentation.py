@@ -32,6 +32,8 @@ if (os.path.isfile( filename )):
     else:
         print "Exit"
         sys.exit()
+else:
+    sys.stdout = open( filename, "w")
 
 print '# J2EE Roles set for all Applications:'
 execfile( 'ibmcnx/doc/j2eeroles.py')

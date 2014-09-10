@@ -70,11 +70,17 @@ def setRoleCmd( appName, roleName, everyone, authenticated, users, groups ):
     # Values needed appName = Application Name, roleName = Name of the role
     # everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
     # 
-    AdminApp.edit( appName, '[-MapRolesToUsers [[ "' + roleName + '" ' + everyone + ' ' + authenticated + ' ' + '"' + users + '"' + ' ' + '"' + groups + '"' + ' ]] ]' )
+    print "\n\tApplication: " + appName
+    print "\tRole: " + roleName
+    print "\n\tEveryone: " + everyone
+    print "\tAuthenticated: " + authenticated
+    print "\tUsers: " + users
+    print "\tGroups: " + groups + "\n"
+    AdminApp.edit( appName, '[-MapRolesToUsers [[ "' + roleName + '" ' + everyone + ' ' + authenticated + ' ' + users + ' ' + groups + ' ]] ]' )
     # example: AdminApp.edit( "Blogs", '[-MapRolesToUsers [["person" No Yes "" ""] ]]' )
     
 def setRole( appName, roleName, connwasadmin,connadmin,connmoderators,connmetrics,connmobile,cnxmail,cnxreader,cnxcommunitycreator,cnxwikicreator,cnxfilesyncuser,connadmingroup,connmoderatorgroup,connmetricsgroup,connmobilegroup,cnxmailgroup,cnxreadergroup,cnxcommunitycreatorgroup,cnxwikicreatorgroup,cnxfilesyncusergroup):
-    if roleName == "admin" or "search-admin" or "widget-admin" or "dsx-admin":
+    if roleName == "admin" or roleName == "search-admin" or roleName == "widget-admin" or roleName == "dsx-admin" or roleName == "trustedExternalApplication" or roleName == 'org-admin' or roleName == 'orgadmin':
         # Administration Roles
         setRoleCmd( appName, roleName, "No", "No", connwasadmin + '|' + connadmin, connadmingroup )
     elif roleName == "administrator":
@@ -82,47 +88,55 @@ def setRole( appName, roleName, connwasadmin,connadmin,connmoderators,connmetric
         setRoleCmd( appName, roleName, "No", "No", connmobile, connmobilegroup )
     elif roleName == "global-moderator":
         # Moderators
-        setRoleCmd( appName, roleName, "No", "No", conmoderators, conmoderatorgroup )
-    elif roleName == "metrics-reader" or "metrics-report-run" or "community-metrics-run":
+        setRoleCmd( appName, roleName, "No", "No", connmoderators, connmoderatorgroup )
+    elif roleName == "metrics-reader" or roleName == "metrics-report-run" or roleName == "community-metrics-run":
         # Metrics
         setRoleCmd( appName, roleName, "No", "No", connmetrics, connmetricsgroup )
-    elif roleName == "reader" or "person" or "allAuthenticated" or "everyone-authenticated" or "files-owner":
+    elif roleName == "reader" or roleName == "person" or roleName == "allAuthenticated" or roleName == "everyone-authenticated" or roleName == "files-owner":
         # Default Access reader, person, authenticated
         if cnxreader == "allauthenticated":
-            setRoleCmd( appName, roleName, "No", "Yes", "", "" )
+            setRoleCmd( appName, roleName, "No", "Yes", "' '", "' '" )
         else:
             setRoleCmd( appName, roleName, "No", "No", "cnxreader", "cnxreadergroup" )
     elif roleName == "mail-user":
         # Mail User
         if cnxmail == "allauthenticated":
-            setRoleCmd( appName, roleName, "No", "Yes", "", "" )
+            setRoleCmd( appName, roleName, "No", "Yes", "' '", "' '" )
         else:
             setRoleCmd( appName, roleName, "No", "No", "cnxmail", "cnxmailgroup" )
     elif roleName == "everyone":
         # Public to yes
-        setRoleCmd( appName, roleName, "Yes", "No", "", "" )
-    elif roleName == "discussthis-user":
+        setRoleCmd( appName, roleName, "Yes", "No", "' '", "' '" )
+    elif roleName == "discussthis-user" or roleName == "Anonymous" :
         # Public to yes
-        setRoleCmd( appName, roleName, "Yes", "No", "", "" )
+        setRoleCmd( appName, roleName, "Yes", "No", "' '", "' '" )
+    elif roleName == "bss-provisioning-admin" or roleName == "client manager":
+        # Public to yes
+        setRoleCmd( appName, roleName, "No", "No", "' '", "' '" )
+    elif roleName == "authenticated" or roleName == "Authenticated" or roleName == "OAuthClient":
+        # Public to yes
+        setRoleCmd( appName, roleName, "No", "Yes", "' '", "' '" )
     elif roleName == "community-creator":
         # Community Creator
         if cnxmail == "allauthenticated":
-            setRoleCmd( appName, roleName, "No", "Yes", "", "" )
+            setRoleCmd( appName, roleName, "No", "Yes", "' '", "' '" )
         else:
             setRoleCmd( appName, roleName, "No", "No", "cnxcommunitycreator", "cnxcommunitycreatorgroup" )
     elif roleName == 'wiki-creator':
         # Wiki Creator
         if cnxmail == "allauthenticated":
-            setRoleCmd( appName, roleName, "No", "Yes", "", "" )
+            setRoleCmd( appName, roleName, "No", "Yes", "' '", "' '" )
         else:
             setRoleCmd( appName, roleName, "No", "No", "cnxwikicreator", "cnxwikicreatorgroup" )
     elif roleName == 'filesync-user':
         # Wiki Creator
         if cnxfilesyncuser == "allauthenticated":
-            setRoleCmd( appName, roleName, "No", "Yes", "", "" )
+            setRoleCmd( appName, roleName, "No", "Yes", "' '", "' '" )
         else:
             setRoleCmd( appName, roleName, "No", "No", "cnxfilesyncuser", "cnxfilesyncusergroup" )
-
+    else:
+        print "\n\nApplication " + appName + "- Role " + roleName + " not set!\n\n"
+            
 def convertRoles2Dict( appname, list ):
     # function to convert backup txt files of Security Role Backup to a dictionary
     # print '\tPATH: ' + path 
@@ -146,16 +160,18 @@ def convertRoles2Dict( appname, list ):
 
 apps = AdminApp.list()
 appsList = apps.splitlines()
+# only for testing single apps, uncomment following line:
+# appsList = ['fncs']
 
 for app in appsList:
     dictionary = convertRoles2Dict( app, AdminApp.view( app, "-MapRolesToUsers" ) ) 
+    print "\n\tApplication: " + app + "\n\n"
     # app, role
     for role in dictionary.keys():
         # Loop through Roles
-        try:
-            print "Setting role: " + role + " \t in " + app
-            setRole( app, role, connwasadmin,connadmin,connmoderators,connmetrics,connmobile,cnxmail,cnxreader,cnxcommunitycreator,cnxwikicreator,cnxfilesyncuser,connadmingroup,connmoderatorgroup,connmetricsgroup,connmobilegroup,cnxmailgroup,cnxreadergroup,cnxcommunitycreatorgroup,cnxwikicreatorgroup,cnxfilesyncusergroup )
-        except:
-            print "Error setting role: " + role + " in App: " + app
+        setRole( app, role, connwasadmin,connadmin,connmoderators,connmetrics,connmobile,cnxmail,cnxreader,cnxcommunitycreator,cnxwikicreator,cnxfilesyncuser,connadmingroup,connmoderatorgroup,connmetricsgroup,connmobilegroup,cnxmailgroup,cnxreadergroup,cnxcommunitycreatorgroup,cnxwikicreatorgroup,cnxfilesyncusergroup )
+        #except:
+        #    print "Error setting role: " + role + " in App: " + app
+    print "\tSaving Configuration (AdminConfig.save())"
     AdminConfig.save()
         

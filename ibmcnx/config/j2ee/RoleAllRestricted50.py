@@ -17,6 +17,7 @@
 #  You have to edit the variables and set them to your administrative Accounts
 
 #  History:
+#  2014-09-10    Christoph Stoettner    change the way for changing roles, 5.0 compatible
 
 import ibmcnx.functions
 import ConfigParser

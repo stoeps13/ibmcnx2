@@ -38,7 +38,7 @@ if answer.lower() in allowed_answer:
     connadmin = configParser.get( 'Generic','j2ee.cnxadmin' )
     connmoderators = configParser.get( 'Generic','j2ee.cnxmoderators' )
     connmetrics = configParser.get( 'Generic','j2ee.cnxmetrics' )
-    connmobile = configParser.get( 'Generic','j2eeconnmobile' )
+    connmobile = configParser.get( 'Generic','j2ee.connmobile' )
     # Variables for Groupmapping
     connadmingroup = configParser.get( 'Generic','j2ee.cnxadmingroup' )
     connmoderatorgroup = configParser.get( 'Generic','j2ee.cnxmoderatorgroup' )

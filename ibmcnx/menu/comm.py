@@ -3,7 +3,7 @@
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
+#  Documentation: http://scripting101.org
 #
 #  Version:       2.0
 #  Date:          2014-06-04
@@ -39,6 +39,9 @@ def cnxFilesPolicies():
 
 def cnxLibraryPolicies():
     execfile( 'ibmcnx/cnx/LibraryPolicies.py', globdict )
+    
+def cnxLibraryLarge():
+    execfile( 'ibmcnx/cnx/LibraryListLarge.py', globdict )
 
 def cnxLibrarySizes():
     execfile( 'ibmcnx/cnx/LibrarySizes.py', globdict )
@@ -48,6 +51,7 @@ comm.AddItem( 'Update VersionStamp (ibmcnx/cnx/VersionStamp.py)', cnxFilesVersio
 comm.AddItem( 'Work with Files Policies (ibmcnx/cnx/FilesPolicies.py)', cnxFilesPolicies )
 comm.AddItem( 'Work with Libraries (ibmcnx/cnx/LibraryPolicies.py)', cnxLibraryPolicies )
 comm.AddItem( 'Show Library Sizes (ibmcnx/cnx/LibrarySizes.py)', cnxLibrarySizes )
+comm.AddItem( 'List Libraries with more than 80% Used Space (ibmcnx/cnx/LibrarySizes.py)', cnxLibraryLarge )
 comm.AddItem( 'Reparent/Move Communities (ibmcnx/cnx/CommunitiesReparenting.py)', cnxCommunitiesReparenting )
 comm.AddItem( 'Back to Main Menu (ibmcnx/menu/cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 comm.AddItem( "Exit", ibmcnx.functions.bye )

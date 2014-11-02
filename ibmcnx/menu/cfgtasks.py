@@ -3,7 +3,7 @@
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
+#  Documentation: http://scripting101.org
 #
 #  Version:       2.0
 #  Date:          2014-06-04
@@ -40,8 +40,10 @@ cfg.AddItem( 'Set J2EE Role for Metrics Report Run (ibmcnx/config/J2EERoleMetric
 cfg.AddItem( 'Set J2EE Role for SocialMail (ibmcnx/config/J2EERoleSocialMail)', ibmcnx.functions.cfgJ2EERoleSocialMail )
 cfg.AddItem( 'Configure JVM Heap Sizes (ibmcnx/config/JVMHeap.py)', ibmcnx.functions.cfgJVMHeap )
 cfg.AddItem( 'Configure SystemOut/Err Log Size (ibmcnx/config/LogFiles.py)', ibmcnx.functions.cfgLogFiles )
+cfg.AddItem( 'Configure Log Language to english (ibmcnx/config/JVMLanguage.py)', ibmcnx.functions.cfgJVMLanguage )
 cfg.AddItem( 'Configure Monitoring Policy (ibmcnx/config/MonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
+cfg.AddItem( 'Change database server and port (ibmcnx/config/ChgDBHost.py)', ibmcnx.functions.cfgChgDBHost )
 cfg.AddItem( 'Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)', ibmcnx.functions.cfgClusterMembers )
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )

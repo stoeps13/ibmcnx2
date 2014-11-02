@@ -3,7 +3,7 @@
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
+#  Documentation: http://scripting101.org
 #
 #  Version:       2.0
 #  Date:          2014-06-04
@@ -114,11 +114,17 @@ def cfgLogFiles():
 def cfgMonitoringPolicy():
     execfile( 'ibmcnx/config/MonitoringPolicy.py' )
 
+def cfgJVMLanguage():
+    execfile( 'ibmcnx/config/JVMLanguage.py' )
+    
 def cfgJVMCustProp():
     execfile( 'ibmcnx/config/JVMCustProp.py' )
 
 def cfgClusterMembers():
     execfile( 'ibmcnx/config/addNode.py' )
+    
+def cfgChgDBHost():
+    execfile( 'ibmcnx/config/ChgDBHost.py' )
     
 def checkAppStatus():
     execfile( 'ibmcnx/check/AppStatus.py' )

@@ -1,42 +1,58 @@
 ######
-#  Check ExId (GUID) by Email through JDBC
+#  Documentation of DataSources
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
+#  Documentation: http://scripting101.org
 #
 #  Version:       2.0
-#  Date:          2014-06-04
+#  Date:          2014-11-01
 #
 #  License:       Apache 2.0
 #
-#  Check ExId of a User in all Connections Applications
-
-# TODO: Script is not functional in the moment, need a function to get the properties of all datasources
+#  Important DataSource Parameters
 
 import ibmcnx.functions
 
-cell = AdminControl.getCell()
-cellname = "/Cell:" + cell + "/"
+# Get a list of all DataSources
+datasources = AdminConfig.list('DataSource', AdminConfig.getid( '/Cell:'+AdminControl.getCell()+'/' )).splitlines()
+# new list for database names
+dbList = []
 
-# Get a list of all databases except DefaultEJBTimerDataSource and OTiSDataSource
-dbs = AdminConfig.list('DataSource',AdminConfig.getid(cellname)).splitlines()
-dsidlist = []
-# remove unwanted databases
-for db in dbs:
-    dbname = db.split('(')
-    n = 0
-    for i in dbname:
-        # i is only the name of the DataSource, db is DataSource ID!
-        if n == 0 and i != "DefaultEJBTimerDataSource" and i != 'OTiSDataSource':
-            dsidlist.append(str(db).replace('"',''))
-        n += 1
+def multiply_tabs(sth, size):
+    return ''.join(["%s" % sth for s in xrange(size)])
 
-dsidlist.sort()
+for datasource in datasources:
+    # split DataSource and DataSource ID
+    datasource = datasource.split('(')
+    ds = datasource[0]
+    # Remove Default Datasources
+    if ( ds != 'DefaultEJBTimerDataSource' ) and ( ds != 'OTiSDataSource' ):
+        # check for " (e.g. "oauth provider)
+        if ( len(ds.split('"')) > 1):
+            ds = ds.split('"')[1]
+        # write datasouce to database list
+        dbList.append( ds )
+dbList.sort()
 
-for dsid in dsidlist:
-    print dsid
-    #propertySet = AdminConfig.showAttribute(dsid,"propertySet")
-    #print propertySet
-    #propertyList = AdminConfig.list("J2EEResourceProperty", propertySet).splitlines()
-    #print propertyList
+parameterList = ['currentSchema','databaseName','driverType','portNumber','resultSetHoldability','serverName']
+
+for count in range(len(dbList)):
+    db = dbList[count]
+    # Loop through all databases in our dictionary
+    print '\n\tDataSource parameters of: ' + db.upper()
+    try:
+        # get the id of the datasource
+        dsid = ibmcnx.functions.getDSId( db )
+        properties = AdminConfig.list('J2EEResourceProperty', dsid).splitlines()
+
+        for prop in properties:
+            propName = AdminConfig.showAttribute(prop, 'name')
+            for para in parameterList:
+                if (propName == para):
+                    print '\t\t' + propName,
+                    print str(multiply_tabs( ' ', 25 - len(propName) )),
+                    print AdminConfig.showAttribute(prop,'value')
+
+    except:
+        print ' - ERROR'

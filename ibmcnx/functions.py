@@ -116,16 +116,16 @@ def cfgMonitoringPolicy():
 
 def cfgJVMLanguage():
     execfile( 'ibmcnx/config/JVMLanguage.py' )
-    
+
 def cfgJVMCustProp():
     execfile( 'ibmcnx/config/JVMCustProp.py' )
 
 def cfgClusterMembers():
     execfile( 'ibmcnx/config/addNode.py' )
-    
+
 def cfgChgDBHost():
     execfile( 'ibmcnx/config/ChgDBHost.py' )
-    
+
 def checkAppStatus():
     execfile( 'ibmcnx/check/AppStatus.py' )
 
@@ -134,22 +134,25 @@ def checkDataSource():
 
 def docJVMHeap():
     execfile( 'ibmcnx/doc/JVMHeap.py' )
-    
+
 def docJVMSettings():
     execfile( 'ibmcnx/doc/JVMSettings.py' )
-    
+
 def docLogFiles():
     execfile( 'ibmcnx/doc/LogFiles.py' )
 
 def docPorts():
     execfile( 'ibmcnx/doc/Ports.py' )
 
+def docDataSources():
+    execfile( 'ibmcnx/doc/DataSources.py' )
+
 def docVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
-    
+
 def docj2eeroles():
     execfile( 'ibmcnx/doc/j2eeroles.py' )
-    
+
 def cnxBackToMainMenu():
     execfile( 'ibmcnx/menu/cnxmenu.py' )
 

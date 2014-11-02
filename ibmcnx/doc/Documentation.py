@@ -20,7 +20,6 @@
 import sys
 import os.path
 
-# execfile( "ibmcnx/loadCnxApps.py" ) 
 filename = raw_input( 'Path and Filename to Documentation file: ' )
 
 if (os.path.isfile( filename )):
@@ -50,3 +49,5 @@ execfile( 'ibmcnx/doc/LogFiles.py' )
 print '# WebSphere Variables'
 execfile( 'ibmcnx/doc/Variables.py' )
 
+print '# DataSources and parameters'
+execfile( 'ibmcnx/doc/DataSources.py' )

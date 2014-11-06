@@ -82,12 +82,12 @@ def saveChanges():
     if (AdminConfig.hasChanges()):
         answer_save = raw_input( 'Do you really want to save these changes? ')
         allowed_answer_save = ['yes', 'y', 'ja', 'j']
-        if answer.lower() in allowed_answer_save:
+        if answer_save.lower() in allowed_answer_save:
             print "\n\nSaving changes!\n"
             AdminConfig.save()
             answer_sync = raw_input( 'Do you want to synchronize all Nodes? ' )
             allowed_answer_sync = ['yes', 'y', 'ja', 'j']
-            if answer.lower() in allowed_answer_sync:
+            if answer_sync.lower() in allowed_answer_sync:
                 print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
                 synchAllNodes()
             else:

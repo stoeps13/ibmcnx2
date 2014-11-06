@@ -83,7 +83,7 @@ def saveChanges():
         print "\n\nSaving changes!\n"
         AdminConfig.save()
         print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
-        ibmcnx.functions.synchAllNodes()
+        synchAllNodes()
     else:
         print 'Nothing to save!'
 

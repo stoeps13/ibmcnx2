@@ -59,12 +59,6 @@ if answer.lower() in allowed_answer:
             print ' - successfully set!'
         except:
             print ' - ERROR'  
-    if (AdminConfig.hasChanges()):
-        print "\n\nSaving changes!\n"
-        AdminConfig.save()
-        print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
-        ibmcnx.functions.synchAllNodes()
-    else:
-        print 'Nothing to save!'
+    ibmcnx.functions.saveChanges()
 else:
     print '\t\tNothing changed! '

@@ -95,4 +95,4 @@ for cluster in clusterlist:
     print '\tServer ' + servername + ' will be created: '
     AdminTask.createClusterMember( '[-clusterName ' + cluster + ' -memberConfig [-memberNode ' + nodename + ' -memberName ' + servername + ' -memberWeight 2 -genUniquePorts true -replicatorEntry false]]' )
     print '\tServer ' + servername + ' created!'
-AdminConfig.save()
+ibmcnx.functions.saveChanges()

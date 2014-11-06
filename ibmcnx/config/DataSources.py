@@ -67,7 +67,7 @@ if answer.lower() in allowed_answer:
         except:
             print '\tError can\'t set Performance parameter for' + db.upper() + '!'
     print "Saving changes!"
-    AdminConfig.save()
+    ibmcnx.functions.saveChanges()
 
 else:
     print '\t\tNothing changed! '

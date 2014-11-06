@@ -32,4 +32,4 @@ for count in range(WS1.serverNum):
         print 'Setting JVM Custom Property'
         AdminConfig.create('Property', jvm, '[[validationExpression ""] [name "com.ibm.ws.cache.CacheConfig.filteredStatusCodes"] [description "Added for js load issue 2014-3-17"] [value "304 404 500 502"] [required "false"]]')
 
-AdminConfig.save()
+ibmcnx.functions.saveChanges()

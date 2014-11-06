@@ -38,7 +38,5 @@ for server in servers:
     monitoringPolicy = AdminConfig.list( "MonitoringPolicy", server )
     AdminConfig.modify( monitoringPolicy, '[[nodeRestartState ' + state.upper() + ']]' )
 
-AdminConfig.save()
+ibmcnx.functions.saveChanges()
 
-print "Synchronizing Nodes"
-ibmcnx.functions.synchAllNodes()

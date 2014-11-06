@@ -56,5 +56,5 @@ for server in servers:
         print "Error on setting Log File Size"
 
 # Save Configuration
-AdminConfig.save()
+ibmcnx.functions.saveChanges()
 print '\n\n'

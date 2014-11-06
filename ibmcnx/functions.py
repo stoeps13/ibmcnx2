@@ -77,6 +77,16 @@ def synchAllNodes():
 
     print ""
 
+# Function to save changes only when necessary
+def saveChanges():
+    if (AdminConfig.hasChanges()):
+        print "\n\nSaving changes!\n"
+        AdminConfig.save()
+        print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
+        ibmcnx.functions.synchAllNodes()
+    else:
+        print 'Nothing to save!'
+
 # Menu Functions
 def cfgDataSource():
     execfile( "ibmcnx/config/DataSources.py" )

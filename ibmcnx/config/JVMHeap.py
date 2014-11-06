@@ -42,4 +42,4 @@ for count in range(WS1.serverNum):
     AdminConfig.modify( jvm, maxHeap )
     print ''
 
-AdminConfig.save()
+ibmcnx.functions.saveChanges()

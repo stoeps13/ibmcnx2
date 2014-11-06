@@ -48,10 +48,4 @@ for count in range(WS1.serverNum):
     AdminTask.setGenericJVMArguments("[-nodeName " + node + " -serverName " + servername + " -genericJvmArguments '" + newJvmArgs +"']")
 
 	
-if (AdminConfig.hasChanges()):
-    print "\n\nSaving changes!\n"
-    AdminConfig.save()
-    print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
-    ibmcnx.functions.synchAllNodes()
-else:
-    print 'Nothing to save!'
+ibmcnx.functions.saveChanges()

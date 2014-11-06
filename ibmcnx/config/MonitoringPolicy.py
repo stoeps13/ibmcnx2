@@ -39,4 +39,3 @@ for server in servers:
     AdminConfig.modify( monitoringPolicy, '[[nodeRestartState ' + state.upper() + ']]' )
 
 ibmcnx.functions.saveChanges()
-

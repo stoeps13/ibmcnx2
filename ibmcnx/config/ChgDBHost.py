@@ -10,7 +10,7 @@
 #
 #  License:       Apache 2.0
 #
-#  This scripts creates a list of all databases in scope Cell and changes 
+#  This scripts creates a list of all databases in scope Cell and changes
 #  the db host and port value
 
 import ibmcnx.functions
@@ -38,7 +38,7 @@ for datasource in datasources:
             ds = ds.split('"')[1]
         # write datasouce to database list
         dbList.append( ds )
-dbList.sort()        
+dbList.sort()
 
 if answer.lower() in allowed_answer:
     for count in range(len(dbList)):
@@ -51,14 +51,14 @@ if answer.lower() in allowed_answer:
             properties = AdminConfig.list('J2EEResourceProperty', dsid).splitlines()
             # Change dbHost and dbPort
             for prop in properties:
-                propName = AdminConfig.showAttribute(prop, 'name') 
+                propName = AdminConfig.showAttribute(prop, 'name')
                 if (propName == "serverName"):
                     AdminConfig.modify(prop,'[[value ' + newDBHost + ']]')
                 elif (propName == "portNumber"):
                     AdminConfig.modify(prop,'[[value ' + newDBPort + ']]')
             print ' - successfully set!'
         except:
-            print ' - ERROR'  
+            print ' - ERROR'
     ibmcnx.functions.saveChanges()
 else:
     print '\t\tNothing changed! '

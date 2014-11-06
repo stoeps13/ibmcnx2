@@ -15,7 +15,7 @@
 import ConfigParser
 import ibmcnx.functions
 
-try: 
+try:
     configParser = ConfigParser.ConfigParser()
     configFilePath = r'ibmcnx/ibmcnx.properties'
     configParser.read(configFilePath)

@@ -11,6 +11,8 @@
 #  License:       Apache 2.0
 #
 
+import ibmcnx.functions
+
 def selectNode( nodelist ):
     result = nodelist
     counter = len( result )
@@ -22,7 +24,7 @@ def selectNode( nodelist ):
     print '\n\tAvailable Nodes:'
     for i in range( len( result ) ):
         # Remove DMGR Node from List, not working jython has problems here
-        # if "CellManager" not in result[i]: 
+        # if "CellManager" not in result[i]:
         #    print '\t' + str( i ) + '\t' + result[i]
         print '\t' + str( i ) + '\t' + result[i]
         i += 1
@@ -72,7 +74,7 @@ def selectCluster( clusterlist ):
                 continue
         elif cluster_number == 'x':
             go_on = 'TRUE'
-            
+
     return ( clusterselected )
 
 cell = AdminControl.getCell()

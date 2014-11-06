@@ -17,6 +17,8 @@
 # 20140225  Christoph Stoettner     Initial Version
 # 20140406  Christoph Stoettner     Bugfixing Version
 
+import ibmcnx.functions
+
 def printMenu():
     state = ''
     while state != ( 'ENABLE' or 'DISABLE' or 'EXIT' ):

@@ -20,6 +20,8 @@
 #  20140324  Christoph Stoettner     Changed all reader roles to "All authenticated", Ajax proxy security is configured with this role!
 #  20140716	 Christoph Stoettner     Set the script to only change reader role
 
+import ibmcnx.functions
+
 apps = AdminApp.list()
 appsList = apps.splitlines()
 for app in appsList:
@@ -29,5 +31,3 @@ for app in appsList:
         ibmcnx.functions.saveChanges()
     except:
         print "No Reader Role in %s" % app.upper()
-
-

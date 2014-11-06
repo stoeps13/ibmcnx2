@@ -31,7 +31,7 @@ for count in range(WS1.serverNum):
     cell = WS1.cell[count]
     node = WS1.node[count]
     servername = WS1.serverName[count]
-    
+
     jvmArgs = AdminTask.showJVMProperties(['-serverName', servername, '-nodeName', node, '-propertyName', 'genericJvmArguments'])
     jvmArgs = jvmArgs.replace('  ',' ').replace('  ',' ').lstrip().rstrip().split(' ')
     tmpArgs = []
@@ -47,5 +47,5 @@ for count in range(WS1.serverNum):
     print "Adding " + property + " to " + servername
     AdminTask.setGenericJVMArguments("[-nodeName " + node + " -serverName " + servername + " -genericJvmArguments '" + newJvmArgs +"']")
 
-	
+
 ibmcnx.functions.saveChanges()

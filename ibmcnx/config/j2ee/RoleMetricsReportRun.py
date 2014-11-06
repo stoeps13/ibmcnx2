@@ -68,7 +68,6 @@ def printMenu():
             print "Setting Role for " + app
             AdminApp.edit( app, '[-MapRolesToUsers [["' + roleName + '" ' + role_auth + ' "' + role_users + '" "' + role_groups + '" ]]]' )
 
-        AdminConfig.save()
-
+        ibmcnx.functions.saveChanges()
 
 printMenu()

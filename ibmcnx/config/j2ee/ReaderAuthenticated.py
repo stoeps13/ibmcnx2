@@ -14,7 +14,7 @@
 #
 #  Description:
 #  Script is tested with IBM Connections 5
-# 
+#
 #  History:
 #  20131124  Christoph Stoettner     Update with loop and try/except to handle errors, added group support
 #  20140324  Christoph Stoettner     Changed all reader roles to "All authenticated", Ajax proxy security is configured with this role!
@@ -26,8 +26,8 @@ for app in appsList:
     print "Setting Reader Role to Authenticated for %s" % app.upper()
     try:
         AdminApp.edit( app, '[-MapRolesToUsers [["reader" No Yes "" ""] ]]' )
-		AdminConfig.save()
+        ibmcnx.functions.saveChanges()
     except:
         print "No Reader Role in %s" % app.upper()
 
-	
+

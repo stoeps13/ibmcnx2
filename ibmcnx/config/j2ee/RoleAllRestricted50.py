@@ -70,7 +70,7 @@ def setRoleCmd( appName, roleName, everyone, authenticated, users, groups ):
     # function to set the j2ee role of a Connections Application
     # Values needed appName = Application Name, roleName = Name of the role
     # everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
-    # 
+    #
     print "\n\tApplication: " + appName
     print "\tRole: " + roleName
     print "\n\tEveryone: " + everyone
@@ -79,7 +79,7 @@ def setRoleCmd( appName, roleName, everyone, authenticated, users, groups ):
     print "\tGroups: " + groups + "\n"
     AdminApp.edit( appName, '[-MapRolesToUsers [[ "' + roleName + '" ' + everyone + ' ' + authenticated + ' ' + users + ' ' + groups + ' ]] ]' )
     # example: AdminApp.edit( "Blogs", '[-MapRolesToUsers [["person" No Yes "" ""] ]]' )
-    
+
 def setRole( appName, roleName, connwasadmin,connadmin,connmoderators,connmetrics,connmobile,cnxmail,cnxreader,cnxcommunitycreator,cnxwikicreator,cnxfilesyncuser,connadmingroup,connmoderatorgroup,connmetricsgroup,connmobilegroup,cnxmailgroup,cnxreadergroup,cnxcommunitycreatorgroup,cnxwikicreatorgroup,cnxfilesyncusergroup):
     if roleName == "admin" or roleName == "search-admin" or roleName == "widget-admin" or roleName == "dsx-admin" or roleName == "trustedExternalApplication" or roleName == 'org-admin' or roleName == 'orgadmin':
         # Administration Roles
@@ -137,10 +137,10 @@ def setRole( appName, roleName, connwasadmin,connadmin,connmoderators,connmetric
             setRoleCmd( appName, roleName, "No", "No", "cnxfilesyncuser", "cnxfilesyncusergroup" )
     else:
         print "\n\nApplication " + appName + "- Role " + roleName + " not set!\n\n"
-            
+
 def convertRoles2Dict( appname, list ):
     # function to convert backup txt files of Security Role Backup to a dictionary
-    # print '\tPATH: ' + path 
+    # print '\tPATH: ' + path
     count = 0
     dict = {}
 
@@ -165,7 +165,7 @@ appsList = apps.splitlines()
 # appsList = ['fncs']
 
 for app in appsList:
-    dictionary = convertRoles2Dict( app, AdminApp.view( app, "-MapRolesToUsers" ) ) 
+    dictionary = convertRoles2Dict( app, AdminApp.view( app, "-MapRolesToUsers" ) )
     print "\n\tApplication: " + app + "\n\n"
     # app, role
     for role in dictionary.keys():
@@ -174,5 +174,4 @@ for app in appsList:
         #except:
         #    print "Error setting role: " + role + " in App: " + app
     print "\tSaving Configuration (AdminConfig.save())"
-    AdminConfig.save()
-        
+    ibmcnx.functions.saveChanges()

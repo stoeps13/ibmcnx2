@@ -113,4 +113,4 @@ for app in appsList:
     except:
         print "Error occured on setting security roles for %s" % app.upper()
 
-AdminConfig.save()
+ibmcnx.functions.saveChanges()

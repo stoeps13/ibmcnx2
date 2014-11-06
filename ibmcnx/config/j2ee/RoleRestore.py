@@ -57,7 +57,7 @@ def setSecurityRoles( dictionary, appName ):
     strRoleChange += ']]'
     AdminApp.edit( appName, '[-MapRolesToUsers' + strRoleChange + ']' )
     print "Setting Roles and Users for %s" % appName
-    AdminConfig.save()
+    ibmcnx.functions.saveChanges()
 
 apps = AdminApp.list()
 appsList = apps.splitlines()

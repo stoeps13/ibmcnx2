@@ -45,6 +45,7 @@ cfg.AddItem( 'Configure Monitoring Policy (ibmcnx/config/MonitoringPolicy.py)', 
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
 cfg.AddItem( 'Change database server and port (ibmcnx/config/ChgDBHost.py)', ibmcnx.functions.cfgChgDBHost )
 cfg.AddItem( 'Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)', ibmcnx.functions.cfgClusterMembers )
+cfg.AddItem( 'Synchronize all Nodes', ibmcnx.functions.synchAllNodes() )
 cfg.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 cfg.AddItem( "Exit", ibmcnx.functions.bye )
 

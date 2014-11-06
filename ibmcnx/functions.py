@@ -80,10 +80,20 @@ def synchAllNodes():
 # Function to save changes only when necessary
 def saveChanges():
     if (AdminConfig.hasChanges()):
-        print "\n\nSaving changes!\n"
-        AdminConfig.save()
-        print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
-        synchAllNodes()
+        answer_save = raw_input( 'Do you really want to save these changes? ')
+        allowed_answer_save = ['yes', 'y', 'ja', 'j']
+        if answer.lower() in allowed_answer_save:
+            print "\n\nSaving changes!\n"
+            AdminConfig.save()
+            answer_sync = raw_input( 'Do you want to synchronize all Nodes? ' )
+            allowed_answer_sync = ['yes', 'y', 'ja', 'j']
+            if answer.lower() in allowed_answer_sync:
+                print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
+                synchAllNodes()
+            else:
+                print "Please remember to sync your Nodes after ending your session! "
+        else:
+            print "\nYour changes will not be saved!\n"
     else:
         print 'Nothing to save!'
 

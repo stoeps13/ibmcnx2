@@ -27,6 +27,9 @@ globdict = globals()
 def cnxmenu_cfgtasks():
     execfile( 'ibmcnx/menu/cfgtasks.py', globdict )
 
+def cnxmenu_cfgj2eetasks():
+    execfile( 'ibmcnx/menu/cfgj2eetasks.py', globdict )
+    
 def cnxmenu_useradmin():
     execfile( 'ibmcnx/menu/useradmin.py', globdict )
 
@@ -44,6 +47,7 @@ def cnxBackToMainMenu():
 
 m = ibmcnx.menu.MenuClass.cnxMenu()
 m.AddItem( 'Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks )
+m.AddItem( 'Menu - IBM Connections Security Roles Tasks', cnxmenu_cfgj2eetasks )
 m.AddItem( 'Menu - IBM Connections Check Tasks', cnxmenu_checks )
 m.AddItem( 'Menu - IBM Connections User Admin Tasks', cnxmenu_useradmin )
 m.AddItem( 'Menu - IBM Connections Admin Tasks', cnxmenu_comm )

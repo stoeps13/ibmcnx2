@@ -14,6 +14,7 @@
 
 import os
 import sys
+import ConfigParser
 
 # Function to get the DataSource ID
 def getDSId( dbName ):
@@ -85,17 +86,44 @@ def saveChanges():
         if answer_save.lower() in allowed_answer_save:
             print "\n\nSaving changes!\n"
             AdminConfig.save()
-            answer_sync = raw_input( 'Do you want to synchronize all Nodes? ' )
-            allowed_answer_sync = ['yes', 'y', 'ja', 'j']
-            if answer_sync.lower() in allowed_answer_sync:
+
+            # Synchronize Nodes after Save
+            configParser = ConfigParser.ConfigParser()
+            configFilePath = r'ibmcnx/ibmcnx.properties'
+            configParser.read( configFilePath )
+            try:
+                autoSyncStatus = configParser.get( 'WebSphere', 'was.autosync' )
+            except:
+                autoSyncStatus = ''
+            print "autoSyncStatus: " + autoSyncStatus
+            if ( autoSyncStatus == 'true' ):
                 print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
                 synchAllNodes()
+            elif ( autoSyncStatus == 'false' ):
+                "Please remember to sync your Nodes after ending your session! "
             else:
-                print "Please remember to sync your Nodes after ending your session! "
+                answer_sync = raw_input( 'Do you want to synchronize all Nodes? ' )
+                allowed_answer_sync = ['yes', 'y', 'ja', 'j']
+                if answer_sync.lower() in allowed_answer_sync:
+                    print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
+                    synchAllNodes()
+                else:
+                    print "Please remember to sync your Nodes after ending your session! "
         else:
             print "\nYour changes will not be saved!\n"
     else:
         print 'Nothing to save!'
+
+# Get temporary directory from properties file
+def tempPath():
+    configParser = ConfigParser.ConfigParser()
+    configFilePath = r'ibmcnx/ibmcnx.properties'
+    configParser.read( configFilePath )
+    try:
+        temppath = configParser.get( 'WebSphere','was.temppath' )
+    except:
+        temppath = ''
+    return temppath
 
 # Menu Functions
 def cfgDataSource():

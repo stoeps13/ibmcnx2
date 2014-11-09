@@ -173,5 +173,5 @@ for app in appsList:
         setRole( app, role, connwasadmin,connadmin,connmoderators,connmetrics,connmobile,cnxmail,cnxreader,cnxcommunitycreator,cnxwikicreator,cnxfilesyncuser,connadmingroup,connmoderatorgroup,connmetricsgroup,connmobilegroup,cnxmailgroup,cnxreadergroup,cnxcommunitycreatorgroup,cnxwikicreatorgroup,cnxfilesyncusergroup )
         #except:
         #    print "Error setting role: " + role + " in App: " + app
-    print "\tSaving Configuration (AdminConfig.save())"
-    ibmcnx.functions.saveChanges()
+
+ibmcnx.functions.saveChanges()

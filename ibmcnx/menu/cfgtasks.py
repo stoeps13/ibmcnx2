@@ -29,7 +29,7 @@ global globdict
 globdict = globals()
 
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
-cfg.AddItem( "Configure DataSources (ibmcnx/config/DataSource.py)", ibmcnx.functions.cfgDataSource )
+cfg.AddItem( 'Configure DataSources (ibmcnx/config/DataSource.py)', ibmcnx.functions.cfgDataSource )
 cfg.AddItem( 'Configure JVM Heap Sizes (ibmcnx/config/JVMHeap.py)', ibmcnx.functions.cfgJVMHeap )
 cfg.AddItem( 'Configure SystemOut/Err Log Size (ibmcnx/config/LogFiles.py)', ibmcnx.functions.cfgLogFiles )
 cfg.AddItem( 'Configure Log Language to english (ibmcnx/config/JVMLanguage.py)', ibmcnx.functions.cfgJVMLanguage )
@@ -60,7 +60,7 @@ while state_cfg == 'True':
                 n = int ( raw_input( inputstring ) )
 
                 if n <= ( count ) and n > 0:
-				    is_valid_cfg = 1    #  # set it to 1 to validate input and to terminate the while..not loop
+                    is_valid_cfg = 1    #  # set it to 1 to validate input and to terminate the while..not loop
                 else:
                     print ( "'%s' is not a valid menu option." ) % n
         except ValueError, e :

@@ -126,79 +126,79 @@ def tempPath():
     return temppath
 
 # Menu Functions
-def cfgDataSource( value ):
+def cfgDataSource():
     execfile( "ibmcnx/config/DataSources.py" )
 
-def cfgJ2EERoleBackup( value ):
+def cfgJ2EERoleBackup():
     execfile( "ibmcnx/config/j2ee/RoleBackup.py" )
 
-def cfgJ2EERoleRestore( value ):
+def cfgJ2EERoleRestore():
     execfile( "ibmcnx/config/j2ee/RoleRestore.py" )
 
-def cfgJ2EERolesRestricted( value ):
+def cfgJ2EERolesRestricted():
     execfile( "ibmcnx/config/j2ee/RoleAllRestricted.py" )
 
-def cfgJ2EERolesUnrestricted( value ):
+def cfgJ2EERolesUnrestricted():
     execfile( "ibmcnx/config/j2ee/RoleAllUnrestricted.py" )
 
-def cfgJ2EERoleGlobalModerator( value ):
+def cfgJ2EERoleGlobalModerator():
     execfile( "ibmcnx/config/j2ee/RoleGlobalMod.py" )
 
-def cfgJ2EERoleMetricsReader( value ):
+def cfgJ2EERoleMetricsReader():
     execfile( "ibmcnx/config/j2ee/RoleMetricsReader.py" )
 
-def cfgJ2EERoleMetricsReportRun( value ):
+def cfgJ2EERoleMetricsReportRun():
     execfile( "ibmcnx/config/j2ee/RoleMetricsReportRun.py" )
 
-def cfgJ2EERoleSocialMail( value ):
+def cfgJ2EERoleSocialMail():
     execfile( "ibmcnx/config/j2ee/RoleSocialMail.py" )
 
-def cfgJVMHeap( value ):
+def cfgJVMHeap():
     execfile( "ibmcnx/config/JVMHeap.py" )
 
-def cfgLogFiles( value ):
+def cfgLogFiles():
     execfile( "ibmcnx/config/LogFiles.py" )
 
-def cfgMonitoringPolicy( value ):
+def cfgMonitoringPolicy():
     execfile( 'ibmcnx/config/MonitoringPolicy.py' )
 
-def cfgJVMLanguage( value ):
+def cfgJVMLanguage():
     execfile( 'ibmcnx/config/JVMLanguage.py' )
 
-def cfgJVMCustProp( value ):
+def cfgJVMCustProp():
     execfile( 'ibmcnx/config/JVMCustProp.py' )
 
-def cfgClusterMembers( value ):
+def cfgClusterMembers():
     execfile( 'ibmcnx/config/addNode.py' )
 
-def cfgChgDBHost( value ):
+def cfgChgDBHost():
     execfile( 'ibmcnx/config/ChgDBHost.py' )
 
-def checkAppStatus( value ):
+def checkAppStatus():
     execfile( 'ibmcnx/check/AppStatus.py' )
 
-def checkDataSource( value ):
+def checkDataSource():
     execfile( 'ibmcnx/check/DataSource.py' )
 
-def docJVMHeap( value ):
+def docJVMHeap():
     execfile( 'ibmcnx/doc/JVMHeap.py' )
 
-def docJVMSettings( value ):
+def docJVMSettings():
     execfile( 'ibmcnx/doc/JVMSettings.py' )
 
-def docLogFiles( value ):
+def docLogFiles():
     execfile( 'ibmcnx/doc/LogFiles.py' )
 
-def docPorts( value ):
+def docPorts():
     execfile( 'ibmcnx/doc/Ports.py' )
 
-def docDataSources( value ):
+def docDataSources():
     execfile( 'ibmcnx/doc/DataSources.py' )
 
-def docVariables( value ):
+def docVariables():
     execfile( 'ibmcnx/doc/Variables.py' )
 
-def docj2eeroles( value ):
+def docj2eeroles():
     execfile( 'ibmcnx/doc/j2eeroles.py' )
 
 def cnxBackToMainMenu():

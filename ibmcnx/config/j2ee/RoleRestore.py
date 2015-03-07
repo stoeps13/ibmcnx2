@@ -16,12 +16,14 @@
 # 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
 #                               Added error handling & summary output
 #                               Moved saveChanges to end of script instead of "after each app"
+#                               Added error handling for WAS errors
 #                               
 
 
 import os
 import sys
 import ibmcnx.functions
+import com.ibm.ws.scripting.ScriptingException
 
 # Restore Security Role from Textfile (created with RoleBackup.py)
 
@@ -85,7 +87,11 @@ if sure.lower() in allowed_answer:
             restoreOK.append(app)
         except IOError, e:
             restoreERROR[app] = e
-
+        except com.ibm.ws.scripting.ScriptingException, e:
+            restoreERROR[app] = e
+        except:
+            restoreERROR[app] = "Uncought error: " + sys.exc_info()[0]
+    
     ibmcnx.functions.saveChanges()  # just once for all apps
 
     print "\nSecurity Role restore went OK for:"

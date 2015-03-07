@@ -4,9 +4,11 @@
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
+# 
+#  Modifications: Martin Leyrer, leyrer@gmail.com
 #
-#  Version:       2.0
-#  Date:          2014-09-10
+#  Version:       2.1
+#  Date:          2015-03-07
 #
 #  License:       Apache 2.0
 #
@@ -14,8 +16,10 @@
 execfile( "filesAdmin.py" )
 
 import sys
+from java.util import HashMap
 
 noresult = 0
+maxresults = 250
 
 def askLibraryType():
     #  Check if Community or Personal Libraries should be searched
@@ -42,11 +46,23 @@ def askLibraryType():
         except ValueError, e :
                 print ( "'%s' is not valid." % e.args[0].split( ": " )[1] )
 
+def getLibraryList( libType ):
+    pagecount = 1
+    if libType == 'p':
+        libList = FilesLibraryService.browsePersonal( "title", "true", pagecount, maxresults )
+    elif libType == 'c':
+        libList = FilesLibraryService.browseCommunity( "title", "true", pagecount, maxresults )
+    else:
+        print ( 'Not a valid library Type!' )
+    return libList
+
 def searchLibrary( libType ):
     if libType == 'p':
         libNameAsk = 'Which User you want to search? (min 1 character): '
         libNameAnswer = raw_input( libNameAsk )
-        result = FilesUtilService.filterListByString( FilesLibraryService.browsePersonal( "title", "true", 1, 250 ), "title", ".*" + libNameAnswer + ".*" )
+        # result = FilesUtilService.filterListByString( FilesLibraryService.browsePersonal( "title", "true", 1, 250 ), "title", ".*" + libNameAnswer + ".*" )
+        result = FilesUtilService.filterListByString( getLibraryList(libType) , "title", ".*" + libNameAnswer + ".*" )
+        print "und gefiltert"
         return result
 
     elif libType == 'c':

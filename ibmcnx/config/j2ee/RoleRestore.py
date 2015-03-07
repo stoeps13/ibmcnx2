@@ -15,6 +15,7 @@
 # History:
 # 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
 #                               Added error handling & summary output
+#                               Moved saveChanges to end of script instead of "after each app"
 #                               
 
 
@@ -63,7 +64,7 @@ def setSecurityRoles( dictionary, appName ):
     strRoleChange += ']]'
     print "Setting Roles and Users for %s" % appName
     AdminApp.edit( appName, '[-MapRolesToUsers' + strRoleChange + ']' )
-    ibmcnx.functions.saveChanges()
+
 
 apps = AdminApp.list()
 appsList = apps.splitlines()
@@ -85,11 +86,13 @@ if sure.lower() in allowed_answer:
         except IOError, e:
             restoreERROR[app] = e
 
+    ibmcnx.functions.saveChanges()  # just once for all apps
+
     print "\nSecurity Role restore went OK for:"
     for app in restoreOK:
         print "\t%s" % app
     if(len(restoreERROR) > 0):
-        print "\nNO Security Role backup for:"
+        print "\nNO Security Role restore for:"
         for app in restoreERROR.keys():
             print "\t" + app + "\n\t\tReason: " + str(restoreERROR[app])
 else:

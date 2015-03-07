@@ -14,7 +14,7 @@
 #  
 # History:
 # 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
-#                               
+#                               Added error handling & summary output
 #                               
 
 
@@ -61,8 +61,8 @@ def setSecurityRoles( dictionary, appName ):
         strRoleChange += '\"' + dictionary[role]['Mapped users'] + '\" '
         strRoleChange += '\"' + dictionary[role]['Mapped groups'] + '\"] '
     strRoleChange += ']]'
-    AdminApp.edit( appName, '[-MapRolesToUsers' + strRoleChange + ']' )
     print "Setting Roles and Users for %s" % appName
+    AdminApp.edit( appName, '[-MapRolesToUsers' + strRoleChange + ']' )
     ibmcnx.functions.saveChanges()
 
 apps = AdminApp.list()
@@ -75,9 +75,22 @@ sure = raw_input( 'Are you sure? All roles will be overwritten! (Yes|No) ' )
 allowed_answer = ['yes', 'y', 'ja', 'j']
 
 if sure.lower() in allowed_answer:
+    restoreOK = []
+    restoreERROR = {}
     for app in appsList:
-        # For testing: set app to example applicatio
-        setSecurityRoles( convertFile2Dict( app, path ), app )
-        print ("Finished: Restore of security roles for application '%s'." % app)
+        try:
+            appDict = convertFile2Dict( app, path )
+            setSecurityRoles( appDict, app )
+            restoreOK.append(app)
+        except IOError, e:
+            restoreERROR[app] = e
+
+    print "\nSecurity Role restore went OK for:"
+    for app in restoreOK:
+        print "\t%s" % app
+    if(len(restoreERROR) > 0):
+        print "\nNO Security Role backup for:"
+        for app in restoreERROR.keys():
+            print "\t" + app + "\n\t\tReason: " + str(restoreERROR[app])
 else:
     print 'Restore canceled!'

@@ -3,22 +3,28 @@
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
+#  Author:        Martin Leyrer
+#  Mail:          leyrer@gmail.com
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
-#  Date:          2014-06-04
+#  Version:       2.1
+#  Date:          2015-03-07
 #
 #  License:       Apache 2.0
-#
-#
+#  
+# History:
+# 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
+#                               
+#                               
+
 
 import os
 import sys
 import ibmcnx.functions
 
-# Restore Security Role from Textfile (created with j2eerolebackup)
+# Restore Security Role from Textfile (created with RoleBackup.py)
 
-path = raw_input( "Path and Folder where Backup is stored: " )
+path = raw_input( "Path and Folder where the files from 'RoleBackup.py' are stored: " )
 ibmcnx.functions.checkBackupPath( path )
 
 def convertFile2Dict( appname, path ):
@@ -72,6 +78,6 @@ if sure.lower() in allowed_answer:
     for app in appsList:
         # For testing: set app to example applicatio
         setSecurityRoles( convertFile2Dict( app, path ), app )
-        print "Restore of Security Roles finished!"
+        print ("Finished: Restore of security roles for application '%s'." % app)
 else:
     print 'Restore canceled!'

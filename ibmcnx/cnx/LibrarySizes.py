@@ -3,19 +3,41 @@
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
+#  Author:        Martin Leyrer
+#  Mail:          leyrer@gmail.com
 #  Documentation: http://scripting101.stoeps.de
+# 
 #
-#  Version:       2.0
-#  Date:          2014-09-10
+#  Version:       2.1
+#  Date:          2015-03-07
 #
 #  License:       Apache 2.0
 #
-
-execfile( "filesAdmin.py" )
+# History:
+# 20150307  Martin Leyrer   Implemented support for paging -> more than maxpagingresults displayed
+#                           Added error handling for connectivity issues
+# 
 
 import sys
+import java.util.ArrayList as ArrayList
+
+try:
+    execfile( "filesAdmin.py" ) 
+except:
+    print "\nLibrarySizes could not connect to the 'IBM Websphere Deployment Manager'. Please make sure the 'dmgr' is running."
+    sys.exit()
+
+try:
+    dummy = FilesLibraryService.getPersonalCount()
+except:
+    print "\nLibrarySizes was not able to communicate with the 'IBM Connections Files' application. Please make sure 'Files' is running."
+    sys.exit()
+
 
 noresult = 0
+
+# number of search results per page
+maxpagingresults = 250
 
 def askLibraryType():
     #  Check if Community or Personal Libraries should be searched
@@ -42,17 +64,42 @@ def askLibraryType():
         except ValueError, e :
                 print ( "'%s' is not valid." % e.args[0].split( ": " )[1] )
 
+def flsBrowse (libType, page, max):
+    try:
+        if libType == 'p':
+            libList = FilesLibraryService.browsePersonal( "title", "true", page, max )
+        elif libType == 'c':
+            libList = FilesLibraryService.browseCommunity( "title", "true", page, max )
+        else:
+            print ( 'Not a valid library Type!' )
+            sys.exit()
+    except:
+        print "\nLibrarySizes was not able to communicate with the 'IBM Connections Files' application. Please make sure 'Files' is running."
+        sys.exit()
+    return libList
+
+def getLibraryList( libType ):
+    # iterate through all the result pages to return ALL found libraries
+    pagecount = 1
+    allLibs = ArrayList()
+    libList = flsBrowse( libType, pagecount, maxpagingresults )
+    while(not libList.isEmpty()):
+        allLibs.addAll(libList)
+        pagecount = pagecount + 1
+        libList = flsBrowse( libType, pagecount, maxpagingresults )
+    return allLibs
+
 def searchLibrary( libType ):
     if libType == 'p':
         libNameAsk = 'Which User you want to search? (min 1 character): '
         libNameAnswer = raw_input( libNameAsk )
-        result = FilesUtilService.filterListByString( FilesLibraryService.browsePersonal( "title", "true", 1, 250 ), "title", ".*" + libNameAnswer + ".*" )
+        result = FilesUtilService.filterListByString( getLibraryList(libType) , "title", ".*" + libNameAnswer + ".*" )
         return result
 
     elif libType == 'c':
         libNameAsk = 'Which Community Library you want to search? (min 1 character): '
         libNameAnswer = raw_input( libNameAsk )
-        result = FilesUtilService.filterListByString( FilesLibraryService.browseCommunity( "title", "true", 1, 250 ), "title", ".*" + libNameAnswer + ".*" )
+        result = FilesUtilService.filterListByString( getLibraryList(libType), "title", ".*" + libNameAnswer + ".*" )
         return result
     
     else:

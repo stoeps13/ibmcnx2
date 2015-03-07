@@ -15,11 +15,13 @@
 # History:
 # 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
 #                               Added error handling & summary output
+#                               Added error handling for WAS errors
 #
 
 import os
 import sys
 import ibmcnx.functions
+import com.ibm.ws.scripting.ScriptingException
 
 # Restore Security Role from Textfile (created with RoleBackup.py)
 
@@ -82,6 +84,8 @@ if sure.lower() in allowed_answer:
             setSecurityRoles( appDict, app )
             restoreOK.append(app)
         except IOError, e:
+            restoreERROR[app] = e
+        except com.ibm.ws.scripting.ScriptingException, e:
             restoreERROR[app] = e
         except:
             restoreERROR[app] = "Uncaught error: " + sys.exc_info()[0]

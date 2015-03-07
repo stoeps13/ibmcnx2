@@ -15,12 +15,24 @@
 #
 # History:
 # 20150307  Martin Leyrer   Implemented support for paging -> more than maxpagingresults displayed
+#                           Added error handling for connectivity issues
 # 
-
-execfile( "filesAdmin.py" )
 
 import sys
 import java.util.ArrayList as ArrayList
+
+try:
+    execfile( "filesAdmin.py" ) 
+except:
+    print "\nLibrarySizes could not connect to the 'IBM Websphere Deployment Manager'. Please make sure the 'dmgr' is running."
+    sys.exit()
+
+try:
+    dummy = FilesLibraryService.getPersonalCount()
+except:
+    print "\nLibrarySizes was not able to communicate with the 'IBM Connections Files' application. Please make sure 'Files' is running."
+    sys.exit()
+
 
 noresult = 0
 
@@ -53,12 +65,16 @@ def askLibraryType():
                 print ( "'%s' is not valid." % e.args[0].split( ": " )[1] )
 
 def flsBrowse (libType, page, max):
-    if libType == 'p':
-        libList = FilesLibraryService.browsePersonal( "title", "true", page, max )
-    elif libType == 'c':
-        libList = FilesLibraryService.browseCommunity( "title", "true", page, max )
-    else:
-        print ( 'Not a valid library Type!' )
+    try:
+        if libType == 'p':
+            libList = FilesLibraryService.browsePersonal( "title", "true", page, max )
+        elif libType == 'c':
+            libList = FilesLibraryService.browseCommunity( "title", "true", page, max )
+        else:
+            print ( 'Not a valid library Type!' )
+            sys.exit()
+    except:
+        print "\nLibrarySizes was not able to communicate with the 'IBM Connections Files' application. Please make sure 'Files' is running."
         sys.exit()
     return libList
 

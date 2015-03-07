@@ -3,22 +3,26 @@
 #
 #  Author:        Christoph Stoettner
 #  Mail:          christoph.stoettner@stoeps.de
+#  Author:        Martin Leyrer
+#  Mail:          leyrer@gmail.com
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       2.1
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
 #
+# History:
+# 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
 #
 
 import os
 import sys
 import ibmcnx.functions
 
-# Restore Security Role from Textfile (created with j2eerolebackup)
+# Restore Security Role from Textfile (created with RoleBackup.py)
 
-path = raw_input( "Path and Folder where Backup is stored: " )
+path = raw_input( "Path and Folder where the files from RoleBackup.py are stored: " )
 ibmcnx.functions.checkBackupPath( path )
 
 def convertFile2Dict( appname, path ):

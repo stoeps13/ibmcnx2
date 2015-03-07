@@ -16,6 +16,7 @@
 # 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
 #                               Added error handling & summary output
 #                               Added error handling for WAS errors
+#                               Moved 'saveChanges' to end of script instead of "after each app"
 #
 
 import os
@@ -64,7 +65,6 @@ def setSecurityRoles( dictionary, appName ):
     strRoleChange += ']]'
     AdminApp.edit( appName, '[-MapRolesToUsers' + strRoleChange + ']' )
     print "Setting Roles and Users for %s" % appName
-    ibmcnx.functions.saveChanges()
 
 apps = AdminApp.list()
 appsList = apps.splitlines()
@@ -90,6 +90,8 @@ if sure.lower() in allowed_answer:
         except:
             restoreERROR[app] = "Uncaught error: " + sys.exc_info()[0]
     
+    ibmcnx.functions.saveChanges()
+
     print "\nSecurity Role restore went OK for:"
     for app in restoreOK:
         print "\t%s" % app

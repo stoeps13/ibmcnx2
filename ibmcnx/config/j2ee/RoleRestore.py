@@ -14,6 +14,7 @@
 #
 # History:
 # 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
+#                               Added error handling & summary output
 #
 
 import os
@@ -73,9 +74,25 @@ sure = raw_input( 'Are you sure? All roles will be overwritten! (Yes|No) ' )
 allowed_answer = ['yes', 'y', 'ja', 'j']
 
 if sure.lower() in allowed_answer:
+    restoreOK = []
+    restoreERROR = {}
     for app in appsList:
-        # For testing: set app to example applicatio
-        setSecurityRoles( convertFile2Dict( app, path ), app )
-        print "Restore of Security Roles finished!"
+        try:
+            appDict = convertFile2Dict( app, path )
+            setSecurityRoles( appDict, app )
+            restoreOK.append(app)
+        except IOError, e:
+            restoreERROR[app] = e
+        except:
+            restoreERROR[app] = "Uncaught error: " + sys.exc_info()[0]
+    
+    print "\nSecurity Role restore went OK for:"
+    for app in restoreOK:
+        print "\t%s" % app
+    if(len(restoreERROR) > 0):
+        print "\nNO Security Role restore for:"
+        for app in restoreERROR.keys():
+            print "\t" + app + "\n\t\tReason: " + str(restoreERROR[app])
+    
 else:
     print 'Restore canceled!'

@@ -180,6 +180,9 @@ def checkAppStatus():
 def checkDataSource():
     execfile( 'ibmcnx/check/DataSource.py' )
 
+def checkWebServer():
+    execfile( 'ibmcnx/check/WebSrvStatus.py' )
+
 def docJVMHeap():
     execfile( 'ibmcnx/doc/JVMHeap.py' )
 

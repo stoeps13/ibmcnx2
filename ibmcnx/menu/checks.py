@@ -24,6 +24,7 @@ import ibmcnx.menu.MenuClass
 checks = ibmcnx.menu.MenuClass.cnxMenu()
 checks.AddItem( 'Check if all Apps are running (ibmcnx/check/AppStatus.py)', ibmcnx.functions.checkAppStatus )
 checks.AddItem( 'Check Database connections (ibmcnx/check/DataSource.py)', ibmcnx.functions.checkDataSource )
+checks.AddItem( 'Check Webserver (ibmcnx/check/WebSrvStatus.py)', ibmcnx.functions.checkWebserver )
 checks.AddItem( 'Back to Main Menu (cnxmenu.py)', ibmcnx.functions.cnxBackToMainMenu )
 checks.AddItem( "Exit", ibmcnx.functions.bye )
 

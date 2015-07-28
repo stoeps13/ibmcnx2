@@ -13,7 +13,9 @@
 
 ts = AdminControl.queryNames("type=TraceService,*" )
 tss=ts.split()
+print '\n\t JVM Trace Settings of all servers'
+print '\t =================================\n'
 for trace in tss:
-       print trace.split(',')[1].split("=")[1]
+       print '\t ' + str(trace.split(',')[1].split("=")[1])
        spec = AdminControl.getAttribute( trace, "traceSpecification")
-       print spec
+       print '\t\t ' + spec + '\n'

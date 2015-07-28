@@ -195,7 +195,7 @@ def docLogFiles():
 def docPorts():
     execfile( 'ibmcnx/doc/Ports.py' )
 
-def docDataSources():
+def docdatasources():
     execfile( 'ibmcnx/doc/DataSources.py' )
 
 def docVariables():
@@ -203,6 +203,9 @@ def docVariables():
 
 def docj2eeroles():
     execfile( 'ibmcnx/doc/j2eeroles.py' )
+
+def doctracesettings():
+    execfile( 'ibmcnx/doc/traceSettings.py' )
 
 def cnxBackToMainMenu():
     execfile( 'ibmcnx/menu/cnxmenu.py' )

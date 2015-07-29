@@ -156,6 +156,9 @@ def cfgJ2EERoleSocialMail():
 def cfgJVMHeap():
     execfile( "ibmcnx/config/JVMHeap.py" )
 
+def cfgjvmtrace():
+    execfile( "ibmcnx/config/jvmtrace.py" )
+
 def cfgLogFiles():
     execfile( "ibmcnx/config/LogFiles.py" )
 

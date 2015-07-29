@@ -35,6 +35,7 @@ cfg.AddItem( 'Configure SystemOut/Err Log Size (ibmcnx/config/LogFiles.py)', ibm
 cfg.AddItem( 'Configure Log Language to english (ibmcnx/config/JVMLanguage.py)', ibmcnx.functions.cfgJVMLanguage )
 cfg.AddItem( 'Configure Monitoring Policy (ibmcnx/config/MonitoringPolicy.py)', ibmcnx.functions.cfgMonitoringPolicy )
 cfg.AddItem( 'Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCustProp.py)', ibmcnx.functions.cfgJVMCustProp )
+cfg.AddItem( 'Set jvm Trace Parameter (ibmcnx/config/jvmtrace.py)', ibmcnx.functions.cfgjvmtrace )
 cfg.AddItem( 'Change database server and port (ibmcnx/config/ChgDBHost.py)', ibmcnx.functions.cfgChgDBHost )
 cfg.AddItem( 'Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)', ibmcnx.functions.cfgClusterMembers )
 cfg.AddItem( 'Synchronize all Nodes', ibmcnx.functions.synchAllNodes )

@@ -1,16 +1,25 @@
 ######
-#  Set all Roles to Restricted
-#  no anonymous access possible
+#  Reparent Communities
+#
+#  Moving subcommunities to standalone communities, moving communities to sub-
+#  communities
+#
+#  ToDo: Move subcommunity directly to other community, bulk move
 #
 #  Author: Klaus Bild
 #  Blog: http://www.kbild.ch
 #  E-Mail:
+#  Author:        Christoph Stoettner
+#  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
-#  Date:          2014-06-04
+#  Version:       2.1
+#  Date:          2015-08-31
 #
 #  License:       Apache 2.0
+#
+# History:
+# 20150831  Christoph Stoettner  add move to other community option
 #
 # Description: Move IBM Connections Communities
 
@@ -92,12 +101,31 @@ while state != ( 'EXIT' ):
             if noresult == 0:
                 continue
             if parent > 0:
-                decision = raw_input('\nDo you really want to move the subcommunity ' + comm_fullname + ' (y/n) ? ')
-                if decision == 'y':
+                decision = raw_input('\nDo you want to move the subcommunity ' + comm_fullname + ' to a standalone (c)ommuity, or (m)ove as Subcommunity to an other community? or e(x)it? (c/m/x) ')
+                '''
+                    ToDo:
+                    Create an option to move a subcommunity temporarily to a standalone
+                    community and then move this to an other community as sub
+                '''
+                if decision.lower() == 'c':
                     CommunitiesService.moveSubcommunityToCommunity(comm_id)
                     print '------------------------------------------------------\n'
                     print '\nSUCCESSFUL MOVED COMMUNITY ' + comm_fullname + '\n'
                     print '------------------------------------------------------\n'
+                    continue
+                elif decision.lower() == 'm':
+                    # create standalone community of sub
+                    CommunitiesService.moveSubcommunityToCommunity(comm_id)
+
+                    # Ask user for new community and move again
+                    comm_name_parent = raw_input('\nWhat is the name of the community which should be the parent? ')
+                    comm_id_parent, parent2, comm_full_name_parent, acl_parent, state = getUUID( comm_name_parent )
+
+                    # Move ex sub to new parent    
+                    CommunitiesService.moveCommunityToSubcommunity(comm_id_parent, comm_id)
+                    print '-------------------------------------------------------\n'
+                    print '\nSUCCESSFUL MOVED COMMUNITY ' + comm_fullname + '\n'
+                    print '-------------------------------------------------------\n'
                     continue
                 else:
                     print '------------------------------------------------------\n'

@@ -114,24 +114,40 @@ while state != ( 'EXIT' ):
                     print '------------------------------------------------------\n'
                     continue
                 elif decision.lower() == 'm':
-                    # create standalone community of sub
-                    CommunitiesService.moveSubcommunityToCommunity(comm_id)
-
                     # Ask user for new community and move again
                     comm_name_parent = raw_input('\nWhat is the name of the community which should be the parent? ')
                     comm_id_parent, parent2, comm_full_name_parent, acl_parent, state = getUUID( comm_name_parent )
+                    if state == 0:
+                        continue
+                    if parent2 > 0:
+                        print '\n' + comm_name_parent + ' is already a subcommunity, please use a Community which is NOT a subcommunity\n'
+                        continue
+                    else:
+                        print "\nPlease be aware that:"
+                        print '\n--------------------------------------------------------------------------------'
+                        print "- Any Invited users on the subcommunity are removed"
+                        print "- Community owners in the parent are copied to the new subcommunity as owners"
+                        print "- Subcommunity members and owners are copied to the new parent as members"
+                        print "- Subcommunity access levels will be at least equal restrictive than from parent"
+                        print '\n--------------------------------------------------------------------------------'
+                        if (acl_parent=='publicInviteOnly' and acl=='public'):
+                            print '\nThe parent Community has MODERATED access, \nthe new subcommunity "' + comm_fullname + '" will have MODERATED access as well'
+                        elif (acl_parent=='private' and acl=='public') or (acl_parent=='private' and acl=='publicInviteOnly'):
+                            print '\nThe parent Community has only PRIVATE access, the new subcommunity ' + comm_fullname + ' will have PRIVATE access as well'
+                        decision = raw_input('\nDo you really want to move the subcommunity ' + comm_fullname + ' into ' + comm_full_name_parent + ' (y/n) ? ')
 
-                    # Move ex sub to new parent    
-                    CommunitiesService.moveCommunityToSubcommunity(comm_id_parent, comm_id)
-                    print '-------------------------------------------------------\n'
-                    print '\nSUCCESSFUL MOVED COMMUNITY ' + comm_fullname + '\n'
-                    print '-------------------------------------------------------\n'
-                    continue
-                else:
-                    print '------------------------------------------------------\n'
-                    print '\nCommunity ' + comm_fullname + ' was NOT moved\n'
-                    print '------------------------------------------------------\n'
-                    continue
+                        if decision == 'y':
+                            # create standalone community of sub
+                            CommunitiesService.moveSubcommunityToCommunity(comm_id)
+                            # Move ex sub to new parent
+                            CommunitiesService.moveCommunityToSubcommunity(comm_id_parent, comm_id)
+                            goBack = 'TRUE'
+                            print '-------------------------------------------------------\n'
+                            print '\nSUCCESSFUL MOVED COMMUNITY ' + comm_fullname + '\n'
+                            print '-------------------------------------------------------\n'
+                        else:
+                            print '\nCommunity ' + comm_fullname + ' was NOT moved\n'
+
             else:
                 goBack = ''
                 while goBack != ( 'TRUE' ):

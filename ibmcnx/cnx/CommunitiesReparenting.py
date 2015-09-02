@@ -1,28 +1,28 @@
-######
-#  Reparent Communities
-#
-#  Moving subcommunities to standalone communities, moving communities to sub-
-#  communities
-#
-#  ToDo: Move subcommunity directly to other community, bulk move
-#
-#  Author: Klaus Bild
-#  Blog: http://www.kbild.ch
-#  E-Mail:
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       2.1
-#  Date:          2015-08-31
-#
-#  License:       Apache 2.0
-#
-# History:
-# 20150831  Christoph Stoettner  add move to other community option
-#
-# Description: Move IBM Connections Communities
+'''
+Reparent Communities
 
+Moving subcommunities to standalone communities, moving communities to sub-
+communities
+
+ToDo: Move subcommunity directly to other community, bulk move
+
+Author: Klaus Bild
+Blog: http://www.kbild.ch
+E-Mail:
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       2.1
+Date:          2015-08-31
+
+License:       Apache 2.0
+
+History:
+20150831  Christoph Stoettner  add move to other community option
+
+Description: Move IBM Connections Communities
+'''
 execfile( 'communitiesAdmin.py' )
 state = ''
 

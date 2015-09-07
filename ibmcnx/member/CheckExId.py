@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -44,28 +44,30 @@ configParser.read(configFilePath)
 
 # Change User and Password
 props = Properties()
-props.put( 'user', configParser.get('Database','dbUser') )
-props.put( 'password', configParser.get('Database','dbPassword') )
+props.put('user', configParser.get('Database', 'dbUser'))
+props.put('password', configParser.get('Database', 'dbPassword'))
 
-jdbcPath = 'jdbc:db2://' + configParser.get('Database','dbHost') + ':' + configParser.get('Database','dbPort') + '/' + configParser.get('Database','dbName')
+jdbcPath = 'jdbc:db2://' + configParser.get('Database', 'dbHost') + ':' + configParser.get(
+    'Database', 'dbPort') + '/' + configParser.get('Database', 'dbName')
 
-conn = Driver().connect( jdbcPath, props )
+conn = Driver().connect(jdbcPath, props)
 
 stmt = conn.createStatement()
 
-email = raw_input( "Mail address of profile you want to check: " ).lower()
+email = raw_input("Mail address of profile you want to check: ").lower()
 
-sql = 'select PROF_UID_LOWER,PROF_MAIL_LOWER,PROF_GUID,PROF_MAIL from empinst.employee where PROF_MAIL_LOWER = \'' + email + '\' order by PROF_UID_LOWER'
-rs = stmt.executeQuery( sql )
+sql = 'select PROF_UID_LOWER,PROF_MAIL_LOWER,PROF_GUID,PROF_MAIL from empinst.employee where PROF_MAIL_LOWER = \'' + \
+    email + '\' order by PROF_UID_LOWER'
+rs = stmt.executeQuery(sql)
 
 employeeList = []
-while ( rs.next() ):
+while (rs.next()):
     row = {}
-    row['PROF_UID_LOWER'] = rs.getString( 1 )
-    row['PROF_MAIL_LOWER'] = rs.getString( 2 )
-    row['PROF_GUID'] = rs.getString( 3 )
-    row['PROF_MAIL'] = rs.getString( 4 )
-    employeeList.append( row )
+    row['PROF_UID_LOWER'] = rs.getString(1)
+    row['PROF_MAIL_LOWER'] = rs.getString(2)
+    row['PROF_GUID'] = rs.getString(3)
+    row['PROF_MAIL'] = rs.getString(4)
+    employeeList.append(row)
 
 rs.close()
 stmt.close()
@@ -86,49 +88,49 @@ except:
 
 if go_on == 'true':
     try:
-       print "Activities:\t\t\t",
-       ActivitiesMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Activities:\t\t\t",
+        ActivitiesMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "Blogs:\t\t\t\t",
-       BlogsMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Blogs:\t\t\t\t",
+        BlogsMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "Communities:\t\t\t",
-       CommunitiesMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Communities:\t\t\t",
+        CommunitiesMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "Dogear:\t\t\t\t",
-       DogearMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Dogear:\t\t\t\t",
+        DogearMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "Files:\t\t\t\t",
-       FilesMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Files:\t\t\t\t",
+        FilesMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "Forums:\t\t\t\t",
-       ForumsMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Forums:\t\t\t\t",
+        ForumsMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "News, Search, Homepage:\t\t",
-       NewsMemberService.getMemberExtIdByLogin( LOGIN )
+        print "News, Search, Homepage:\t\t",
+        NewsMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
-    
+        print 'No user with Login ' + LOGIN + ' found'
+
     try:
-       print "Wikis:\t\t\t\t",
-       WikisMemberService.getMemberExtIdByLogin( LOGIN )
+        print "Wikis:\t\t\t\t",
+        WikisMemberService.getMemberExtIdByLogin(LOGIN)
     except:
-       print 'No user with Login ' + LOGIN + ' found'
+        print 'No user with Login ' + LOGIN + ' found'

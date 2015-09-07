@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -17,21 +17,21 @@ WS1 = ibmcnx.appServer.WasServers()
 
 print "\nChanging the SystemOut & SystemErr log file rotation settings\n"
 
-rollOverType = raw_input( '\tRolloverType (SIZE, BOTH): ' )
-maxLogSize = int( raw_input( '\tMax Logfile size in MB (1-50): ' ) )
-maxLogHistory = int( raw_input( '\tMax Number of Backup Files (1-200): ' ) )
+rollOverType = raw_input('\tRolloverType (SIZE, BOTH): ')
+maxLogSize = int(raw_input('\tMax Logfile size in MB (1-50): '))
+maxLogHistory = int(raw_input('\tMax Number of Backup Files (1-200): '))
 
 servers = WS1.AllServers
 
 for server in servers:
     try:
 
-        nodename = server.split( '(' )[1].split( '/' )[3]
-        servername = server.split( '(' )[1].split( '/' )[5].split( '|' )[0]
+        nodename = server.split('(')[1].split('/')[3]
+        servername = server.split('(')[1].split('/')[5].split('|')[0]
 
-        if len( nodename ) < 10:
+        if len(nodename) < 10:
             tab = '\t\t\t'
-        elif len( nodename ) > 10 and len( nodename ) < 15:
+        elif len(nodename) > 10 and len(nodename) < 15:
             tab = '\t\t'
         else:
             tab = '\t'
@@ -40,17 +40,20 @@ for server in servers:
         print "\tChange log setting for: " + nodename + tab + servername
 
         # output and errorStream
-        systemOut = AdminConfig.showAttribute( server, 'outputStreamRedirect' )
-        systemErr = AdminConfig.showAttribute( server, 'errorStreamRedirect' )
+        systemOut = AdminConfig.showAttribute(server, 'outputStreamRedirect')
+        systemErr = AdminConfig.showAttribute(server, 'errorStreamRedirect')
 
         if rollOverType == 'BOTH' or rollOverType.upper() == 'B':
-            logSetting = '[[rolloverSize ' + str( maxLogSize ) + '] [rolloverPeriod 24] [maxNumberOfBackupFiles ' + str( maxLogHistory ) + ']]'
+            logSetting = '[[rolloverSize ' + str(
+                maxLogSize) + '] [rolloverPeriod 24] [maxNumberOfBackupFiles ' + str(maxLogHistory) + ']]'
         else:
-            logSetting = '[[rolloverSize ' + str( maxLogSize ) + '] [maxNumberOfBackupFiles ' + str( maxLogHistory ) + ']]'
+            logSetting = '[[rolloverSize ' + \
+                str(maxLogSize) + \
+                '] [maxNumberOfBackupFiles ' + str(maxLogHistory) + ']]'
 
         # modify settings for log Size and History
-        AdminConfig.modify( systemOut, logSetting )
-        AdminConfig.modify( systemErr, logSetting )
+        AdminConfig.modify(systemOut, logSetting)
+        AdminConfig.modify(systemErr, logSetting)
 
     except:
         print "Error on setting Log File Size"

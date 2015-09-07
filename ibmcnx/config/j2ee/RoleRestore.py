@@ -7,7 +7,7 @@
 #  Mail:          leyrer@gmail.com
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.1
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -26,24 +26,26 @@ import com.ibm.ws.scripting.ScriptingException
 
 # Restore Security Role from Textfile (created with RoleBackup.py)
 
-path = raw_input( "Path and Folder where the files from RoleBackup.py are stored: " )
-ibmcnx.functions.checkBackupPath( path )
+path = raw_input(
+    "Path and Folder where the files from RoleBackup.py are stored: ")
+ibmcnx.functions.checkBackupPath(path)
 
-def convertFile2Dict( appname, path ):
+
+def convertFile2Dict(appname, path):
     # function to convert backup txt files of Security Role Backup to a dictionary
     # print '\tPATH: ' + path
     filename = path + '/' + appname + ".txt"
-    myfile = open( filename, 'r' )
+    myfile = open(filename, 'r')
 
     count = 0
     dict = {}
 
     for line in myfile.readlines():
         # for loop through file to read it line by line
-        if ( ':' in line ) and ( count > 12 ):
-            value = line.split( ':' )[0]
+        if (':' in line) and (count > 12):
+            value = line.split(':')[0]
             # cred = line.split(':')[1].strip('\n')
-            cred = line.split( ':' )[1]
+            cred = line.split(':')[1]
             # cred = cred.strip(' ')
             cred = cred.strip()
             if value == "Role":
@@ -53,7 +55,8 @@ def convertFile2Dict( appname, path ):
         count += 1
     return dict
 
-def setSecurityRoles( dictionary, appName ):
+
+def setSecurityRoles(dictionary, appName):
     strRoleChange = '['
     for role in dictionary.keys():
         # Loop through Roles
@@ -63,7 +66,7 @@ def setSecurityRoles( dictionary, appName ):
         strRoleChange += '\"' + dictionary[role]['Mapped users'] + '\" '
         strRoleChange += '\"' + dictionary[role]['Mapped groups'] + '\"] '
     strRoleChange += ']]'
-    AdminApp.edit( appName, '[-MapRolesToUsers' + strRoleChange + ']' )
+    AdminApp.edit(appName, '[-MapRolesToUsers' + strRoleChange + ']')
     print "Setting Roles and Users for %s" % appName
 
 apps = AdminApp.list()
@@ -72,7 +75,7 @@ appsList = apps.splitlines()
 # appsList = ['Blogs','Activities','Wikis']
 # or Single App:
 # appsList = ['Blogs']
-sure = raw_input( 'Are you sure? All roles will be overwritten! (Yes|No) ' )
+sure = raw_input('Are you sure? All roles will be overwritten! (Yes|No) ')
 allowed_answer = ['yes', 'y', 'ja', 'j']
 
 if sure.lower() in allowed_answer:
@@ -80,8 +83,8 @@ if sure.lower() in allowed_answer:
     restoreERROR = {}
     for app in appsList:
         try:
-            appDict = convertFile2Dict( app, path )
-            setSecurityRoles( appDict, app )
+            appDict = convertFile2Dict(app, path)
+            setSecurityRoles(appDict, app)
             restoreOK.append(app)
         except IOError, e:
             restoreERROR[app] = e
@@ -89,7 +92,7 @@ if sure.lower() in allowed_answer:
             restoreERROR[app] = e
         except:
             restoreERROR[app] = "Uncaught error: " + sys.exc_info()[0]
-    
+
     ibmcnx.functions.saveChanges()
 
     print "\nSecurity Role restore went OK for:"
@@ -99,6 +102,6 @@ if sure.lower() in allowed_answer:
         print "\nNO Security Role restore for:"
         for app in restoreERROR.keys():
             print "\t" + app + "\n\t\tReason: " + str(restoreERROR[app])
-    
+
 else:
     print 'Restore canceled!'

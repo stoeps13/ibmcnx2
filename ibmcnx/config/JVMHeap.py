@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -21,25 +21,25 @@ for count in range(WS1.serverNum):
     node = WS1.node[count]
     servername = WS1.serverName[count]
 
-    print "%s - %s - %s" % ( cell, node, servername )
+    print "%s - %s - %s" % (cell, node, servername)
     print 'Actual setting: '
-    print '\t initialHeapSize: ' + AdminConfig.showAttribute( jvm, 'initialHeapSize' )
-    print '\t maximumHeapSize: ' + AdminConfig.showAttribute( jvm, 'maximumHeapSize' )
+    print '\t initialHeapSize: ' + AdminConfig.showAttribute(jvm, 'initialHeapSize')
+    print '\t maximumHeapSize: ' + AdminConfig.showAttribute(jvm, 'maximumHeapSize')
     print 'RETURN to let actual value!'
-    initialHeapSize = raw_input( 'InitialHeapSize (MB): ' )
-    maximumHeapSize = raw_input( 'MaximumHeapSize (MB): ' )
+    initialHeapSize = raw_input('InitialHeapSize (MB): ')
+    maximumHeapSize = raw_input('MaximumHeapSize (MB): ')
 
     if initialHeapSize == '':
-        initialHeapSize = AdminConfig.showAttribute( jvm, 'initialHeapSize' )
+        initialHeapSize = AdminConfig.showAttribute(jvm, 'initialHeapSize')
 
     if maximumHeapSize == '':
-        maximumHeapSize = AdminConfig.showAttribute( jvm, 'maximumHeapSize' )
+        maximumHeapSize = AdminConfig.showAttribute(jvm, 'maximumHeapSize')
 
-    initialHeap = '[[ initialHeapSize ' + str( initialHeapSize ) + ' ]]'
-    maxHeap = '[[ maximumHeapSize ' + str( maximumHeapSize ) + ' ]]'
+    initialHeap = '[[ initialHeapSize ' + str(initialHeapSize) + ' ]]'
+    maxHeap = '[[ maximumHeapSize ' + str(maximumHeapSize) + ' ]]'
 
-    AdminConfig.modify( jvm, initialHeap )
-    AdminConfig.modify( jvm, maxHeap )
+    AdminConfig.modify(jvm, initialHeap)
+    AdminConfig.modify(jvm, maxHeap)
     print ''
 
 ibmcnx.functions.saveChanges()

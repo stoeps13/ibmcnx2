@@ -5,21 +5,24 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
 #
+
+
 class cnxMenu:
-    def __init__( self ):
+
+    def __init__(self):
         self.menuitems = []
 
     # Function to add menuitems
-    def AddItem( self, text, function ):
-        self.menuitems.append( {'text': text, 'func':function} )
+    def AddItem(self, text, function):
+        self.menuitems.append({'text': text, 'func': function})
 
     # Function for printing
-    def Show( self, menutitle ):
+    def Show(self, menutitle):
         self.c = 1
         print '\n\t' + menutitle
         print '\t----------------------------------------', '\n'
@@ -29,5 +32,5 @@ class cnxMenu:
             self.c += 1
         print
 
-    def Do( self, n ):
+    def Do(self, n):
         self.menuitems[n]["func"]()

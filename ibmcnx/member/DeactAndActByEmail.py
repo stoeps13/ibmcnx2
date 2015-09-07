@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -31,28 +31,30 @@ configParser.read(configFilePath)
 
 # Change User and Password
 props = Properties()
-props.put( 'user', configParser.get('Database','dbUser') )
-props.put( 'password', configParser.get('Database','dbPassword') )
+props.put('user', configParser.get('Database', 'dbUser'))
+props.put('password', configParser.get('Database', 'dbPassword'))
 
-jdbcPath = 'jdbc:db2://' + configParser.get('Database','dbHost') + ':' + configParser.get('Database','dbPort') + '/' + configParser.get('Database','dbName')
+jdbcPath = 'jdbc:db2://' + configParser.get('Database', 'dbHost') + ':' + configParser.get(
+    'Database', 'dbPort') + '/' + configParser.get('Database', 'dbName')
 
-conn = Driver().connect( jdbcPath, props )
+conn = Driver().connect(jdbcPath, props)
 
 stmt = conn.createStatement()
 
-email = raw_input( "Mail address of profile you want to deactivate: " ).lower()
+email = raw_input("Mail address of profile you want to deactivate: ").lower()
 
-sql = 'select PROF_UID,PROF_MAIL,PROF_MAIL_LOWER,PROF_GUID from empinst.employee where PROF_MAIL_LOWER = \'' + email + '\' order by PROF_UID_LOWER'
-rs = stmt.executeQuery( sql )
+sql = 'select PROF_UID,PROF_MAIL,PROF_MAIL_LOWER,PROF_GUID from empinst.employee where PROF_MAIL_LOWER = \'' + \
+    email + '\' order by PROF_UID_LOWER'
+rs = stmt.executeQuery(sql)
 
 employeeList = []
-while ( rs.next() ):
+while (rs.next()):
     row = {}
-    row['PROF_UID'] = rs.getString( 1 )
-    row['PROF_MAIL'] = rs.getString( 2 )
-    row['PROF_MAIL_LOWER'] = rs.getString( 3 )
-    row['PROF_GUID'] = rs.getString( 4 )
-    employeeList.append( row )
+    row['PROF_UID'] = rs.getString(1)
+    row['PROF_MAIL'] = rs.getString(2)
+    row['PROF_MAIL_LOWER'] = rs.getString(3)
+    row['PROF_GUID'] = rs.getString(4)
+    employeeList.append(row)
 
 rs.close()
 stmt.close()
@@ -70,60 +72,61 @@ except:
     print 'No User with mail address ' + email + ' found!'
 
 try:
-   print "Inactivate Activities ",
-   ActivitiesMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Activities ",
+    ActivitiesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Blogs ",
-   BlogsMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Blogs ",
+    BlogsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Communities ",
-   CommunitiesMemberService.inactivateMemberByEmail( MAILADDRESS.lower() )
+    print "Inactivate Communities ",
+    CommunitiesMemberService.inactivateMemberByEmail(MAILADDRESS.lower())
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Dogear ",
-   DogearMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Dogear ",
+    DogearMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Files ",
-   FilesMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Files ",
+    FilesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Forums ",
-   ForumsMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Forums ",
+    ForumsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate News, Search, Homepage ",
-   NewsMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate News, Search, Homepage ",
+    NewsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Wikis ",
-   WikisMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Wikis ",
+    WikisMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
     print 'Inactivate Profiles ',
-    ProfilesService.inactivateUser( MAILADDRESS )
+    ProfilesService.inactivateUser(MAILADDRESS)
 except:
     print 'No user with Email ' + MAILADDRESS + ' found'
 
 print 'Activate User: '
 
-ProfilesService.activateUserByUserId( e['PROF_GUID'], email = e['PROF_MAIL'], uid = e['PROF_UID'] )
-ProfilesService.publishUserData( MAILADDRESS )
+ProfilesService.activateUserByUserId(
+    e['PROF_GUID'], email=e['PROF_MAIL'], uid=e['PROF_UID'])
+ProfilesService.publishUserData(MAILADDRESS)

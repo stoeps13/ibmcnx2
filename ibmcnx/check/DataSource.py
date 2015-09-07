@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -15,21 +15,22 @@ runDB = []
 errorDB = []
 notInstDB = []
 
-dbs = ['FNOSDS', 'FNGCDDS', 'IBM_FORMS_DATA_SOURCE', 'activities', 'blogs', 'communities', 'dogear', 'files', 'forum', 'homepage', 'metrics', 'mobile', 'news', 'oauth provider', 'profiles', 'search', 'wikis']    # List of all databases to check
+dbs = ['FNOSDS', 'FNGCDDS', 'IBM_FORMS_DATA_SOURCE', 'activities', 'blogs', 'communities', 'dogear', 'files', 'forum',
+       'homepage', 'metrics', 'mobile', 'news', 'oauth provider', 'profiles', 'search', 'wikis']    # List of all databases to check
 
 for db in dbs:    # loop through databases
-    ds = AdminConfig.getid( '/DataSource:' + db + '/' )
+    ds = AdminConfig.getid('/DataSource:' + db + '/')
     try:
-        checkDS = AdminControl.testConnection( ds )
-        if checkDS == "WASX7217I: Connection to provided datasource was successful." :
+        checkDS = AdminControl.testConnection(ds)
+        if checkDS == "WASX7217I: Connection to provided datasource was successful.":
             # print 'Connect to %s was successful' % db
-            runDB.append( db )
-        else :
-            errorDB.append( db )
+            runDB.append(db)
+        else:
+            errorDB.append(db)
             # print 'Error: %s is not available' % db
     except:
         if notInstDB != "All DB checked ":
-            notInstDB.append( db )
+            notInstDB.append(db)
 
 
 runDB.sort()

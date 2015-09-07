@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -15,19 +15,20 @@
 
 print "Getting application status of all installed applications..."
 
-applications = AdminApp.list().splitlines();
+applications = AdminApp.list().splitlines()
 
 runningApps = []
 stoppedApps = []
 
 for application in applications:
-    applName = AdminControl.completeObjectName( 'type=Application,name=' + application + ',*' )
+    applName = AdminControl.completeObjectName(
+        'type=Application,name=' + application + ',*')
     if applName != '':
-        aStatus = 'running';
-        runningApps.append( application )
+        aStatus = 'running'
+        runningApps.append(application)
     else:
-        aStatus = 'stopped';
-        stoppedApps.append( application )
+        aStatus = 'stopped'
+        stoppedApps.append(application)
 
 runningApps.sort()
 stoppedApps.sort()

@@ -5,16 +5,19 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       1.0
+#  Version:       5.0
 #  Date:          2014-06-01
 #
 #  License:       Apache 2.0
 #
 #  Get application server names
 
+
 class WasServers:
+
     def __init__(self):
-        # Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer, webserver)
+        # Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer,
+        # webserver)
         self.AllServers = self.getAllServers()
         self.WebServers = self.getWebServers()
         self.AppServers = self.getAllServersWithoutWeb()
@@ -29,19 +32,21 @@ class WasServers:
     def getAppServers(self):
         # get a list of all application servers
         # includes webserver, but no dmgr and nodeagents
-        self.servers = AdminTask.listServers( '[-serverType APPLICATION_SERVER]' ).splitlines()
+        self.servers = AdminTask.listServers(
+            '[-serverType APPLICATION_SERVER]').splitlines()
         return self.servers
 
     def getWebServers(self):
         # get a list of all webservers
-        self.webservers = AdminTask.listServers( '[-serverType WEB_SERVER]' ).splitlines()
+        self.webservers = AdminTask.listServers(
+            '[-serverType WEB_SERVER]').splitlines()
         return self.webservers
 
     def getAllServersWithoutWeb(self):
         # inclusive dmgr and nodeagents
         self.AppServers = self.AllServers
         for webserver in self.WebServers:
-            self.AppServers.remove( webserver )
+            self.AppServers.remove(webserver)
         return self.AppServers
 
     def getAttrServers(self):
@@ -53,15 +58,15 @@ class WasServers:
         servername = []
         for server in self.AppServers:
             srvNum += 1
-            javavm = AdminConfig.list( 'JavaVirtualMachine', server )
-            jvm.append( javavm )
-            srv = server.split( '/' )
-            cell.append( srv[1] )
-            node.append( srv[3] )
-            servername.append( srv[5].split( '|' )[0] )
+            javavm = AdminConfig.list('JavaVirtualMachine', server)
+            jvm.append(javavm)
+            srv = server.split('/')
+            cell.append(srv[1])
+            node.append(srv[3])
+            servername.append(srv[5].split('|')[0])
         self.jvm = jvm
         cell = cell
         node = node
         servername = servername
         # return ( serverNum, jvm, cell, node, serverName )
-        return ( srvNum, self.jvm, cell, node, servername )
+        return (srvNum, self.jvm, cell, node, servername)

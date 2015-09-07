@@ -9,7 +9,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-08
 #
 #  License:       Apache 2.0
@@ -20,34 +20,35 @@
 import sys
 import os.path
 
-filename = raw_input( 'Path and Filename to Documentation file: ' )
+filename = raw_input('Path and Filename to Documentation file: ')
 
-if (os.path.isfile( filename )):
-    answer = raw_input( "File exists, Overwrite, Append or Abort? (O|A|X)" ).lower()
+if (os.path.isfile(filename)):
+    answer = raw_input(
+        "File exists, Overwrite, Append or Abort? (O|A|X)").lower()
     if answer == "o":
-        sys.stdout = open( filename, "w")
+        sys.stdout = open(filename, "w")
     elif answer == "a":
-        sys.stdout = open( filename, "a")
+        sys.stdout = open(filename, "a")
     else:
         print "Exit"
         sys.exit()
 else:
-    sys.stdout = open( filename, "w")
+    sys.stdout = open(filename, "w")
 
 print '# J2EE Roles set for all Applications:'
-execfile( 'ibmcnx/doc/j2eeroles.py')
+execfile('ibmcnx/doc/j2eeroles.py')
 
 print '# JVM Settings of all AppServers:'
-execfile( 'ibmcnx/doc/JVMSettings.py' )
+execfile('ibmcnx/doc/JVMSettings.py')
 
 print '# Used Ports:'
-execfile( 'ibmcnx/doc/Ports.py' )
+execfile('ibmcnx/doc/Ports.py')
 
 print '# LogFile Settgins:'
-execfile( 'ibmcnx/doc/LogFiles.py' )
+execfile('ibmcnx/doc/LogFiles.py')
 
 print '# WebSphere Variables'
-execfile( 'ibmcnx/doc/Variables.py' )
+execfile('ibmcnx/doc/Variables.py')
 
 print '# DataSources and parameters'
-execfile( 'ibmcnx/doc/DataSources.py' )
+execfile('ibmcnx/doc/DataSources.py')

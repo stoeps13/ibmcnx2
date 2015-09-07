@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -28,8 +28,9 @@ for count in range(WS1.serverNum):
     elif servername == 'nodeagent':
         print "Value not set for %s" % servername
     else:
-        print "%s - %s - %s" % ( cell, node, servername )
+        print "%s - %s - %s" % (cell, node, servername)
         print 'Setting JVM Custom Property'
-        AdminConfig.create('Property', jvm, '[[validationExpression ""] [name "com.ibm.ws.cache.CacheConfig.filteredStatusCodes"] [description "Added for js load issue 2014-3-17"] [value "304 404 500 502"] [required "false"]]')
+        AdminConfig.create(
+            'Property', jvm, '[[validationExpression ""] [name "com.ibm.ws.cache.CacheConfig.filteredStatusCodes"] [description "Added for js load issue 2014-3-17"] [value "304 404 500 502"] [required "false"]]')
 
 ibmcnx.functions.saveChanges()

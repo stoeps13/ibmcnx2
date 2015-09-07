@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.org
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -17,24 +17,30 @@ import sys
 import ConfigParser
 
 # Function to get the DataSource ID
-def getDSId( dbName ):
+
+
+def getDSId(dbName):
     try:
-        DSId = AdminConfig.getid( '/DataSource:' + dbName + '/' )
+        DSId = AdminConfig.getid('/DataSource:' + dbName + '/')
         return DSId
     except:
         print "Error when getting the DataSource ID!"
         pass
 
 # Function to check for a filepath and create it, when not present
-def checkBackupPath( path ) :
-    try :
-        os.makedirs( path )
-    except OSError :
-        if not os.path.isdir( path ) :
+
+
+def checkBackupPath(path):
+    try:
+        os.makedirs(path)
+    except OSError:
+        if not os.path.isdir(path):
             raise
 
 # Function for Set Roles Script
-def getAdmin( adminvar ):
+
+
+def getAdmin(adminvar):
     # function to ask for adminusers
     # return a list with admins
     # function is called for each admin type and each admin group type
@@ -42,36 +48,40 @@ def getAdmin( adminvar ):
     admin = ''
     adminstring = ''
     admindict = {
-                 'connwasadmin':'Local WebSphere AdminUser',
-                 'connadmin':'LDAP WebSphere and Connections AdminUser (searchAdmin)',
-                 'connmoderators':'Moderator User',
-                 'connmetrics':'Metrics Admin',
-                 'connmobile':'Mobile Administrators',
-                 'connadmingroup':'LDAP Admin Group',
-                 'connmoderatorgroup':'Moderators Admin Group',
-                 'connmetricsgroup':'Metrics Admin Group',
-                 'connmobilegroup':'Mobile Admin Group'
+        'connwasadmin': 'Local WebSphere AdminUser',
+        'connadmin': 'LDAP WebSphere and Connections AdminUser (searchAdmin)',
+        'connmoderators': 'Moderator User',
+        'connmetrics': 'Metrics Admin',
+        'connmobile': 'Mobile Administrators',
+        'connadmingroup': 'LDAP Admin Group',
+        'connmoderatorgroup': 'Moderators Admin Group',
+        'connmetricsgroup': 'Metrics Admin Group',
+        'connmobilegroup': 'Mobile Admin Group'
     }
     print 'Type 0 when finished, uid is case sensitiv!'
     while admin != "0":
-        admin = raw_input( 'Type uid for ' + admindict[adminvar] + ': ' )
+        admin = raw_input('Type uid for ' + admindict[adminvar] + ': ')
         if admin != '0' and admin != '':
-            admins.append( admin )
-    adminstring = '|'.join( admins )
+            admins.append(admin)
+    adminstring = '|'.join(admins)
     print adminstring
     return adminstring
 
 # Function to synchronize all Nodes
+
+
 def synchAllNodes():
     nodelist = AdminTask.listManagedNodes().splitlines()
     cell = AdminControl.getCell()
-    for nodename in nodelist :
+    for nodename in nodelist:
         print "Syncronizing node " + nodename + " -",
         try:
-            repo = AdminControl.completeObjectName( 'type=ConfigRepository,process=nodeagent,node=' + nodename + ',*' )
-            AdminControl.invoke( repo, 'refreshRepositoryEpoch' )
-            sync = AdminControl.completeObjectName( 'cell=' + cell + ',node=' + nodename + ',type=NodeSync,*' )
-            AdminControl.invoke( sync , 'sync' )
+            repo = AdminControl.completeObjectName(
+                'type=ConfigRepository,process=nodeagent,node=' + nodename + ',*')
+            AdminControl.invoke(repo, 'refreshRepositoryEpoch')
+            sync = AdminControl.completeObjectName(
+                'cell=' + cell + ',node=' + nodename + ',type=NodeSync,*')
+            AdminControl.invoke(sync, 'sync')
             print " completed "
         except:
             print " error"
@@ -79,9 +89,11 @@ def synchAllNodes():
     print ""
 
 # Function to save changes only when necessary
+
+
 def saveChanges():
     if (AdminConfig.hasChanges()):
-        answer_save = raw_input( 'Do you really want to save these changes? ')
+        answer_save = raw_input('Do you really want to save these changes? ')
         allowed_answer_save = ['yes', 'y', 'ja', 'j']
         if answer_save.lower() in allowed_answer_save:
             print "\n\nSaving changes!\n"
@@ -90,19 +102,20 @@ def saveChanges():
             # Synchronize Nodes after Save
             configParser = ConfigParser.ConfigParser()
             configFilePath = r'ibmcnx/ibmcnx.properties'
-            configParser.read( configFilePath )
+            configParser.read(configFilePath)
             try:
-                autoSyncStatus = configParser.get( 'WebSphere', 'was.autosync' )
+                autoSyncStatus = configParser.get('WebSphere', 'was.autosync')
             except:
                 autoSyncStatus = ''
             print "autoSyncStatus: " + autoSyncStatus
-            if ( autoSyncStatus == 'true' ):
+            if (autoSyncStatus == 'true'):
                 print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
                 synchAllNodes()
-            elif ( autoSyncStatus == 'false' ):
+            elif (autoSyncStatus == 'false'):
                 "Please remember to sync your Nodes after ending your session! "
             else:
-                answer_sync = raw_input( 'Do you want to synchronize all Nodes? ' )
+                answer_sync = raw_input(
+                    'Do you want to synchronize all Nodes? ')
                 allowed_answer_sync = ['yes', 'y', 'ja', 'j']
                 if answer_sync.lower() in allowed_answer_sync:
                     print '\n\nSynchronizing all Nodes!\n\tThis may need some minutes!\n\n'
@@ -115,107 +128,138 @@ def saveChanges():
         print 'Nothing to save!'
 
 # Get temporary directory from properties file
+
+
 def tempPath():
     configParser = ConfigParser.ConfigParser()
     configFilePath = r'ibmcnx/ibmcnx.properties'
-    configParser.read( configFilePath )
+    configParser.read(configFilePath)
     try:
-        temppath = configParser.get( 'WebSphere','was.temppath' )
+        temppath = configParser.get('WebSphere', 'was.temppath')
     except:
         temppath = ''
     return temppath
 
 # Menu Functions
+
+
 def cfgDataSource():
-    execfile( "ibmcnx/config/DataSources.py" )
+    execfile("ibmcnx/config/DataSources.py")
+
 
 def cfgJ2EERoleBackup():
-    execfile( "ibmcnx/config/j2ee/RoleBackup.py" )
+    execfile("ibmcnx/config/j2ee/RoleBackup.py")
+
 
 def cfgJ2EERoleRestore():
-    execfile( "ibmcnx/config/j2ee/RoleRestore.py" )
+    execfile("ibmcnx/config/j2ee/RoleRestore.py")
+
 
 def cfgJ2EERolesRestricted():
-    execfile( "ibmcnx/config/j2ee/RoleAllRestricted.py" )
+    execfile("ibmcnx/config/j2ee/RoleAllRestricted.py")
+
 
 def cfgJ2EERolesUnrestricted():
-    execfile( "ibmcnx/config/j2ee/RoleAllUnrestricted.py" )
+    execfile("ibmcnx/config/j2ee/RoleAllUnrestricted.py")
+
 
 def cfgJ2EERoleGlobalModerator():
-    execfile( "ibmcnx/config/j2ee/RoleGlobalMod.py" )
+    execfile("ibmcnx/config/j2ee/RoleGlobalMod.py")
+
 
 def cfgJ2EERoleMetricsReader():
-    execfile( "ibmcnx/config/j2ee/RoleMetricsReader.py" )
+    execfile("ibmcnx/config/j2ee/RoleMetricsReader.py")
+
 
 def cfgJ2EERoleMetricsReportRun():
-    execfile( "ibmcnx/config/j2ee/RoleMetricsReportRun.py" )
+    execfile("ibmcnx/config/j2ee/RoleMetricsReportRun.py")
+
 
 def cfgJ2EERoleSocialMail():
-    execfile( "ibmcnx/config/j2ee/RoleSocialMail.py" )
+    execfile("ibmcnx/config/j2ee/RoleSocialMail.py")
+
 
 def cfgJVMHeap():
-    execfile( "ibmcnx/config/JVMHeap.py" )
+    execfile("ibmcnx/config/JVMHeap.py")
+
 
 def cfgjvmtrace():
-    execfile( "ibmcnx/config/jvmtrace.py" )
+    execfile("ibmcnx/config/jvmtrace.py")
+
 
 def cfgLogFiles():
-    execfile( "ibmcnx/config/LogFiles.py" )
+    execfile("ibmcnx/config/LogFiles.py")
+
 
 def cfgMonitoringPolicy():
-    execfile( 'ibmcnx/config/MonitoringPolicy.py' )
+    execfile('ibmcnx/config/MonitoringPolicy.py')
+
 
 def cfgJVMLanguage():
-    execfile( 'ibmcnx/config/JVMLanguage.py' )
+    execfile('ibmcnx/config/JVMLanguage.py')
+
 
 def cfgJVMCustProp():
-    execfile( 'ibmcnx/config/JVMCustProp.py' )
+    execfile('ibmcnx/config/JVMCustProp.py')
+
 
 def cfgClusterMembers():
-    execfile( 'ibmcnx/config/addNode.py' )
+    execfile('ibmcnx/config/addNode.py')
+
 
 def cfgChgDBHost():
-    execfile( 'ibmcnx/config/ChgDBHost.py' )
+    execfile('ibmcnx/config/ChgDBHost.py')
+
 
 def checkAppStatus():
-    execfile( 'ibmcnx/check/AppStatus.py' )
+    execfile('ibmcnx/check/AppStatus.py')
+
 
 def checkDataSource():
-    execfile( 'ibmcnx/check/DataSource.py' )
+    execfile('ibmcnx/check/DataSource.py')
+
 
 def checkWebServer():
-    execfile( 'ibmcnx/check/WebSrvStatus.py' )
+    execfile('ibmcnx/check/WebSrvStatus.py')
+
 
 def docJVMHeap():
-    execfile( 'ibmcnx/doc/JVMHeap.py' )
+    execfile('ibmcnx/doc/JVMHeap.py')
+
 
 def docJVMSettings():
-    execfile( 'ibmcnx/doc/JVMSettings.py' )
+    execfile('ibmcnx/doc/JVMSettings.py')
+
 
 def docLogFiles():
-    execfile( 'ibmcnx/doc/LogFiles.py' )
+    execfile('ibmcnx/doc/LogFiles.py')
+
 
 def docPorts():
-    execfile( 'ibmcnx/doc/Ports.py' )
+    execfile('ibmcnx/doc/Ports.py')
+
 
 def docdatasources():
-    execfile( 'ibmcnx/doc/DataSources.py' )
+    execfile('ibmcnx/doc/DataSources.py')
+
 
 def docVariables():
-    execfile( 'ibmcnx/doc/Variables.py' )
+    execfile('ibmcnx/doc/Variables.py')
+
 
 def docj2eeroles():
-    execfile( 'ibmcnx/doc/j2eeroles.py' )
+    execfile('ibmcnx/doc/j2eeroles.py')
+
 
 def doctracesettings():
-    execfile( 'ibmcnx/doc/traceSettings.py' )
+    execfile('ibmcnx/doc/traceSettings.py')
+
 
 def cnxBackToMainMenu():
-    execfile( 'ibmcnx/menu/cnxmenu.py' )
-
+    execfile('ibmcnx/menu/cnxmenu.py')
 
 
 def bye():
     print "bye"
     state = 'false'
-    sys.exit( 0 )
+    sys.exit(0)

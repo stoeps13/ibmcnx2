@@ -5,7 +5,7 @@
 #  Mail:          christoph.stoettner@stoeps.de
 #  Documentation: http://scripting101.stoeps.de
 #
-#  Version:       2.0
+#  Version:       5.0
 #  Date:          2014-06-04
 #
 #  License:       Apache 2.0
@@ -15,58 +15,58 @@
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
-MAILADDRESS = raw_input( 'Mailaddress to deactivate User: ' )
+MAILADDRESS = raw_input('Mailaddress to deactivate User: ')
 
 try:
-   print "Inactivate Activities ",
-   ActivitiesMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Activities ",
+    ActivitiesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Blogs ",
-   BlogsMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Blogs ",
+    BlogsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Communities ",
-   CommunitiesMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Communities ",
+    CommunitiesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Dogear ",
-   DogearMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Dogear ",
+    DogearMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Files ",
-   FilesMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Files ",
+    FilesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Forums ",
-   ForumsMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Forums ",
+    ForumsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate News, Search, Homepage ",
-   NewsMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate News, Search, Homepage ",
+    NewsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
-   print "Inactivate Wikis ",
-   WikisMemberService.inactivateMemberByEmail( MAILADDRESS )
+    print "Inactivate Wikis ",
+    WikisMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-   print 'No user with Email ' + MAILADDRESS + ' found'
+    print 'No user with Email ' + MAILADDRESS + ' found'
 
 try:
     print 'Inactivate Profiles ',
-    ProfilesService.inactivateUser( MAILADDRESS )
+    ProfilesService.inactivateUser(MAILADDRESS)
 except:
     print 'No user with Email ' + MAILADDRESS + ' found'

@@ -1,24 +1,24 @@
-######
-#  Set Reader Roles to Restricted
-#  no anonymous access possible
-#
-#  Author: Christoph Stoettner
-#  Blog: http://www.stoeps.de
-#  E-Mail:
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-07-16
-#
-#  License:       Apache 2.0
-#
-#  Description:
-#  Script is tested with IBM Connections 5
-#
-#  History:
-#  20131124  Christoph Stoettner     Update with loop and try/except to handle errors, added group support
-#  20140324  Christoph Stoettner     Changed all reader roles to "All authenticated", Ajax proxy security is configured with this role!
-#  20140716	 Christoph Stoettner     Set the script to only change reader role
+'''
+Set Reader Roles to Restricted - no anonymous access possible
+
+Description:
+Script is tested with IBM Connections 5
+
+Author: Christoph Stoettner
+Blog: http://www.stoeps.de
+E-Mail:
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+History:
+20131124  Christoph Stoettner     Update with loop and try/except to handle errors, added group support
+20140324  Christoph Stoettner     Changed all reader roles to "All authenticated", Ajax proxy security is configured with this role!
+20140716  Christoph Stoettner     Set the script to only change reader role
+'''
 
 import ibmcnx.functions
 

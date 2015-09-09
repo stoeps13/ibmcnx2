@@ -1,16 +1,17 @@
-######
-#  Change DataSource connectionPools
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  Check ExId of a User in all Connections Applications
+'''
+Change DataSource connectionPools
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+Check ExId of a User in all Connections Applications
+'''
 
 import ConfigParser
 import ibmcnx.functions

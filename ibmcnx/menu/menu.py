@@ -1,14 +1,15 @@
-######
-#  Menu for Connections Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-12-13
-#
-#  License:       Apache 2.0
+'''
+Menu for Connections Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+'''
 
 import ibmcnx.menusystem as menusystem
 import sys

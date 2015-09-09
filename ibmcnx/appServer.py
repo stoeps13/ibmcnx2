@@ -1,17 +1,16 @@
-######
-#  Classes to work with WebSphere Application Servers
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-01
-#
-#  License:       Apache 2.0
-#
-#  Get application server names
+'''
+Classes to work with WebSphere Application Servers
 
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+'''
 
 class WasServers:
 

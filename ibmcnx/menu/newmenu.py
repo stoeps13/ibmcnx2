@@ -1,18 +1,19 @@
 '''
-  Script to create menues for Community Connections Scripts
+Script to create menues for Community Connections Scripts
 
-  Author:        Christoph Stoettner
-  Mail:          christoph.stoettner@stoeps.de
-  Documentation: http://scripting101.stoeps.de
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
 
-  Version:       2.1
-  Date:          2015-09-01
+Version:       @@version@@
+Date:          @@date@@
 
-  License:       Apache 2.0
+License:       Apache 2.0
 
 '''
 
-def createMenu( menupoints ):
+
+def createMenu(menupoints):
     '''
         Function to calculate numbers for all menus
 
@@ -21,12 +22,14 @@ def createMenu( menupoints ):
     for item in menupoints:
         print item
 
+
 def main():
     '''
         Main function to create the menu
     '''
-    menu=[ ['Configuration Tasks', 'cfgtasks.py'] ['B', 'Back to Menu', 'func1'], ['X', 'Exit', 'func2'] ]
+    menu = [['Configuration Tasks', 'cfgtasks.py'][
+        'B', 'Back to Menu', 'func1'], ['X', 'Exit', 'func2']]
 
-    createMenu( menu )
+    createMenu(menu)
 
 main()

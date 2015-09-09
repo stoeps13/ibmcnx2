@@ -14,8 +14,8 @@ Author:        Christoph Stoettner
 Mail:          christoph.stoettner@stoeps.de
 Documentation: http://scripting101.org
 
-Version:       2.1
-Date:          2015-09-02
+Version:       @@version@@
+Date:          @@date@@
 License:       Apache 2.0
 
 History:
@@ -153,6 +153,7 @@ def getAnswer(question, possibleAnswers):
     return answer
     # END getAnswer()
 
+
 def getString(question):
     '''
         Function to create raw_input
@@ -189,7 +190,8 @@ def main():
     if answer == 'n':
         # Create a new community
         comName = getString('New community name:')
-        arcOwner = getString('ShortName/UID of an administrator of the community %s :') % comName
+        arcOwner = getString(
+            'ShortName/UID of an administrator of the community %s :') % comName
         createCommunity(comName, arcOwner)
     else:
         # Let the user select the community name

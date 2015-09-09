@@ -1,17 +1,19 @@
-######
-#  Change DataSource DB Host and Port
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-10-31
-#
-#  License:       Apache 2.0
-#
-#  This scripts creates a list of all databases in scope Cell and changes
-#  the db host and port value
+'''
+Change DataSource DB Host and Port
+
+Description:
+This scripts creates a list of all databases in scope Cell and changes the db host and port value
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       5.0
+Date:          2014-10-31
+
+License:       Apache 2.0
+
+''' 
 
 import ibmcnx.functions
 

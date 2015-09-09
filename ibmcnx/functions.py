@@ -1,16 +1,17 @@
-######
-#  Functions for IBM Connections Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  Collection of functions
+'''
+Functions for IBM Connections Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+Collection of functions
+'''
 
 import os
 import sys

@@ -1,22 +1,22 @@
-######
-#  Work with Libraries - show fileSize and used space
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Author:        Martin Leyrer
-#  Mail:          leyrer@gmail.com
-#  Documentation: http://scripting101.stoeps.de
-#
-#
-#  Version:       5.0
-#  Date:          2015-03-07
-#
-#  License:       Apache 2.0
-#
-# History:
-# 20150307  Martin Leyrer   Implemented support for paging -> more than maxpagingresults displayed
-#                           Added error handling for connectivity issues
-#
+'''
+Work with Libraries - show fileSize and used space
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Author:        Martin Leyrer
+Mail:          leyrer@gmail.com
+Documentation: http://scripting101.stoeps.de
+
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+History:
+20150307  Martin Leyrer   Implemented support for paging -> more than maxpagingresults displayed
+                          Added error handling for connectivity issues
+'''
 
 import sys
 import java.util.ArrayList as ArrayList

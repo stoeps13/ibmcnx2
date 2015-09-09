@@ -1,22 +1,23 @@
-######
-#  Set SocialMail Access in J2EE Security Roles
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#
-# You can enable and disable Socialmail Integration through J2EE Roles
-# with this script
+'''
+Set SocialMail Access in J2EE Security Roles
 
-# History:
-# 20140225  Christoph Stoettner     Initial Version
-# 20140406  Christoph Stoettner     Bugfixing Version
+Description:
+You can enable and disable Socialmail Integration through J2EE Roles
+with this script
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+History:
+20140225  Christoph Stoettner     Initial Version
+20140406  Christoph Stoettner     Bugfixing Version
+'''
 
 import ibmcnx.functions
 

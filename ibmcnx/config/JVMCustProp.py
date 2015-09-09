@@ -1,15 +1,17 @@
-######
-#  Add Custom Property com.ibm.ws.cache.CacheConfig.filteredStatusCodes to JVM
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
+'''
+Add Custom Property com.ibm.ws.cache.CacheConfig.filteredStatusCodes to JVM
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+ToDo:		   Check if value already set
+'''
 
 import ibmcnx.appServer
 

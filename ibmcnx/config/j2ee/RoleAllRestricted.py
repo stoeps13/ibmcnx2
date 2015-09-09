@@ -1,24 +1,23 @@
-######
-#  Set all Roles to Restricted
-#  no anonymous access possible
-#
-#  Author: Klaus Bild
-#  Blog: http://www.kbild.ch
-#  E-Mail:
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-09-04
-#
-#  License:       Apache 2.0
-#
-#  Description:
-#  Script is tested with IBM Connections 5.0
-#  You have to edit the variables and set them to your administrative Accounts
+'''
+Set all Roles to Restricted - no anonymous access possible
 
-#  History:
-# 2014-09-10    Christoph Stoettner    change the way for changing roles,
-# 5.0 compatible
+Description:
+Script is tested with IBM Connections 5.0
+You have to edit the variables and set them to your administrative Accounts
+
+Author: Klaus Bild
+Blog: http://www.kbild.ch
+E-Mail:
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0
+Date:          2014-09-04
+
+License:       Apache 2.0
+
+History:
+2014-09-10    Christoph Stoettner    change the way for changing roles, 5.0 compatible
+'''
 
 import ibmcnx.functions
 import ConfigParser

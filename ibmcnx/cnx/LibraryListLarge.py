@@ -1,15 +1,15 @@
-######
-#  Work with Libraries - show persons and communities with maxUsed biggr 80%
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-09-10
-#
-#  License:       Apache 2.0
-#
+'''
+Work with Libraries - show persons and communities with maxUsed biggr 80%
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+'''
 
 execfile("filesAdmin.py")
 

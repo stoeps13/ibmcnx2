@@ -14,8 +14,8 @@ Author:        Christoph Stoettner
 Mail:          christoph.stoettner@stoeps.de
 Documentation: http://scripting101.org
 
-Version:       5.0
-Date:          2015-09-02
+Version:       @@version@@
+Date:          @@date@@
 License:       Apache 2.0
 
 History:

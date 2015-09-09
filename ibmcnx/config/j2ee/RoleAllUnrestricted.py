@@ -1,27 +1,24 @@
-######
-#  Set all Roles to Unrestricted
-#  anonymous access possible
-#
-#  Author: Klaus Bild
-#  Blog: http://www.kbild.ch
-#  E-Mail:
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#
-# cfgJ2EERolesRestricted
-#
-# Description:
-# Script is tested with IBM Connections 4.5 CR2
-# You have to edit the variables and set them to your administrative Accounts
+'''
+Set all Roles to Unrestricted - anonymous access possible
 
-# History:
-# 20131124  Christoph Stoettner    Update with loop and try/except to handle errors, added group support
-# 20131201  Christoph Stoettner    Add menu to ask for parameters
+Description:
+Script is tested with IBM Connections 4.5 CR2
+You have to edit the variables and set them to your administrative Accounts
+
+Author: Klaus Bild
+Blog: http://www.kbild.ch
+E-Mail:
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+History:
+20131124  Christoph Stoettner    Update with loop and try/except to handle errors, added group support
+20131201  Christoph Stoettner    Add menu to ask for parameters
+'''
 
 import ibmcnx.functions
 import ConfigParser

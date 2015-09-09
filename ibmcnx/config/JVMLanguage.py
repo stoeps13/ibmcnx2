@@ -1,15 +1,15 @@
-######
-#  Set the JVM Language to get english log messages
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-11-02
-#
-#  License:       Apache 2.0
-#
+'''
+Set the JVM Language to get english log messages
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+'''
 
 import ibmcnx.appServer
 

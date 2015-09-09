@@ -1,12 +1,12 @@
 '''
-  Show the status of all data sources
+  Description:   Show the status of all data sources
 
   Author:        Christoph Stoettner
   Mail:          christoph.stoettner@stoeps.de
   Documentation: http://scripting101.stoeps.de
 
-  Version:       5.0
-  Date:          2014-06-04
+  Version:       @@version@@
+  Date:          @@date@@
 
   License:       Apache 2.0
 

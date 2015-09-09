@@ -1,30 +1,31 @@
-######
-#  Check ExId (GUID) by Email through JDBC
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  Check ExId of a User in all Connections Applications
-#
-# To run this script with Windows or SLES, you have to modify setupCmdLine
-#
-# Windows:
-# Create d:\ibm\wasuserscript.cmd:
-# "SET WAS_EXT_DIRS=%WAS_EXT_DIRS%;c:\ibm\sqllib\java"
-# export WAS_USER_SCRIPT=D:\IBM\wasuserscript.cmd
-# start wsadmin
-#
-# Linux:
-# Create /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wasuserscript.sh
-# export WAS_EXT_DIRS=$WAS_EXT_DIRS:/opt/IBM/WebSphere/JDBC
-# export WAS_USER_SCRIPT=/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wasuserscript.sh
-# start wsadmin
+'''
+Check ExId (GUID) by Email through JDBC
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       @@version@@
+Date:          @@date@@
+
+License:       Apache 2.0
+
+Check ExId of a User in all Connections Applications
+
+To run this script with Windows or SLES, you have to modify setupCmdLine
+
+Windows:
+Create d:\ibm\wasuserscript.cmd:
+"SET WAS_EXT_DIRS=%WAS_EXT_DIRS%;c:\ibm\sqllib\java"
+export WAS_USER_SCRIPT=D:\IBM\wasuserscript.cmd
+start wsadmin
+
+Linux:
+Create /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wasuserscript.sh
+export WAS_EXT_DIRS=$WAS_EXT_DIRS:/opt/IBM/WebSphere/JDBC
+export WAS_USER_SCRIPT=/opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/wasuserscript.sh
+start wsadmin
+'''
 
 import os
 import sys

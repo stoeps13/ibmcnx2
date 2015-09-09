@@ -1,15 +1,15 @@
 '''
-  Author: Klaus Bild
-  Blog: http://www.kbild.ch
-  E-Mail:
-  Documentation: http://scripting101.stoeps.de
+Description:   Move IBM Connections Communities
 
-  Version:       5.0
-  Date:          2014-06-04
+Author: Klaus Bild
+Blog: http://www.kbild.ch
+E-Mail:
+Documentation: http://scripting101.stoeps.de
 
-  License:       Apache 2.0
+Version:       @@version@@
+Date:          @@date@@
 
- Description: Move IBM Connections Communities
+License:       Apache 2.0
 '''
 
 execfile('communitiesAdmin.py')

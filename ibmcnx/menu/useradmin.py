@@ -46,11 +46,12 @@ def cnxMemberSyncAllByEXID():
     execfile('ibmcnx/member/SyncAllByEXID.py', globdict)
 
 user = ibmcnx.menu.MenuClass.cnxMenu()
-# DB2 Driver can't be loaded with WebSphere 8.5.5, so deactivated until solution found
-# user.AddItem('Check External ID (all Apps & Profiles) (ibmcnx/member/CheckExID.py)',
-#             cnxMemberCheckExIDByEmail)
-# user.AddItem('Deactivate and Activate a User in one step (ibmcnx/member/DeactAndActByEmail.py)',
-#             cnxMemberDeactAndActByEmail)
+# DB2 Driver can't be loaded with WebSphere 8.5.5, so deactivated until
+# solution found
+user.AddItem('Check External ID (all Apps & Profiles) (ibmcnx/member/CheckExID.py)',
+             cnxMemberCheckExIDByEmail)
+user.AddItem('Deactivate and Activate a User in one step (ibmcnx/member/DeactAndActByEmail.py)',
+             cnxMemberDeactAndActByEmail)
 user.AddItem('Deactivate a User by email address (ibmcnx/member/InactivateByEmail.py)',
              cnxMemberInactivateByEmail)
 user.AddItem('Deactivate a User by userid (ibmcnx/member/InactivateByUid.py)',
@@ -62,7 +63,7 @@ user.AddItem('Back to Main Menu (cnxmenu.py)',
 user.AddItem("Exit", ibmcnx.functions.bye)
 
 state_user = 'True'
-menutitle = "IBM Connections User Admin Tasks"
+menutitle = "IBM Connections User Admin Tasks\nYou have to add -Dcom.ibm.ws.scripting.classpath=/opt/IBM/jdbc/db2jcc4.jar to the wsadmin call!"
 while state_user == 'True':
     count = len(user.menuitems)
     user.Show(menutitle)

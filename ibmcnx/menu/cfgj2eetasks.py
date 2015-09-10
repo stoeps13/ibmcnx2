@@ -23,15 +23,23 @@ from java.util import HashMap
 global globdict
 globdict = globals()
 
+
+def cfgJ2EERolesRestricted():
+    execfile("ibmcnx/config/j2ee/RoleAllRestricted.py", globdict)
+
+
+def cfgJ2EERolesUnrestricted():
+    execfile("ibmcnx/config/j2ee/RoleAllUnrestricted.py", globdict)
+
 cfgj2ee = ibmcnx.menu.MenuClass.cnxMenu()
 cfgj2ee.AddItem('Backup J2EE Roles of all Applications (ibmcnx/config/J2EERoleBackup.py)',
                 ibmcnx.functions.cfgJ2EERoleBackup)
 cfgj2ee.AddItem('Restore J2EE Roles of all Applications (ibmcnx/config/J2EERoleRestore.py)',
                 ibmcnx.functions.cfgJ2EERoleRestore)
 cfgj2ee.AddItem('Set J2EE Roles initially (restricted) (ibmcnx/config/J2EERolesRestricted.py)',
-                ibmcnx.functions.cfgJ2EERolesRestricted)
+                cfgJ2EERolesRestricted)
 cfgj2ee.AddItem('Set J2EE Roles initially (unrestricted) (ibmcnx/config/J2EERolesUnrestricted.py)',
-                ibmcnx.functions.cfgJ2EERolesUnrestricted)
+                cfgJ2EERolesUnrestricted)
 cfgj2ee.AddItem('Set J2EE Roles for Moderator Roles (ibmcnx/config/J2EERoleGlobalModerator.py)',
                 ibmcnx.functions.cfgJ2EERoleGlobalModerator)
 cfgj2ee.AddItem('Set J2EE Role for Metrics Reader (ibmcnx/config/J2EERoleMetricsReader.py)',

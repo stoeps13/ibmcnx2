@@ -156,14 +156,6 @@ def cfgJ2EERoleRestore():
     execfile("ibmcnx/config/j2ee/RoleRestore.py")
 
 
-def cfgJ2EERolesRestricted():
-    execfile("ibmcnx/config/j2ee/RoleAllRestricted.py")
-
-
-def cfgJ2EERolesUnrestricted():
-    execfile("ibmcnx/config/j2ee/RoleAllUnrestricted.py")
-
-
 def cfgJ2EERoleGlobalModerator():
     execfile("ibmcnx/config/j2ee/RoleGlobalMod.py")
 

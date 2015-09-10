@@ -71,10 +71,11 @@ else:
 
 
 def setRoleCmd(appName, roleName, everyone, authenticated, users, groups):
-    # function to set the j2ee role of a Connections Application
-    # Values needed appName = Application Name, roleName = Name of the role
-    # everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
-    #
+    '''
+    function to set the j2ee role of a Connections Application
+    Values needed appName = Application Name, roleName = Name of the role
+    everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
+    '''
     print "\n\tApplication: " + appName
     print "\tRole: " + roleName
     print "\n\tEveryone: " + everyone

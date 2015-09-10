@@ -107,7 +107,7 @@ def j2eeRolesCmdUnrestricted(appName, connwasadmin, connadmin, connmoderators, c
     elif(appName.lower() == 'websphereoauth20sp'):
         AdminApp.edit(
             appName, '[-MapRolesToUsers [["authenticated" No Yes "" ""] ["client manager" No No "" ""]  ]]')
-    elif(appName.lower() == 'Widgetcontainer'):
+    elif(appName.lower() == 'widgetcontainer'):
         AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["allAuthenticated" No Yes "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["metrics-reader" No No "" ""] ["global-moderator" No No "' +
                       connmoderators + '" "' + connmoderatorgroup + '"] ["mail-user" No Yes "" ""] ["trustedExternalApplication" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"]  ]]')
     elif(appName.lower() == 'wikis'):

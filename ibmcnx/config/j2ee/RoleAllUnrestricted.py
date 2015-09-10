@@ -38,11 +38,23 @@ if answer.lower() in allowed_answer:
     connmoderators = configParser.get('Generic', 'j2ee.cnxmoderators')
     connmetrics = configParser.get('Generic', 'j2ee.cnxmetrics')
     connmobile = configParser.get('Generic', 'j2ee.connmobile')
+    cnxmail = configParser.get('Generic', 'j2ee.cnxmail')
+    cnxreader = configParser.get('Generic', 'j2ee.cnxreader')
+    cnxcommunitycreator = configParser.get('Generic', 'j2ee.communitycreator')
+    cnxwikicreator = configParser.get('Generic', 'j2ee.wikicreator')
+    cnxfilesyncuser = configParser.get('Generic', 'j2ee.filesyncuser')
     # Variables for Groupmapping
     connadmingroup = configParser.get('Generic', 'j2ee.cnxadmingroup')
     connmoderatorgroup = configParser.get('Generic', 'j2ee.cnxmoderatorgroup')
     connmetricsgroup = configParser.get('Generic', 'j2ee.cnxmetricsgroup')
     connmobilegroup = configParser.get('Generic', 'j2ee.cnxmobilegroup')
+    cnxmailgroup = configParser.get('Generic', 'j2ee.cnxmailgroup')
+    cnxreadergroup = configParser.get('Generic', 'j2ee.cnxreadergroup')
+    cnxcommunitycreatorgroup = configParser.get(
+        'Generic', 'j2ee.communitycreatorgroup')
+    cnxwikicreatorgroup = configParser.get('Generic', 'j2ee.wikicreatorgroup')
+    cnxfilesyncusergroup = configParser.get(
+        'Generic', 'j2ee.filesyncusergroup')
 else:
     # Variables for Usermapping
     connwasadmin = str(ibmcnx.functions.getAdmin('connwasadmin'))
@@ -50,90 +62,136 @@ else:
     connmoderators = str(ibmcnx.functions.getAdmin('connmoderators'))
     connmetrics = str(ibmcnx.functions.getAdmin('connmetrics'))
     connmobile = str(ibmcnx.functions.getAdmin('connmobile'))
-
+    cnxmail = str(ibmcnx.functions.getAdmin('cnxmail'))
     # Variables for Groupmapping
     connadmingroup = str(ibmcnx.functions.getAdmin('connadmingroup'))
     connmoderatorgroup = str(ibmcnx.functions.getAdmin('connmoderatorgroup'))
     connmetricsgroup = str(ibmcnx.functions.getAdmin('connmetricsgroup'))
     connmobilegroup = str(ibmcnx.functions.getAdmin('connmobilegroup'))
+    cnxmailgroup = str(ibmcnx.functions.getAdmin('cnxmailgroup'))
 
 
-def j2eeRolesCmdUnrestricted(appName, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup):
-    if(appName.lower() == 'activities'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup +
-                      '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""] ]]')
-    elif(appName.lower() == 'blogs'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["everyone" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["global-moderator" No No "' + connwasadmin + '|' +
-                      connmoderators + '" ""] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["reader" Yes No "" ""] ["bss-provisioning-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'common'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["allAuthenticated" No Yes "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup +
-                      '"] ["everyone" Yes No "" ""] ["metrics-report-run" No No ' + connmetrics + ' ""] ["global-moderator" No No "' + connmoderators + '" "' + connmoderatorgroup + '"] ["mail-user" No Yes "" ""] ["reader" Yes No "" ""]  ]]')
-    elif(appName.lower() == 'communities'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["person" No Yes "" ""] ["metrics-reader" Yes No "" ""] ["community-creator" Yes No "" ""] ["community-metrics-run" No Yes ' + connmetrics + ' ""] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["global-moderator" No No "' +
-                      connwasadmin + '|' + connmoderators + '" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["dsx-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'dogear'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["search-admin" No No "' +
-                      connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"]  ]]')
-    elif(appName.lower() == 'files'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["everyone" Yes No "" ""] ["person" No Yes "" ""] ["reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["everyone-authenticated" No Yes "" ""] ["files-owner" No Yes "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["search-admin" No No "' +
-                      connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["app-connector" No No "" ""] ["global-moderator" No No "' + connwasadmin + '|' + connmoderators + '" ""] ["org-admin" No No "" ""] ["bss-provisioning-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'forums'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["metrics-reader" Yes No "" ""] ["reader" Yes No "" ""] ["everyone" Yes No "" ""] ["discussThis-user" Yes No "" ""] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' +
-                      connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["global-moderator" No No "' + connwasadmin + '|' + connmoderators + '" ""] ["bss-provisioning-admin" No No "" ""] ["search-public-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'homepage'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["admin" No No "' +
-                      connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"]  ]]')
-    elif(appName.lower() == 'metrics'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["everyone" Yes No "" ""] ["person" No Yes "" ""] ["reader" Yes No "" ""] ["everyone-authenticated" No Yes "" ""] ["community-metrics-run" No Yes "" ""] ["admin" No No "' +
-                      connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["metrics-report-run" No No ' + connmetrics + ' ""]  ]]')
-    elif(appName.lower() == 'mobile'):
-        AdminApp.edit(
-            appName, '[-MapRolesToUsers [["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["person" No Yes "" ""]  ]]')
-    elif(appName.lower() == 'mobile administration'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["administrator" No No "' +
-                      connmobile + '" "' + connmobilegroup + '"] ["everyone" No Yes "" ""]  ]]')
-    elif(appName.lower == 'moderation'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["reader" Yes No "" ""] ["everyone-authenticated" No Yes "" ""] ["person" No Yes "" ""] ["global-moderator" No No "' +
-                      connmoderators + '" "' + connmoderatorgroup + '"]  ]]')
-    elif(appName.lower() == 'news'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["sharebox-reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["allAuthenticated" Yes No "" ""] ["admin" No No "' + connwasadmin + '|' +
-                      connadmin + '" "' + connadmingroup + '"] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'profiles'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["person" No Yes "" ""] ["allAuthenticated" No Yes "" ""] ["metrics-reader" Yes No "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup +
-                      '"] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["dsx-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["org-admin" No No "' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'search'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["admin" No No "' + connwasadmin +
-                      '|' + connadmin + '" "' + connadmingroup + '"] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["everyone-authenticated" No Yes "" ""]  ]]')
-    elif(appName.lower() == 'websphereoauth20sp'):
-        AdminApp.edit(
-            appName, '[-MapRolesToUsers [["authenticated" No Yes "" ""] ["client manager" No No "" ""]  ]]')
-    elif(appName.lower() == 'widgetcontainer'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["allAuthenticated" No Yes "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["everyone" Yes No "" ""] ["reader" Yes No "" ""] ["metrics-reader" No No "" ""] ["global-moderator" No No "' +
-                      connmoderators + '" "' + connmoderatorgroup + '"] ["mail-user" No Yes "" ""] ["trustedExternalApplication" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"]  ]]')
-    elif(appName.lower() == 'wikis'):
-        AdminApp.edit(appName, '[-MapRolesToUsers [["everyone" Yes No "" ""] ["person" No Yes "" ""] ["reader" Yes No "" ""] ["metrics-reader" Yes No "" ""] ["everyone-authenticated" No Yes "" ""] ["wiki-creator" No Yes "" ""] ["admin" No No "' + connwasadmin + '|' +
-                      connadmin + '" "' + connadmingroup + '"] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""]  ]]')
-    elif(appName.lower() == 'connectionsproxy'):
-        AdminApp.edit(
-            appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["allAuthenticated" No Yes "" ""] ["reader" Yes No "" ""] ["everyone" Yes No "" ""]  ]]')
-    elif(appName.lower() == 'oembed'):
-        AdminApp.edit(
-            appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["reader" Yes No "" ""] ["everyone" Yes No "" ""] ["everyone-authenticated" No Yes "" ""] ["metrics-reader" No No "" ""] ["bss-provisioning-admin" No No "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""]]')
-    elif(appName.lower() == 'fncs' or appName.lower() == 'navigator'):
-        AdminApp.edit(
-            appName, '[-MapRolesToUsers [["authenticated"Yes No "" ""] ["anonymous" Yes No "" ""]  ]]')
+def setRoleCmd(appName, roleName, everyone, authenticated, users, groups):
+    '''
+    function to set the j2ee role of a Connections Application
+    Values needed appName = Application Name, roleName = Name of the role
+    everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
+    '''
+    print "\n\tApplication: " + appName
+    print "\tRole: " + roleName
+    print "\n\tEveryone: " + everyone
+    print "\tAuthenticated: " + authenticated
+    print "\tUsers: " + users
+    print "\tGroups: " + groups + "\n"
+    AdminApp.edit(appName, '[-MapRolesToUsers [[ "' + roleName + '" ' +
+                  everyone + ' ' + authenticated + ' ' + users + ' ' + groups + ' ]] ]')
+    # example: AdminApp.edit( "Blogs", '[-MapRolesToUsers [["person" No Yes ""
+    # ""] ]]' )
+
+
+def setRole(appName, roleName, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, cnxmail, cnxreader, cnxcommunitycreator, cnxwikicreator, cnxfilesyncuser, connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup, cnxmailgroup, cnxreadergroup, cnxcommunitycreatorgroup, cnxwikicreatorgroup, cnxfilesyncusergroup):
+    if roleName == "admin" or roleName == "search-admin" or roleName == "widget-admin" or roleName == "dsx-admin" or roleName == "trustedExternalApplication" or roleName == 'org-admin' or roleName == 'orgadmin':
+        # Administration Roles
+        setRoleCmd(appName, roleName, "No", "No", connwasadmin +
+                   '|' + connadmin, connadmingroup)
+    elif roleName == "administrator":
+        # Mobile Administration
+        setRoleCmd(appName, roleName, "No", "No", connmobile, connmobilegroup)
+    elif roleName == "global-moderator":
+        # Moderators
+        setRoleCmd(appName, roleName, "No", "No",
+                   connmoderators, connmoderatorgroup)
+    elif roleName == "metrics-reader" or roleName == "metrics-report-run" or roleName == "community-metrics-run":
+        # Metrics
+        setRoleCmd(appName, roleName, "No", "No",
+                   connmetrics, connmetricsgroup)
+    elif roleName == "person" or roleName == "allAuthenticated" or roleName == "everyone-authenticated" or roleName == "files-owner":
+        # Default Access reader, person, authenticated
+        if cnxreader == "allauthenticated":
+            setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
+        else:
+            setRoleCmd(appName, roleName, "No", "No",
+                       "cnxreader", "cnxreadergroup")
+    elif roleName == "mail-user":
+        # Mail User
+        if cnxmail == "allauthenticated":
+            setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
+        else:
+            setRoleCmd(appName, roleName, "No", "No",
+                       "cnxmail", "cnxmailgroup")
+    elif roleName == "reader" or roleName == "everyone":
+        # Public to yes
+        setRoleCmd(appName, roleName, "Yes", "No", "' '", "' '")
+    elif roleName == "discussthis-user" or roleName == "Anonymous":
+        # Public to yes
+        setRoleCmd(appName, roleName, "Yes", "No", "' '", "' '")
+    elif roleName == "bss-provisioning-admin" or roleName == "client manager":
+        # Public to yes
+        setRoleCmd(appName, roleName, "No", "No", "' '", "' '")
+    elif roleName == "authenticated" or roleName == "Authenticated" or roleName == "OAuthClient":
+        # Public to yes
+        setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
+    elif roleName == "community-creator":
+        # Community Creator
+        if cnxmail == "allauthenticated":
+            setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
+        else:
+            setRoleCmd(appName, roleName, "No", "No",
+                       "cnxcommunitycreator", "cnxcommunitycreatorgroup")
+    elif roleName == 'wiki-creator':
+        # Wiki Creator
+        if cnxmail == "allauthenticated":
+            setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
+        else:
+            setRoleCmd(appName, roleName, "No", "No",
+                       "cnxwikicreator", "cnxwikicreatorgroup")
+    elif roleName == 'filesync-user':
+        # Wiki Creator
+        if cnxfilesyncuser == "allauthenticated":
+            setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
+        else:
+            setRoleCmd(appName, roleName, "No", "No",
+                       "cnxfilesyncuser", "cnxfilesyncusergroup")
     else:
-        print "Unknown Application: %s" % appName
+        print "\n\nApplication " + appName + "- Role " + roleName + " not set!\n\n"
 
+
+def convertRoles2Dict(appname, list):
+    # function to convert backup txt files of Security Role Backup to a dictionary
+    # print '\tPATH: ' + path
+    count = 0
+    dict = {}
+
+    for line in list.splitlines():
+        # for loop through file to read it line by line
+        if (':' in line) and (count > 12):
+            value = line.split(':')[0]
+            # cred = line.split(':')[1].strip('\n')
+            cred = line.split(':')[1]
+            # cred = cred.strip(' ')
+            cred = cred.strip()
+            if value == "Role":
+                role = cred
+                dict[role] = {}
+            dict[role][value] = cred
+        count += 1
+    return dict
 
 apps = AdminApp.list()
 appsList = apps.splitlines()
+# only for testing single apps, uncomment following line:
+# appsList = ['fncs']
+
 for app in appsList:
-    print "Setting Security Roles for %s" % app.upper()
-    try:
-        j2eeRolesCmdUnrestricted(app, connwasadmin, connadmin, connmoderators, connmetrics,
-                                 connmobile, connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup)
-    except:
-        print "Error occured on setting security roles for %s" % app.upper()
+    dictionary = convertRoles2Dict(app, AdminApp.view(app, "-MapRolesToUsers"))
+    print "\n\tApplication: " + app + "\n\n"
+    # app, role
+    for role in dictionary.keys():
+        # Loop through Roles
+        try:
+            setRole(app, role, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, cnxmail, cnxreader, cnxcommunitycreator, cnxwikicreator, cnxfilesyncuser,
+                    connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup, cnxmailgroup, cnxreadergroup, cnxcommunitycreatorgroup, cnxwikicreatorgroup, cnxfilesyncusergroup)
+        except:
+            print "Error setting role: " + role + " in App: " + app
 
 ibmcnx.functions.saveChanges()

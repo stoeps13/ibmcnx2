@@ -29,6 +29,8 @@ checks.AddItem('Check Database connections (ibmcnx/check/DataSource.py)',
                ibmcnx.functions.checkDataSource)
 checks.AddItem('Check Webserver (ibmcnx/check/WebSrvStatus.py)',
                ibmcnx.functions.checkWebServer)
+checks.AddItem('Check Seedlists (ibmcnx/check/Seedlists.py)',
+               ibmcnx.functions.checkSeedLists)
 checks.AddItem('Back to Main Menu (cnxmenu.py)',
                ibmcnx.functions.cnxBackToMainMenu)
 checks.AddItem("Exit", ibmcnx.functions.bye)

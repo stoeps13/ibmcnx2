@@ -53,6 +53,10 @@ def cnxmenu_docs():
 def cnxBackToMainMenu():
     execfile('ibmcnx/menu/cnxmenu.py', globdict)
 
+# Check if properties file is present and print warning if not
+if ibmcnx.functions.checkPropFile() == False:
+    ibmcnx.functions.propPrintError()
+
 m = ibmcnx.menu.MenuClass.cnxMenu()
 m.AddItem('Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks)
 m.AddItem('Menu - IBM Connections Security Roles Tasks', cnxmenu_cfgj2eetasks)

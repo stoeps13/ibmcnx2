@@ -128,9 +128,34 @@ def saveChanges():
     else:
         print 'Nothing to save!'
 
+def checkPropFile():
+    '''
+    Check if properties file is present, used to print warning in menu
+
+    Returns
+        propPresent (Boolean)
+    '''
+    import os.path
+    propPresent = os.path.isfile( 'ibmcnx/ibmcnx.properties' )
+    return propPresent
+
+
+def propPrintError():
+    '''
+    Print warning message
+    '''
+    print '####################################################'
+    print '#                                                  #'
+    print '#             !!!      WARNING      !!!            #'
+    print '#                                                  #'
+    print '#    No properties file present, did you rename    #'
+    print '#            ibmcnx_sample.properties?             #'
+    print '#                                                  #'
+    print '#   Some scripts will not work without this file!  #'
+    print '#                                                  #'
+    print '####################################################'
+
 # Get temporary directory from properties file
-
-
 def tempPath():
     configParser = ConfigParser.ConfigParser()
     configFilePath = r'ibmcnx/ibmcnx.properties'
@@ -215,6 +240,8 @@ def checkDataSource():
 def checkWebServer():
     execfile('ibmcnx/check/WebSrvStatus.py')
 
+def checkSeedLists():
+    execfile('ibmcnx/check/SeedLists.py')
 
 def docJVMHeap():
     execfile('ibmcnx/doc/JVMHeap.py')

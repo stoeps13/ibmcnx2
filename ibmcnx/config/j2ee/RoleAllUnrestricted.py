@@ -119,6 +119,12 @@ def j2eeRolesCmdUnrestricted(appName, connwasadmin, connadmin, connmoderators, c
     elif(appName == 'connectionsProxy'):
         AdminApp.edit(
             appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["allAuthenticated" No Yes "" ""] ["reader" Yes No "" ""] ["everyone" Yes No "" ""]  ]]')
+    elif(appName == 'oEmbed'):
+        AdminApp.edit(
+            appName, '[-MapRolesToUsers [["person" No Yes "" ""] ["reader" Yes No "" ""] ["everyone" Yes No "" ""] ["everyone-authenticated" No Yes "" ""] ["metrics-reader" No No "" ""] ["bss-provisioning-admin" No No "" ""] ["admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["search-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["widget-admin" No No "' + connwasadmin + '|' + connadmin + '" "' + connadmingroup + '"] ["bss-provisioning-admin" No No "" ""]]')
+    elif(appName == 'fncs' or appName == 'navigator'):
+        AdminApp.edit(
+            appName, '[-MapRolesToUsers [["authenticated"Yes No "" ""] ["anonymous" Yes No "" ""]  ]]')
     else:
         print "Unknown Application: %s" % appName
 

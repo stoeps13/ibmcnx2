@@ -10,8 +10,8 @@ Blog: http://www.kbild.ch
 E-Mail:
 Documentation: http://scripting101.stoeps.de
 
-Version:       5.0
-Date:          2014-09-04
+Version:       @@version@@
+Date:          @@date@@
 
 License:       Apache 2.0
 
@@ -186,9 +186,10 @@ for app in appsList:
     # app, role
     for role in dictionary.keys():
         # Loop through Roles
-        setRole(app, role, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, cnxmail, cnxreader, cnxcommunitycreator, cnxwikicreator, cnxfilesyncuser,
-                connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup, cnxmailgroup, cnxreadergroup, cnxcommunitycreatorgroup, cnxwikicreatorgroup, cnxfilesyncusergroup)
-        # except:
-        #    print "Error setting role: " + role + " in App: " + app
+        try:
+            setRole(app, role, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, cnxmail, cnxreader, cnxcommunitycreator, cnxwikicreator, cnxfilesyncuser,
+                    connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup, cnxmailgroup, cnxreadergroup, cnxcommunitycreatorgroup, cnxwikicreatorgroup, cnxfilesyncusergroup)
+        except:
+            print "Error setting role: " + role + " in App: " + app
 
 ibmcnx.functions.saveChanges()

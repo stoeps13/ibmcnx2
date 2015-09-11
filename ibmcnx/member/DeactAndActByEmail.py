@@ -25,7 +25,11 @@ import ConfigParser
 if __name__ == "__main__":
     execfile("ibmcnx/loadCnxApps.py")
 
-import com.ibm.db2.jcc.DB2Driver as Driver
+try:
+    import com.ibm.db2.jcc.DB2Driver as Driver
+except:
+    print "\n\tNo jdbc driver available, start wsadmin with\n"
+    print "\t\"-javaoption -Dcom.ibm.ws.scripting.classpath=path/db2jcc4.jar\"\n"
 
 # Get configuration from properties file
 configParser = ConfigParser.ConfigParser()

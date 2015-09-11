@@ -119,7 +119,7 @@ def setRole(appName, roleName, connwasadmin, connadmin, connmoderators, connmetr
         else:
             setRoleCmd(appName, roleName, "No", "No",
                        "cnxmail", "cnxmailgroup")
-    elif roleName == "reader" or roleName == "everyone":
+    elif roleName == "reader" or roleName == "everyone" or roleName == "Everyone":
         # Public to yes
         setRoleCmd(appName, roleName, "Yes", "No", "' '", "' '")
     elif roleName == "discussthis-user" or roleName == "Anonymous":

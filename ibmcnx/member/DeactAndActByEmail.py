@@ -89,7 +89,7 @@ except:
     loadCNXCommands()
 
 try:
-    print "\tInactivate Activities\t",
+    print "\tInactivate Activities\t\t",
     ActivitiesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
     print '\t No user with Email ' + MAILADDRESS + ' found'

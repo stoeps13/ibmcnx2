@@ -18,9 +18,16 @@ import os
 import ibmcnx.functions
 import ibmcnx.menu.MenuClass
 
+global globdict
+globdict = globals()
+
 #  Only load commands if not initialized directly (call from menu)
 # if __name__ == "__main__":
 #    execfile( "ibmcnx/loadCnxApps.py" )
+
+
+def checkSeedLists():
+    execfile('ibmcnx/check/SeedLists.py', globdict)
 
 checks = ibmcnx.menu.MenuClass.cnxMenu()
 checks.AddItem('Check if all Apps are running (ibmcnx/check/AppStatus.py)',
@@ -30,7 +37,7 @@ checks.AddItem('Check Database connections (ibmcnx/check/DataSource.py)',
 checks.AddItem('Check Webserver (ibmcnx/check/WebSrvStatus.py)',
                ibmcnx.functions.checkWebServer)
 checks.AddItem('Check Seedlists (ibmcnx/check/Seedlists.py)',
-               ibmcnx.functions.checkSeedLists)
+               checkSeedLists)
 checks.AddItem('Back to Main Menu (cnxmenu.py)',
                ibmcnx.functions.cnxBackToMainMenu)
 checks.AddItem("Exit", ibmcnx.functions.bye)

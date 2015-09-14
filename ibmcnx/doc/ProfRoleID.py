@@ -44,7 +44,10 @@ stmt = conn.createStatement()
 
 sql = "SELECT r.PROF_DISPLAY_NAME, r.PROF_MAIL, r.PROF_UID, e.ROLE_ID from EMP_ROLE_MAP e left join EMPLOYEE r ON e.PROF_KEY = r.PROF_KEY WHERE e.ROLE_ID = 'employee.extended'"
 
-rs = stmt.executeQuery(sql)
+try:
+    rs = stmt.executeQuery(sql)
+except:
+    print "Error connecting to database!"
 
 employeeList = []
 while (rs.next()):
@@ -64,4 +67,3 @@ print '\tUser with employee.extended role:'
 print '\t---------------------------------\n'
 for e in employeeList:
     print e['PROF_DISPLAY_NAME'] + '\t\t' + e['PROF_MAIL'] + '\t\t' + e['PROF_UID'] + '\t\t' + e['ROLE_ID']
- 

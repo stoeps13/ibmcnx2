@@ -43,9 +43,12 @@ conn = Driver().connect(jdbcPath, props)
 stmt = conn.createStatement()
 
 # Check column names and calls for this, should return inactive profiles
-sql = "SELECT r.PROF_DISPLAY_NAME, r.PROF_MAIL from EMPINST.EMPLOYEE WHERE EMPLOYEE.PROF_STATE = 0"
+sql = "SELECT PROF_DISPLAY_NAME, PROF_MAIL from EMPINST.EMPLOYEE WHERE PROF_STATE = 1"
 
-rs = stmt.executeQuery(sql)
+try:
+    rs = stmt.executeQuery(sql)
+except:
+    print "\tError connecting to database!"
 
 employeeList = []
 while (rs.next()):

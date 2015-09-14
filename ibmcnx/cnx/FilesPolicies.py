@@ -17,7 +17,10 @@ from java.util import HashSet
 from java.util import HashMap
 import java
 
-if __name__ == "__main__":
+try:
+    temp = FilesPolicyService.browse("title", "true", 1, 25)
+except:
+    print "\tLoading Files Admin Commands:"
     execfile("filesAdmin.py")
 
 

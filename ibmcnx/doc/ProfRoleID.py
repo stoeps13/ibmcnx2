@@ -42,7 +42,7 @@ jdbcPath = 'jdbc:db2://' + configParser.get('Database', 'dbHost') + ':' + config
 conn = Driver().connect(jdbcPath, props)
 stmt = conn.createStatement()
 
-sql = "SELECT r.PROF_DISPLAY_NAME, r.PROF_MAIL, r.PROF_UID, e.ROLE_ID from EMP_ROLE_MAP e left join EMPLOYEE r ON e.PROF_KEY = r.PROF_KEY WHERE e.ROLE_ID = 'employee.extended'"
+sql = "SELECT r.PROF_DISPLAY_NAME, r.PROF_MAIL, r.PROF_UID, e.ROLE_ID from EMPINST.EMP_ROLE_MAP e left join EMPINST.EMPLOYEE r ON e.PROF_KEY = r.PROF_KEY WHERE e.ROLE_ID = 'employee.extended'"
 
 try:
     rs = stmt.executeQuery(sql)
@@ -63,7 +63,13 @@ stmt.close()
 conn.close()
 
 # print the result
-print '\tUser with employee.extended role:'
-print '\t---------------------------------\n'
+print '\n\nUser with employee.extended role:'
+print '---------------------------------\n'
 for e in employeeList:
-    print e['PROF_DISPLAY_NAME'] + '\t\t' + e['PROF_MAIL'] + '\t\t' + e['PROF_UID'] + '\t\t' + e['ROLE_ID']
+    maillen = len(e['PROF_DISPLAY_NAME'])
+    displaynamelen = len(e['PROF_DISPLAY_NAME'])
+    uidlen = len(e['PROF_UID'])
+
+    print e['PROF_DISPLAY_NAME'] + (30 - displaynamelen) * ' ' + e['PROF_MAIL'] + (50 - maillen) * ' ' + e['PROF_UID']
+
+print "\n"

@@ -54,7 +54,7 @@ def cnxBackToMainMenu():
     execfile('ibmcnx/menu/cnxmenu.py', globdict)
 
 # Check if properties file is present and print warning if not
-if ibmcnx.functions.checkPropFile() == 1:
+if ibmcnx.functions.checkPropFile() != 1:
     ibmcnx.functions.propPrintError()
 
 m = ibmcnx.menu.MenuClass.cnxMenu()

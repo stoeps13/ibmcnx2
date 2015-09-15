@@ -53,6 +53,10 @@ def cnxLibraryLarge():
 def cnxLibrarySizes():
     execfile('ibmcnx/cnx/LibrarySizes.py', globdict)
 
+
+def cnxProfAddRole():
+    execfile('ibmcnx/cnx/ProfilesAddExtRole.py', globdict)
+
 comm = ibmcnx.menu.MenuClass.cnxMenu()
 comm.AddItem('Update VersionStamp (ibmcnx/cnx/VersionStamp.py)',
              cnxFilesVersionStamp)
@@ -66,6 +70,8 @@ comm.AddItem(
     'List Libraries with more than 80% Used Space (ibmcnx/cnx/LibrarySizes.py)', cnxLibraryLarge)
 comm.AddItem('Reparent/Move Communities (ibmcnx/cnx/CommunitiesReparenting.py)',
              cnxCommunitiesReparenting)
+comm.AddItem('Add employee.extended role to user (ibmcnx/cnx/ProfilesAddExtRole.py)',
+             cnxProfAddRole)
 comm.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',
              ibmcnx.functions.cnxBackToMainMenu)
 comm.AddItem("Exit", ibmcnx.functions.bye)

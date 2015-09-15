@@ -70,19 +70,17 @@ comm.AddItem(
     'List Libraries with more than 80% Used Space (ibmcnx/cnx/LibrarySizes.py)', cnxLibraryLarge)
 comm.AddItem('Reparent/Move Communities (ibmcnx/cnx/CommunitiesReparenting.py)',
              cnxCommunitiesReparenting)
-# Script has a bug, role is not set -> todo check again
-# comm.AddItem('Add employee.extended role to user
-# (ibmcnx/cnx/ProfilesAddExtRole.py)',
+comm.AddItem('Add employee.extended role to user (ibmcnx/cnx/ProfilesAddExtRole.py)',
              cnxProfAddRole)
 comm.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',
              ibmcnx.functions.cnxBackToMainMenu)
 comm.AddItem("Exit", ibmcnx.functions.bye)
 
-state_comm='True'
-menutitle="IBM Connections Admin Tasks"
+state_comm = 'True'
+menutitle = "IBM Connections Admin Tasks"
 
 while state_comm == 'True':
-    count=len(comm.menuitems)
+    count = len(comm.menuitems)
     comm.Show(menutitle)
 
     ###########################
@@ -90,14 +88,14 @@ while state_comm == 'True':
     ## only accept int       ##
     ###########################
     ## Wait for valid input in while...not ###
-    is_valid_comm=0
+    is_valid_comm = 0
     while not is_valid_comm:
         try:
-            inputstring='\tEnter your choice [1-' + str(count) + ']: '
-            n=int(raw_input(inputstring))
+            inputstring = '\tEnter your choice [1-' + str(count) + ']: '
+            n = int(raw_input(inputstring))
 
             if n <= count and n > 0:
-                is_valid_comm=1  # set it to 1 to validate input and to terminate the while..not loop
+                is_valid_comm = 1  # set it to 1 to validate input and to terminate the while..not loop
             else:
                 print ("'%s' is not a valid menu option.") % n
         except ValueError, e:

@@ -49,7 +49,7 @@ def main():
     else:
         print 'User not found in peopleDB.'
     '''
-    ProfilesService.setRole(mailAddress, 'EMPLOYEE_EXTENDED')
+    ProfilesService.setRole(mailAddress, EMPLOYEE_EXTENDED)
 
 # Get configuration from properties file
 configParser = ConfigParser.ConfigParser()

@@ -43,7 +43,7 @@ conn = Driver().connect(jdbcPath, props)
 stmt = conn.createStatement()
 
 # Check column names and calls for this, should return inactive profiles
-sql = "SELECT PROF_DISPLAY_NAME, PROF_MAIL from EMPINST.EMPLOYEE WHERE PROF_STATE = 1"
+sql = "SELECT PROF_DISPLAY_NAME, PROF_UID, PROF_GUID from EMPINST.EMPLOYEE WHERE PROF_STATE = 1"
 
 try:
     rs = stmt.executeQuery(sql)
@@ -54,7 +54,8 @@ employeeList = []
 while (rs.next()):
     row = {}
     row['PROF_DISPLAY_NAME'] = rs.getString(1)
-    row['PROF_MAIL'] = rs.getString(2)
+    row['PROF_UID'] = rs.getString(2)
+    row['PROF_GUID'] = rs.getString(3)
     employeeList.append(row)
 
 rs.close()
@@ -62,7 +63,10 @@ stmt.close()
 conn.close()
 
 # print the result
-print '\tInactivated Userprofiles:'
-print '\t-------------------------\n'
+print '\nInactive Userprofiles:'
+print '-------------------------\n'
 for e in employeeList:
-    print e['PROF_DISPLAY_NAME'] + '\t\t' + e['PROF_MAIL']
+    displaynamelen = len(e['PROF_DISPLAY_NAME'])
+    print e['PROF_GUID'] + '\t' + e['PROF_DISPLAY_NAME'] + (30 - displaynamelen) * ' ' + e['PROF_UID']
+
+print '\n\n'

@@ -17,6 +17,7 @@ import ConfigParser
 global globdict
 globdict = globals()
 
+
 def getMailAddress():
     '''
     Ask for mail address to add role
@@ -27,19 +28,28 @@ def getMailAddress():
     mail = raw_input('Adding extended role to user (provide mailaddress): ')
     return mail
 
+
 def main():
     mailAddress = getMailAddress()
+    '''
+    Idea would be to check if the user already has the role, but getRoles() do not return a value it only prints the actual value
+
     try:
-        role = ProfilesService.getRoles( mailAddress )
+        role = ProfilesService.getRoles(mailAddress)
     except:
         print 'User not found!'
 
-    if role == 'employee':
-        ProfilesService.setRole( mailaddress )
-    elif role == 'employee.extended':
+    if role == '[employee]':
+        try:
+            ProfilesService.setRole(mailaddress)
+        except:
+            print "Error occured"
+    elif role == '[employee.extended]':
         print 'User has alreay role: ' + role
     else:
         print 'User not found in peopleDB.'
+    '''
+    ProfilesService.setRole(mailAddress, 'EMPLOYEE_EXTENDED')
 
 # Get configuration from properties file
 configParser = ConfigParser.ConfigParser()
@@ -54,7 +64,7 @@ except:
 
 try:
     # Check if Profiles Scripts are loaded
-    temp = ProfilesService.getRolesByUserId( connadmin[0] )
+    temp = ProfilesService.getRolesByUserId(connadmin[0])
 except:
     print "\tLoading Profiles Admin Commands:"
     execfile("profilesAdmin.py")

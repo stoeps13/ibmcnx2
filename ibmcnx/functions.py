@@ -278,6 +278,10 @@ def doctracesettings():
     execfile('ibmcnx/doc/traceSettings.py')
 
 
+def docroleid():
+    execfile('ibmcnx/doc/ProfRoleID.py')
+
+
 def cnxBackToMainMenu():
     execfile('ibmcnx/menu/cnxmenu.py')
 

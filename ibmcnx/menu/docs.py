@@ -61,6 +61,8 @@ doc.AddItem('Show all j2ee roles of inst. applications (ibmcnx/doc/j2eeroles.py)
             ibmcnx.functions.docj2eeroles)
 doc.AddItem('Show all datasources and parameters (ibmcnx/doc/DataSources.py)',
             ibmcnx.functions.docdatasources)
+doc.AddItem('Show users with employee.extended role (ibmcnx/doc/ProfRoleID.py',
+            ibmcnx.functions.docroleid)
 doc.AddItem(
     'Create a file with all documentation (ibmcnx/doc/Documentation.py)', docDocumentation)
 doc.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',

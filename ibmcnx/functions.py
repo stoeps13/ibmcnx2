@@ -282,6 +282,10 @@ def docroleid():
     execfile('ibmcnx/doc/ProfRoleID.py')
 
 
+def docinactiveprof():
+    execfile('ibmcnx/doc/ProfilesInactive.py')
+
+
 def cnxBackToMainMenu():
     execfile('ibmcnx/menu/cnxmenu.py')
 

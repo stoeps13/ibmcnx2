@@ -63,6 +63,8 @@ doc.AddItem('Show all datasources and parameters (ibmcnx/doc/DataSources.py)',
             ibmcnx.functions.docdatasources)
 doc.AddItem('Show users with employee.extended role (ibmcnx/doc/ProfRoleID.py',
             ibmcnx.functions.docroleid)
+doc.AddItem('Show inactive user profiles (ibmcnx/doc/ProfilesInactive.py',
+            ibmcnx.functions.docinactiveprof)
 doc.AddItem(
     'Create a file with all documentation (ibmcnx/doc/Documentation.py)', docDocumentation)
 doc.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',

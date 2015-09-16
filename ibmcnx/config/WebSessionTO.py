@@ -31,6 +31,6 @@ for wasServer in wasServers:
     tuningVM = AdminConfig.list('TuningParams', wasServer)
     AdminConfig.modify(
         tuningVM, '[[invalidationTimeout "' + timeoutValue + '"]]')
-    print "Session Timeout set for " + wasServer.split('|')[0].split('(')[0] + " to\t\t" + timeoutValue
+    print "Session Timeout set for " + wasServer.split('|')[0].split('(')[0] + ":\t\t" + timeoutValue
 
 ibmcnx.functions.saveChanges()

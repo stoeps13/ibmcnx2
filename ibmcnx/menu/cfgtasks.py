@@ -29,6 +29,10 @@ from java.util import HashMap
 global globdict
 globdict = globals()
 
+
+def cfgWebSessionTimeOut():
+    execfile('ibmcnx/config/WebSessionTO.py', globdict)
+
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem('Configure DataSources (ibmcnx/config/DataSource.py)',
             ibmcnx.functions.cfgDataSource)
@@ -44,6 +48,8 @@ cfg.AddItem('Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCust
             ibmcnx.functions.cfgJVMCustProp)
 cfg.AddItem('Set jvm Trace Parameter (ibmcnx/config/jvmtrace.py)',
             ibmcnx.functions.cfgjvmtrace)
+cfg.AddItem('Set application server websession timeout (ibmcnx/config/WebSessionTO.py)',
+            cfgWebSessionTimeOut)
 cfg.AddItem('Change database server and port (ibmcnx/config/ChgDBHost.py)',
             ibmcnx.functions.cfgChgDBHost)
 cfg.AddItem('Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)',

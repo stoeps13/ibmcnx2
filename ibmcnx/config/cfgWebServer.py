@@ -5,8 +5,8 @@ Author: 		Klaus Bild
 E-Mail: 		klaus.bild@gmail.com
 Blog: 			http://kbild.ch
 
-Version:       @@version@@
-Date:          @@date@@
+Version:       5.0.1
+Date:          09/19/2015
 
 License:       Apache 2.0
 '''

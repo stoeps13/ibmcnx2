@@ -5,8 +5,8 @@
   Mail:          gwenael.navez@bnpparibasfortis.com
   Documentation: http://scripting101.stoeps.de
 
-  Version:       @@version@@
-  Date:          @@date@@
+  Version:       5.0.1
+  Date:          09/19/2015
 
   License:       Apache 2.0
 '''

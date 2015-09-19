@@ -1,24 +1,23 @@
-######
-#  Set all Roles to Restricted
-#  no anonymous access possible
-#
-#  Author: Klaus Bild
-#  Blog: http://www.kbild.ch
-#  E-Mail:
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-09-04
-#
-#  License:       Apache 2.0
-#
-#  Description:
-#  Script is tested with IBM Connections 5.0
-#  You have to edit the variables and set them to your administrative Accounts
+'''
+Set all Roles to Restricted - no anonymous access possible
 
-#  History:
-# 2014-09-10    Christoph Stoettner    change the way for changing roles,
-# 5.0 compatible
+Description:
+Script is tested with IBM Connections 5.0
+You have to edit the variables and set them to your administrative Accounts
+
+Author: Klaus Bild
+Blog: http://www.kbild.ch
+E-Mail:
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:
+2014-09-10    Christoph Stoettner    change the way for changing roles, 5.0 compatible
+'''
 
 import ibmcnx.functions
 import ConfigParser
@@ -72,10 +71,11 @@ else:
 
 
 def setRoleCmd(appName, roleName, everyone, authenticated, users, groups):
-    # function to set the j2ee role of a Connections Application
-    # Values needed appName = Application Name, roleName = Name of the role
-    # everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
-    #
+    '''
+    function to set the j2ee role of a Connections Application
+    Values needed appName = Application Name, roleName = Name of the role
+    everyone yes|no, authenticated yes|no, users single uid or uid1|uid2, groups like users
+    '''
     print "\n\tApplication: " + appName
     print "\tRole: " + roleName
     print "\n\tEveryone: " + everyone
@@ -118,7 +118,7 @@ def setRole(appName, roleName, connwasadmin, connadmin, connmoderators, connmetr
         else:
             setRoleCmd(appName, roleName, "No", "No",
                        "cnxmail", "cnxmailgroup")
-    elif roleName == "everyone":
+    elif roleName == "everyone" or roleName == "Everyone":
         # Public to yes
         setRoleCmd(appName, roleName, "Yes", "No", "' '", "' '")
     elif roleName == "discussthis-user" or roleName == "Anonymous":
@@ -187,9 +187,10 @@ for app in appsList:
     # app, role
     for role in dictionary.keys():
         # Loop through Roles
-        setRole(app, role, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, cnxmail, cnxreader, cnxcommunitycreator, cnxwikicreator, cnxfilesyncuser,
-                connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup, cnxmailgroup, cnxreadergroup, cnxcommunitycreatorgroup, cnxwikicreatorgroup, cnxfilesyncusergroup)
-        # except:
-        #    print "Error setting role: " + role + " in App: " + app
+        try:
+            setRole(app, role, connwasadmin, connadmin, connmoderators, connmetrics, connmobile, cnxmail, cnxreader, cnxcommunitycreator, cnxwikicreator, cnxfilesyncuser,
+                    connadmingroup, connmoderatorgroup, connmetricsgroup, connmobilegroup, cnxmailgroup, cnxreadergroup, cnxcommunitycreatorgroup, cnxwikicreatorgroup, cnxfilesyncusergroup)
+        except:
+            print "Error setting role: " + role + " in App: " + app
 
 ibmcnx.functions.saveChanges()

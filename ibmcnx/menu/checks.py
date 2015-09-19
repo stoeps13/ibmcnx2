@@ -1,25 +1,33 @@
-######
-#  Menu for Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  History:       Changed by Jan Alderlieste
+'''
+Menu for Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:       Changed by Jan Alderlieste
+'''
 
 import sys
 import os
 import ibmcnx.functions
 import ibmcnx.menu.MenuClass
 
+global globdict
+globdict = globals()
+
 #  Only load commands if not initialized directly (call from menu)
 # if __name__ == "__main__":
 #    execfile( "ibmcnx/loadCnxApps.py" )
+
+
+def checkSeedLists():
+    execfile('ibmcnx/check/SeedLists.py', globdict)
 
 checks = ibmcnx.menu.MenuClass.cnxMenu()
 checks.AddItem('Check if all Apps are running (ibmcnx/check/AppStatus.py)',
@@ -28,6 +36,8 @@ checks.AddItem('Check Database connections (ibmcnx/check/DataSource.py)',
                ibmcnx.functions.checkDataSource)
 checks.AddItem('Check Webserver (ibmcnx/check/WebSrvStatus.py)',
                ibmcnx.functions.checkWebServer)
+checks.AddItem('Check Seedlists (ibmcnx/check/Seedlists.py)',
+               checkSeedLists)
 checks.AddItem('Back to Main Menu (cnxmenu.py)',
                ibmcnx.functions.cnxBackToMainMenu)
 checks.AddItem("Exit", ibmcnx.functions.bye)

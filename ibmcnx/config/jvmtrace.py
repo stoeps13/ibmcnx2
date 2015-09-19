@@ -1,16 +1,15 @@
-######
-#  set jvm trace
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2015-07-28
-#
-#  License:       Apache 2.0
-#
+'''
+set jvm trace
 
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+'''
 
 def selectServer(serverlist):
     result = serverlist

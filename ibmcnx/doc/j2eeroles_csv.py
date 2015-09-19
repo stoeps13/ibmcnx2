@@ -1,16 +1,16 @@
-######
-#  ** Create a documentation of j2ee roles **
-#  pipe this script to a file (csv), then it can be used within table calculation
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-16
-#
-#  License:       Apache 2.0
-#
+'''
+** Create a documentation of j2ee roles **
+pipe this script to a file (csv), then it can be used within table calculation
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+'''
 
 
 def convertRoles2Dict(appname, list):

@@ -1,33 +1,30 @@
-######
-#  Show the status of all webservers
-#
-#  Author:        Gwenael Navez
-#  Mail:          gwenael.navez@bnpparibasfortis.com
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2015-02-23
-#
-#  License:       Apache 2.0
-#
-#
+'''
+  Show the status of all webservers
+
+  Author:        Gwenael Navez
+  Mail:          gwenael.navez@bnpparibasfortis.com
+  Documentation: http://scripting101.stoeps.de
+
+  Version:       5.0.1
+  Date:          09/19/2015
+
+  License:       Apache 2.0
+'''
 
 import sys
 import os
 
-# Function webserversstatus
-#
-#  Parameters:
-#    objname = server properties
-#    nodename = node name of the webserver
-#    wsname = web server name
-#  Output:
-#    value = RUNNING  (if webserver is running)
-#            UNAVAILABLE (if server is offline)
-#
-
 
 def webserverstatus(cellname, nodename, wsname):
+    '''
+    Args:
+        objname = server properties
+        nodename = node name of the webserver
+        wsname = web server name
+      Returns:
+        value = RUNNING  (if webserver is running)
+                UNAVAILABLE (if server is offline)
+    '''
     #objNameString = AdminControl.completeObjectName( 'WebSphere:type=WebServer,name=' +  wsname + ',*')
     objNameString = AdminControl.completeObjectName(
         'WebSphere:type=WebServer,name=WebServer,*')

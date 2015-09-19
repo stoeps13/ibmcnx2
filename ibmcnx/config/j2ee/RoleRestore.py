@@ -1,23 +1,23 @@
-######
-#  Restore of J2EE Security Roles
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Author:        Martin Leyrer
-#  Mail:          leyrer@gmail.com
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-# History:
-# 20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
-#                               Added error handling & summary output
-#                               Added error handling for WAS errors
-#                               Moved 'saveChanges' to end of script instead of "after each app"
-#
+'''
+Restore of J2EE Security Roles
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Author:        Martin Leyrer
+Mail:          leyrer@gmail.com
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:
+20150307  Martin Leyrer       Added/fixed/enhanced documentation and app output.
+                              Added error handling & summary output
+                              Added error handling for WAS errors
+                              Moved 'saveChanges' to end of script instead of "after each app"
+'''
 
 import os
 import sys

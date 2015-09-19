@@ -1,15 +1,15 @@
-######
-#  Create Cluster Servers for an additional Node
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-13
-#
-#  License:       Apache 2.0
-#
+'''
+Create Cluster Servers for an additional Node
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+'''
 
 import ibmcnx.functions
 

@@ -1,28 +1,39 @@
-######
-#  Deactivate and activate a user
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  on login problems you often need to deactivate and reactivate a user
-#  with this script you can do this with one step
+'''
+Deactivate and activate a user
+
+Description:
+on login problems you often need to deactivate and reactivate a user
+with this script you can do this with one step
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+'''
 
 import os
 import sys
 from java.util import Properties
 import ConfigParser
 
-# Only load commands if not initialized directly (call from menu)
-if __name__ == "__main__":
-    execfile("ibmcnx/loadCnxApps.py")
+global globdict
+globdict = globals()
 
-import com.ibm.db2.jcc.DB2Driver as Driver
+
+def loadCNXCommands():
+    execfile("ibmcnx/loadCnxApps.py", globdict)
+
+try:
+    import com.ibm.db2.jcc.DB2Driver as Driver
+except:
+    print "\n\tNo jdbc driver available, start wsadmin with\n"
+    print "\t\"-javaoption -Dcom.ibm.ws.scripting.classpath=path/db2jcc4.jar\"\n"
+    print "\tSee http://scripting101.org/resources/installing-the-scripts/ for details\n"
 
 # Get configuration from properties file
 configParser = ConfigParser.ConfigParser()
@@ -41,7 +52,8 @@ conn = Driver().connect(jdbcPath, props)
 
 stmt = conn.createStatement()
 
-email = raw_input("Mail address of profile you want to deactivate: ").lower()
+email = raw_input(
+    "\n\tMail address of profile you want to deactivate: ").lower()
 
 sql = 'select PROF_UID,PROF_MAIL,PROF_MAIL_LOWER,PROF_GUID from empinst.employee where PROF_MAIL_LOWER = \'' + \
     email + '\' order by PROF_UID_LOWER'
@@ -64,69 +76,76 @@ conn.close()
 for e in employeeList:
     # print e['PROF_UID_LOWER'] + "\t\t" + e['PROF_MAIL_LOWER'] + "\t\t" + e['PROF_GUID']
     # print e['PROF_MAIL']
-    print 'Deactivate User with ExID: ' + e['PROF_GUID']
+    print '\tDeactivate User with ExID: \t',
 
 try:
     MAILADDRESS = e['PROF_MAIL']
 except:
-    print 'No User with mail address ' + email + ' found!'
+    print '\tNo User with mail address ' + email + ' found!'
 
 try:
-    print "Inactivate Activities ",
+    temp = ActivitiesMemberService.getMemberExtIdByLogin(MAILADDRESS)
+except:
+    loadCNXCommands()
+
+try:
+    print "\tInactivate Activities\t\t",
     ActivitiesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate Blogs ",
+    print "\tInactivate Blogs\t\t",
     BlogsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate Communities ",
+    print "\tInactivate Communities\t\t",
     CommunitiesMemberService.inactivateMemberByEmail(MAILADDRESS.lower())
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate Dogear ",
+    print "\tInactivate Dogear\t\t",
     DogearMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate Files ",
+    print "\tInactivate Files\t\t",
     FilesMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate Forums ",
+    print "\tInactivate Forums\t\t",
     ForumsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate News, Search, Homepage ",
+    print "\tInactivate News, Search, Homepage ",
     NewsMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print "Inactivate Wikis ",
+    print "\tInactivate Wikis\t\t",
     WikisMemberService.inactivateMemberByEmail(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
 try:
-    print 'Inactivate Profiles ',
+    print '\tInactivate Profiles\t\t',
     ProfilesService.inactivateUser(MAILADDRESS)
 except:
-    print 'No user with Email ' + MAILADDRESS + ' found'
+    print '\t No user with Email ' + MAILADDRESS + ' found'
 
-print 'Activate User: '
+print '\n\tActivate User: '
 
+print '\t',
 ProfilesService.activateUserByUserId(
     e['PROF_GUID'], email=e['PROF_MAIL'], uid=e['PROF_UID'])
+print '\t',
 ProfilesService.publishUserData(MAILADDRESS)

@@ -1,21 +1,22 @@
-######
-#  Set GlobalModerator in J2EE Security Roles
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#
-# You can enable and disable Global Moderation through J2EE Roles with this script
-#
-# History:
-# 20140225  Christoph Stoettner     Initial Version
-# 20140406  Christoph Stoettner     Bugfixing Version
+'''
+Set GlobalModerator in J2EE Security Roles
+
+Description:
+You can enable and disable Global Moderation through J2EE Roles with this script
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:
+20140225  Christoph Stoettner     Initial Version
+20140406  Christoph Stoettner     Bugfixing Version
+'''
 
 import ibmcnx.functions
 

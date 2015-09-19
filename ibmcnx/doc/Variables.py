@@ -1,15 +1,15 @@
-######
-#  Print sorted websphere variables
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
+'''
+Print sorted websphere variables
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+'''
 
 # Get a list of all servers in WAS cell (dmgr, nodeagents, AppServer,
 # webserver)

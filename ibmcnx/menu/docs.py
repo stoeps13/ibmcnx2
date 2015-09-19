@@ -1,16 +1,17 @@
-######
-#  Menu for Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  History:       Changed by Jan Alderlieste
+'''
+Menu for Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:       Changed by Jan Alderlieste
+'''
 
 import sys
 import os
@@ -60,6 +61,10 @@ doc.AddItem('Show all j2ee roles of inst. applications (ibmcnx/doc/j2eeroles.py)
             ibmcnx.functions.docj2eeroles)
 doc.AddItem('Show all datasources and parameters (ibmcnx/doc/DataSources.py)',
             ibmcnx.functions.docdatasources)
+doc.AddItem('Show users with employee.extended role (ibmcnx/doc/ProfRoleID.py',
+            ibmcnx.functions.docroleid)
+doc.AddItem('Show inactive user profiles (ibmcnx/doc/ProfilesInactive.py',
+            ibmcnx.functions.docinactiveprof)
 doc.AddItem(
     'Create a file with all documentation (ibmcnx/doc/Documentation.py)', docDocumentation)
 doc.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',

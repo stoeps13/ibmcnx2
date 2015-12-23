@@ -104,4 +104,25 @@ for cluster in clusterlist:
     AdminTask.createClusterMember('[-clusterName ' + cluster + ' -memberConfig [-memberNode ' + nodename +
                                   ' -memberName ' + servername + ' -memberWeight 2 -genUniquePorts true -replicatorEntry false]]')
     print '\tServer ' + servername + ' created!'
+
+go_on = ''
+allowed_answer = ['yes', 'y', 'ja', 'j']
+while go_on != 'TRUE':
+    answer = raw_input('\tCreate WorkManagers for SearchApplication? (y|n): ')
+
+if answer.lower() in allowed_answer:
+    try:
+        AdminConfig.create('WorkManagerInfo', AdminConfig.getid('/Cell:'+ cell +'/Node:'+ nodeName + '/WorkManagerProvider:WorkManagerProvider/'), '[[name "SearchIndexingWorkManager"] [workReqQFullAction "0"] [minThreads "1"] [category ""] [defTranClass ""] [daemonTranClass ""] [numAlarmThreads "5"] [workReqQSize "0"] [jndiName "wm/search-indexing"] [maxThreads "10"] [serviceNames ""] [isGrowable "true"] [threadPriority "5"] [description ""] [workTimeout "0"]]')
+
+        AdminConfig.create('WorkManagerInfo', AdminConfig.getid('/Cell:'+ cell +'/Node:'+ nodeName + '/WorkManagerProvider:WorkManagerProvider/'), '[[name "SearchCrawlingWorkManager"] [workReqQFullAction "0"] [minThreads "1"] [category ""] [defTranClass ""] [daemonTranClass ""] [numAlarmThreads "5"] [workReqQSize "0"] [jndiName "wm/search-crawling"] [maxThreads "10"] [serviceNames ""] [isGrowable "true"] [threadPriority "5"] [description ""] [workTimeout "0"]]')
+
+        AdminConfig.create('WorkManagerInfo', AdminConfig.getid('/Cell:'+ cell +'/Node:'+ nodeName + '/WorkManagerProvider:WorkManagerProvider/'), '[[name "SearchDCSWorkManager"] [workReqQFullAction "0"] [minThreads "1"] [category ""] [defTranClass ""] [daemonTranClass ""] [numAlarmThreads "5"] [workReqQSize "0"] [jndiName "wm/search-dcs"] [maxThreads "10"] [serviceNames ""] [isGrowable "true"] [threadPriority "5"] [description ""] [workTimeout "0"]]')
+
+        print '\tWorkManager Creation done'
+
+    except:
+        print '\ERROR creating Workmanager!'
+        
+else:
+    print '\tWorkManager not created!'
 ibmcnx.functions.saveChanges()

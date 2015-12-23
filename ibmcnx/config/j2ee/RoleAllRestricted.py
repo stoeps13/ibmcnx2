@@ -110,14 +110,14 @@ def setRole(appName, roleName, connwasadmin, connadmin, connmoderators, connmetr
             setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
         else:
             setRoleCmd(appName, roleName, "No", "No",
-                       "cnxreader", "cnxreadergroup")
+                       cnxreader, cnxreadergroup)
     elif roleName == "mail-user":
         # Mail User
         if cnxmail == "allauthenticated":
             setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
         else:
             setRoleCmd(appName, roleName, "No", "No",
-                       "cnxmail", "cnxmailgroup")
+                       cnxmail, cnxmailgroup)
     elif roleName == "everyone" or roleName == "Everyone":
         # Public to yes
         setRoleCmd(appName, roleName, "Yes", "No", "' '", "' '")
@@ -136,21 +136,21 @@ def setRole(appName, roleName, connwasadmin, connadmin, connmoderators, connmetr
             setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
         else:
             setRoleCmd(appName, roleName, "No", "No",
-                       "cnxcommunitycreator", "cnxcommunitycreatorgroup")
+                       cnxcommunitycreator, cnxcommunitycreatorgroup)
     elif roleName == 'wiki-creator':
         # Wiki Creator
         if cnxmail == "allauthenticated":
             setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
         else:
             setRoleCmd(appName, roleName, "No", "No",
-                       "cnxwikicreator", "cnxwikicreatorgroup")
+                       cnxwikicreator, cnxwikicreatorgroup)
     elif roleName == 'filesync-user':
         # Wiki Creator
         if cnxfilesyncuser == "allauthenticated":
             setRoleCmd(appName, roleName, "No", "Yes", "' '", "' '")
         else:
             setRoleCmd(appName, roleName, "No", "No",
-                       "cnxfilesyncuser", "cnxfilesyncusergroup")
+                       cnxfilesyncuser, cnxfilesyncusergroup)
     else:
         print "\n\nApplication " + appName + "- Role " + roleName + " not set!\n\n"
 

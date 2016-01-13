@@ -1,16 +1,17 @@
-######
-#  Menu for Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  History:       Changed by Jan Alderlieste
+'''
+Menu for Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:       Changed by Jan Alderlieste
+'''
 
 import sys
 import os
@@ -28,6 +29,10 @@ from java.util import HashMap
 global globdict
 globdict = globals()
 
+
+def cfgWebSessionTimeOut():
+    execfile('ibmcnx/config/WebSessionTO.py', globdict)
+
 cfg = ibmcnx.menu.MenuClass.cnxMenu()
 cfg.AddItem('Configure DataSources (ibmcnx/config/DataSource.py)',
             ibmcnx.functions.cfgDataSource)
@@ -43,6 +48,8 @@ cfg.AddItem('Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCust
             ibmcnx.functions.cfgJVMCustProp)
 cfg.AddItem('Set jvm Trace Parameter (ibmcnx/config/jvmtrace.py)',
             ibmcnx.functions.cfgjvmtrace)
+cfg.AddItem('Set application server websession timeout (ibmcnx/config/WebSessionTO.py)',
+            cfgWebSessionTimeOut)
 cfg.AddItem('Change database server and port (ibmcnx/config/ChgDBHost.py)',
             ibmcnx.functions.cfgChgDBHost)
 cfg.AddItem('Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)',

@@ -1,12 +1,15 @@
-# cfgWebServer.py
-# Author: Klaus Bild
-# E-Mail: klaus.bild@gmail.com
-# Blog: http://kbild.ch
-# Description: Add webserver to all app/modules
-#  Version:       5.0
-#  Date:          2014-06-13
-#
-#  License:       Apache 2.0
+    '''
+Add webserver to all app/modules
+
+Author: 		Klaus Bild
+E-Mail: 		klaus.bild@gmail.com
+Blog: 			http://kbild.ch
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+'''
 
 import ibmcnx.appServer
 

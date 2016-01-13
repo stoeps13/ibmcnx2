@@ -1,17 +1,17 @@
+'''
+Menu for Community Scripts
 
-######
-#  Menu for Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  History:       Changed by Jan Alderlieste
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:       Changed by Jan Alderlieste
+'''
 
 import sys
 import os
@@ -38,16 +38,24 @@ def cnxMemberDeactAndActByEmail():
     execfile('ibmcnx/member/DeactAndActByEmail.py', globdict)
 
 
+def cnxMemberInactivateByUid():
+    execfile('ibmcnx/member/InactivateByUid.py', globdict)
+
+
 def cnxMemberSyncAllByEXID():
     execfile('ibmcnx/member/SyncAllByEXID.py', globdict)
 
 user = ibmcnx.menu.MenuClass.cnxMenu()
+# DB2 Driver can't be loaded with WebSphere 8.5.5, so deactivated until
+# solution found
 user.AddItem('Check External ID (all Apps & Profiles) (ibmcnx/member/CheckExID.py)',
              cnxMemberCheckExIDByEmail)
 user.AddItem('Deactivate and Activate a User in one step (ibmcnx/member/DeactAndActByEmail.py)',
              cnxMemberDeactAndActByEmail)
 user.AddItem('Deactivate a User by email address (ibmcnx/member/InactivateByEmail.py)',
              cnxMemberInactivateByEmail)
+user.AddItem('Deactivate a User by userid (ibmcnx/member/InactivateByUid.py)',
+             cnxMemberInactivateByUid)
 user.AddItem('Synchronize ExtID for all Users in all Apps (ibmcnx/member/SyncAllByEXID.py)',
              cnxMemberSyncAllByEXID)
 user.AddItem('Back to Main Menu (cnxmenu.py)',

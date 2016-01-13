@@ -1,16 +1,17 @@
-######
-#  Menu for Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  History:       Changed by Jan Alderlieste
+'''
+Menu for Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+History:       Changed by Jan Alderlieste
+'''
 
 import sys
 import os
@@ -51,6 +52,10 @@ def cnxmenu_docs():
 
 def cnxBackToMainMenu():
     execfile('ibmcnx/menu/cnxmenu.py', globdict)
+
+# Check if properties file is present and print warning if not
+if ibmcnx.functions.checkPropFile() != 1:
+    ibmcnx.functions.propPrintError()
 
 m = ibmcnx.menu.MenuClass.cnxMenu()
 m.AddItem('Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks)

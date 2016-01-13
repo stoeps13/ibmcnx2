@@ -1,16 +1,17 @@
-######
-#  Functions for IBM Connections Community Scripts
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.org
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
-#  Collection of functions
+'''
+Functions for IBM Connections Community Scripts
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.org
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+
+Collection of functions
+'''
 
 import os
 import sys
@@ -127,6 +128,36 @@ def saveChanges():
     else:
         print 'Nothing to save!'
 
+
+def checkPropFile():
+    '''
+    Check if properties file is present, used to print warning in menu
+
+    Returns
+        propPresent (int)
+            0 - successful
+            1 - error
+    '''
+    import os.path
+    propPresent = os.path.exists('ibmcnx/ibmcnx.properties')
+    return propPresent
+
+
+def propPrintError():
+    '''
+    Print warning message
+    '''
+    print '\t####################################################'
+    print '\t#                                                  #'
+    print '\t#             !!!      WARNING      !!!            #'
+    print '\t#                                                  #'
+    print '\t#    No properties file present, did you rename    #'
+    print '\t#            ibmcnx_sample.properties?             #'
+    print '\t#                                                  #'
+    print '\t#   Some scripts will not work without this file!  #'
+    print '\t#                                                  #'
+    print '\t####################################################'
+
 # Get temporary directory from properties file
 
 
@@ -153,14 +184,6 @@ def cfgJ2EERoleBackup():
 
 def cfgJ2EERoleRestore():
     execfile("ibmcnx/config/j2ee/RoleRestore.py")
-
-
-def cfgJ2EERolesRestricted():
-    execfile("ibmcnx/config/j2ee/RoleAllRestricted.py")
-
-
-def cfgJ2EERolesUnrestricted():
-    execfile("ibmcnx/config/j2ee/RoleAllUnrestricted.py")
 
 
 def cfgJ2EERoleGlobalModerator():
@@ -253,6 +276,14 @@ def docj2eeroles():
 
 def doctracesettings():
     execfile('ibmcnx/doc/traceSettings.py')
+
+
+def docroleid():
+    execfile('ibmcnx/doc/ProfRoleID.py')
+
+
+def docinactiveprof():
+    execfile('ibmcnx/doc/ProfilesInactive.py')
 
 
 def cnxBackToMainMenu():

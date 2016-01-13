@@ -1,22 +1,26 @@
-######
-#  Work with Files Policies
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-04
-#
-#  License:       Apache 2.0
-#
+'''
+Work with Files Policies
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.1
+Date:          09/19/2015
+
+License:       Apache 2.0
+'''
+
 import sys
 from java.lang import String
 from java.util import HashSet
 from java.util import HashMap
 import java
 
-if __name__ == "__main__":
+try:
+    temp = FilesPolicyService.browse("title", "true", 1, 25)
+except:
+    print "\tLoading Files Admin Commands:"
     execfile("filesAdmin.py")
 
 

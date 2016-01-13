@@ -1,21 +1,22 @@
-######
-#  Create a file (html or markdown) with the output of
-#      - JVMHeap
-#      - LogFiles
-#      - Ports
-#      - Variables
-#
-#  Author:        Christoph Stoettner
-#  Mail:          christoph.stoettner@stoeps.de
-#  Documentation: http://scripting101.stoeps.de
-#
-#  Version:       5.0
-#  Date:          2014-06-08
-#
-#  License:       Apache 2.0
-#
+'''
+Create a file (html or markdown) with the output of
+    - JVMHeap
+    - LogFiles
+    - Ports
+    - Variables
 
-# TODO: Create a menu for file selection
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0
+Date:          2014-06-08
+
+License:       Apache 2.0
+
+TODO: Create a menu for file selection
+ToDo: Add Markdown format
+'''
 
 import sys
 import os.path

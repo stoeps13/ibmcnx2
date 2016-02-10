@@ -21,7 +21,7 @@ maxLogSize = 0
 
 rolloverType = raw_input('\tRolloverType (SIZE, TIME, BOTH): ')
 
-if rolloverType == 'BOTH' or rolloverType.upper() == 'B' or rolloverType == 'S' or rolloverType == 'SIZE':
+if rolloverType.upper() == 'BOTH' or rolloverType.upper() == 'B' or rolloverType.upper() == 'S' or rolloverType.upper() == 'SIZE':
 	maxLogSize = int(raw_input('\tMax Logfile size in MB (1-50): '))
 
 maxLogHistory = int(raw_input('\tMax Number of Backup Files (1-200): '))

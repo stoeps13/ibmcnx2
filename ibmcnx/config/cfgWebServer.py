@@ -5,8 +5,8 @@ Author: 		Klaus Bild
 E-Mail: 		klaus.bild@gmail.com
 Blog: 			http://kbild.ch
 
-Version:       5.0.1
-Date:          09/19/2015
+Version:       5.5
+Date:          05/26/2016
 
 License:       Apache 2.0
 '''
@@ -19,8 +19,7 @@ WS1 = ibmcnx.appServer.WasServers()
 def getServerList(app, webserver):
     addServer = "NEW"
     addedServers = ""
-    mapServers = AdminApp.view(
-        'Activities', '-MapModulesToServers').splitlines()
+    mapServers = AdminApp.view(app, '-MapModulesToServers').splitlines()
     for mapServer in mapServers:
         servers = mapServer.splitlines()
         for server in servers:
@@ -34,17 +33,21 @@ def getServerList(app, webserver):
 
 
 def getCommand(app):
+    webservers = AdminTask.listServers('[-serverType WEB_SERVER]').splitlines()
+    for server in webservers:
+        srv = server.split('/')
+        fullservername = 'WebSphere:cell=' + srv[1] + ',node=' + srv[3] + ',server=' + (srv[5].split('|')[0])
     addServers = getServerList(
-        app, 'WebSphere:cell=connectionsCell01,node=webserver1,server=webserver1')
-
+        app, fullservername)
     module_ids = AdminApp.listModules(app).splitlines()
-    command = "AdminApp.edit(app, '[ -MapModulesToServers ["
+    command = "AdminApp.edit('" + app + "', '[ -MapModulesToServers ["
     for module_id in module_ids:
         start = module_id.find('#')
         module_id = module_id[start + 1:].replace("+", ",")
         endpoint = AdminApp.view(app).find(module_id)
         startpoint = AdminApp.view(app).rfind('Module:', 0, endpoint)
         module_name = AdminApp.view(app)[startpoint + 9:endpoint - 7]
+        module_name = module_name.replace("\r","")
         module_name = '"' + module_name + '"'
         command += "[ " + module_name + " " + \
             module_id + " " + addServers + " ]"
@@ -54,5 +57,4 @@ def getCommand(app):
 apps = AdminApp.list().splitlines()
 for app in apps:
     exec getCommand(app)
-
-ibmcnx.functions.saveChanges()
+AdminConfig.save()

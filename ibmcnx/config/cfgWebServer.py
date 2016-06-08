@@ -9,6 +9,7 @@ Version:       5.5
 Date:          05/26/2016
 
 License:       Apache 2.0
+Does only work on Windows if Regional Settings are set to English
 '''
 
 import ibmcnx.appServer

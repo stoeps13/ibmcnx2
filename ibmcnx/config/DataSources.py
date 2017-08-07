@@ -35,9 +35,14 @@ perf = {'activities': {'minConnections': configParser.get('Tuning', 'opnact.min'
         'metrics': {'minConnections': configParser.get('Tuning', 'metrics.min'), 'maxConnections': configParser.get('Tuning', 'metrics.max')},
         'mobile': {'minConnections': configParser.get('Tuning', 'mobile.min'), 'maxConnections': configParser.get('Tuning', 'mobile.max')},
         'news': {'minConnections': configParser.get('Tuning', 'news.min'), 'maxConnections': configParser.get('Tuning', 'news.max')},
+        'oauth provider': {'minConnections': configParser.get('Tuning', 'oauth.min'), 'maxConnections': configParser.get('Tuning', 'oauth.max')},
         'profiles': {'minConnections': configParser.get('Tuning', 'profiles.min'), 'maxConnections': configParser.get('Tuning', 'profiles.max')},
+        'pushnotification': {'minConnections': configParser.get('Tuning', 'pns.min'), 'maxConnections': configParser.get('Tuning', 'pns.max')},
         'search': {'minConnections': configParser.get('Tuning', 'search.min'), 'maxConnections': configParser.get('Tuning', 'search.max')},
-        'wikis': {'minConnections': configParser.get('Tuning', 'wikis.min'), 'maxConnections': configParser.get('Tuning', 'wikis.max')}}
+        'urlpreview': {'minConnections': configParser.get('Tuning', 'urlprev.min'), 'maxConnections': configParser.get('Tuning', 'urlprev.max')},
+        'widgetcontainer': {'minConnections': configParser.get('Tuning', 'widget.min'), 'maxConnections': configParser.get('Tuning', 'widget.max')},
+        'wikis': {'minConnections': configParser.get('Tuning', 'wikis.min'), 'maxConnections': configParser.get('Tuning', 'wikis.max')},
+        'xcc': {'minConnections': configParser.get('Tuning', 'xcc.min'), 'maxConnections': configParser.get('Tuning', 'xcc.max')}}
 
 statementCacheSize = configParser.get('Tuning', 'statementCache')
 

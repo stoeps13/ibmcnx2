@@ -53,6 +53,7 @@ def printLibraryDetails(librarieslist):
         # print(lib_name, lib_max, lib_size, lib_used)
         # print libraryinformation, when percentUsed > 80%
         if lib_used >= 80.0:
+        #if lib_used >= 1.0:
             # print or return the library details
             print lib_name + ";" + lib_max + ";" + lib_size + ";" + str(lib_used)
 

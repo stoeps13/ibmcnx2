@@ -49,11 +49,12 @@ def printLibraryDetails(librarieslist):
         lib_name = library['title']
         lib_max = str(round(library['maximumSize'] / 1073741824.0, 2)) + ' GB'
         lib_size = str(round(library['size'] / 1073741824.0, 2)) + ' GB'
-        lib_used = library['percentUsed']
+        lib_used = float(library['percentUsed'])
+        # print(lib_name, lib_max, lib_size, lib_used)
         # print libraryinformation, when percentUsed > 80%
         if lib_used >= 80.0:
             # print or return the library details
-            print lib_name + ";" + lib_max + ";" + lib_size + ";" + lib_used
+            print lib_name + ";" + lib_max + ";" + lib_size + ";" + str(lib_used)
 
 
 # better print both library types without selection

@@ -47,7 +47,7 @@ def cnxLibraryPolicies():
 
 
 def cnxLibraryLarge():
-    execfile('ibmcnx/cnx/LibraryListLarge.py', globdict)
+    execfile('ibmcnx/cnx/LibrarySizesOverview.py', globdict)
 
 
 def cnxLibrarySizes():
@@ -67,7 +67,7 @@ comm.AddItem('Work with Libraries (ibmcnx/cnx/LibraryPolicies.py)',
 comm.AddItem('Show Library Sizes (ibmcnx/cnx/LibrarySizes.py)',
              cnxLibrarySizes)
 comm.AddItem(
-    'List Libraries with more than 80% Used Space (ibmcnx/cnx/LibrarySizes.py)', cnxLibraryLarge)
+    'List Libraries with more than 80% Used Space (ibmcnx/cnx/LibrarySizesOverview.py)', cnxLibraryLarge)
 comm.AddItem('Reparent/Move Communities (ibmcnx/cnx/CommunitiesReparenting.py)',
              cnxCommunitiesReparenting)
 comm.AddItem('Add employee.extended role to user (ibmcnx/cnx/ProfilesAddExtRole.py)',

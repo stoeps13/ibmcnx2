@@ -18,7 +18,7 @@ from java.util import HashMap
 import java
 
 try:
-    temp = FilesPolicyService.browse("title", "true", 1, 25)
+    temp = FilesPolicyService.browse("title", "true", 1, 500)
 except:
     print "\tLoading Files Admin Commands:"
     execfile("filesAdmin.py")

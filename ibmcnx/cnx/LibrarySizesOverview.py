@@ -40,16 +40,16 @@ def searchLibrary(libType):
 
 
 def printLibraryDetails(librarieslist):
-    # result = str( librarieslist )
+    result = str( librarieslist )
     libraries = librarieslist
-    counter = len(result)
+    counter = len(librarieslist)
     print "Name;Maximum;Size;Percent Used"
 
     for library in librarieslist:
-        lib_name = result['title']
-        lib_max = str(round(result['maximumSize'] / 1073741824.0, 2)) + ' GB'
-        lib_size = str(round(result['size'] / 1073741824.0, 2)) + ' GB'
-        lib_used = result['percentUsed']
+        lib_name = library['title']
+        lib_max = str(round(library['maximumSize'] / 1073741824.0, 2)) + ' GB'
+        lib_size = str(round(library['size'] / 1073741824.0, 2)) + ' GB'
+        lib_used = library['percentUsed']
         # print libraryinformation, when percentUsed > 80%
         if lib_used >= 80.0:
             # print or return the library details
@@ -59,5 +59,5 @@ def printLibraryDetails(librarieslist):
 # better print both library types without selection
 print "\n\tPersonal Libraries with Percent Used > 80%\n"
 printLibraryDetails(searchLibrary('p'))
-print "\n\Community Libraries with Percent Used > 80%\n"
+print "\n\tCommunity Libraries with Percent Used > 80%\n"
 printLibraryDetails(searchLibrary('c'))

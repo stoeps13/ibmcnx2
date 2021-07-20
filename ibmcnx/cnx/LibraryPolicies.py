@@ -64,17 +64,19 @@ def askLibraryType():
 
 def searchLibrary(libType):
     if libType == 'p':
+        libcount = FilesLibraryService.getPersonalCount()
         libNameAsk = 'Which User you want to search? (min 1 character): '
         libNameAnswer = raw_input(libNameAsk)
         result = FilesUtilService.filterListByString(FilesLibraryService.browsePersonal(
-            "title", "true", 1, 250), "title", ".*" + libNameAnswer + ".*")
+            "title", "true", 1, libcount), "title", ".*" + libNameAnswer + ".*")
         return result
 
     elif libType == 'c':
+        libcount = FilesLibraryService.getCommunityCount()
         libNameAsk = 'Which Community Library you want to search? (min 1 character): '
         libNameAnswer = raw_input(libNameAsk)
         result = FilesUtilService.filterListByString(FilesLibraryService.browseCommunity(
-            "title", "true", 1, 250), "title", ".*" + libNameAnswer + ".*")
+            "title", "true", 1, libcount), "title", ".*" + libNameAnswer + ".*")
         return result
 
     else:

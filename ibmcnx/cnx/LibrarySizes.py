@@ -24,13 +24,13 @@ import java.util.ArrayList as ArrayList
 try:
     execfile("filesAdmin.py")
 except:
-    print "\nLibrarySizes could not connect to the 'IBM Websphere Deployment Manager'. Please make sure the 'dmgr' is running."
+    print "\nLibrarySizes could not connect to the 'HCL Websphere Deployment Manager'. Please make sure the 'dmgr' is running."
     sys.exit()
 
 try:
     dummy = FilesLibraryService.getPersonalCount()
 except:
-    print "\nLibrarySizes was not able to communicate with the 'IBM Connections Files' application. Please make sure 'Files' is running."
+    print "\nLibrarySizes was not able to communicate with the 'HCL Connections Files' application. Please make sure 'Files' is running."
     sys.exit()
 
 
@@ -78,7 +78,7 @@ def flsBrowse(libType, page, max):
             print ('Not a valid library Type!')
             sys.exit()
     except:
-        print "\nLibrarySizes was not able to communicate with the 'IBM Connections Files' application. Please make sure 'Files' is running."
+        print "\nLibrarySizes was not able to communicate with the 'HCL Connections Files' application. Please make sure 'Files' is running."
         sys.exit()
     return libList
 

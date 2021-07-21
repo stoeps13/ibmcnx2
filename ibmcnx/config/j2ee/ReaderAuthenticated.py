@@ -2,7 +2,7 @@
 Set Reader Roles to Restricted - no anonymous access possible
 
 Description:
-Script is tested with IBM Connections 5
+Script is tested with HCL Connections 5
 
 Author: Christoph Stoettner
 Blog: http://www.stoeps.de

@@ -1,5 +1,5 @@
 '''
-Description:   Move IBM Connections Communities
+Description:   Move HCL Connections Communities
 
 Author: Klaus Bild
 Blog: http://www.kbild.ch

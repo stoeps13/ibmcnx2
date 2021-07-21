@@ -53,7 +53,7 @@ cfgj2ee.AddItem('Back to Main Menu (cnxmenu.py)',
 cfgj2ee.AddItem("Exit", ibmcnx.functions.bye)
 
 state_cfgj2ee = 'True'
-menutitle = "IBM Connections Configuration Tasks"
+menutitle = "HCL Connections Configuration Tasks"
 
 while state_cfgj2ee == 'True':
     count = len(cfgj2ee.menuitems)

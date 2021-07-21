@@ -215,7 +215,7 @@ lst.append(menusystem.Choice(selector=0, value=0,
                              handler=done, description='Exit'))
 
 # Creat Menu & Begin Execution
-head = menusystem.Menu(title='IBM Connections Community Scripts',
+head = menusystem.Menu(title='HCL Connections Community Scripts',
                        choice_list=lst, prompt='What do you want to do? ')
 
 if __name__ == '__main__':

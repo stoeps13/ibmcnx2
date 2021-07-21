@@ -2,7 +2,7 @@
 Set all Roles to Restricted - no anonymous access possible
 
 Description:
-Script is tested with IBM Connections 5.0
+Script is tested with HCL Connections 5.0
 You have to edit the variables and set them to your administrative Accounts
 
 Author: Klaus Bild

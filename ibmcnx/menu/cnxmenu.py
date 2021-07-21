@@ -58,12 +58,12 @@ if ibmcnx.functions.checkPropFile() != 1:
     ibmcnx.functions.propPrintError()
 
 m = ibmcnx.menu.MenuClass.cnxMenu()
-m.AddItem('Menu - IBM Connections Configuration Tasks', cnxmenu_cfgtasks)
-m.AddItem('Menu - IBM Connections Security Roles Tasks', cnxmenu_cfgj2eetasks)
-m.AddItem('Menu - IBM Connections Check Tasks', cnxmenu_checks)
-m.AddItem('Menu - IBM Connections User Admin Tasks', cnxmenu_useradmin)
-m.AddItem('Menu - IBM Connections Admin Tasks', cnxmenu_comm)
-m.AddItem('Menu - IBM Connections Documentation', cnxmenu_docs)
+m.AddItem('Menu - HCL Connections Configuration Tasks', cnxmenu_cfgtasks)
+m.AddItem('Menu - HCL Connections Security Roles Tasks', cnxmenu_cfgj2eetasks)
+m.AddItem('Menu - HCL Connections Check Tasks', cnxmenu_checks)
+m.AddItem('Menu - HCL Connections User Admin Tasks', cnxmenu_useradmin)
+m.AddItem('Menu - HCL Connections Admin Tasks', cnxmenu_comm)
+m.AddItem('Menu - HCL Connections Documentation', cnxmenu_docs)
 m.AddItem("Exit", ibmcnx.functions.bye)
 
 menutitle = "WebSphere and Connections Administration"

@@ -77,7 +77,7 @@ comm.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',
 comm.AddItem("Exit", ibmcnx.functions.bye)
 
 state_comm = 'True'
-menutitle = "IBM Connections Admin Tasks"
+menutitle = "HCL Connections Admin Tasks"
 
 while state_comm == 'True':
     count = len(comm.menuitems)

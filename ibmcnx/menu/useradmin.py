@@ -63,7 +63,7 @@ user.AddItem('Back to Main Menu (cnxmenu.py)',
 user.AddItem("Exit", ibmcnx.functions.bye)
 
 state_user = 'True'
-menutitle = "IBM Connections User Admin Tasks"
+menutitle = "HCL Connections User Admin Tasks"
 while state_user == 'True':
     count = len(user.menuitems)
     user.Show(menutitle)

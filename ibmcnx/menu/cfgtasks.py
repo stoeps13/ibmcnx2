@@ -52,7 +52,7 @@ cfg.AddItem('Set application server websession timeout (ibmcnx/config/WebSession
             cfgWebSessionTimeOut)
 cfg.AddItem('Change database server and port (ibmcnx/config/ChgDBHost.py)',
             ibmcnx.functions.cfgChgDBHost)
-cfg.AddItem('Create new Clustermembers for IBM Connections (ibmcnx/config/addNode.py)',
+cfg.AddItem('Create new Clustermembers for HCL Connections (ibmcnx/config/addNode.py)',
             ibmcnx.functions.cfgClusterMembers)
 cfg.AddItem('Synchronize all Nodes', ibmcnx.functions.synchAllNodes)
 cfg.AddItem('Back to Main Menu (cnxmenu.py)',
@@ -60,7 +60,7 @@ cfg.AddItem('Back to Main Menu (cnxmenu.py)',
 cfg.AddItem("Exit", ibmcnx.functions.bye)
 
 state_cfg = 'True'
-menutitle = "IBM Connections Configuration Tasks"
+menutitle = "HCL Connections Configuration Tasks"
 
 while state_cfg == 'True':
     count = len(cfg.menuitems)

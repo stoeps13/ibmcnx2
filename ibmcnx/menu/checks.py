@@ -43,7 +43,7 @@ checks.AddItem('Back to Main Menu (cnxmenu.py)',
 checks.AddItem("Exit", ibmcnx.functions.bye)
 
 state_checks = 'True'
-menutitle = "IBM Connections Check Tasks"
+menutitle = "HCL Connections Check Tasks"
 while state_checks == 'True':
     count = len(checks.menuitems)
     checks.Show(menutitle)

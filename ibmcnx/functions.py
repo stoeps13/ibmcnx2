@@ -1,5 +1,5 @@
 '''
-Functions for IBM Connections Community Scripts
+Functions for HCL Connections Community Scripts
 
 Author:        Christoph Stoettner
 Mail:          christoph.stoettner@stoeps.de

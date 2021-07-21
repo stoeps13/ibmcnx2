@@ -72,7 +72,7 @@ doc.AddItem('Back to Main Menu (ibmcnx/menu/cnxmenu.py)',
 doc.AddItem("Exit", ibmcnx.functions.bye)
 
 state_doc = 'True'
-menutitle = "IBM Connections Documentation"
+menutitle = "HCL Connections Documentation"
 
 while state_doc == 'True':
     count = len(doc.menuitems)

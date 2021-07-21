@@ -2,7 +2,7 @@
 Set all Roles to Unrestricted - anonymous access possible
 
 Description:
-Script is tested with IBM Connections 4.5 CR2
+Script is tested with HCL Connections 4.5 CR2
 You have to edit the variables and set them to your administrative Accounts
 
 Author: Klaus Bild

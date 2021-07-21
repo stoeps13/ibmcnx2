@@ -28,8 +28,6 @@ perf = {'activities': {'minConnections': configParser.get('Tuning', 'opnact.min'
         'communities': {'minConnections': configParser.get('Tuning', 'sncomm.min'), 'maxConnections': configParser.get('Tuning', 'sncomm.max')},
         'dogear': {'minConnections': configParser.get('Tuning', 'dogear.min'), 'maxConnections': configParser.get('Tuning', 'dogear.max')},
         'files': {'minConnections': configParser.get('Tuning', 'files.min'), 'maxConnections': configParser.get('Tuning', 'files.max')},
-        'FNOSDS': {'minConnections': configParser.get('Tuning', 'fnosds.min'), 'maxConnections': configParser.get('Tuning', 'fnosds.max')},
-        'FNOSDSXA': {'minConnections': configParser.get('Tuning', 'fnosdsxa.min'), 'maxConnections': configParser.get('Tuning', 'fnosdsxa.max')},
         'forum': {'minConnections': configParser.get('Tuning', 'forum.min'), 'maxConnections': configParser.get('Tuning', 'forum.max')},
         'homepage': {'minConnections': configParser.get('Tuning', 'homepage.min'), 'maxConnections': configParser.get('Tuning', 'homepage.max')},
         'metrics': {'minConnections': configParser.get('Tuning', 'metrics.min'), 'maxConnections': configParser.get('Tuning', 'metrics.max')},
@@ -42,20 +40,37 @@ perf = {'activities': {'minConnections': configParser.get('Tuning', 'opnact.min'
         'urlpreview': {'minConnections': configParser.get('Tuning', 'urlprev.min'), 'maxConnections': configParser.get('Tuning', 'urlprev.max')},
         'widgetcontainer': {'minConnections': configParser.get('Tuning', 'widget.min'), 'maxConnections': configParser.get('Tuning', 'widget.max')},
         'wikis': {'minConnections': configParser.get('Tuning', 'wikis.min'), 'maxConnections': configParser.get('Tuning', 'wikis.max')},
-        'xcc': {'minConnections': configParser.get('Tuning', 'xcc.min'), 'maxConnections': configParser.get('Tuning', 'xcc.max')}}
+        'icec': {'minConnections': configParser.get('Tuning', 'icec.min'), 'maxConnections': configParser.get('Tuning', 'icec.max')}}
 
 statementCacheSize = configParser.get('Tuning', 'statementCache')
 
 print 'DataSource Parameters will be set to: '
 print 'Database \t statementCacheSize \t minConnections \t maxConnections'
+print '-------------------------------------------------------------------------------'
 for db in perf.keys():
     print db.upper(),
     if len(db) < 7:
+        print '\t\t',
+    if len(db) <= 14 and len(db) >= 7:
         print '\t',
-    print '\t\t' + str(statementCacheSize),
-    print '\t\t\t' + str(perf[db]['minConnections']),
-    print '\t\t\t' + str(perf[db]['maxConnections'])
+    print '\t' + str(statementCacheSize),
+    if len(str(perf[db]['minConnections'])) == 3:
+        space0 = ''
+    elif len(str(perf[db]['minConnections'])) == 2:
+        space0 = ' '
+    else:
+        space0 = '  '
+    if len(str(perf[db]['maxConnections'])) == 3:
+        space1 = ''
+    elif len(str(perf[db]['maxConnections'])) == 2:
+        space1 = ' '
+    else:
+        space1 = '  '
 
+    print '\t\t      ' + space0 + str(perf[db]['minConnections']),
+    print '\t\t      ' + space1 + str(perf[db]['maxConnections'])
+
+print '-------------------------------------------------------------------------------'
 answer = raw_input(
     'Are you sure, that your parameters should be overwritten? (Yes|No) ')
 allowed_answer = ['yes', 'y', 'ja', 'j']

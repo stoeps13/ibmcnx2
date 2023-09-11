@@ -64,7 +64,8 @@ def setSecurityRoles(dictionary, appName):
         strRoleChange += dictionary[role]['Everyone?'] + ' '
         strRoleChange += dictionary[role]['All authenticated?'] + ' '
         strRoleChange += '\"' + dictionary[role]['Mapped users'] + '\" '
-        strRoleChange += '\"' + dictionary[role]['Mapped groups'] + '\"] '
+        strRoleChange += '\"' + dictionary[role]['Mapped groups'] + '\" '
+        strRoleChange += '\"' + dictionary[role]['All authenticated in trusted realms?'] + '\"] '
     strRoleChange += ']]'
     AdminApp.edit(appName, '[-MapRolesToUsers' + strRoleChange + ']')
     print "Setting Roles and Users for %s" % appName

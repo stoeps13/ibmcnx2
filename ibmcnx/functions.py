@@ -229,6 +229,11 @@ def cfgJVMCustProp():
 def cfgClusterMembers():
     execfile('ibmcnx/config/addNode.py')
 
+def cfgWebSessionTimeOut():
+    execfile('ibmcnx/config/WebSessionTO.py')
+
+def cfgWebContainerSec():
+    execfile('ibmcnx/config/WebContainerSec.py')
 
 def cfgChgDBHost():
     execfile('ibmcnx/config/ChgDBHost.py')

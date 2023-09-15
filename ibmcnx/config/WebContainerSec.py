@@ -1,39 +1,42 @@
 '''
-    Description:
+    Description:   Set property to disable Websphere header x-powered-by
     Author: 	   Christoph Stoettner
     E-Mail: 	   christoph.stoettner@panagenda.com
-    Version:     1.0.0
-    Date:        2017-05-21
-    (C) 2017-05-21 panagenda - all rights reserved
+    Version:       1.0.0
+    Date:          2023-09-15
+    (C) Christoph Stoettner
 
     Install:
     Parameters:
 '''
+import ibmcnx.functions
 
 def updateWebContainerProperty(serverName, propName, propValue):
-  wc = getWebContainer(serverName)
+  serverID = AdminConfig.getid('/Server:' + serverName + '/')
+  wc = AdminConfig.list('WebContainer', serverID )
   updated = 'N'
   try:
-      for p in toList(AdminConfig.showAttribute(wc, 'properties')):
+      for p in AdminConfig.showAttribute(wc, 'properties').split('[')[1].split(']')[0].split():
         if AdminConfig.showAttribute(p, 'name') == propName:
           AdminConfig.modify(p, [['value', propValue]])
+          print(propName + ' modified')
           updated = 'Y'
   except:
         print 'Error in search: ' + serverName
   if updated == 'N':
-    setCustomProperties(wc, 'properties', {propName:propValue})
-    print propName + ' updated'
+    #setCustomProperties(wc, 'properties', {propName:propValue})
+    propVals = []
+    propVals.append([["name", propName], ["value", propValue]])
+    AdminConfig.modify(wc, [['properties', propVals]])
+    print propName + ' added'
 
 def removeWebContainerProperty(serverName, propName):
-  wc = getWebContainer(serverName)
-  for p in toList(AdminConfig.showAttribute(wc, 'properties')):
+  serverID = AdminConfig.getid('/Server:' + serverName + '/')
+  wc = AdminConfig.list('WebContainer', serverID )
+  for p in AdminConfig.showAttribute(wc, 'properties').split('[')[1].split(']')[0].split():
     if AdminConfig.showAttribute(p, 'name') == propName:
+      print(p)
       AdminConfig.remove(p)
-
-def getWebContainer(serverName):
-    serverID = AdminConfig.getid('/Server:' + serverName + '/')
-    webContainer = AdminConfig.list('WebContainer', serverID )
-    return webContainer
 
 def setCustomProperties (objectName, propertyName, propertyMap):
   propVals = []
@@ -44,15 +47,16 @@ def setCustomProperties (objectName, propertyName, propertyMap):
 def setObjectProperty (objectName, propertyName, propertyValue):
   AdminConfig.modify(objectName, [[propertyName, propertyValue]])
 
-# AdminConfig.create('Property', '(cells/Cell01/nodes/Node01/servers/AppsCluster_server1|server.xml#WebContainer_1464682415269)', '[[validationExpression ""] [name "com.ibm.ws.webcontainer.disablexPoweredBy"] [description "Remove X-Powered-By header"] [value "true"] [required "false"]]')
-
 wasServers = AdminTask.listServers('[-serverType APPLICATION_SERVER]').splitlines()
 
 for wasServer in wasServers:
     serverName = wasServer.split('(')[0]
     try:
         updateWebContainerProperty( serverName, 'com.ibm.ws.webcontainer.disablexPoweredBy', 'true')
+        # removeWebContainerProperty( serverName, 'com.ibm.ws.webcontainer.disablexPoweredBy')
     except:
         print 'Error occurred ' + serverName
 
-AdminConfig.save()
+print '\n'
+ibmcnx.functions.saveChanges()
+print '\n'

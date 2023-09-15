@@ -49,7 +49,9 @@ cfg.AddItem('Set Custom Parameter for Cache Issues in JVM (ibmcnx/config/JVMCust
 cfg.AddItem('Set jvm Trace Parameter (ibmcnx/config/jvmtrace.py)',
             ibmcnx.functions.cfgjvmtrace)
 cfg.AddItem('Set application server websession timeout (ibmcnx/config/WebSessionTO.py)',
-            cfgWebSessionTimeOut)
+            ibmcnx.functions.cfgWebSessionTimeOut)
+cfg.AddItem('Disable x-powered-by header (ibmcnx/config/WebContainerSec.py)',
+            ibmcnx.functions.cfgWebContainerSec)
 cfg.AddItem('Change database server and port (ibmcnx/config/ChgDBHost.py)',
             ibmcnx.functions.cfgChgDBHost)
 cfg.AddItem('Create new Clustermembers for HCL Connections (ibmcnx/config/addNode.py)',

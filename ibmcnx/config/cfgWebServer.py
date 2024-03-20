@@ -1,12 +1,14 @@
-    '''
+'''
 Add webserver to all app/modules
 
-Author: 		Klaus Bild
-E-Mail: 		klaus.bild@gmail.com
-Blog: 			http://kbild.ch
+Author:                 Klaus Bild
+E-Mail:                 klaus.bild@gmail.com
+Blog:                   http://kbild.ch
 
 Version:       5.5
-Date:          05/26/2016
+Date:          2024-03-20
+
+Update:        Christoph Stoettner <christoph.stoettner@stoeps.de>
 
 License:       Apache 2.0
 Does only work on Windows if Regional Settings are set to English
@@ -35,11 +37,16 @@ def getServerList(app, webserver):
 
 def getCommand(app):
     webservers = AdminTask.listServers('[-serverType WEB_SERVER]').splitlines()
+    fullservernamelist = ''
     for server in webservers:
         srv = server.split('/')
         fullservername = 'WebSphere:cell=' + srv[1] + ',node=' + srv[3] + ',server=' + (srv[5].split('|')[0])
-    addServers = getServerList(
-        app, fullservername)
+        if fullservernamelist == '':
+            fullservernamelist = fullservername
+        else:
+            fullservernamelist = fullservernamelist + '+' +  fullservername
+    print(fullservernamelist)
+    addServers = getServerList( app, fullservernamelist)
     module_ids = AdminApp.listModules(app).splitlines()
     command = "AdminApp.edit('" + app + "', '[ -MapModulesToServers ["
     for module_id in module_ids:
@@ -59,3 +66,5 @@ apps = AdminApp.list().splitlines()
 for app in apps:
     exec getCommand(app)
 AdminConfig.save()
+
+AdminApp.edit('Activities', '[ -MapModulesToServers [[ EventPublisher lc.events.publish.jar,META-INF/ejb-jar.xml WebSphere:cell=ConnectionsTestCell,cluster=AppsCluster+WebSphere:cell=ConnectionsTestCell,node=webNode01,server=xribapa21c03+WebSphere:cell=ConnectionsTestCell,node=webNode02,server=xribapa21c04 ]]]' )

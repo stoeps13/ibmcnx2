@@ -12,28 +12,38 @@ License:       Apache 2.0
 '''
 import ibmcnx.functions
 
-
 def getAnswer(question):
     answer = ''
-    while not answer.isstring():
-        answer = raw_input('\t' + question)
-
+    answer = raw_input('\t' + question)
     return answer
 
-wasServers = []
-wasServers = AdminTask.listServers(
-    '[-serverType APPLICATION_SERVER]').splitlines()
+WS1 = ibmcnx.appServer.WasServers()
 
-print '\n'
-timeoutValue = getAnswer(
-    "What's the header value for HttpsIndicatorHeader (string)? ")
-print '\n'
-for wasServer in wasServers:
-    tuningVM = AdminConfig.list('TuningParams', wasServer)
-    AdminConfig.modify(
-        tuningVM, '[[invalidationTimeout "' + timeoutValue + '"]]')
-    print "\tSession Timeout set for " + wasServer.split('|')[0].split('(')[0] + ":\t\t" + timeoutValue
+serverNum = WS1.serverNum
 
-print '\n'
+headername = getAnswer("What's the name of the HTTP header which shall be set for HttpsIndicatorHeader? ")
+
+for count in range(WS1.serverNum):
+    jvm = WS1.jvm[count]
+    cell = WS1.cell[count]
+    node = WS1.node[count]
+    servername = WS1.serverName[count]
+
+    if servername == 'dmgr':
+        print "Value not set for %s" % servername
+    elif servername == 'nodeagent':
+        print "Value not set for %s" % servername
+    else:
+        print "%s - %s - %s" % (cell, node, servername)
+        print 'Setting WebContainer Custom Property'
+
+        server = '"/Server:' + servername + '/"'
+        serverId = AdminConfig.getid(server)
+        serverWebContainer = AdminConfig.list("WebContainer", serverId )
+
+        attrs = [["name", "HttpsIndicatorHeader"], ["value", headername], ["description", "Important for SSL Offloading"]]
+
+        AdminConfig.create("Property", serverWebContainer, attrs )
+
 ibmcnx.functions.saveChanges()
-print '\n'
+

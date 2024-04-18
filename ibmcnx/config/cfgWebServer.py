@@ -11,7 +11,9 @@ Date:          2024-03-20
 Update:        Christoph Stoettner <christoph.stoettner@stoeps.de>
 
 License:       Apache 2.0
-Does only work on Windows if Regional Settings are set to English
+
+TODO: 
+Needs testing and option to add multiple webservers
 '''
 
 import ibmcnx.appServer
@@ -66,5 +68,3 @@ apps = AdminApp.list().splitlines()
 for app in apps:
     exec getCommand(app)
 AdminConfig.save()
-
-AdminApp.edit('Activities', '[ -MapModulesToServers [[ EventPublisher lc.events.publish.jar,META-INF/ejb-jar.xml WebSphere:cell=ConnectionsTestCell,cluster=AppsCluster+WebSphere:cell=ConnectionsTestCell,node=webNode01,server=xribapa21c03+WebSphere:cell=ConnectionsTestCell,node=webNode02,server=xribapa21c04 ]]]' )

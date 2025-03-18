@@ -1,3 +1,16 @@
+'''
+set jvm trace
+
+Author:        Christoph Stoettner
+Mail:          christoph.stoettner@stoeps.de
+Documentation: http://scripting101.stoeps.de
+
+Version:       5.0.2
+Date:          2015-10-09
+Update:        2025-03-18
+License:       Apache 2.0
+'''
+
 def selectServer(serverlist):
     result = serverlist
     counter = len(result)

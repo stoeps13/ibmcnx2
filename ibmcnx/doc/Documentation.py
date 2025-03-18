@@ -9,12 +9,12 @@ Author:        Christoph Stoettner
 Mail:          christoph.stoettner@stoeps.de
 Documentation: http://scripting101.stoeps.de
 
-Version:       5.0
+Version:       5.0.2
 Date:          2014-06-08
+Update:        2025-03-18
 
 License:       Apache 2.0
 
-TODO: Create a menu for file selection
 ToDo: Add Markdown format
 '''
 
@@ -22,6 +22,7 @@ import sys
 import os.path
 
 filename = raw_input('Path and Filename to Documentation file: ')
+org_stdout = sys.stdout
 
 if (os.path.isfile(filename)):
     answer = raw_input(
@@ -53,3 +54,6 @@ execfile('ibmcnx/doc/Variables.py')
 
 print '# DataSources and parameters'
 execfile('ibmcnx/doc/DataSources.py')
+
+sys.stdout.close()
+sys.stdout = org_stdout

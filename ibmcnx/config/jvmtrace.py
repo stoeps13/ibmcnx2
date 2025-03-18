@@ -1,16 +1,3 @@
-'''
-set jvm trace
-
-Author:        Christoph Stoettner
-Mail:          christoph.stoettner@stoeps.de
-Documentation: http://scripting101.stoeps.de
-
-Version:       5.0.1
-Date:          09/19/2015
-
-License:       Apache 2.0
-'''
-
 def selectServer(serverlist):
     result = serverlist
     counter = len(result)
@@ -31,22 +18,24 @@ def selectServer(serverlist):
         if len(serverselected) >= 0:
             print '\n\t',
             # print serverselected
-        index.sort()
+            index.sort()
             print 'Selected: ' + str(index)
-        print '\n'
-        server_number = raw_input(
-            '\tPlease select the Server where trace settings should be added, (A)ll or End with x: ')
-        # Should add a function which only add the server, when not already in
-        # the list
-    if (server_number.lower() != 'x') and (server_number.lower() != 'a'):
+            print '\n'
+            server_number = raw_input('\tPlease select the Server where trace settings should be added, (A)ll or End with x: ')
+        if (server_number.lower() != 'x') and (server_number.lower() != 'a') and (server_number.lower() != ''):
             try:
-        index.append( server_number )
-                server_number = int( server_number )
-                serverselected.append( result[server_number] )
+                if int(server_number) > len(result) - 1:
+                    print('\tNot in server list')
+                elif server_number not in index:
+                    index.append( server_number )
+                    server_number = int( server_number )
+                    serverselected.append( result[server_number] )
+                else:
+                    print('\t' + server_number + ': already in list')
             except ( TypeError, ValueError ):
-                continue
+                pass
         elif server_number.lower() == 'a':
-        serverselected = result
+            serverselected = result
             go_on = 'TRUE'
         elif server_number.lower() == 'x':
             go_on = 'TRUE'
@@ -71,7 +60,7 @@ def resetTraceSettings( traceServices ):
 def setTraceSettings( traceServices, traceString ):
     traceStr = traceString + "=enabled"
     for traceService in traceServices:
-        AdminControl.invoke( traceService, "appendTraceString", traceStr )
+        AdminControl.invoke( traceService, 'appendTraceString', traceStr )
 
 
 # Get list of trace object ids and print actual settings
@@ -83,12 +72,12 @@ allowed_answer = ['s', 'r']
 if ( answer.lower() in allowed_answer ):
     if ( answer.lower() == 's' ):
         # Ask for traceSetting
-        traceString = raw_input('\n\tPlease provide traceSettings which should be appended to actual parameters\n\te.g."com.lotus.*=all" or "com.ibm.websphere.*=all:com.lotus.*:all":\n\n\t' )
+        traceString = raw_input('\n\tPlease provide traceSettings which should be APPENDED to ACTUAL PARAMETERS\n\te.g."com.lotus.*=all" or "com.ibm.websphere.*=all:com.lotus.*:all":\n\n\t' )
         # Let user select servers to add trace settings
-    traceServices = selectServer( tss )
-    setTraceSettings( traceServices, traceString )
+        traceServices = selectServer( tss )
+        setTraceSettings( traceServices, traceString )
     elif ( answer.lower() == 'r' ):
-    resetTraceSettings( tss )
+        resetTraceSettings( tss )
     else:
         print "\n\tNothing changed"
 

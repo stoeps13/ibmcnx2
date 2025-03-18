@@ -5,8 +5,9 @@ Author:        Christoph Stoettner
 Mail:          christoph.stoettner@stoeps.de
 Documentation: http://scripting101.org
 
-Version:       5.0.1
-Date:          09/19/2015
+Version:       5.0.2
+Date:          2015-09-19
+Update:        2025-03-18
 
 License:       Apache 2.0
 '''
@@ -46,6 +47,49 @@ for count in range(len(dbList)):
     try:
         # get the id of the datasource
         dsid = ibmcnx.functions.getDSId(db)
+
+        # Get connection pool settings
+        connectionPool = AdminConfig.list('ConnectionPool', dsid)
+        if connectionPool:
+            try:
+                minConn = AdminConfig.showAttribute(connectionPool, 'minConnections')
+                print '\t\tminConnections',
+                print str(multiply_tabs(' ', 25 - len('minConnections'))),
+                print minConn
+            except Exception, e:
+                print '\t\tminConnections             ERROR: ' + str(e)
+
+            try:
+                maxConn = AdminConfig.showAttribute(connectionPool, 'maxConnections')
+                print '\t\tmaxConnections',
+                print str(multiply_tabs(' ', 25 - len('maxConnections'))),
+                print maxConn
+            except Exception, e:
+                print '\t\tmaxConnections             ERROR: ' + str(e)
+
+        # Try to get statement cache size from the datasource itself
+        try:
+            stmtCacheSize = AdminConfig.showAttribute(dsid, 'statementCacheSize')
+            print '\t\tstatementCacheSize',
+            print str(multiply_tabs(' ', 25 - len('statementCacheSize'))),
+            print stmtCacheSize
+        except Exception, e:
+            # If not found directly, try to look for it in the properties
+            stmtCacheSizeFound = False
+            properties = AdminConfig.list('J2EEResourceProperty', dsid).splitlines()
+            for prop in properties:
+                propName = AdminConfig.showAttribute(prop, 'name')
+                if propName == 'statementCacheSize':
+                    stmtCacheSizeFound = True
+                    print '\t\tstatementCacheSize',
+                    print str(multiply_tabs(' ', 25 - len('statementCacheSize'))),
+                    print AdminConfig.showAttribute(prop, 'value')
+
+            if not stmtCacheSizeFound:
+                # Try to check if it's under datasource properties
+                print '\t\tstatementCacheSize         NOT FOUND'
+
+        # Get the original properties
         properties = AdminConfig.list(
             'J2EEResourceProperty', dsid).splitlines()
 
@@ -57,5 +101,14 @@ for count in range(len(dbList)):
                     print str(multiply_tabs(' ', 25 - len(propName))),
                     print AdminConfig.showAttribute(prop, 'value')
 
-    except:
-        print ' - ERROR'
+    except Exception, e:
+        error_type = e.__class__.__name__
+        error_message = str(e)
+        print ' - ERROR: ' + error_type + ': ' + error_message
+        print '\t\tError details:'
+
+        # Get the traceback info
+        tb_info = traceback.format_exc()
+        # Print the traceback with proper indentation
+        for line in tb_info.splitlines():
+            print '\t\t' + line

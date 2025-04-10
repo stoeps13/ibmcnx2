@@ -1,3 +1,0 @@
-[submodule "ibmcnx/wsadminlib"]
-	path = ibmcnx/wsadminlib
-	url = https://github.com/wsadminlib/wsadminlib.git

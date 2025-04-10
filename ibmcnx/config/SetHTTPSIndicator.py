@@ -1,5 +1,5 @@
 '''
-Set HTTPSIndicatorHeader for all application server
+Description:   Set HTTPSIndicatorHeader for all application server
 
 Author:        Christoph Stoettner
 Mail:          christoph.stoettner@stoeps.de
@@ -7,6 +7,7 @@ Documentation: http://scripting101.stoeps.de
 
 Version:       5.0.1
 Date:          2024-03-19
+Update:        2025-04-10
 
 License:       Apache 2.0
 '''
@@ -41,9 +42,18 @@ for count in range(WS1.serverNum):
         serverId = AdminConfig.getid(server)
         serverWebContainer = AdminConfig.list("WebContainer", serverId )
 
-        attrs = [["name", "HttpsIndicatorHeader"], ["value", headername], ["description", "Important for SSL Offloading"]]
+        webContainerProps = AdminConfig.list('Property', serverWebContainer).split('\n')
 
-        AdminConfig.create("Property", serverWebContainer, attrs )
+        for prop in webContainerProps:
+            if prop == '': continue
+            propName = AdminConfig.showAttribute(prop, 'name')
+
+            if propName in ['httpsIndicatorHeader']:
+                AdminConfig.remove(prop)
+
+        newProp = [["name", "HttpsIndicatorHeader"], ["value", headername], ["description", "Important for SSL Offloading"]]
+
+        AdminConfig.create("Property", serverWebContainer, newProp)
 
 ibmcnx.functions.saveChanges()
 

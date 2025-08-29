@@ -292,7 +292,7 @@ def docinactiveprof():
 
 
 def cnxBackToMainMenu():
-    execfile('ibmcnx/menu/cnxmenu.py')
+    execfile('ibmcnx/menu/menuMain.py')
 
 
 def bye():

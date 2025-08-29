@@ -58,7 +58,7 @@ def printPolicies(policies):
             FilesPolicyService.delete(policies[policy]['id'])
         elif state == 'M':
             state = 'MENU'
-            execfile('ibmcnx/menu/cnxmenu.py')
+            execfile('ibmcnx/menu/menuMain.py')
             break
         elif state == 'X':
             state = 'EXIT'

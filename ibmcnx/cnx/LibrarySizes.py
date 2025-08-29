@@ -56,7 +56,7 @@ def askLibraryType():
                 return libType
             elif libType == 'm':
                 is_valid_lib = 0
-                execfile('ibmcnx/menu/cnxmenu.py')
+                execfile('ibmcnx/menu/menuMain.py')
             elif libType == 'x':
                 is_valid_lib = 0
                 sys.exit()

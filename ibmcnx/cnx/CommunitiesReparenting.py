@@ -89,7 +89,7 @@ while state != ('EXIT'):
         break
     elif state == 'M':
         state = 'MENU'
-        execfile('ibmcnx/menu/cnxmenu.py')
+        execfile('ibmcnx/menu/menuMain.py')
         break
     elif state == 'C':
         comm_name = raw_input(
